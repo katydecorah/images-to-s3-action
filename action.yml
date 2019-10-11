@@ -1,0 +1,10 @@
+name: Upload images to S3
+description: 'GitHub action to upload images to S3'
+inputs:
+  image_path:
+    description: 'Path to images folder with images you want to upload'
+    required: true
+    default: './img/staging/'
+runs:
+  using: 'node12'
+  main: 'index.js'
