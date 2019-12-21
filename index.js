@@ -20,6 +20,12 @@ try {
     console.log(`🗑\tCleared out ${destination}`);
   });
 
+  const files = fs.readdirSync(staging);
+  if (files && files.length == 0) {
+    console.log(`📭\tNo files found in ${staging}`);
+    return;
+  }
+
   const myImageConfig = fs.readdirSync(staging).reduce((obj, file) => {
     const ext = path.extname(file);
     const slug = file.replace(ext, '');
