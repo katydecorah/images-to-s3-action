@@ -20,8 +20,8 @@ try {
     console.log(`🗑\tCleared out ${destination}`);
   });
 
-  const files = fs.readdirSync(staging);
-  if (files && files.length == 0) {
+  const folder = fs.existsSync(staging);
+  if (!folder) {
     console.log(`📭\tNo files found in ${staging}`);
     return;
   }
