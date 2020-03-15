@@ -14,7 +14,7 @@ AWS.config.region = process.env.AWS_REGION;
 
 try {
   const staging = core.getInput('image_path');
-  const destination = './img/ready/';
+  const destination = `${core.getInput('image_path')}ready/`;
 
   rimraf(destination, function() {
     console.log(`🗑\tCleared out ${destination}`);
