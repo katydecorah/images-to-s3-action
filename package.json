@@ -4,7 +4,7 @@
   "description": "GitHub action to upload images to S3",
   "main": "index.js",
   "dependencies": {
-    "@actions/core": "^1.2.0",
+    "@actions/core": "^1.2.6",
     "aws-sdk": "^2.596.0",
     "del": "^5.1.0",
     "fasterror": "^1.1.0",
