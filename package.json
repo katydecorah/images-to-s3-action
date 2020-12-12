@@ -12,7 +12,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^5.1.0",
     "imagemin-webp": "^4.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mkdirp": "^0.5.1",
     "p-finally": "^2.0.1",
     "path": "^0.12.7",
