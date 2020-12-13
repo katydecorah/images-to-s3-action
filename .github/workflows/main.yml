@@ -11,7 +11,7 @@ jobs:
     name: Upload images to S3
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Upload images
         uses: ./
         env:
@@ -20,7 +20,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
         with:
-          image_path: './img/staging/'
+          image_path: "./img/staging/"
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
