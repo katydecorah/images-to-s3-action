@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const core = require('@actions/core');
-const appropriateImages = require('./generate');
-const fs = require('fs');
-const path = require('path');
-const AWS = require('aws-sdk');
-const rimraf = require('rimraf');
+const core = require("@actions/core");
+const appropriateImages = require("./generate");
+const fs = require("fs");
+const path = require("path");
+const AWS = require("aws-sdk");
+const rimraf = require("rimraf");
 
 AWS.config = new AWS.Config();
 AWS.config.accessKeyId = process.env.AWS_ACCESS_KEY_ID;
@@ -13,10 +13,10 @@ AWS.config.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 AWS.config.region = process.env.AWS_REGION;
 
 try {
-  const staging = core.getInput('image_path');
-  const destination = `${core.getInput('image_path')}ready/`;
+  const staging = core.getInput("image_path");
+  const destination = `${core.getInput("image_path")}ready/`;
 
-  rimraf(destination, function() {
+  rimraf(destination, function () {
     console.log(`🗑\tCleared out ${destination}`);
   });
 
@@ -28,11 +28,11 @@ try {
 
   const myImageConfig = fs.readdirSync(staging).reduce((obj, file) => {
     const ext = path.extname(file);
-    const slug = file.replace(ext, '');
-    if (ext === '.png' || ext === '.jpg') {
+    const slug = file.replace(ext, "");
+    if (ext === ".png" || ext === ".jpg") {
       obj[slug] = {
         basename: `${file}`,
-        sizes: [{ width: 1000 }, { width: 1600 }]
+        sizes: [{ width: 1000 }, { width: 1600 }],
       };
     }
     return obj;
@@ -41,15 +41,15 @@ try {
   appropriateImages
     .generate(myImageConfig, {
       inputDirectory: staging,
-      outputDirectory: destination
+      outputDirectory: destination,
     })
-    .then(output => {
-      console.log('⚙️\tGenerated all these images:');
-      console.log(output.join('\n'));
+    .then((output) => {
+      console.log("⚙️\tGenerated all these images:");
+      console.log(output.join("\n"));
     })
     .then(() => {
       // copy over original files
-      Object.keys(myImageConfig).forEach(file => {
+      Object.keys(myImageConfig).forEach((file) => {
         const path = myImageConfig[file].basename;
         fs.copyFileSync(`${staging}${path}`, `${destination}${path}`);
       });
@@ -60,12 +60,12 @@ try {
       const files = fs.readdirSync(destination).reduce((arr, file) => {
         arr.push({
           path: `${destination}${file}`,
-          file: file.replace('-1000', '@1000').replace('-1600', '@1600')
+          file: file.replace("-1000", "@1000").replace("-1600", "@1600"),
         });
         return arr;
       }, []);
       return Promise.all(
-        files.map(file => {
+        files.map((file) => {
           const body = fs.createReadStream(file.path);
           return module.exports.putToS3(file.file, body);
         })
@@ -76,10 +76,12 @@ try {
       fs.readdir(staging, (err, files) => {
         if (err) throw err;
         for (const file of files) {
-          fs.unlink(path.join(staging, file), err => {
-            console.log(`🗑\tRemoved ${file} from ${staging}`);
-            if (err) throw err;
-          });
+          if (fs.existsSync(path.join(staging, file))) {
+            fs.unlink(path.join(staging, file), (err) => {
+              console.log(`🗑\tRemoved ${file} from ${staging}`);
+              if (err) throw err;
+            });
+          }
         }
       });
     })
@@ -88,16 +90,16 @@ try {
       fs.readdir(destination, (err, files) => {
         if (err) throw err;
         for (const file of files) {
-          fs.unlink(path.join(destination, file), err => {
+          fs.unlink(path.join(destination, file), (err) => {
             console.log(`🗑\tRemoved ${file} from ${destination}`);
             if (err) throw err;
           });
         }
       });
     })
-    .catch(errors => {
+    .catch((errors) => {
       if (Array.isArray(errors)) {
-        errors.forEach(err => console.error(err.stack));
+        errors.forEach((err) => console.error(err.stack));
       } else {
         console.error(errors.stack);
       }
@@ -114,9 +116,9 @@ module.exports.putToS3 = (Key, Body) => {
         Bucket: process.env.AWS_BUCKET,
         Key,
         Body,
-        ContentEncoding: 'base64'
+        ContentEncoding: "base64",
       },
-      function(err) {
+      function (err) {
         if (err) return reject(err);
         console.log(`⬆️\tUploaded ${Key}`);
         return resolve(Key);
