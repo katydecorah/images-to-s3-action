@@ -2,9 +2,10 @@
   "name": "images-to-s3-action",
   "version": "1.0.0",
   "description": "GitHub action to upload images to S3",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "@actions/core": "^1.2.6",
+    "@vercel/ncc": "^0.25.1",
     "aws-sdk": "^2.596.0",
     "del": "^5.1.0",
     "fasterror": "^1.1.0",
@@ -22,10 +23,20 @@
     "tempy": "^0.3.0"
   },
   "devDependencies": {
-    "eslint-plugin-node": "^10.0.0"
+    "eslint-plugin-node": "^10.0.0",
+    "husky": "^4.3.5",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "ncc build src/index.js",
+    "pretty-quick": "pretty-quick"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run build"
+    }
   },
   "keywords": [],
   "author": "",
