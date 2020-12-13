@@ -1,7 +1,7 @@
 "use strict";
 
 const core = require("@actions/core");
-const appropriateImages = require("./generate");
+const appropriateImages = require("@mapbox/appropriate-images");
 const fs = require("fs");
 const path = require("path");
 const AWS = require("aws-sdk");

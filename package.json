@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "@actions/core": "^1.2.6",
+    "@mapbox/appropriate-images": "^4.0.0",
     "@vercel/ncc": "^0.25.1",
     "aws-sdk": "^2.596.0",
     "del": "^5.1.0",
