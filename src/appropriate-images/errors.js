@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const fasterror = require('fasterror');
+const fasterror = require("fasterror");
 
 module.exports = {
-  UsageError: fasterror('UsageError')
+  UsageError: fasterror("UsageError"),
 };

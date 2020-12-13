@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const sharp = require('sharp');
-const UsageError = require('./errors').UsageError;
-const tempy = require('tempy');
-const pify = require('pify');
-const mkdirp = require('mkdirp');
-const del = require('del');
-const fs = require('fs');
-const pFinally = require('p-finally');
-const path = require('path');
-const optimize = require('./optimize');
+const _ = require("lodash");
+const sharp = require("sharp");
+const UsageError = require("./errors").UsageError;
+const tempy = require("tempy");
+const pify = require("pify");
+const mkdirp = require("mkdirp");
+const del = require("del");
+const fs = require("fs");
+const pFinally = require("p-finally");
+const path = require("path");
+const optimize = require("./optimize");
 
 // Suppress vips warnings from sharp
 process.env.VIPS_WARNING = true;
@@ -29,35 +29,6 @@ function createSizeSuffix(width, height) {
 }
 
 /**
- * Get a cropper constant from sharp.
- *
- * @param {string} name
- * @return {string}
- */
-function getCropper(name) {
-  // See http://sharp.dimens.io/en/stable/api-resize/#crop
-  //
-  // Possible attributes of sharp.gravity are north, northeast, east, southeast, south,
-  // southwest, west, northwest, center and centre.
-  if (sharp.gravity[name] !== undefined) {
-    return sharp.gravity[name];
-  }
-  // The experimental strategy-based approach resizes so one dimension is at its target
-  // length then repeatedly ranks edge regions, discarding the edge with the lowest
-  // score based on the selected strategy.
-  // - entropy: focus on the region with the highest Shannon entropy.
-  // - attention: focus on the region with the highest luminance frequency,
-  //   colour saturation and presence of skin tones.
-  if (sharp.strategy[name] !== undefined) {
-    return sharp.strategy[name];
-  }
-
-  throw new UsageError(
-    `"${name}" is not a valid crop value. Consult http://sharp.dimens.io/en/stable/api-resize/#crop`
-  );
-}
-
-/**
  * Generate all the size variants of an image.
  *
  * @param {Object} entry - Entry in the image config.
@@ -67,10 +38,10 @@ function getCropper(name) {
  */
 function generateSizes(entry, inputDirectory, outputDirectory) {
   const imageFileName = path.join(inputDirectory, entry.basename);
-  return pify(fs.readFile)(imageFileName).then(imageBuffer => {
+  return pify(fs.readFile)(imageFileName).then((imageBuffer) => {
     const sharpFile = sharp(imageBuffer);
     return Promise.all(
-      entry.sizes.map(size => {
+      entry.sizes.map((size) => {
         const sizeSuffix = createSizeSuffix(size.width, size.height);
         const ext = path.extname(entry.basename);
         const extlessBasename = path.basename(entry.basename, ext);
@@ -78,10 +49,18 @@ function generateSizes(entry, inputDirectory, outputDirectory) {
           outputDirectory,
           `${extlessBasename}-${sizeSuffix}${ext}`
         );
-        const transform = sharpFile.resize(size.width, size.height);
-        if (size.crop !== undefined) {
-          transform.crop(getCropper(size.crop));
+
+        if (size.crop) {
+          throw new UsageError(
+            `"crop" is deprecated, use options: https://github.com/mapbox/appropriate-images#options`
+          );
         }
+
+        const transform =
+          size.options && size.height
+            ? sharpFile.resize(size.width, size.height, size.options)
+            : sharpFile.resize(size.width, size.height);
+
         return transform.toFile(outputFilename).then(() => outputFilename);
       })
     );
@@ -105,17 +84,17 @@ function clearPriorOutput(directory, sourceImageBasename) {
 module.exports = (imageConfig, options) => {
   let usageErrors = [];
   if (imageConfig === undefined) {
-    return Promise.reject(new UsageError('config is required'));
+    return Promise.reject(new UsageError("config is required"));
   }
   if (options.inputDirectory === undefined) {
-    usageErrors.push(new UsageError('options.inputDirectory is required'));
+    usageErrors.push(new UsageError("options.inputDirectory is required"));
   }
   if (options.outputDirectory === undefined) {
-    usageErrors.push(new UsageError('options.outputDirectory is required'));
+    usageErrors.push(new UsageError("options.outputDirectory is required"));
   }
 
   if (options.ids !== undefined) {
-    options.ids.forEach(id => {
+    options.ids.forEach((id) => {
       if (imageConfig[id] !== undefined) return;
       usageErrors.push(new UsageError(`"${id}" is not a valid image id`));
     });
@@ -130,7 +109,7 @@ module.exports = (imageConfig, options) => {
   const imageIdsForProcessing = Object.keys(tailoredImageConfig);
 
   const temporaryDirectory = tempy.directory();
-  const createTemporaryDirectory = () => pify(mkdirp)(temporaryDirectory);
+  const createTemporaryDirectory = () => mkdirp(temporaryDirectory);
   const destroyTemporaryDirectory = () =>
     del(temporaryDirectory, { force: true });
 
@@ -151,8 +130,8 @@ module.exports = (imageConfig, options) => {
           entry,
           options.inputDirectory,
           temporaryDirectory
-        ).catch(error => {
-          if (error.code === 'ENOENT') {
+        ).catch((error) => {
+          if (error.code === "ENOENT") {
             configErrors.push(new UsageError(`invalid basename for "${id}"`));
           } else {
             throw error;
@@ -162,8 +141,8 @@ module.exports = (imageConfig, options) => {
         sizePromises.push(
           Promise.all([
             clearPriorOutput(options.outputDirectory, entry.basename),
-            sizes
-          ]).then(data => data[1])
+            sizes,
+          ]).then((data) => data[1])
         );
         return sizePromises;
       },
@@ -173,11 +152,11 @@ module.exports = (imageConfig, options) => {
 
     const makeItHappen = createTemporaryDirectory()
       .then(() => Promise.all(generateSizeVariants))
-      .then(result => {
+      .then((result) => {
         if (configErrors.length) return Promise.reject(configErrors);
         return result;
       })
-      .then(result => optimize(_.flatten(result), options));
+      .then((result) => optimize(_.flatten(result), options));
 
     return pFinally(makeItHappen, destroyTemporaryDirectory);
   });

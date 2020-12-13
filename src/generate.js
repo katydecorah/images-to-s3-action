@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  generate: require('./appropriate-images/generate')
+  generate: require("./appropriate-images/generate"),
 };
