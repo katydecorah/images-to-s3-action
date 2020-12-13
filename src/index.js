@@ -76,7 +76,7 @@ try {
       fs.readdir(staging, (err, files) => {
         if (err) throw err;
         for (const file of files) {
-          if (fs.existsSync(path.join(staging, file))) {
+          if (!fs.lstatSync(path.join(staging, file)).isDirectory()) {
             fs.unlink(path.join(staging, file), (err) => {
               console.log(`🗑\tRemoved ${file} from ${staging}`);
               if (err) throw err;
