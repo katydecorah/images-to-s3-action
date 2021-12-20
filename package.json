@@ -4,26 +4,22 @@
   "description": "GitHub action to upload images to S3",
   "main": "dist/index.js",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@mapbox/appropriate-images": "^4.0.0",
-    "@vercel/ncc": "^0.25.1",
-    "aws-sdk": "^2.596.0"
+    "@actions/core": "^1.6.0",
+    "@mapbox/appropriate-images": "^5.0.0",
+    "@vercel/ncc": "^0.33.1",
+    "aws-sdk": "^2.1046.0"
   },
   "devDependencies": {
     "eslint-plugin-node": "^11.1.0",
-    "husky": "^4.3.5",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0"
+    "husky": "^7.0.0",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.2"
   },
   "scripts": {
     "lint": "eslint .",
     "build": "ncc build src/index.js",
-    "pretty-quick": "pretty-quick"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "pretty-quick": "pretty-quick",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
