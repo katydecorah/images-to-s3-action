@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90517,7 +90517,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -103190,9 +103190,7 @@ var put_to_s3_awaiter = (undefined && undefined.__awaiter) || function (thisArg,
 function putToS3(Key, Body) {
     return put_to_s3_awaiter(this, void 0, void 0, function* () {
         const client = new dist_cjs.S3({
-            region: process.env.AWS_REGION,
-            //accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-            //secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            region: process.env.AWS_REGION
         });
         try {
             yield client.putObject({

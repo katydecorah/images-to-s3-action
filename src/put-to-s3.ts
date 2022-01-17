@@ -5,8 +5,6 @@ import { ReadStream } from "fs";
 export async function putToS3(Key: string, Body: ReadStream): Promise<void> {
   const client = new S3({
     region: process.env.AWS_REGION,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   });
   try {
     await client.putObject({
