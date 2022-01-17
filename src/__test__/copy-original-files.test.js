@@ -1,10 +1,8 @@
-"use strict";
+import { copyOriginalFiles } from "../copy-original-files.js";
+import { copyFile } from "fs/promises";
+import { info } from "@actions/core";
 
-const { copyOriginalFiles } = require("../copy-original-files.js");
-const { copyFile } = require("fs/promises");
-const { info } = require("@actions/core");
 jest.mock("@actions/core");
-
 jest.mock("fs/promises", () => {
   return {
     copyFile: jest.fn(),

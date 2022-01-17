@@ -1,11 +1,8 @@
-"use strict";
-
-const { deleteFiles } = require("../delete-files.js");
-const { info } = require("@actions/core");
-const { unlink, stat } = require("fs/promises");
+import { deleteFiles } from "../delete-files.js";
+import { info } from "@actions/core";
+import { unlink, stat } from "fs/promises";
 
 jest.mock("@actions/core");
-
 jest.mock("fs/promises", () => {
   return {
     readdir: jest.fn(() => ["my-file.png", "my-other-file.png"]),

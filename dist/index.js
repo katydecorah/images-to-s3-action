@@ -7579,7 +7579,7 @@ exports.WriteGetObjectResponseCommand = WriteGetObjectResponseCommand;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(99430), exports);
 tslib_1.__exportStar(__nccwpck_require__(67313), exports);
 tslib_1.__exportStar(__nccwpck_require__(12953), exports);
@@ -8143,7 +8143,7 @@ exports.defaultRegionInfoProvider = defaultRegionInfoProvider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(67862), exports);
 tslib_1.__exportStar(__nccwpck_require__(22034), exports);
 tslib_1.__exportStar(__nccwpck_require__(73706), exports);
@@ -8160,7 +8160,7 @@ tslib_1.__exportStar(__nccwpck_require__(6908), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(51628), exports);
 tslib_1.__exportStar(__nccwpck_require__(6958), exports);
 
@@ -10162,7 +10162,7 @@ exports.paginateListParts = paginateListParts;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(27356), exports);
 tslib_1.__exportStar(__nccwpck_require__(45491), exports);
 tslib_1.__exportStar(__nccwpck_require__(82064), exports);
@@ -23098,7 +23098,7 @@ const loadRestXmlErrorCode = (output, data) => {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getRuntimeConfig = void 0;
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 const package_json_1 = tslib_1.__importDefault(__nccwpck_require__(50677));
 const client_sts_1 = __nccwpck_require__(52209);
 const config_resolver_1 = __nccwpck_require__(56153);
@@ -23191,7 +23191,7 @@ exports.getRuntimeConfig = getRuntimeConfig;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(51334), exports);
 tslib_1.__exportStar(__nccwpck_require__(42715), exports);
 tslib_1.__exportStar(__nccwpck_require__(8303), exports);
@@ -23651,7 +23651,7 @@ exports.LogoutCommand = LogoutCommand;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(18972), exports);
 tslib_1.__exportStar(__nccwpck_require__(1513), exports);
 tslib_1.__exportStar(__nccwpck_require__(64296), exports);
@@ -23950,7 +23950,7 @@ exports.defaultRegionInfoProvider = defaultRegionInfoProvider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(69838), exports);
 tslib_1.__exportStar(__nccwpck_require__(71057), exports);
 tslib_1.__exportStar(__nccwpck_require__(65706), exports);
@@ -23966,7 +23966,7 @@ tslib_1.__exportStar(__nccwpck_require__(36773), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(66390), exports);
 
 
@@ -24153,7 +24153,7 @@ exports.paginateListAccounts = paginateListAccounts;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(80849), exports);
 tslib_1.__exportStar(__nccwpck_require__(88460), exports);
 tslib_1.__exportStar(__nccwpck_require__(50938), exports);
@@ -24697,7 +24697,7 @@ const loadRestJsonErrorCode = (output, data) => {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getRuntimeConfig = void 0;
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 const package_json_1 = tslib_1.__importDefault(__nccwpck_require__(91092));
 const config_resolver_1 = __nccwpck_require__(56153);
 const hash_node_1 = __nccwpck_require__(97442);
@@ -25317,7 +25317,7 @@ exports.GetSessionTokenCommand = GetSessionTokenCommand;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(59802), exports);
 tslib_1.__exportStar(__nccwpck_require__(72865), exports);
 tslib_1.__exportStar(__nccwpck_require__(37451), exports);
@@ -25645,7 +25645,7 @@ exports.defaultRegionInfoProvider = defaultRegionInfoProvider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(32605), exports);
 tslib_1.__exportStar(__nccwpck_require__(64195), exports);
 tslib_1.__exportStar(__nccwpck_require__(55716), exports);
@@ -25661,7 +25661,7 @@ tslib_1.__exportStar(__nccwpck_require__(20106), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(21780), exports);
 
 
@@ -27068,7 +27068,7 @@ const loadQueryErrorCode = (output, data) => {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getRuntimeConfig = void 0;
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 const package_json_1 = tslib_1.__importDefault(__nccwpck_require__(7947));
 const defaultStsRoleAssumers_1 = __nccwpck_require__(90048);
 const config_resolver_1 = __nccwpck_require__(56153);
@@ -27190,7 +27190,7 @@ exports.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(14723), exports);
 tslib_1.__exportStar(__nccwpck_require__(42478), exports);
 tslib_1.__exportStar(__nccwpck_require__(92108), exports);
@@ -27328,7 +27328,7 @@ exports.normalizeEndpoint = normalizeEndpoint;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(47392), exports);
 tslib_1.__exportStar(__nccwpck_require__(85441), exports);
 tslib_1.__exportStar(__nccwpck_require__(86258), exports);
@@ -27383,7 +27383,7 @@ exports.getRealRegion = getRealRegion;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(70422), exports);
 tslib_1.__exportStar(__nccwpck_require__(81595), exports);
 
@@ -27578,7 +27578,7 @@ exports.getResolvedSigningRegion = getResolvedSigningRegion;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(3566), exports);
 tslib_1.__exportStar(__nccwpck_require__(56057), exports);
 tslib_1.__exportStar(__nccwpck_require__(26167), exports);
@@ -27874,7 +27874,7 @@ const getCredentialsFromProfile = async (profile, options) => {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getInstanceMetadataEndpoint = exports.httpRequest = void 0;
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(75232), exports);
 tslib_1.__exportStar(__nccwpck_require__(35813), exports);
 tslib_1.__exportStar(__nccwpck_require__(72314), exports);
@@ -28433,7 +28433,7 @@ exports.fromWebToken = fromWebToken;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(35614), exports);
 tslib_1.__exportStar(__nccwpck_require__(47905), exports);
 
@@ -28746,7 +28746,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(10729), exports);
 tslib_1.__exportStar(__nccwpck_require__(49435), exports);
 tslib_1.__exportStar(__nccwpck_require__(83975), exports);
@@ -28818,7 +28818,7 @@ exports.resolveEventStreamSerdeConfig = resolveEventStreamSerdeConfig;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(73404), exports);
 
 
@@ -28894,7 +28894,7 @@ exports.EventStreamMarshaller = EventStreamMarshaller;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(40448), exports);
 tslib_1.__exportStar(__nccwpck_require__(38278), exports);
 
@@ -29130,7 +29130,7 @@ exports.getUnmarshalledStream = getUnmarshalledStream;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(86236), exports);
 tslib_1.__exportStar(__nccwpck_require__(34813), exports);
 
@@ -29259,7 +29259,7 @@ const isReadStream = (stream) => typeof stream.path === "string";
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(81299), exports);
 tslib_1.__exportStar(__nccwpck_require__(10047), exports);
 
@@ -29377,7 +29377,7 @@ const hasHeader = (soughtHeader, headers) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(72884), exports);
 tslib_1.__exportStar(__nccwpck_require__(33750), exports);
 
@@ -29858,7 +29858,7 @@ exports.resolveBucketEndpointConfig = resolveBucketEndpointConfig;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.validateNoFIPS = exports.validateNoDualstack = exports.validateDNSHostLabel = exports.validateRegion = exports.validateAccountId = exports.validatePartition = exports.validateOutpostService = exports.getSuffixForArnEndpoint = exports.getArnResources = void 0;
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(83939), exports);
 tslib_1.__exportStar(__nccwpck_require__(98580), exports);
 tslib_1.__exportStar(__nccwpck_require__(60504), exports);
@@ -30058,7 +30058,7 @@ exports.getLocationConstraintPlugin = getLocationConstraintPlugin;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(9754), exports);
 
 
@@ -30523,7 +30523,7 @@ exports.defaultDelayDecider = defaultDelayDecider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(47328), exports);
 tslib_1.__exportStar(__nccwpck_require__(6402), exports);
 tslib_1.__exportStar(__nccwpck_require__(533), exports);
@@ -31341,7 +31341,7 @@ exports.S3SignatureV4 = S3SignatureV4;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(23977), exports);
 tslib_1.__exportStar(__nccwpck_require__(10404), exports);
 tslib_1.__exportStar(__nccwpck_require__(92812), exports);
@@ -31525,7 +31525,7 @@ exports.deserializerMiddleware = deserializerMiddleware;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(65648), exports);
 tslib_1.__exportStar(__nccwpck_require__(99328), exports);
 tslib_1.__exportStar(__nccwpck_require__(19511), exports);
@@ -31690,7 +31690,7 @@ const normalizeCredentialProvider = (credentials) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(63061), exports);
 tslib_1.__exportStar(__nccwpck_require__(42509), exports);
 
@@ -32089,7 +32089,7 @@ const priorityWeights = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(38399), exports);
 
 
@@ -32134,7 +32134,7 @@ exports.UA_ESCAPE_REGEX = /[^\!\#\$\%\&\'\*\+\-\.\^\_\`\|\~\d\w]/g;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(36546), exports);
 tslib_1.__exportStar(__nccwpck_require__(76236), exports);
 
@@ -32309,7 +32309,7 @@ exports.fromStatic = fromStatic;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(52175), exports);
 
 
@@ -32353,7 +32353,7 @@ exports.getTransformedHeaders = getTransformedHeaders;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(2298), exports);
 tslib_1.__exportStar(__nccwpck_require__(92533), exports);
 tslib_1.__exportStar(__nccwpck_require__(72198), exports);
@@ -32826,7 +32826,7 @@ exports.fromStatic = fromStatic;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(81786), exports);
 tslib_1.__exportStar(__nccwpck_require__(51444), exports);
 tslib_1.__exportStar(__nccwpck_require__(10529), exports);
@@ -32989,7 +32989,7 @@ exports.HttpResponse = HttpResponse;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(56779), exports);
 tslib_1.__exportStar(__nccwpck_require__(52872), exports);
 tslib_1.__exportStar(__nccwpck_require__(92348), exports);
@@ -33471,7 +33471,7 @@ exports.deleteHeader = deleteHeader;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(65238), exports);
 
 
@@ -33906,7 +33906,7 @@ exports.deleteHeader = deleteHeader;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.normalizeRegionProvider = exports.normalizeCredentialsProvider = exports.prepareRequest = exports.moveHeadersToQuery = exports.getPayloadHash = exports.getCanonicalQuery = exports.getCanonicalHeaders = void 0;
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(75086), exports);
 var getCanonicalHeaders_1 = __nccwpck_require__(93590);
 Object.defineProperty(exports, "getCanonicalHeaders", ({ enumerable: true, get: function () { return getCanonicalHeaders_1.getCanonicalHeaders; } }));
@@ -34388,7 +34388,7 @@ exports.getValueFromTextNode = getValueFromTextNode;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(36034), exports);
 tslib_1.__exportStar(__nccwpck_require__(4014), exports);
 tslib_1.__exportStar(__nccwpck_require__(78392), exports);
@@ -34909,7 +34909,7 @@ exports.booleanSelector = booleanSelector;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(79509), exports);
 
 
@@ -34985,7 +34985,7 @@ exports.NODE_DEFAULTS_MODE_CONFIG_OPTIONS = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(18238), exports);
 
 
@@ -35136,7 +35136,7 @@ const hexEncode = (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(24652), exports);
 tslib_1.__exportStar(__nccwpck_require__(15774), exports);
 
@@ -35366,7 +35366,7 @@ exports.createWaiter = createWaiter;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(38880), exports);
 tslib_1.__exportStar(__nccwpck_require__(4996), exports);
 
@@ -35425,7 +35425,7 @@ exports.runPolling = runPolling;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(17397), exports);
 tslib_1.__exportStar(__nccwpck_require__(23931), exports);
 
@@ -35636,7 +35636,7 @@ exports.escapeElement = escapeElement;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(89679);
+const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(74452), exports);
 tslib_1.__exportStar(__nccwpck_require__(82656), exports);
 
@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90517,7 +90517,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -100032,7 +100032,7 @@ module.exports = toRegexRange;
 
 /***/ }),
 
-/***/ 89679:
+/***/ 4351:
 /***/ ((module) => {
 
 /*! *****************************************************************************
@@ -101555,219 +101555,6 @@ module.exports = Queue;
 
 /***/ }),
 
-/***/ 89938:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const { setFailed, info } = __nccwpck_require__(42186);
-const { copyFile } = __nccwpck_require__(73292);
-
-async function copyOriginalFiles(myImageConfig, staging, destination) {
-  const imgArray = Object.keys(myImageConfig).reduce(
-    (arr, file) => [...arr, myImageConfig[file].basename],
-    []
-  );
-  try {
-    for (const path of imgArray) {
-      await copyFile(`${staging}${path}`, `${destination}${path}`);
-    }
-    info(`📠 Copied ${imgArray.length} original files to ${destination}`);
-  } catch (err) {
-    setFailed("Could not copy");
-  }
-}
-
-module.exports = {
-  copyOriginalFiles,
-};
-
-
-/***/ }),
-
-/***/ 24164:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const { extname } = __nccwpck_require__(71017);
-const { readdir } = __nccwpck_require__(73292);
-const { setFailed } = __nccwpck_require__(42186);
-
-async function createImageConfig(staging) {
-  try {
-    const files = await readdir(staging);
-    return files.reduce((obj, file) => {
-      const ext = extname(file);
-      const slug = file.replace(ext, "");
-      if (ext === ".png" || ext === ".jpg") {
-        obj[slug] = {
-          basename: `${file}`,
-          sizes: [{ width: 1000 }, { width: 1600 }],
-        };
-      }
-      return obj;
-    }, {});
-  } catch (error) {
-    setFailed(error.message);
-  }
-}
-
-module.exports = { createImageConfig };
-
-
-/***/ }),
-
-/***/ 93193:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-const { readdir, unlink, stat } = __nccwpck_require__(73292);
-const { join } = __nccwpck_require__(71017);
-const { info, setFailed } = __nccwpck_require__(42186);
-
-async function deleteFiles(path) {
-  try {
-    const files = await readdir(path);
-    for (const file of files) {
-      const fstat = await stat(join(path, file));
-      if (!fstat.isDirectory()) {
-        await unlink(join(path, file));
-        info(`🗑 Removed ${file} from ${path}`);
-      }
-    }
-  } catch (err) {
-    setFailed(err);
-  }
-}
-
-module.exports = {
-  deleteFiles,
-};
-
-
-/***/ }),
-
-/***/ 4351:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const { getInput, setFailed, info } = __nccwpck_require__(42186);
-const appropriateImages = __nccwpck_require__(19701);
-const { existsSync } = __nccwpck_require__(57147);
-const rimraf = __nccwpck_require__(14959);
-const { deleteFiles } = __nccwpck_require__(93193);
-const { createImageConfig } = __nccwpck_require__(24164);
-const { copyOriginalFiles } = __nccwpck_require__(89938);
-const { uploadFilesToS3 } = __nccwpck_require__(78228);
-
-async function action() {
-  try {
-    const staging = getInput("image_path");
-    const destination = `${getInput("image_path")}ready/`;
-
-    rimraf(destination, () => info(`🗑 Cleared out ${destination}`));
-
-    if (!existsSync(staging)) {
-      info(`📭 No files found in ${staging}`);
-      return;
-    }
-
-    // generate images
-    const myImageConfig = await createImageConfig(staging);
-    const generatedImages = await appropriateImages.generate(myImageConfig, {
-      inputDirectory: staging,
-      outputDirectory: destination,
-    });
-    info("⚙️ Generated all these images:");
-    info(generatedImages.join("\n"));
-    // copy over original files
-    await copyOriginalFiles(myImageConfig, staging, destination);
-    // upload to S3
-    await uploadFilesToS3(destination);
-    // delete files in staging
-    await deleteFiles(staging);
-    // delete files in destination
-    await deleteFiles(destination);
-  } catch (error) {
-    setFailed(error.message);
-  }
-}
-
-module.exports = action();
-
-
-/***/ }),
-
-/***/ 37401:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const { S3 } = __nccwpck_require__(19250);
-const { info } = __nccwpck_require__(42186);
-
-async function putToS3(Key, Body) {
-  const client = new S3({
-    region: process.env.AWS_REGION,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  });
-  try {
-    await client.putObject({
-      Bucket: process.env.AWS_BUCKET,
-      Key,
-      Body,
-      ContentEncoding: "base64",
-    });
-    info(`Uploaded ${Key} to S3.`);
-  } catch (error) {
-    throw new Error(error.message);
-  }
-}
-
-module.exports = {
-  putToS3,
-};
-
-
-/***/ }),
-
-/***/ 78228:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-const { readdir } = __nccwpck_require__(73292);
-const { createReadStream } = __nccwpck_require__(57147);
-const { putToS3 } = __nccwpck_require__(37401);
-const { setFailed } = __nccwpck_require__(42186);
-
-async function uploadFilesToS3(destination) {
-  try {
-    const files = await readdir(destination);
-
-    const formatted = files.map((file) => ({
-      path: `${destination}${file}`,
-      name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
-    }));
-
-    for (const file of formatted) {
-      const body = createReadStream(file.path);
-      await putToS3(file.name, body);
-    }
-  } catch (err) {
-    setFailed("Could not copy");
-  }
-}
-
-module.exports = {
-  uploadFilesToS3,
-};
-
-
-/***/ }),
-
 /***/ 74838:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -101866,14 +101653,6 @@ module.exports = require("events");
 
 "use strict";
 module.exports = require("fs");
-
-/***/ }),
-
-/***/ 73292:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("fs/promises");
 
 /***/ }),
 
@@ -103222,9 +103001,44 @@ module.exports = JSON.parse('["0BSD","AAL","ADSL","AFL-1.1","AFL-1.2","AFL-2.0",
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
@@ -103241,12 +103055,191 @@ module.exports = JSON.parse('["0BSD","AAL","ADSL","AFL-1.1","AFL-1.2","AFL-2.0",
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(4351);
-/******/ 	module.exports = __webpack_exports__;
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+// ESM COMPAT FLAG
+__nccwpck_require__.r(__webpack_exports__);
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ src)
+});
+
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __nccwpck_require__(42186);
+// EXTERNAL MODULE: ./node_modules/@mapbox/appropriate-images/index.js
+var appropriate_images = __nccwpck_require__(19701);
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(57147);
+// EXTERNAL MODULE: ./node_modules/rimraf/rimraf.js
+var rimraf = __nccwpck_require__(14959);
+var rimraf_default = /*#__PURE__*/__nccwpck_require__.n(rimraf);
+;// CONCATENATED MODULE: external "fs/promises"
+const promises_namespaceObject = require("fs/promises");
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(71017);
+;// CONCATENATED MODULE: ./src/delete-files.js
+
+
+
+
+
+async function deleteFiles(path) {
+  try {
+    const files = await (0,promises_namespaceObject.readdir)(path);
+    for (const file of files) {
+      const fstat = await (0,promises_namespaceObject.stat)((0,external_path_.join)(path, file));
+      if (!fstat.isDirectory()) {
+        await (0,promises_namespaceObject.unlink)((0,external_path_.join)(path, file));
+        (0,core.info)(`🗑 Removed ${file} from ${path}`);
+      }
+    }
+  } catch (err) {
+    (0,core.setFailed)(err);
+  }
+}
+;// CONCATENATED MODULE: ./src/create-image-config.js
+
+
+
+
+async function createImageConfig(staging) {
+  try {
+    const files = await (0,promises_namespaceObject.readdir)(staging);
+    return files.reduce((obj, file) => {
+      const ext = (0,external_path_.extname)(file);
+      const slug = file.replace(ext, "");
+      if (ext === ".png" || ext === ".jpg") {
+        obj[slug] = {
+          basename: `${file}`,
+          sizes: [{ width: 1000 }, { width: 1600 }],
+        };
+      }
+      return obj;
+    }, {});
+  } catch (error) {
+    (0,core.setFailed)(error.message);
+  }
+}
+;// CONCATENATED MODULE: ./src/copy-original-files.js
+
+
+
+async function copyOriginalFiles(myImageConfig, staging, destination) {
+  const imgArray = Object.keys(myImageConfig).reduce(
+    (arr, file) => [...arr, myImageConfig[file].basename],
+    []
+  );
+  try {
+    for (const path of imgArray) {
+      await (0,promises_namespaceObject.copyFile)(`${staging}${path}`, `${destination}${path}`);
+    }
+    (0,core.info)(`📠 Copied ${imgArray.length} original files to ${destination}`);
+  } catch (err) {
+    (0,core.setFailed)("Could not copy");
+  }
+}
+
+// EXTERNAL MODULE: ./node_modules/@aws-sdk/client-s3/dist-cjs/index.js
+var dist_cjs = __nccwpck_require__(19250);
+;// CONCATENATED MODULE: ./src/put-to-s3.js
+
+
+
+
+
+async function putToS3(Key, Body) {
+  const client = new dist_cjs.S3({
+    region: process.env.AWS_REGION,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  });
+  try {
+    await client.putObject({
+      Bucket: process.env.AWS_BUCKET,
+      Key,
+      Body,
+      ContentEncoding: "base64",
+    });
+    (0,core.info)(`Uploaded ${Key} to S3.`);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+;// CONCATENATED MODULE: ./src/upload-files-to-s3.js
+
+
+
+
+
+
+async function uploadFilesToS3(destination) {
+  try {
+    const files = await (0,promises_namespaceObject.readdir)(destination);
+
+    const formatted = files.map((file) => ({
+      path: `${destination}${file}`,
+      name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
+    }));
+
+    for (const file of formatted) {
+      const body = (0,external_fs_.createReadStream)(file.path);
+      await putToS3(file.name, body);
+    }
+  } catch (err) {
+    (0,core.setFailed)("Could not copy");
+  }
+}
+
+;// CONCATENATED MODULE: ./src/index.js
+
+
+
+
+
+
+
+
+
+async function action() {
+  try {
+    const staging = (0,core.getInput)("image_path");
+    const destination = `${(0,core.getInput)("image_path")}ready/`;
+
+    rimraf_default()(destination, () => (0,core.info)(`🗑 Cleared out ${destination}`));
+
+    if (!(0,external_fs_.existsSync)(staging)) {
+      (0,core.info)(`📭 No files found in ${staging}`);
+      return;
+    }
+
+    // generate images
+    const myImageConfig = await createImageConfig(staging);
+    const generatedImages = await (0,appropriate_images.generate)(myImageConfig, {
+      inputDirectory: staging,
+      outputDirectory: destination,
+    });
+    (0,core.info)("⚙️ Generated all these images:");
+    (0,core.info)(generatedImages.join("\n"));
+    // copy over original files
+    await copyOriginalFiles(myImageConfig, staging, destination);
+    // upload to S3
+    await uploadFilesToS3(destination);
+    // delete files in staging
+    await deleteFiles(staging);
+    // delete files in destination
+    await deleteFiles(destination);
+  } catch (error) {
+    (0,core.setFailed)(error.message);
+  }
+}
+
+/* harmony default export */ const src = (action());
+
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;

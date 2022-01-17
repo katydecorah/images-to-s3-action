@@ -1,13 +1,11 @@
-"use strict";
-
-const { getInput, setFailed, info } = require("@actions/core");
-const appropriateImages = require("@mapbox/appropriate-images");
-const { existsSync } = require("fs");
-const rimraf = require("rimraf");
-const { deleteFiles } = require("./delete-files.js");
-const { createImageConfig } = require("./create-image-config.js");
-const { copyOriginalFiles } = require("./copy-original-files.js");
-const { uploadFilesToS3 } = require("./upload-files-to-s3.js");
+import { getInput, setFailed, info } from "@actions/core";
+import { generate } from "@mapbox/appropriate-images";
+import { existsSync } from "fs";
+import rimraf from "rimraf";
+import { deleteFiles } from "./delete-files.js";
+import { createImageConfig } from "./create-image-config.js";
+import { copyOriginalFiles } from "./copy-original-files.js";
+import { uploadFilesToS3 } from "./upload-files-to-s3.js";
 
 async function action() {
   try {
@@ -23,7 +21,7 @@ async function action() {
 
     // generate images
     const myImageConfig = await createImageConfig(staging);
-    const generatedImages = await appropriateImages.generate(myImageConfig, {
+    const generatedImages = await generate(myImageConfig, {
       inputDirectory: staging,
       outputDirectory: destination,
     });
@@ -42,4 +40,4 @@ async function action() {
   }
 }
 
-module.exports = action();
+export default action();

@@ -1,9 +1,8 @@
-"use strict";
-const { readdir, unlink, stat } = require("fs/promises");
-const { join } = require("path");
-const { info, setFailed } = require("@actions/core");
+import { readdir, unlink, stat } from "fs/promises";
+import { join } from "path";
+import { info, setFailed } from "@actions/core";
 
-async function deleteFiles(path) {
+export async function deleteFiles(path) {
   try {
     const files = await readdir(path);
     for (const file of files) {
@@ -17,7 +16,3 @@ async function deleteFiles(path) {
     setFailed(err);
   }
 }
-
-module.exports = {
-  deleteFiles,
-};

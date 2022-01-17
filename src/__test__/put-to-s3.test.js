@@ -1,7 +1,5 @@
-"use strict";
-
-const { putToS3 } = require("../put-to-s3.js");
-const { info } = require("@actions/core");
+import { putToS3 } from "../put-to-s3.js";
+import { info } from "@actions/core";
 
 jest.mock("@actions/core");
 

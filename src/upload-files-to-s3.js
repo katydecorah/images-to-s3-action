@@ -1,10 +1,9 @@
-"use strict";
-const { readdir } = require("fs/promises");
-const { createReadStream } = require("fs");
-const { putToS3 } = require("./put-to-s3.js");
-const { setFailed } = require("@actions/core");
+import { readdir } from "fs/promises";
+import { createReadStream } from "fs";
+import { putToS3 } from "./put-to-s3.js";
+import { setFailed } from "@actions/core";
 
-async function uploadFilesToS3(destination) {
+export async function uploadFilesToS3(destination) {
   try {
     const files = await readdir(destination);
 
@@ -21,7 +20,3 @@ async function uploadFilesToS3(destination) {
     setFailed("Could not copy");
   }
 }
-
-module.exports = {
-  uploadFilesToS3,
-};

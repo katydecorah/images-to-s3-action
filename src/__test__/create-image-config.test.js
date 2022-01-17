@@ -1,9 +1,6 @@
-"use strict";
-
-const { createImageConfig } = require("../create-image-config.js");
+import { createImageConfig } from "../create-image-config.js";
 
 jest.mock("@actions/core");
-
 jest.mock("fs/promises", () => {
   return {
     readdir: jest.fn(() => ["my-file.png", "my-other-file.jpg"]),

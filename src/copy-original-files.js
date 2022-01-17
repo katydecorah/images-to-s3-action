@@ -1,7 +1,7 @@
-const { setFailed, info } = require("@actions/core");
-const { copyFile } = require("fs/promises");
+import { setFailed, info } from "@actions/core";
+import { copyFile } from "fs/promises";
 
-async function copyOriginalFiles(myImageConfig, staging, destination) {
+export async function copyOriginalFiles(myImageConfig, staging, destination) {
   const imgArray = Object.keys(myImageConfig).reduce(
     (arr, file) => [...arr, myImageConfig[file].basename],
     []
@@ -15,7 +15,3 @@ async function copyOriginalFiles(myImageConfig, staging, destination) {
     setFailed("Could not copy");
   }
 }
-
-module.exports = {
-  copyOriginalFiles,
-};

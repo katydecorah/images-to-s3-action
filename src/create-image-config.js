@@ -1,8 +1,8 @@
-const { extname } = require("path");
-const { readdir } = require("fs/promises");
-const { setFailed } = require("@actions/core");
+import { extname } from "path";
+import { readdir } from "fs/promises";
+import { setFailed } from "@actions/core";
 
-async function createImageConfig(staging) {
+export async function createImageConfig(staging) {
   try {
     const files = await readdir(staging);
     return files.reduce((obj, file) => {
@@ -20,5 +20,3 @@ async function createImageConfig(staging) {
     setFailed(error.message);
   }
 }
-
-module.exports = { createImageConfig };

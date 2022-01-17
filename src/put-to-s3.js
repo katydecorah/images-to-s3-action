@@ -1,9 +1,7 @@
-"use strict";
+import { S3 } from "@aws-sdk/client-s3";
+import { info } from "@actions/core";
 
-const { S3 } = require("@aws-sdk/client-s3");
-const { info } = require("@actions/core");
-
-async function putToS3(Key, Body) {
+export async function putToS3(Key, Body) {
   const client = new S3({
     region: process.env.AWS_REGION,
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -21,7 +19,3 @@ async function putToS3(Key, Body) {
     throw new Error(error.message);
   }
 }
-
-module.exports = {
-  putToS3,
-};

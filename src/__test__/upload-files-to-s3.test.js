@@ -1,7 +1,5 @@
-"use strict";
-
-const { putToS3 } = require("../put-to-s3.js");
-const { uploadFilesToS3 } = require("../upload-files-to-s3.js");
+import { putToS3 } from "../put-to-s3.js";
+import { uploadFilesToS3 } from "../upload-files-to-s3.js";
 
 jest.mock("../put-to-s3");
 jest.mock("fs", () => {
