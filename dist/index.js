@@ -101560,17 +101560,19 @@ module.exports = Queue;
 
 "use strict";
 
-const { readdir, unlink } = __nccwpck_require__(73292);
-const {join} = __nccwpck_require__(71017);
-const {info, setFailed} = __nccwpck_require__(42186);
+const { readdir, unlink, stat } = __nccwpck_require__(73292);
+const { join } = __nccwpck_require__(71017);
+const { info, setFailed } = __nccwpck_require__(42186);
 
-
-async function deleteFiles(destination) {
+async function deleteFiles(path) {
   try {
-    const files = await readdir(destination);
+    const files = await readdir(path);
     for (const file of files) {
-      await unlink(join(destination, file));
-      info(`🗑 Removed ${file} from ${destination}`);
+      const fstat = await stat(join(path, file));
+      if (!fstat.isDirectory()) {
+        await unlink(join(path, file));
+        info(`🗑 Removed ${file} from ${path}`);
+      }
     }
   } catch (err) {
     setFailed(err);
@@ -101578,8 +101580,9 @@ async function deleteFiles(destination) {
 }
 
 module.exports = {
-  deleteFiles
-}
+  deleteFiles,
+};
+
 
 /***/ }),
 
@@ -101595,7 +101598,7 @@ const fs = __nccwpck_require__(57147);
 const path = __nccwpck_require__(71017);
 const rimraf = __nccwpck_require__(14959);
 const { putToS3 } = __nccwpck_require__(37401);
-const { deleteFiles} = __nccwpck_require__(93193)
+const { deleteFiles } = __nccwpck_require__(93193);
 
 function action() {
   try {
@@ -101657,21 +101660,8 @@ function action() {
           })
         );
       })
-      .then(() => {
-        // delete files in staging
-        fs.readdir(staging, (err, files) => {
-          if (err) throw err;
-          for (const file of files) {
-            if (!fs.lstatSync(path.join(staging, file)).isDirectory()) {
-              fs.unlink(path.join(staging, file), (err) => {
-                console.log(`🗑\tRemoved ${file} from ${staging}`);
-                if (err) throw err;
-              });
-            }
-          }
-        });
-      }) // delete files in destination
-      .then(() => deleteFiles(destination)) 
+      .then(() => deleteFiles(staging)) // delete files in staging
+      .then(() => deleteFiles(destination)) // delete files in destination
       .catch((errors) => {
         if (Array.isArray(errors)) {
           errors.forEach((err) => console.error(err.stack));

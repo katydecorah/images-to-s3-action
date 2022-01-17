@@ -68,21 +68,8 @@ function action() {
           })
         );
       })
-      .then(() => {
-        // delete files in staging
-        fs.readdir(staging, (err, files) => {
-          if (err) throw err;
-          for (const file of files) {
-            if (!fs.lstatSync(path.join(staging, file)).isDirectory()) {
-              fs.unlink(path.join(staging, file), (err) => {
-                console.log(`🗑\tRemoved ${file} from ${staging}`);
-                if (err) throw err;
-              });
-            }
-          }
-        });
-      }) // delete files in destination
-      .then(() => deleteFiles(destination))
+      .then(() => deleteFiles(staging)) // delete files in staging
+      .then(() => deleteFiles(destination)) // delete files in destination
       .catch((errors) => {
         if (Array.isArray(errors)) {
           errors.forEach((err) => console.error(err.stack));
