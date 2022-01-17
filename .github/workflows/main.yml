@@ -1,3 +1,4 @@
+name: Upload images to S3
 on:
   push:
     paths:
