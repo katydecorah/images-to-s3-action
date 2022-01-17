@@ -52476,7 +52476,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -101555,6 +101555,37 @@ module.exports = Queue;
 
 /***/ }),
 
+/***/ 24164:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const { extname } = __nccwpck_require__(71017);
+const { readdir } = __nccwpck_require__(73292);
+const { setFailed } = __nccwpck_require__(42186);
+
+async function createImageConfig(staging) {
+  try {
+    const files = await readdir(staging);
+    return files.reduce((obj, file) => {
+      const ext = extname(file);
+      const slug = file.replace(ext, "");
+      if (ext === ".png" || ext === ".jpg") {
+        obj[slug] = {
+          basename: `${file}`,
+          sizes: [{ width: 1000 }, { width: 1600 }],
+        };
+      }
+      return obj;
+    }, {});
+  } catch (error) {
+    setFailed(error.message);
+  }
+}
+
+module.exports = { createImageConfig };
+
+
+/***/ }),
+
 /***/ 93193:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -101594,13 +101625,18 @@ module.exports = {
 
 const core = __nccwpck_require__(42186);
 const appropriateImages = __nccwpck_require__(19701);
-const fs = __nccwpck_require__(57147);
-const path = __nccwpck_require__(71017);
+const {
+  readdirSync,
+  createReadStream,
+  existsSync,
+  copyFileSync,
+} = __nccwpck_require__(57147);
 const rimraf = __nccwpck_require__(14959);
 const { putToS3 } = __nccwpck_require__(37401);
 const { deleteFiles } = __nccwpck_require__(93193);
+const { createImageConfig } = __nccwpck_require__(24164);
 
-function action() {
+async function action() {
   try {
     const staging = core.getInput("image_path");
     const destination = `${core.getInput("image_path")}ready/`;
@@ -101609,23 +101645,13 @@ function action() {
       console.log(`🗑\tCleared out ${destination}`);
     });
 
-    const folder = fs.existsSync(staging);
+    const folder = existsSync(staging);
     if (!folder) {
       console.log(`📭\tNo files found in ${staging}`);
       return;
     }
 
-    const myImageConfig = fs.readdirSync(staging).reduce((obj, file) => {
-      const ext = path.extname(file);
-      const slug = file.replace(ext, "");
-      if (ext === ".png" || ext === ".jpg") {
-        obj[slug] = {
-          basename: `${file}`,
-          sizes: [{ width: 1000 }, { width: 1600 }],
-        };
-      }
-      return obj;
-    }, {});
+    const myImageConfig = await createImageConfig(staging);
 
     appropriateImages
       .generate(myImageConfig, {
@@ -101640,23 +101666,20 @@ function action() {
         // copy over original files
         Object.keys(myImageConfig).forEach((file) => {
           const path = myImageConfig[file].basename;
-          fs.copyFileSync(`${staging}${path}`, `${destination}${path}`);
+          copyFileSync(`${staging}${path}`, `${destination}${path}`);
         });
         console.log(`📠\tCopied original files to ${destination}`);
       })
       .then(() => {
         // upload to S3
-        const files = fs.readdirSync(destination).reduce((arr, file) => {
-          arr.push({
-            path: `${destination}${file}`,
-            file: file.replace("-1000", "@1000").replace("-1600", "@1600"),
-          });
-          return arr;
-        }, []);
+        const files = readdirSync(destination).map((file) => ({
+          path: `${destination}${file}`,
+          name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
+        }));
         return Promise.all(
-          files.map(async (file) => {
-            const body = fs.createReadStream(file.path);
-            return await putToS3(file.file, body);
+          files.map(async ({ path, name }) => {
+            const body = createReadStream(path);
+            return await putToS3(name, body);
           })
         );
       })
