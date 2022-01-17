@@ -1,6 +1,6 @@
 "use strict";
 
-const core = require("@actions/core");
+const { getInput, setFailed, info } = require("@actions/core");
 const appropriateImages = require("@mapbox/appropriate-images");
 const {
   readdirSync,
@@ -15,16 +15,16 @@ const { createImageConfig } = require("./create-image-config.js");
 
 async function action() {
   try {
-    const staging = core.getInput("image_path");
-    const destination = `${core.getInput("image_path")}ready/`;
+    const staging = getInput("image_path");
+    const destination = `${getInput("image_path")}ready/`;
 
     rimraf(destination, function () {
-      console.log(`🗑\tCleared out ${destination}`);
+      info(`🗑\tCleared out ${destination}`);
     });
 
     const folder = existsSync(staging);
     if (!folder) {
-      console.log(`📭\tNo files found in ${staging}`);
+      info(`📭\tNo files found in ${staging}`);
       return;
     }
 
@@ -36,8 +36,8 @@ async function action() {
         outputDirectory: destination,
       })
       .then((output) => {
-        console.log("⚙️\tGenerated all these images:");
-        console.log(output.join("\n"));
+        info("⚙️\tGenerated all these images:");
+        info(output.join("\n"));
       })
       .then(() => {
         // copy over original files
@@ -45,7 +45,7 @@ async function action() {
           const path = myImageConfig[file].basename;
           copyFileSync(`${staging}${path}`, `${destination}${path}`);
         });
-        console.log(`📠\tCopied original files to ${destination}`);
+        info(`📠\tCopied original files to ${destination}`);
       })
       .then(() => {
         // upload to S3
@@ -70,7 +70,7 @@ async function action() {
         }
       });
   } catch (error) {
-    core.setFailed(error.message);
+    setFailed(error.message);
   }
 }
 
