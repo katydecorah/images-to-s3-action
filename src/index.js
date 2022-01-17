@@ -24,11 +24,7 @@ async function action() {
       return;
     }
 
-    const myImageConfig = await createImageConfig(
-      myImageConfig,
-      staging,
-      destination
-    );
+    const myImageConfig = await createImageConfig(staging);
 
     const generatedImages = await appropriateImages.generate(myImageConfig, {
       inputDirectory: staging,
