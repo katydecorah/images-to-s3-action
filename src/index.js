@@ -25,23 +25,21 @@ async function action() {
     }
 
     const myImageConfig = await createImageConfig(staging);
-
+    // generate images
     const generatedImages = await appropriateImages.generate(myImageConfig, {
       inputDirectory: staging,
       outputDirectory: destination,
     });
-
     info("⚙️ Generated all these images:");
     info(generatedImages.join("\n"));
-
     // copy over original files
     await copyOriginalFiles(myImageConfig, staging, destination);
-
     // upload to S3
     await uploadFilesToS3(destination);
-
-    await deleteFiles(staging); // delete files in staging
-    await deleteFiles(destination); // delete files in destination
+    // delete files in staging
+    await deleteFiles(staging);
+    // delete files in destination
+    await deleteFiles(destination);
   } catch (error) {
     setFailed(error.message);
   }
