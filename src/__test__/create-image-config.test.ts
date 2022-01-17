@@ -1,4 +1,4 @@
-import { createImageConfig } from "../create-image-config.js";
+import { createImageConfig } from "../create-image-config";
 
 jest.mock("@actions/core");
 jest.mock("fs/promises", () => {

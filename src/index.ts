@@ -7,6 +7,10 @@ import { createImageConfig } from "./create-image-config.js";
 import { copyOriginalFiles } from "./copy-original-files.js";
 import { uploadFilesToS3 } from "./upload-files-to-s3.js";
 
+export type ImageConfig = {
+  [id: string]: { basename: string; sizes: { width: number }[] };
+};
+
 async function action() {
   try {
     const staging = getInput("image_path");
@@ -20,7 +24,7 @@ async function action() {
     }
 
     // generate images
-    const myImageConfig = await createImageConfig(staging);
+    const myImageConfig = (await createImageConfig(staging)) as ImageConfig;
     const generatedImages = await generate(myImageConfig, {
       inputDirectory: staging,
       outputDirectory: destination,

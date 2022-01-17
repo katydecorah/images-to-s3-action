@@ -1,4 +1,4 @@
-import { deleteFiles } from "../delete-files.js";
+import { deleteFiles } from "../delete-files";
 import { info } from "@actions/core";
 import { unlink, stat } from "fs/promises";
 

@@ -52476,7 +52476,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90517,7 +90517,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -103080,162 +103080,216 @@ var rimraf_default = /*#__PURE__*/__nccwpck_require__.n(rimraf);
 const promises_namespaceObject = require("fs/promises");
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(71017);
-;// CONCATENATED MODULE: ./src/delete-files.js
+;// CONCATENATED MODULE: ./src/delete-files.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
 
-
-
-async function deleteFiles(path) {
-  try {
-    const files = await (0,promises_namespaceObject.readdir)(path);
-    for (const file of files) {
-      const fstat = await (0,promises_namespaceObject.stat)((0,external_path_.join)(path, file));
-      if (!fstat.isDirectory()) {
-        await (0,promises_namespaceObject.unlink)((0,external_path_.join)(path, file));
-        (0,core.info)(`🗑 Removed ${file} from ${path}`);
-      }
-    }
-  } catch (err) {
-    (0,core.setFailed)(err);
-  }
+function deleteFiles(path) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const files = yield (0,promises_namespaceObject.readdir)(path);
+            for (const file of files) {
+                const fstat = yield (0,promises_namespaceObject.stat)((0,external_path_.join)(path, file));
+                if (!fstat.isDirectory()) {
+                    yield (0,promises_namespaceObject.unlink)((0,external_path_.join)(path, file));
+                    (0,core.info)(`🗑 Removed ${file} from ${path}`);
+                }
+            }
+        }
+        catch (err) {
+            (0,core.setFailed)(err);
+        }
+    });
 }
-;// CONCATENATED MODULE: ./src/create-image-config.js
+
+;// CONCATENATED MODULE: ./src/create-image-config.ts
+var create_image_config_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
 
-
-async function createImageConfig(staging) {
-  try {
-    const files = await (0,promises_namespaceObject.readdir)(staging);
-    return files.reduce((obj, file) => {
-      const ext = (0,external_path_.extname)(file);
-      const slug = file.replace(ext, "");
-      if (ext === ".png" || ext === ".jpg") {
-        obj[slug] = {
-          basename: `${file}`,
-          sizes: [{ width: 1000 }, { width: 1600 }],
-        };
-      }
-      return obj;
-    }, {});
-  } catch (error) {
-    (0,core.setFailed)(error.message);
-  }
+function createImageConfig(staging) {
+    return create_image_config_awaiter(this, void 0, void 0, function* () {
+        try {
+            const files = yield (0,promises_namespaceObject.readdir)(staging);
+            return files.reduce((obj, file) => {
+                const ext = (0,external_path_.extname)(file);
+                const slug = file.replace(ext, "");
+                if (ext === ".png" || ext === ".jpg") {
+                    obj[slug] = {
+                        basename: `${file}`,
+                        sizes: [{ width: 1000 }, { width: 1600 }],
+                    };
+                }
+                return obj;
+            }, {});
+        }
+        catch (error) {
+            (0,core.setFailed)(error.message);
+        }
+    });
 }
-;// CONCATENATED MODULE: ./src/copy-original-files.js
+
+;// CONCATENATED MODULE: ./src/copy-original-files.ts
+var copy_original_files_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
-
-async function copyOriginalFiles(myImageConfig, staging, destination) {
-  const imgArray = Object.keys(myImageConfig).reduce(
-    (arr, file) => [...arr, myImageConfig[file].basename],
-    []
-  );
-  try {
-    for (const path of imgArray) {
-      await (0,promises_namespaceObject.copyFile)(`${staging}${path}`, `${destination}${path}`);
-    }
-    (0,core.info)(`📠 Copied ${imgArray.length} original files to ${destination}`);
-  } catch (err) {
-    (0,core.setFailed)("Could not copy");
-  }
+function copyOriginalFiles(myImageConfig, staging, destination) {
+    return copy_original_files_awaiter(this, void 0, void 0, function* () {
+        const imgArray = Object.keys(myImageConfig).reduce((arr, file) => [...arr, myImageConfig[file].basename], []);
+        try {
+            for (const path of imgArray) {
+                yield (0,promises_namespaceObject.copyFile)(`${staging}${path}`, `${destination}${path}`);
+            }
+            (0,core.info)(`📠 Copied ${imgArray.length} original files to ${destination}`);
+        }
+        catch (err) {
+            (0,core.setFailed)("Could not copy");
+        }
+    });
 }
 
 // EXTERNAL MODULE: ./node_modules/@aws-sdk/client-s3/dist-cjs/index.js
 var dist_cjs = __nccwpck_require__(19250);
-;// CONCATENATED MODULE: ./src/put-to-s3.js
-
-
-
-
-
-async function putToS3(Key, Body) {
-  const client = new dist_cjs.S3({
-    region: process.env.AWS_REGION,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  });
-  try {
-    await client.putObject({
-      Bucket: process.env.AWS_BUCKET,
-      Key,
-      Body,
-      ContentEncoding: "base64",
+;// CONCATENATED MODULE: ./src/put-to-s3.ts
+var put_to_s3_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-    (0,core.info)(`Uploaded ${Key} to S3.`);
-  } catch (error) {
-    throw new Error(error.message);
-  }
-}
-;// CONCATENATED MODULE: ./src/upload-files-to-s3.js
+};
 
 
-
-
-
-
-async function uploadFilesToS3(destination) {
-  try {
-    const files = await (0,promises_namespaceObject.readdir)(destination);
-
-    const formatted = files.map((file) => ({
-      path: `${destination}${file}`,
-      name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
-    }));
-
-    for (const file of formatted) {
-      const body = (0,external_fs_.createReadStream)(file.path);
-      await putToS3(file.name, body);
-    }
-  } catch (err) {
-    (0,core.setFailed)("Could not copy");
-  }
-}
-
-;// CONCATENATED MODULE: ./src/index.js
-
-
-
-
-
-
-
-
-
-async function action() {
-  try {
-    const staging = (0,core.getInput)("image_path");
-    const destination = `${(0,core.getInput)("image_path")}ready/`;
-
-    rimraf_default()(destination, () => (0,core.info)(`🗑 Cleared out ${destination}`));
-
-    if (!(0,external_fs_.existsSync)(staging)) {
-      (0,core.info)(`📭 No files found in ${staging}`);
-      return;
-    }
-
-    // generate images
-    const myImageConfig = await createImageConfig(staging);
-    const generatedImages = await (0,appropriate_images.generate)(myImageConfig, {
-      inputDirectory: staging,
-      outputDirectory: destination,
+function putToS3(Key, Body) {
+    return put_to_s3_awaiter(this, void 0, void 0, function* () {
+        const client = new dist_cjs.S3({
+            region: process.env.AWS_REGION,
+        });
+        try {
+            yield client.putObject({
+                Bucket: process.env.AWS_BUCKET,
+                Key,
+                Body,
+                ContentEncoding: "base64",
+            });
+            (0,core.info)(`⬆️ Uploaded ${Key} to S3.`);
+        }
+        catch (error) {
+            throw new Error(error.message);
+        }
     });
-    (0,core.info)("⚙️ Generated all these images:");
-    (0,core.info)(generatedImages.join("\n"));
-    // copy over original files
-    await copyOriginalFiles(myImageConfig, staging, destination);
-    // upload to S3
-    await uploadFilesToS3(destination);
-    // delete files in staging
-    await deleteFiles(staging);
-    // delete files in destination
-    await deleteFiles(destination);
-  } catch (error) {
-    (0,core.setFailed)(error.message);
-  }
 }
 
+;// CONCATENATED MODULE: ./src/upload-files-to-s3.ts
+var upload_files_to_s3_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+function uploadFilesToS3(destination) {
+    return upload_files_to_s3_awaiter(this, void 0, void 0, function* () {
+        try {
+            const files = yield (0,promises_namespaceObject.readdir)(destination);
+            const formatted = files.map((file) => ({
+                path: `${destination}${file}`,
+                name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
+            }));
+            for (const file of formatted) {
+                const body = (0,external_fs_.createReadStream)(file.path);
+                yield putToS3(file.name, body);
+            }
+        }
+        catch (err) {
+            (0,core.setFailed)("Could not copy");
+        }
+    });
+}
+
+;// CONCATENATED MODULE: ./src/index.ts
+var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+
+
+function action() {
+    return src_awaiter(this, void 0, void 0, function* () {
+        try {
+            const staging = (0,core.getInput)("image_path");
+            const destination = `${(0,core.getInput)("image_path")}ready/`;
+            rimraf_default()(destination, () => (0,core.info)(`🗑 Cleared out ${destination}`));
+            if (!(0,external_fs_.existsSync)(staging)) {
+                (0,core.info)(`📭 No files found in ${staging}`);
+                return;
+            }
+            // generate images
+            const myImageConfig = (yield createImageConfig(staging));
+            const generatedImages = yield (0,appropriate_images.generate)(myImageConfig, {
+                inputDirectory: staging,
+                outputDirectory: destination,
+            });
+            (0,core.info)("⚙️ Generated all these images:");
+            (0,core.info)(generatedImages.join("\n"));
+            // copy over original files
+            yield copyOriginalFiles(myImageConfig, staging, destination);
+            // upload to S3
+            yield uploadFilesToS3(destination);
+            // delete files in staging
+            yield deleteFiles(staging);
+            // delete files in destination
+            yield deleteFiles(destination);
+        }
+        catch (error) {
+            (0,core.setFailed)(error.message);
+        }
+    });
+}
 /* harmony default export */ const src = (action());
 
 })();
