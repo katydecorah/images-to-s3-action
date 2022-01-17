@@ -101686,7 +101686,7 @@ async function action() {
       outputDirectory: destination,
     });
 
-    info("⚙️\tGenerated all these images:");
+    info("⚙️ Generated all these images:");
     info(generatedImages.join("\n"));
 
     // copy over original files
