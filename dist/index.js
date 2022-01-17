@@ -52476,7 +52476,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -101555,6 +101555,34 @@ module.exports = Queue;
 
 /***/ }),
 
+/***/ 89938:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const { setFailed, info } = __nccwpck_require__(42186);
+const { copyFile } = __nccwpck_require__(73292);
+
+async function copyOriginalFiles(myImageConfig, staging, destination) {
+  const imgArray = Object.keys(myImageConfig).reduce(
+    (arr, file) => [...arr, myImageConfig[file].basename],
+    []
+  );
+  try {
+    for (const path of imgArray) {
+      await copyFile(`${staging}${path}`, `${destination}${path}`);
+    }
+    info(`📠 Copied ${imgArray.length} original files to ${destination}`);
+  } catch (err) {
+    setFailed("Could not copy");
+  }
+}
+
+module.exports = {
+  copyOriginalFiles,
+};
+
+
+/***/ }),
+
 /***/ 24164:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -101623,77 +101651,54 @@ module.exports = {
 "use strict";
 
 
-const core = __nccwpck_require__(42186);
+const { getInput, setFailed, info } = __nccwpck_require__(42186);
 const appropriateImages = __nccwpck_require__(19701);
-const {
-  readdirSync,
-  createReadStream,
-  existsSync,
-  copyFileSync,
-} = __nccwpck_require__(57147);
+const { existsSync } = __nccwpck_require__(57147);
 const rimraf = __nccwpck_require__(14959);
-const { putToS3 } = __nccwpck_require__(37401);
 const { deleteFiles } = __nccwpck_require__(93193);
 const { createImageConfig } = __nccwpck_require__(24164);
+const { copyOriginalFiles } = __nccwpck_require__(89938);
+const { uploadFilesToS3 } = __nccwpck_require__(78228);
 
 async function action() {
   try {
-    const staging = core.getInput("image_path");
-    const destination = `${core.getInput("image_path")}ready/`;
+    const staging = getInput("image_path");
+    const destination = `${getInput("image_path")}ready/`;
 
     rimraf(destination, function () {
-      console.log(`🗑\tCleared out ${destination}`);
+      info(`🗑\tCleared out ${destination}`);
     });
 
     const folder = existsSync(staging);
     if (!folder) {
-      console.log(`📭\tNo files found in ${staging}`);
+      info(`📭\tNo files found in ${staging}`);
       return;
     }
 
-    const myImageConfig = await createImageConfig(staging);
+    const myImageConfig = await createImageConfig(
+      myImageConfig,
+      staging,
+      destination
+    );
 
-    appropriateImages
-      .generate(myImageConfig, {
-        inputDirectory: staging,
-        outputDirectory: destination,
-      })
-      .then((output) => {
-        console.log("⚙️\tGenerated all these images:");
-        console.log(output.join("\n"));
-      })
-      .then(() => {
-        // copy over original files
-        Object.keys(myImageConfig).forEach((file) => {
-          const path = myImageConfig[file].basename;
-          copyFileSync(`${staging}${path}`, `${destination}${path}`);
-        });
-        console.log(`📠\tCopied original files to ${destination}`);
-      })
-      .then(() => {
-        // upload to S3
-        const files = readdirSync(destination).map((file) => ({
-          path: `${destination}${file}`,
-          name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
-        }));
-        return Promise.all(
-          files.map(async ({ path, name }) => {
-            const body = createReadStream(path);
-            return await putToS3(name, body);
-          })
-        );
-      })
-      .then(() => deleteFiles(staging)) // delete files in staging
-      .then(() => deleteFiles(destination)) // delete files in destination
-      .catch((errors) => {
-        if (Array.isArray(errors)) {
-          errors.forEach((err) => console.error(err.stack));
-        } else {
-          console.error(errors.stack);
-        }
-      });
+    const generatedImages = await appropriateImages.generate(myImageConfig, {
+      inputDirectory: staging,
+      outputDirectory: destination,
+    });
+
+    info("⚙️\tGenerated all these images:");
+    info(generatedImages.join("\n"));
+
+    // copy over original files
+    await copyOriginalFiles(myImageConfig, staging, destination);
+
+    // upload to S3
+    await uploadFilesToS3(destination);
+
+    await deleteFiles(staging); // delete files in staging
+    await deleteFiles(destination); // delete files in destination
   } catch (error) {
-    core.setFailed(error.message);
+    setFailed(error.message);
   }
 }
 
@@ -101732,6 +101737,41 @@ async function putToS3(Key, Body) {
 
 module.exports = {
   putToS3,
+};
+
+
+/***/ }),
+
+/***/ 78228:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+const { readdir } = __nccwpck_require__(73292);
+const { createReadStream } = __nccwpck_require__(57147);
+const { putToS3 } = __nccwpck_require__(37401);
+const { setFailed } = __nccwpck_require__(42186);
+
+async function uploadFilesToS3(destination) {
+  try {
+    const files = await readdir(destination);
+
+    const formatted = files.map((file) => ({
+      path: `${destination}${file}`,
+      name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
+    }));
+
+    for (const file of formatted) {
+      const body = createReadStream(file.path);
+      await putToS3(file.name, body);
+    }
+  } catch (err) {
+    setFailed("Could not copy");
+  }
+}
+
+module.exports = {
+  uploadFilesToS3,
 };
 
 
