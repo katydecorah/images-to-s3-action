@@ -22,6 +22,6 @@ describe("putToS3", () => {
       ContentEncoding: "base64",
       Key: "KEY",
     });
-    expect(info).toHaveBeenCalledWith("Uploaded KEY to S3.");
+    expect(info).toHaveBeenCalledWith("⬆️ Uploaded KEY to S3.");
   });
 });

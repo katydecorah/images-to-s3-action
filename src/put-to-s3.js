@@ -14,7 +14,7 @@ export async function putToS3(Key, Body) {
       Body,
       ContentEncoding: "base64",
     });
-    info(`Uploaded ${Key} to S3.`);
+    info(`⬆️ Uploaded ${Key} to S3.`);
   } catch (error) {
     throw new Error(error.message);
   }
