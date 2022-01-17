@@ -10,6 +10,7 @@ GitHub action to upload images to S3.
 To use this action, create a new workflow in `.github/workflows` and modify it as needed:
 
 ```yml
+name: Upload images to S3
 on:
   push:
     paths:
