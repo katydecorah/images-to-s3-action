@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90517,7 +90517,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -101665,34 +101665,29 @@ async function action() {
     const staging = getInput("image_path");
     const destination = `${getInput("image_path")}ready/`;
 
-    rimraf(destination, function () {
-      info(`🗑\tCleared out ${destination}`);
-    });
+    rimraf(destination, () => info(`🗑 Cleared out ${destination}`));
 
-    const folder = existsSync(staging);
-    if (!folder) {
-      info(`📭\tNo files found in ${staging}`);
+    if (!existsSync(staging)) {
+      info(`📭 No files found in ${staging}`);
       return;
     }
 
+    // generate images
     const myImageConfig = await createImageConfig(staging);
-
     const generatedImages = await appropriateImages.generate(myImageConfig, {
       inputDirectory: staging,
       outputDirectory: destination,
     });
-
     info("⚙️ Generated all these images:");
     info(generatedImages.join("\n"));
-
     // copy over original files
     await copyOriginalFiles(myImageConfig, staging, destination);
-
     // upload to S3
     await uploadFilesToS3(destination);
-
-    await deleteFiles(staging); // delete files in staging
-    await deleteFiles(destination); // delete files in destination
+    // delete files in staging
+    await deleteFiles(staging);
+    // delete files in destination
+    await deleteFiles(destination);
   } catch (error) {
     setFailed(error.message);
   }

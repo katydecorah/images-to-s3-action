@@ -14,18 +14,15 @@ async function action() {
     const staging = getInput("image_path");
     const destination = `${getInput("image_path")}ready/`;
 
-    rimraf(destination, function () {
-      info(`🗑\tCleared out ${destination}`);
-    });
+    rimraf(destination, () => info(`🗑 Cleared out ${destination}`));
 
-    const folder = existsSync(staging);
-    if (!folder) {
-      info(`📭\tNo files found in ${staging}`);
+    if (!existsSync(staging)) {
+      info(`📭 No files found in ${staging}`);
       return;
     }
 
-    const myImageConfig = await createImageConfig(staging);
     // generate images
+    const myImageConfig = await createImageConfig(staging);
     const generatedImages = await appropriateImages.generate(myImageConfig, {
       inputDirectory: staging,
       outputDirectory: destination,
