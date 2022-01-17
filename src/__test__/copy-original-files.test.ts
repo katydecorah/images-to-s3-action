@@ -1,4 +1,4 @@
-import { copyOriginalFiles } from "../copy-original-files.js";
+import { copyOriginalFiles } from "../copy-original-files";
 import { copyFile } from "fs/promises";
 import { info } from "@actions/core";
 
