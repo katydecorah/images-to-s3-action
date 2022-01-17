@@ -1,6 +1,9 @@
 "use strict";
 
 const { putToS3 } = require("../put-to-s3.js");
+const { info } = require("@actions/core");
+
+jest.mock("@actions/core");
 
 const mockS3 = {
   putObject: jest.fn(),
@@ -21,5 +24,6 @@ describe("putToS3", () => {
       ContentEncoding: "base64",
       Key: "KEY",
     });
+    expect(info).toHaveBeenCalledWith("Uploaded KEY to S3.");
   });
 });

@@ -52476,7 +52476,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90517,7 +90517,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -101555,6 +101555,34 @@ module.exports = Queue;
 
 /***/ }),
 
+/***/ 93193:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+const { readdir, unlink } = __nccwpck_require__(73292);
+const {join} = __nccwpck_require__(71017);
+const {info, setFailed} = __nccwpck_require__(42186);
+
+
+async function deleteFiles(destination) {
+  try {
+    const files = await readdir(destination);
+    for (const file of files) {
+      await unlink(join(destination, file));
+      info(`🗑 Removed ${file} from ${destination}`);
+    }
+  } catch (err) {
+    setFailed(err);
+  }
+}
+
+module.exports = {
+  deleteFiles
+}
+
+/***/ }),
+
 /***/ 4351:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -101567,6 +101595,7 @@ const fs = __nccwpck_require__(57147);
 const path = __nccwpck_require__(71017);
 const rimraf = __nccwpck_require__(14959);
 const { putToS3 } = __nccwpck_require__(37401);
+const { deleteFiles} = __nccwpck_require__(93193)
 
 function action() {
   try {
@@ -101641,19 +101670,8 @@ function action() {
             }
           }
         });
-      })
-      .then(() => {
-        // delete files in destination
-        fs.readdir(destination, (err, files) => {
-          if (err) throw err;
-          for (const file of files) {
-            fs.unlink(path.join(destination, file), (err) => {
-              console.log(`🗑\tRemoved ${file} from ${destination}`);
-              if (err) throw err;
-            });
-          }
-        });
-      })
+      }) // delete files in destination
+      .then(() => deleteFiles(destination)) 
       .catch((errors) => {
         if (Array.isArray(errors)) {
           errors.forEach((err) => console.error(err.stack));
@@ -101678,6 +101696,7 @@ module.exports = action();
 
 
 const { S3 } = __nccwpck_require__(19250);
+const { info } = __nccwpck_require__(42186);
 
 async function putToS3(Key, Body) {
   const client = new S3({
@@ -101692,6 +101711,7 @@ async function putToS3(Key, Body) {
       Body,
       ContentEncoding: "base64",
     });
+    info(`Uploaded ${Key} to S3.`);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -101802,6 +101822,14 @@ module.exports = require("events");
 
 "use strict";
 module.exports = require("fs");
+
+/***/ }),
+
+/***/ 73292:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs/promises");
 
 /***/ }),
 

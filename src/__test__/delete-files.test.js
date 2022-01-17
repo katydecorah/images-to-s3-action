@@ -1,0 +1,30 @@
+"use strict";
+
+const { deleteFiles } = require("../delete-files.js");
+const { info } = require("@actions/core");
+const { unlink } = require("fs/promises");
+
+jest.mock("@actions/core");
+
+jest.mock("fs/promises", () => {
+  return {
+    readdir: jest.fn(() => ["my-file.png", "my-other-file.png"]),
+    unlink: jest.fn(),
+  };
+});
+
+describe("deleteFiles", () => {
+  test("works", async () => {
+    await deleteFiles("./src/");
+    expect(unlink).toHaveBeenNthCalledWith(1, "src/my-file.png");
+    expect(info).toHaveBeenNthCalledWith(
+      1,
+      `🗑 Removed my-file.png from ./src/`
+    );
+    expect(unlink).toHaveBeenNthCalledWith(2, "src/my-other-file.png");
+    expect(info).toHaveBeenNthCalledWith(
+      2,
+      `🗑 Removed my-other-file.png from ./src/`
+    );
+  });
+});

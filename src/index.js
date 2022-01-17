@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const rimraf = require("rimraf");
 const { putToS3 } = require("./put-to-s3.js");
+const { deleteFiles } = require("./delete-files.js");
 
 function action() {
   try {
@@ -80,19 +81,8 @@ function action() {
             }
           }
         });
-      })
-      .then(() => {
-        // delete files in destination
-        fs.readdir(destination, (err, files) => {
-          if (err) throw err;
-          for (const file of files) {
-            fs.unlink(path.join(destination, file), (err) => {
-              console.log(`🗑\tRemoved ${file} from ${destination}`);
-              if (err) throw err;
-            });
-          }
-        });
-      })
+      }) // delete files in destination
+      .then(() => deleteFiles(destination))
       .catch((errors) => {
         if (Array.isArray(errors)) {
           errors.forEach((err) => console.error(err.stack));

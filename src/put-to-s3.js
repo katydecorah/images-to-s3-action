@@ -1,6 +1,7 @@
 "use strict";
 
 const { S3 } = require("@aws-sdk/client-s3");
+const { info } = require("@actions/core");
 
 async function putToS3(Key, Body) {
   const client = new S3({
@@ -15,6 +16,7 @@ async function putToS3(Key, Body) {
       Body,
       ContentEncoding: "base64",
     });
+    info(`Uploaded ${Key} to S3.`);
   } catch (error) {
     throw new Error(error.message);
   }
