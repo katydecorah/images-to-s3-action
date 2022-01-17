@@ -1,9 +1,9 @@
 import { readdir } from "fs/promises";
-import { createReadStream } from "fs";
+import { createReadStream, ReadStream } from "fs";
 import { putToS3 } from "./put-to-s3.js";
 import { setFailed } from "@actions/core";
 
-export async function uploadFilesToS3(destination) {
+export async function uploadFilesToS3(destination: string): Promise<void> {
   try {
     const files = await readdir(destination);
 

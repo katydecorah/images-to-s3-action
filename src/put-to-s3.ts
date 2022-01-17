@@ -1,7 +1,8 @@
 import { S3 } from "@aws-sdk/client-s3";
 import { info } from "@actions/core";
+import { ReadStream } from "fs";
 
-export async function putToS3(Key, Body) {
+export async function putToS3(Key: string, Body: ReadStream): Promise<void> {
   const client = new S3({
     region: process.env.AWS_REGION,
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,

@@ -27,7 +27,7 @@
   "scripts": {
     "pretest": "eslint src/**/*.ts",
     "test": "jest",
-    "build": "ncc build src/index.js",
+    "build": "ncc build src/index.ts",
     "pretty-quick": "pretty-quick",
     "prepare": "husky install"
   },
