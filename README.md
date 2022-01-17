@@ -43,6 +43,6 @@ jobs:
 
 ## Action options
 
-- `image_path`: Required. Path to images folder with images you want to upload Default: `./img/staging/`.
+- `image_path`: Required. Path to images folder with images you want to upload. Default: `./img/staging/`.
 
 <!-- END GENERATED DOCUMENTATION -->
