@@ -26,7 +26,7 @@
   },
   "scripts": {
     "pretest": "eslint src/**/*.ts",
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "ncc build src/index.ts",
     "pretty-quick": "pretty-quick",
     "prepare": "husky install"
@@ -36,6 +36,14 @@
   "license": "ISC",
   "jest": {
     "clearMocks": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "moduleNameMapper": {
       "^./put-to-s3.js$": "<rootDir>/src/put-to-s3.ts"
     }

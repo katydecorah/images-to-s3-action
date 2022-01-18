@@ -1,13 +1,9 @@
 import { copyOriginalFiles } from "../copy-original-files";
 import { copyFile } from "fs/promises";
-import { info } from "@actions/core";
+import { promises } from "fs";
+import { info, setFailed } from "@actions/core";
 
 jest.mock("@actions/core");
-jest.mock("fs/promises", () => {
-  return {
-    copyFile: jest.fn(),
-  };
-});
 
 const myConfig = {
   "my-file": {
@@ -22,6 +18,7 @@ const myConfig = {
 
 describe("copyOriginalFiles", () => {
   test("works", async () => {
+    jest.spyOn(promises, "copyFile").mockImplementation();
     await copyOriginalFiles(myConfig, "lib/", "dest/");
     expect(copyFile).toHaveBeenNthCalledWith(
       1,
@@ -34,5 +31,10 @@ describe("copyOriginalFiles", () => {
       "dest/my-other-file.jpg"
     );
     expect(info).toHaveBeenCalledWith("📠 Copied 2 original files to dest/");
+  });
+  test("error", async () => {
+    jest.spyOn(promises, "copyFile").mockRejectedValue({ message: "Error" });
+    await copyOriginalFiles(myConfig, "lib/", "dest/");
+    expect(setFailed).toHaveBeenCalledWith("Error");
   });
 });

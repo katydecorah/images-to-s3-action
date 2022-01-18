@@ -11,34 +11,36 @@ export type ImageConfig = {
   [id: string]: { basename: string; sizes: { width: number }[] };
 };
 
-async function action() {
+async function action(): Promise<void> {
   try {
-    const staging = getInput("image_path");
-    const destination = `${getInput("image_path")}ready/`;
+    const inputDirectory = getInput("image_path");
+    const outputDirectory = `${getInput("image_path")}ready/`;
 
-    rimraf(destination, () => info(`🗑 Cleared out ${destination}`));
+    rimraf(outputDirectory, () => info(`🗑 Cleared out ${outputDirectory}`));
 
-    if (!existsSync(staging)) {
-      info(`📭 No files found in ${staging}`);
+    if (!existsSync(inputDirectory)) {
+      info(`📭 No files found in ${inputDirectory}`);
       return;
     }
 
     // generate images
-    const myImageConfig = (await createImageConfig(staging)) as ImageConfig;
+    const myImageConfig = (await createImageConfig(
+      inputDirectory
+    )) as ImageConfig;
     const generatedImages = await generate(myImageConfig, {
-      inputDirectory: staging,
-      outputDirectory: destination,
+      inputDirectory,
+      outputDirectory,
     });
     info("⚙️ Generated all these images:");
     info(generatedImages.join("\n"));
     // copy over original files
-    await copyOriginalFiles(myImageConfig, staging, destination);
+    await copyOriginalFiles(myImageConfig, inputDirectory, outputDirectory);
     // upload to S3
-    await uploadFilesToS3(destination);
-    // delete files in staging
-    await deleteFiles(staging);
-    // delete files in destination
-    await deleteFiles(destination);
+    await uploadFilesToS3(outputDirectory);
+    // delete files in inputDirectory
+    await deleteFiles(inputDirectory);
+    // delete files in outputDirectory
+    await deleteFiles(outputDirectory);
   } catch (error) {
     setFailed(error.message);
   }
