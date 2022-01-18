@@ -1,5 +1,5 @@
 import { putToS3 } from "../put-to-s3";
-import { info } from "@actions/core";
+import { info, setFailed } from "@actions/core";
 
 jest.mock("@actions/core");
 
@@ -23,5 +23,11 @@ describe("putToS3", () => {
       Key: "KEY",
     });
     expect(info).toHaveBeenCalledWith("⬆️ Uploaded KEY to S3.");
+  });
+
+  test("error", async () => {
+    (mockS3.putObject = jest.fn().mockRejectedValue({ message: "Error" })),
+      await putToS3("KEY", "BODY");
+    expect(setFailed).toHaveBeenCalledWith("Error");
   });
 });

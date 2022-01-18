@@ -4,8 +4,8 @@ import { ImageConfig } from "./index.js";
 
 export async function copyOriginalFiles(
   myImageConfig: ImageConfig,
-  staging: string,
-  destination: string
+  inputDirectory: string,
+  outputDirectory: string
 ) {
   const imgArray = Object.keys(myImageConfig).reduce(
     (arr, file) => [...arr, myImageConfig[file].basename],
@@ -13,10 +13,10 @@ export async function copyOriginalFiles(
   );
   try {
     for (const path of imgArray) {
-      await copyFile(`${staging}${path}`, `${destination}${path}`);
+      await copyFile(`${inputDirectory}${path}`, `${outputDirectory}${path}`);
     }
-    info(`📠 Copied ${imgArray.length} original files to ${destination}`);
-  } catch (err) {
-    setFailed("Could not copy");
+    info(`📠 Copied ${imgArray.length} original files to ${outputDirectory}`);
+  } catch (error) {
+    setFailed(error.message);
   }
 }

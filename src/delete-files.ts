@@ -12,7 +12,7 @@ export async function deleteFiles(path: string): Promise<void> {
         info(`🗑 Removed ${file} from ${path}`);
       }
     }
-  } catch (err) {
-    setFailed(err);
+  } catch (error) {
+    setFailed(error.message);
   }
 }

@@ -52476,7 +52476,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -87659,7 +87659,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90517,7 +90517,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -103105,8 +103105,8 @@ function deleteFiles(path) {
                 }
             }
         }
-        catch (err) {
-            (0,core.setFailed)(err);
+        catch (error) {
+            (0,core.setFailed)(error.message);
         }
     });
 }
@@ -103124,16 +103124,16 @@ var create_image_config_awaiter = (undefined && undefined.__awaiter) || function
 
 
 
-function createImageConfig(staging) {
+function createImageConfig(inputDirectory) {
     return create_image_config_awaiter(this, void 0, void 0, function* () {
         try {
-            const files = yield (0,promises_namespaceObject.readdir)(staging);
+            const files = yield (0,promises_namespaceObject.readdir)(inputDirectory);
             return files.reduce((obj, file) => {
                 const ext = (0,external_path_.extname)(file);
                 const slug = file.replace(ext, "");
                 if (ext === ".png" || ext === ".jpg") {
                     obj[slug] = {
-                        basename: `${file}`,
+                        basename: file,
                         sizes: [{ width: 1000 }, { width: 1600 }],
                     };
                 }
@@ -103158,17 +103158,17 @@ var copy_original_files_awaiter = (undefined && undefined.__awaiter) || function
 };
 
 
-function copyOriginalFiles(myImageConfig, staging, destination) {
+function copyOriginalFiles(myImageConfig, inputDirectory, outputDirectory) {
     return copy_original_files_awaiter(this, void 0, void 0, function* () {
         const imgArray = Object.keys(myImageConfig).reduce((arr, file) => [...arr, myImageConfig[file].basename], []);
         try {
             for (const path of imgArray) {
-                yield (0,promises_namespaceObject.copyFile)(`${staging}${path}`, `${destination}${path}`);
+                yield (0,promises_namespaceObject.copyFile)(`${inputDirectory}${path}`, `${outputDirectory}${path}`);
             }
-            (0,core.info)(`📠 Copied ${imgArray.length} original files to ${destination}`);
+            (0,core.info)(`📠 Copied ${imgArray.length} original files to ${outputDirectory}`);
         }
-        catch (err) {
-            (0,core.setFailed)("Could not copy");
+        catch (error) {
+            (0,core.setFailed)(error.message);
         }
     });
 }
@@ -103202,7 +103202,7 @@ function putToS3(Key, Body) {
             (0,core.info)(`⬆️ Uploaded ${Key} to S3.`);
         }
         catch (error) {
-            throw new Error(error.message);
+            (0,core.setFailed)(error.message);
         }
     });
 }
@@ -103229,13 +103229,13 @@ function uploadFilesToS3(destination) {
                 path: `${destination}${file}`,
                 name: file.replace("-1000", "@1000").replace("-1600", "@1600"),
             }));
-            for (const file of formatted) {
-                const body = (0,external_fs_.createReadStream)(file.path);
-                yield putToS3(file.name, body);
+            for (const { name, path } of formatted) {
+                const body = (0,external_fs_.createReadStream)(path);
+                yield putToS3(name, body);
             }
         }
-        catch (err) {
-            (0,core.setFailed)("Could not copy");
+        catch (error) {
+            (0,core.setFailed)(error.message);
         }
     });
 }
@@ -103261,29 +103261,29 @@ var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argu
 function action() {
     return src_awaiter(this, void 0, void 0, function* () {
         try {
-            const staging = (0,core.getInput)("image_path");
-            const destination = `${(0,core.getInput)("image_path")}ready/`;
-            rimraf_default()(destination, () => (0,core.info)(`🗑 Cleared out ${destination}`));
-            if (!(0,external_fs_.existsSync)(staging)) {
-                (0,core.info)(`📭 No files found in ${staging}`);
+            const inputDirectory = (0,core.getInput)("image_path");
+            const outputDirectory = `${(0,core.getInput)("image_path")}ready/`;
+            rimraf_default()(outputDirectory, () => (0,core.info)(`🗑 Cleared out ${outputDirectory}`));
+            if (!(0,external_fs_.existsSync)(inputDirectory)) {
+                (0,core.info)(`📭 No files found in ${inputDirectory}`);
                 return;
             }
             // generate images
-            const myImageConfig = (yield createImageConfig(staging));
+            const myImageConfig = (yield createImageConfig(inputDirectory));
             const generatedImages = yield (0,appropriate_images.generate)(myImageConfig, {
-                inputDirectory: staging,
-                outputDirectory: destination,
+                inputDirectory,
+                outputDirectory,
             });
             (0,core.info)("⚙️ Generated all these images:");
             (0,core.info)(generatedImages.join("\n"));
             // copy over original files
-            yield copyOriginalFiles(myImageConfig, staging, destination);
+            yield copyOriginalFiles(myImageConfig, inputDirectory, outputDirectory);
             // upload to S3
-            yield uploadFilesToS3(destination);
-            // delete files in staging
-            yield deleteFiles(staging);
-            // delete files in destination
-            yield deleteFiles(destination);
+            yield uploadFilesToS3(outputDirectory);
+            // delete files in inputDirectory
+            yield deleteFiles(inputDirectory);
+            // delete files in outputDirectory
+            yield deleteFiles(outputDirectory);
         }
         catch (error) {
             (0,core.setFailed)(error.message);

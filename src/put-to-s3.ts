@@ -1,5 +1,5 @@
 import { S3 } from "@aws-sdk/client-s3";
-import { info } from "@actions/core";
+import { info, setFailed } from "@actions/core";
 import { ReadStream } from "fs";
 
 export async function putToS3(Key: string, Body: ReadStream): Promise<void> {
@@ -15,6 +15,6 @@ export async function putToS3(Key: string, Body: ReadStream): Promise<void> {
     });
     info(`⬆️ Uploaded ${Key} to S3.`);
   } catch (error) {
-    throw new Error(error.message);
+    setFailed(error.message);
   }
 }
