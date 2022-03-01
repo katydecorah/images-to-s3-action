@@ -1716,6 +1716,417 @@ var __createBinding;
 
 /***/ }),
 
+/***/ 85651:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+// Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AwsCrc32c = void 0;
+var tslib_1 = __nccwpck_require__(22831);
+var util_1 = __nccwpck_require__(41236);
+var index_1 = __nccwpck_require__(27507);
+var AwsCrc32c = /** @class */ (function () {
+    function AwsCrc32c() {
+        this.crc32c = new index_1.Crc32c();
+    }
+    AwsCrc32c.prototype.update = function (toHash) {
+        if ((0, util_1.isEmptyData)(toHash))
+            return;
+        this.crc32c.update((0, util_1.convertToBuffer)(toHash));
+    };
+    AwsCrc32c.prototype.digest = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                return [2 /*return*/, (0, util_1.numToUint8)(this.crc32c.digest())];
+            });
+        });
+    };
+    return AwsCrc32c;
+}());
+exports.AwsCrc32c = AwsCrc32c;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXdzX2NyYzMyYy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9hd3NfY3JjMzJjLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxvRUFBb0U7QUFDcEUsc0NBQXNDOzs7O0FBR3RDLHlDQUE0RTtBQUM1RSxpQ0FBaUM7QUFFakM7SUFBQTtRQUNtQixXQUFNLEdBQUcsSUFBSSxjQUFNLEVBQUUsQ0FBQztJQVd6QyxDQUFDO0lBVEMsMEJBQU0sR0FBTixVQUFPLE1BQWtCO1FBQ3ZCLElBQUksSUFBQSxrQkFBVyxFQUFDLE1BQU0sQ0FBQztZQUFFLE9BQU87UUFFaEMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsSUFBQSxzQkFBZSxFQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUM7SUFDOUMsQ0FBQztJQUVLLDBCQUFNLEdBQVo7OztnQkFDRSxzQkFBTyxJQUFBLGlCQUFVLEVBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLEVBQUUsQ0FBQyxFQUFDOzs7S0FDekM7SUFDSCxnQkFBQztBQUFELENBQUMsQUFaRCxJQVlDO0FBWlksOEJBQVMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDb3B5cmlnaHQgQW1hem9uLmNvbSBJbmMuIG9yIGl0cyBhZmZpbGlhdGVzLiBBbGwgUmlnaHRzIFJlc2VydmVkLlxuLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEFwYWNoZS0yLjBcblxuaW1wb3J0IHsgSGFzaCwgU291cmNlRGF0YSB9IGZyb20gXCJAYXdzLXNkay90eXBlc1wiO1xuaW1wb3J0IHsgY29udmVydFRvQnVmZmVyLCBpc0VtcHR5RGF0YSwgbnVtVG9VaW50OCB9IGZyb20gXCJAYXdzLWNyeXB0by91dGlsXCI7XG5pbXBvcnQgeyBDcmMzMmMgfSBmcm9tIFwiLi9pbmRleFwiO1xuXG5leHBvcnQgY2xhc3MgQXdzQ3JjMzJjIGltcGxlbWVudHMgSGFzaCB7XG4gIHByaXZhdGUgcmVhZG9ubHkgY3JjMzJjID0gbmV3IENyYzMyYygpO1xuXG4gIHVwZGF0ZSh0b0hhc2g6IFNvdXJjZURhdGEpIHtcbiAgICBpZiAoaXNFbXB0eURhdGEodG9IYXNoKSkgcmV0dXJuO1xuXG4gICAgdGhpcy5jcmMzMmMudXBkYXRlKGNvbnZlcnRUb0J1ZmZlcih0b0hhc2gpKTtcbiAgfVxuXG4gIGFzeW5jIGRpZ2VzdCgpOiBQcm9taXNlPFVpbnQ4QXJyYXk+IHtcbiAgICByZXR1cm4gbnVtVG9VaW50OCh0aGlzLmNyYzMyYy5kaWdlc3QoKSk7XG4gIH1cbn1cbiJdfQ==
+
+/***/ }),
+
+/***/ 27507:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+// Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AwsCrc32c = exports.Crc32c = exports.crc32c = void 0;
+var tslib_1 = __nccwpck_require__(22831);
+var util_1 = __nccwpck_require__(41236);
+function crc32c(data) {
+    return new Crc32c().update(data).digest();
+}
+exports.crc32c = crc32c;
+var Crc32c = /** @class */ (function () {
+    function Crc32c() {
+        this.checksum = 0xffffffff;
+    }
+    Crc32c.prototype.update = function (data) {
+        var e_1, _a;
+        try {
+            for (var data_1 = (0, tslib_1.__values)(data), data_1_1 = data_1.next(); !data_1_1.done; data_1_1 = data_1.next()) {
+                var byte = data_1_1.value;
+                this.checksum =
+                    (this.checksum >>> 8) ^ lookupTable[(this.checksum ^ byte) & 0xff];
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (data_1_1 && !data_1_1.done && (_a = data_1.return)) _a.call(data_1);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
+        return this;
+    };
+    Crc32c.prototype.digest = function () {
+        return (this.checksum ^ 0xffffffff) >>> 0;
+    };
+    return Crc32c;
+}());
+exports.Crc32c = Crc32c;
+// prettier-ignore
+var a_lookupTable = [
+    0x00000000, 0xF26B8303, 0xE13B70F7, 0x1350F3F4, 0xC79A971F, 0x35F1141C, 0x26A1E7E8, 0xD4CA64EB,
+    0x8AD958CF, 0x78B2DBCC, 0x6BE22838, 0x9989AB3B, 0x4D43CFD0, 0xBF284CD3, 0xAC78BF27, 0x5E133C24,
+    0x105EC76F, 0xE235446C, 0xF165B798, 0x030E349B, 0xD7C45070, 0x25AFD373, 0x36FF2087, 0xC494A384,
+    0x9A879FA0, 0x68EC1CA3, 0x7BBCEF57, 0x89D76C54, 0x5D1D08BF, 0xAF768BBC, 0xBC267848, 0x4E4DFB4B,
+    0x20BD8EDE, 0xD2D60DDD, 0xC186FE29, 0x33ED7D2A, 0xE72719C1, 0x154C9AC2, 0x061C6936, 0xF477EA35,
+    0xAA64D611, 0x580F5512, 0x4B5FA6E6, 0xB93425E5, 0x6DFE410E, 0x9F95C20D, 0x8CC531F9, 0x7EAEB2FA,
+    0x30E349B1, 0xC288CAB2, 0xD1D83946, 0x23B3BA45, 0xF779DEAE, 0x05125DAD, 0x1642AE59, 0xE4292D5A,
+    0xBA3A117E, 0x4851927D, 0x5B016189, 0xA96AE28A, 0x7DA08661, 0x8FCB0562, 0x9C9BF696, 0x6EF07595,
+    0x417B1DBC, 0xB3109EBF, 0xA0406D4B, 0x522BEE48, 0x86E18AA3, 0x748A09A0, 0x67DAFA54, 0x95B17957,
+    0xCBA24573, 0x39C9C670, 0x2A993584, 0xD8F2B687, 0x0C38D26C, 0xFE53516F, 0xED03A29B, 0x1F682198,
+    0x5125DAD3, 0xA34E59D0, 0xB01EAA24, 0x42752927, 0x96BF4DCC, 0x64D4CECF, 0x77843D3B, 0x85EFBE38,
+    0xDBFC821C, 0x2997011F, 0x3AC7F2EB, 0xC8AC71E8, 0x1C661503, 0xEE0D9600, 0xFD5D65F4, 0x0F36E6F7,
+    0x61C69362, 0x93AD1061, 0x80FDE395, 0x72966096, 0xA65C047D, 0x5437877E, 0x4767748A, 0xB50CF789,
+    0xEB1FCBAD, 0x197448AE, 0x0A24BB5A, 0xF84F3859, 0x2C855CB2, 0xDEEEDFB1, 0xCDBE2C45, 0x3FD5AF46,
+    0x7198540D, 0x83F3D70E, 0x90A324FA, 0x62C8A7F9, 0xB602C312, 0x44694011, 0x5739B3E5, 0xA55230E6,
+    0xFB410CC2, 0x092A8FC1, 0x1A7A7C35, 0xE811FF36, 0x3CDB9BDD, 0xCEB018DE, 0xDDE0EB2A, 0x2F8B6829,
+    0x82F63B78, 0x709DB87B, 0x63CD4B8F, 0x91A6C88C, 0x456CAC67, 0xB7072F64, 0xA457DC90, 0x563C5F93,
+    0x082F63B7, 0xFA44E0B4, 0xE9141340, 0x1B7F9043, 0xCFB5F4A8, 0x3DDE77AB, 0x2E8E845F, 0xDCE5075C,
+    0x92A8FC17, 0x60C37F14, 0x73938CE0, 0x81F80FE3, 0x55326B08, 0xA759E80B, 0xB4091BFF, 0x466298FC,
+    0x1871A4D8, 0xEA1A27DB, 0xF94AD42F, 0x0B21572C, 0xDFEB33C7, 0x2D80B0C4, 0x3ED04330, 0xCCBBC033,
+    0xA24BB5A6, 0x502036A5, 0x4370C551, 0xB11B4652, 0x65D122B9, 0x97BAA1BA, 0x84EA524E, 0x7681D14D,
+    0x2892ED69, 0xDAF96E6A, 0xC9A99D9E, 0x3BC21E9D, 0xEF087A76, 0x1D63F975, 0x0E330A81, 0xFC588982,
+    0xB21572C9, 0x407EF1CA, 0x532E023E, 0xA145813D, 0x758FE5D6, 0x87E466D5, 0x94B49521, 0x66DF1622,
+    0x38CC2A06, 0xCAA7A905, 0xD9F75AF1, 0x2B9CD9F2, 0xFF56BD19, 0x0D3D3E1A, 0x1E6DCDEE, 0xEC064EED,
+    0xC38D26C4, 0x31E6A5C7, 0x22B65633, 0xD0DDD530, 0x0417B1DB, 0xF67C32D8, 0xE52CC12C, 0x1747422F,
+    0x49547E0B, 0xBB3FFD08, 0xA86F0EFC, 0x5A048DFF, 0x8ECEE914, 0x7CA56A17, 0x6FF599E3, 0x9D9E1AE0,
+    0xD3D3E1AB, 0x21B862A8, 0x32E8915C, 0xC083125F, 0x144976B4, 0xE622F5B7, 0xF5720643, 0x07198540,
+    0x590AB964, 0xAB613A67, 0xB831C993, 0x4A5A4A90, 0x9E902E7B, 0x6CFBAD78, 0x7FAB5E8C, 0x8DC0DD8F,
+    0xE330A81A, 0x115B2B19, 0x020BD8ED, 0xF0605BEE, 0x24AA3F05, 0xD6C1BC06, 0xC5914FF2, 0x37FACCF1,
+    0x69E9F0D5, 0x9B8273D6, 0x88D28022, 0x7AB90321, 0xAE7367CA, 0x5C18E4C9, 0x4F48173D, 0xBD23943E,
+    0xF36E6F75, 0x0105EC76, 0x12551F82, 0xE03E9C81, 0x34F4F86A, 0xC69F7B69, 0xD5CF889D, 0x27A40B9E,
+    0x79B737BA, 0x8BDCB4B9, 0x988C474D, 0x6AE7C44E, 0xBE2DA0A5, 0x4C4623A6, 0x5F16D052, 0xAD7D5351,
+];
+var lookupTable = (0, util_1.uint32ArrayFrom)(a_lookupTable);
+var aws_crc32c_1 = __nccwpck_require__(85651);
+Object.defineProperty(exports, "AwsCrc32c", ({ enumerable: true, get: function () { return aws_crc32c_1.AwsCrc32c; } }));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLG9FQUFvRTtBQUNwRSxzQ0FBc0M7Ozs7QUFFdEMseUNBQWlEO0FBRWpELFNBQWdCLE1BQU0sQ0FBQyxJQUFnQjtJQUNyQyxPQUFPLElBQUksTUFBTSxFQUFFLENBQUMsTUFBTSxDQUFDLElBQUksQ0FBQyxDQUFDLE1BQU0sRUFBRSxDQUFDO0FBQzVDLENBQUM7QUFGRCx3QkFFQztBQUVEO0lBQUE7UUFDVSxhQUFRLEdBQUcsVUFBVSxDQUFDO0lBY2hDLENBQUM7SUFaQyx1QkFBTSxHQUFOLFVBQU8sSUFBZ0I7OztZQUNyQixLQUFtQixJQUFBLFNBQUEsc0JBQUEsSUFBSSxDQUFBLDBCQUFBLDRDQUFFO2dCQUFwQixJQUFNLElBQUksaUJBQUE7Z0JBQ2IsSUFBSSxDQUFDLFFBQVE7b0JBQ1gsQ0FBQyxJQUFJLENBQUMsUUFBUSxLQUFLLENBQUMsQ0FBQyxHQUFHLFdBQVcsQ0FBQyxDQUFDLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLEdBQUcsSUFBSSxDQUFDLENBQUM7YUFDdEU7Ozs7Ozs7OztRQUVELE9BQU8sSUFBSSxDQUFDO0lBQ2QsQ0FBQztJQUVELHVCQUFNLEdBQU47UUFDRSxPQUFPLENBQUMsSUFBSSxDQUFDLFFBQVEsR0FBRyxVQUFVLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDNUMsQ0FBQztJQUNILGFBQUM7QUFBRCxDQUFDLEFBZkQsSUFlQztBQWZZLHdCQUFNO0FBaUJuQixrQkFBa0I7QUFDbEIsSUFBTSxhQUFhLEdBQUc7SUFDcEIsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7SUFDOUYsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsVUFBVSxFQUFFLFVBQVU7Q0FDL0YsQ0FBQztBQUVGLElBQU0sV0FBVyxHQUFnQixJQUFBLHNCQUFlLEVBQUMsYUFBYSxDQUFDLENBQUE7QUFDL0QsMkNBQXlDO0FBQWhDLHVHQUFBLFNBQVMsT0FBQSIsInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCBBbWF6b24uY29tIEluYy4gb3IgaXRzIGFmZmlsaWF0ZXMuIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4vLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogQXBhY2hlLTIuMFxuXG5pbXBvcnQge3VpbnQzMkFycmF5RnJvbX0gZnJvbSBcIkBhd3MtY3J5cHRvL3V0aWxcIjtcblxuZXhwb3J0IGZ1bmN0aW9uIGNyYzMyYyhkYXRhOiBVaW50OEFycmF5KTogbnVtYmVyIHtcbiAgcmV0dXJuIG5ldyBDcmMzMmMoKS51cGRhdGUoZGF0YSkuZGlnZXN0KCk7XG59XG5cbmV4cG9ydCBjbGFzcyBDcmMzMmMge1xuICBwcml2YXRlIGNoZWNrc3VtID0gMHhmZmZmZmZmZjtcblxuICB1cGRhdGUoZGF0YTogVWludDhBcnJheSk6IHRoaXMge1xuICAgIGZvciAoY29uc3QgYnl0ZSBvZiBkYXRhKSB7XG4gICAgICB0aGlzLmNoZWNrc3VtID1cbiAgICAgICAgKHRoaXMuY2hlY2tzdW0gPj4+IDgpIF4gbG9va3VwVGFibGVbKHRoaXMuY2hlY2tzdW0gXiBieXRlKSAmIDB4ZmZdO1xuICAgIH1cblxuICAgIHJldHVybiB0aGlzO1xuICB9XG5cbiAgZGlnZXN0KCk6IG51bWJlciB7XG4gICAgcmV0dXJuICh0aGlzLmNoZWNrc3VtIF4gMHhmZmZmZmZmZikgPj4+IDA7XG4gIH1cbn1cblxuLy8gcHJldHRpZXItaWdub3JlXG5jb25zdCBhX2xvb2t1cFRhYmxlID0gW1xuICAweDAwMDAwMDAwLCAweEYyNkI4MzAzLCAweEUxM0I3MEY3LCAweDEzNTBGM0Y0LCAweEM3OUE5NzFGLCAweDM1RjExNDFDLCAweDI2QTFFN0U4LCAweEQ0Q0E2NEVCLFxuICAweDhBRDk1OENGLCAweDc4QjJEQkNDLCAweDZCRTIyODM4LCAweDk5ODlBQjNCLCAweDRENDNDRkQwLCAweEJGMjg0Q0QzLCAweEFDNzhCRjI3LCAweDVFMTMzQzI0LFxuICAweDEwNUVDNzZGLCAweEUyMzU0NDZDLCAweEYxNjVCNzk4LCAweDAzMEUzNDlCLCAweEQ3QzQ1MDcwLCAweDI1QUZEMzczLCAweDM2RkYyMDg3LCAweEM0OTRBMzg0LFxuICAweDlBODc5RkEwLCAweDY4RUMxQ0EzLCAweDdCQkNFRjU3LCAweDg5RDc2QzU0LCAweDVEMUQwOEJGLCAweEFGNzY4QkJDLCAweEJDMjY3ODQ4LCAweDRFNERGQjRCLFxuICAweDIwQkQ4RURFLCAweEQyRDYwRERELCAweEMxODZGRTI5LCAweDMzRUQ3RDJBLCAweEU3MjcxOUMxLCAweDE1NEM5QUMyLCAweDA2MUM2OTM2LCAweEY0NzdFQTM1LFxuICAweEFBNjRENjExLCAweDU4MEY1NTEyLCAweDRCNUZBNkU2LCAweEI5MzQyNUU1LCAweDZERkU0MTBFLCAweDlGOTVDMjBELCAweDhDQzUzMUY5LCAweDdFQUVCMkZBLFxuICAweDMwRTM0OUIxLCAweEMyODhDQUIyLCAweEQxRDgzOTQ2LCAweDIzQjNCQTQ1LCAweEY3NzlERUFFLCAweDA1MTI1REFELCAweDE2NDJBRTU5LCAweEU0MjkyRDVBLFxuICAweEJBM0ExMTdFLCAweDQ4NTE5MjdELCAweDVCMDE2MTg5LCAweEE5NkFFMjhBLCAweDdEQTA4NjYxLCAweDhGQ0IwNTYyLCAweDlDOUJGNjk2LCAweDZFRjA3NTk1LFxuICAweDQxN0IxREJDLCAweEIzMTA5RUJGLCAweEEwNDA2RDRCLCAweDUyMkJFRTQ4LCAweDg2RTE4QUEzLCAweDc0OEEwOUEwLCAweDY3REFGQTU0LCAweDk1QjE3OTU3LFxuICAweENCQTI0NTczLCAweDM5QzlDNjcwLCAweDJBOTkzNTg0LCAweEQ4RjJCNjg3LCAweDBDMzhEMjZDLCAweEZFNTM1MTZGLCAweEVEMDNBMjlCLCAweDFGNjgyMTk4LFxuICAweDUxMjVEQUQzLCAweEEzNEU1OUQwLCAweEIwMUVBQTI0LCAweDQyNzUyOTI3LCAweDk2QkY0RENDLCAweDY0RDRDRUNGLCAweDc3ODQzRDNCLCAweDg1RUZCRTM4LFxuICAweERCRkM4MjFDLCAweDI5OTcwMTFGLCAweDNBQzdGMkVCLCAweEM4QUM3MUU4LCAweDFDNjYxNTAzLCAweEVFMEQ5NjAwLCAweEZENUQ2NUY0LCAweDBGMzZFNkY3LFxuICAweDYxQzY5MzYyLCAweDkzQUQxMDYxLCAweDgwRkRFMzk1LCAweDcyOTY2MDk2LCAweEE2NUMwNDdELCAweDU0Mzc4NzdFLCAweDQ3Njc3NDhBLCAweEI1MENGNzg5LFxuICAweEVCMUZDQkFELCAweDE5NzQ0OEFFLCAweDBBMjRCQjVBLCAweEY4NEYzODU5LCAweDJDODU1Q0IyLCAweERFRUVERkIxLCAweENEQkUyQzQ1LCAweDNGRDVBRjQ2LFxuICAweDcxOTg1NDBELCAweDgzRjNENzBFLCAweDkwQTMyNEZBLCAweDYyQzhBN0Y5LCAweEI2MDJDMzEyLCAweDQ0Njk0MDExLCAweDU3MzlCM0U1LCAweEE1NTIzMEU2LFxuICAweEZCNDEwQ0MyLCAweDA5MkE4RkMxLCAweDFBN0E3QzM1LCAweEU4MTFGRjM2LCAweDNDREI5QkRELCAweENFQjAxOERFLCAweERERTBFQjJBLCAweDJGOEI2ODI5LFxuICAweDgyRjYzQjc4LCAweDcwOURCODdCLCAweDYzQ0Q0QjhGLCAweDkxQTZDODhDLCAweDQ1NkNBQzY3LCAweEI3MDcyRjY0LCAweEE0NTdEQzkwLCAweDU2M0M1RjkzLFxuICAweDA4MkY2M0I3LCAweEZBNDRFMEI0LCAweEU5MTQxMzQwLCAweDFCN0Y5MDQzLCAweENGQjVGNEE4LCAweDNEREU3N0FCLCAweDJFOEU4NDVGLCAweERDRTUwNzVDLFxuICAweDkyQThGQzE3LCAweDYwQzM3RjE0LCAweDczOTM4Q0UwLCAweDgxRjgwRkUzLCAweDU1MzI2QjA4LCAweEE3NTlFODBCLCAweEI0MDkxQkZGLCAweDQ2NjI5OEZDLFxuICAweDE4NzFBNEQ4LCAweEVBMUEyN0RCLCAweEY5NEFENDJGLCAweDBCMjE1NzJDLCAweERGRUIzM0M3LCAweDJEODBCMEM0LCAweDNFRDA0MzMwLCAweENDQkJDMDMzLFxuICAweEEyNEJCNUE2LCAweDUwMjAzNkE1LCAweDQzNzBDNTUxLCAweEIxMUI0NjUyLCAweDY1RDEyMkI5LCAweDk3QkFBMUJBLCAweDg0RUE1MjRFLCAweDc2ODFEMTRELFxuICAweDI4OTJFRDY5LCAweERBRjk2RTZBLCAweEM5QTk5RDlFLCAweDNCQzIxRTlELCAweEVGMDg3QTc2LCAweDFENjNGOTc1LCAweDBFMzMwQTgxLCAweEZDNTg4OTgyLFxuICAweEIyMTU3MkM5LCAweDQwN0VGMUNBLCAweDUzMkUwMjNFLCAweEExNDU4MTNELCAweDc1OEZFNUQ2LCAweDg3RTQ2NkQ1LCAweDk0QjQ5NTIxLCAweDY2REYxNjIyLFxuICAweDM4Q0MyQTA2LCAweENBQTdBOTA1LCAweEQ5Rjc1QUYxLCAweDJCOUNEOUYyLCAweEZGNTZCRDE5LCAweDBEM0QzRTFBLCAweDFFNkRDREVFLCAweEVDMDY0RUVELFxuICAweEMzOEQyNkM0LCAweDMxRTZBNUM3LCAweDIyQjY1NjMzLCAweEQwRERENTMwLCAweDA0MTdCMURCLCAweEY2N0MzMkQ4LCAweEU1MkNDMTJDLCAweDE3NDc0MjJGLFxuICAweDQ5NTQ3RTBCLCAweEJCM0ZGRDA4LCAweEE4NkYwRUZDLCAweDVBMDQ4REZGLCAweDhFQ0VFOTE0LCAweDdDQTU2QTE3LCAweDZGRjU5OUUzLCAweDlEOUUxQUUwLFxuICAweEQzRDNFMUFCLCAweDIxQjg2MkE4LCAweDMyRTg5MTVDLCAweEMwODMxMjVGLCAweDE0NDk3NkI0LCAweEU2MjJGNUI3LCAweEY1NzIwNjQzLCAweDA3MTk4NTQwLFxuICAweDU5MEFCOTY0LCAweEFCNjEzQTY3LCAweEI4MzFDOTkzLCAweDRBNUE0QTkwLCAweDlFOTAyRTdCLCAweDZDRkJBRDc4LCAweDdGQUI1RThDLCAweDhEQzBERDhGLFxuICAweEUzMzBBODFBLCAweDExNUIyQjE5LCAweDAyMEJEOEVELCAweEYwNjA1QkVFLCAweDI0QUEzRjA1LCAweEQ2QzFCQzA2LCAweEM1OTE0RkYyLCAweDM3RkFDQ0YxLFxuICAweDY5RTlGMEQ1LCAweDlCODI3M0Q2LCAweDg4RDI4MDIyLCAweDdBQjkwMzIxLCAweEFFNzM2N0NBLCAweDVDMThFNEM5LCAweDRGNDgxNzNELCAweEJEMjM5NDNFLFxuICAweEYzNkU2Rjc1LCAweDAxMDVFQzc2LCAweDEyNTUxRjgyLCAweEUwM0U5QzgxLCAweDM0RjRGODZBLCAweEM2OUY3QjY5LCAweEQ1Q0Y4ODlELCAweDI3QTQwQjlFLFxuICAweDc5QjczN0JBLCAweDhCRENCNEI5LCAweDk4OEM0NzRELCAweDZBRTdDNDRFLCAweEJFMkRBMEE1LCAweDRDNDYyM0E2LCAweDVGMTZEMDUyLCAweEFEN0Q1MzUxLFxuXTtcblxuY29uc3QgbG9va3VwVGFibGU6IFVpbnQzMkFycmF5ID0gdWludDMyQXJyYXlGcm9tKGFfbG9va3VwVGFibGUpXG5leHBvcnQgeyBBd3NDcmMzMmMgfSBmcm9tIFwiLi9hd3NfY3JjMzJjXCI7XG4iXX0=
+
+/***/ }),
+
+/***/ 22831:
+/***/ ((module) => {
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+    __extends = function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    };
+
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    };
+
+    __createBinding = function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    };
+
+    __exportStar = function (m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    };
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
+
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
+
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
+
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
+
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result["default"] = mod;
+        return result;
+    };
+
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
+
+    __classPrivateFieldGet = function (receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    };
+
+    __classPrivateFieldSet = function (receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
+
+
+/***/ }),
+
 /***/ 43228:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -1887,6 +2298,7 @@ const GetBucketTaggingCommand_1 = __nccwpck_require__(38464);
 const GetBucketVersioningCommand_1 = __nccwpck_require__(99497);
 const GetBucketWebsiteCommand_1 = __nccwpck_require__(28346);
 const GetObjectAclCommand_1 = __nccwpck_require__(31091);
+const GetObjectAttributesCommand_1 = __nccwpck_require__(78340);
 const GetObjectCommand_1 = __nccwpck_require__(34155);
 const GetObjectLegalHoldCommand_1 = __nccwpck_require__(20141);
 const GetObjectLockConfigurationCommand_1 = __nccwpck_require__(39079);
@@ -2542,6 +2954,20 @@ class S3 extends S3Client_1.S3Client {
     }
     getObjectAcl(args, optionsOrCb, cb) {
         const command = new GetObjectAclCommand_1.GetObjectAclCommand(args);
+        if (typeof optionsOrCb === "function") {
+            this.send(command, optionsOrCb);
+        }
+        else if (typeof cb === "function") {
+            if (typeof optionsOrCb !== "object")
+                throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+            this.send(command, optionsOrCb || {}, cb);
+        }
+        else {
+            return this.send(command, optionsOrCb);
+        }
+    }
+    getObjectAttributes(args, optionsOrCb, cb) {
+        const command = new GetObjectAttributesCommand_1.GetObjectAttributesCommand(args);
         if (typeof optionsOrCb === "function") {
             this.send(command, optionsOrCb);
         }
@@ -3340,6 +3766,7 @@ exports.CompleteMultipartUploadCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
 const middleware_sdk_s3_1 = __nccwpck_require__(81139);
 const middleware_serde_1 = __nccwpck_require__(93631);
+const middleware_ssec_1 = __nccwpck_require__(49718);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
 const Aws_restXml_1 = __nccwpck_require__(39809);
@@ -3351,6 +3778,7 @@ class CompleteMultipartUploadCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_sdk_s3_1.getThrow200ExceptionsPlugin(configuration));
+        this.middlewareStack.use(middleware_ssec_1.getSsecPlugin(configuration));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
@@ -4217,8 +4645,8 @@ exports.DeleteObjectTaggingCommand = DeleteObjectTaggingCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DeleteObjectsCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -4231,7 +4659,11 @@ class DeleteObjectsCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -5270,6 +5702,54 @@ exports.GetObjectAclCommand = GetObjectAclCommand;
 
 /***/ }),
 
+/***/ 78340:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GetObjectAttributesCommand = void 0;
+const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_serde_1 = __nccwpck_require__(93631);
+const middleware_ssec_1 = __nccwpck_require__(49718);
+const smithy_client_1 = __nccwpck_require__(4963);
+const models_0_1 = __nccwpck_require__(51628);
+const Aws_restXml_1 = __nccwpck_require__(39809);
+class GetObjectAttributesCommand extends smithy_client_1.Command {
+    constructor(input) {
+        super();
+        this.input = input;
+    }
+    resolveMiddleware(clientStack, configuration, options) {
+        this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
+        this.middlewareStack.use(middleware_ssec_1.getSsecPlugin(configuration));
+        this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
+        const stack = clientStack.concat(this.middlewareStack);
+        const { logger } = configuration;
+        const clientName = "S3Client";
+        const commandName = "GetObjectAttributesCommand";
+        const handlerExecutionContext = {
+            logger,
+            clientName,
+            commandName,
+            inputFilterSensitiveLog: models_0_1.GetObjectAttributesRequest.filterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectAttributesOutput.filterSensitiveLog,
+        };
+        const { requestHandler } = configuration;
+        return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
+    }
+    serialize(input, context) {
+        return Aws_restXml_1.serializeAws_restXmlGetObjectAttributesCommand(input, context);
+    }
+    deserialize(output, context) {
+        return Aws_restXml_1.deserializeAws_restXmlGetObjectAttributesCommand(output, context);
+    }
+}
+exports.GetObjectAttributesCommand = GetObjectAttributesCommand;
+
+
+/***/ }),
+
 /***/ 34155:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -5278,6 +5758,7 @@ exports.GetObjectAclCommand = GetObjectAclCommand;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GetObjectCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const middleware_ssec_1 = __nccwpck_require__(49718);
 const smithy_client_1 = __nccwpck_require__(4963);
@@ -5292,6 +5773,12 @@ class GetObjectCommand extends smithy_client_1.Command {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_ssec_1.getSsecPlugin(configuration));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestChecksumRequired: false,
+            requestValidationModeMember: "ChecksumMode",
+            responseAlgorithms: ["CRC32", "CRC32C", "SHA256", "SHA1"],
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6109,6 +6596,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ListPartsCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
 const middleware_serde_1 = __nccwpck_require__(93631);
+const middleware_ssec_1 = __nccwpck_require__(49718);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
 const Aws_restXml_1 = __nccwpck_require__(39809);
@@ -6119,6 +6607,7 @@ class ListPartsCommand extends smithy_client_1.Command {
     }
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
+        this.middlewareStack.use(middleware_ssec_1.getSsecPlugin(configuration));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
@@ -6154,6 +6643,7 @@ exports.ListPartsCommand = ListPartsCommand;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketAccelerateConfigurationCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6166,6 +6656,11 @@ class PutBucketAccelerateConfigurationCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: false,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6199,8 +6694,8 @@ exports.PutBucketAccelerateConfigurationCommand = PutBucketAccelerateConfigurati
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketAclCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6213,7 +6708,11 @@ class PutBucketAclCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6293,8 +6792,8 @@ exports.PutBucketAnalyticsConfigurationCommand = PutBucketAnalyticsConfiguration
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketCorsCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6307,7 +6806,11 @@ class PutBucketCorsCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6341,8 +6844,8 @@ exports.PutBucketCorsCommand = PutBucketCorsCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketEncryptionCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6355,7 +6858,11 @@ class PutBucketEncryptionCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6481,8 +6988,8 @@ exports.PutBucketInventoryConfigurationCommand = PutBucketInventoryConfiguration
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketLifecycleConfigurationCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6495,7 +7002,11 @@ class PutBucketLifecycleConfigurationCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6529,8 +7040,8 @@ exports.PutBucketLifecycleConfigurationCommand = PutBucketLifecycleConfiguration
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketLoggingCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6543,7 +7054,11 @@ class PutBucketLoggingCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6669,8 +7184,8 @@ exports.PutBucketNotificationConfigurationCommand = PutBucketNotificationConfigu
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketOwnershipControlsCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6683,7 +7198,7 @@ class PutBucketOwnershipControlsCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, { input: this.input, requestChecksumRequired: true }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6717,8 +7232,8 @@ exports.PutBucketOwnershipControlsCommand = PutBucketOwnershipControlsCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketPolicyCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6731,7 +7246,11 @@ class PutBucketPolicyCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6765,8 +7284,8 @@ exports.PutBucketPolicyCommand = PutBucketPolicyCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketReplicationCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6779,7 +7298,11 @@ class PutBucketReplicationCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6813,8 +7336,8 @@ exports.PutBucketReplicationCommand = PutBucketReplicationCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketRequestPaymentCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6827,7 +7350,11 @@ class PutBucketRequestPaymentCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6861,8 +7388,8 @@ exports.PutBucketRequestPaymentCommand = PutBucketRequestPaymentCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketTaggingCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6875,7 +7402,11 @@ class PutBucketTaggingCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6909,8 +7440,8 @@ exports.PutBucketTaggingCommand = PutBucketTaggingCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketVersioningCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6923,7 +7454,11 @@ class PutBucketVersioningCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -6957,8 +7492,8 @@ exports.PutBucketVersioningCommand = PutBucketVersioningCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutBucketWebsiteCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -6971,7 +7506,11 @@ class PutBucketWebsiteCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7005,8 +7544,8 @@ exports.PutBucketWebsiteCommand = PutBucketWebsiteCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutObjectAclCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -7019,7 +7558,11 @@ class PutObjectAclCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7054,6 +7597,7 @@ exports.PutObjectAclCommand = PutObjectAclCommand;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutObjectCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const middleware_ssec_1 = __nccwpck_require__(49718);
 const smithy_client_1 = __nccwpck_require__(4963);
@@ -7068,6 +7612,11 @@ class PutObjectCommand extends smithy_client_1.Command {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_ssec_1.getSsecPlugin(configuration));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: false,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7101,8 +7650,8 @@ exports.PutObjectCommand = PutObjectCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutObjectLegalHoldCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -7115,7 +7664,11 @@ class PutObjectLegalHoldCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7149,8 +7702,8 @@ exports.PutObjectLegalHoldCommand = PutObjectLegalHoldCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutObjectLockConfigurationCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_0_1 = __nccwpck_require__(51628);
@@ -7163,7 +7716,11 @@ class PutObjectLockConfigurationCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7197,11 +7754,11 @@ exports.PutObjectLockConfigurationCommand = PutObjectLockConfigurationCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutObjectRetentionCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
-const models_0_1 = __nccwpck_require__(51628);
+const models_1_1 = __nccwpck_require__(6958);
 const Aws_restXml_1 = __nccwpck_require__(39809);
 class PutObjectRetentionCommand extends smithy_client_1.Command {
     constructor(input) {
@@ -7211,7 +7768,11 @@ class PutObjectRetentionCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7220,8 +7781,8 @@ class PutObjectRetentionCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutObjectRetentionRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.PutObjectRetentionOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.PutObjectRetentionRequest.filterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.PutObjectRetentionOutput.filterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -7245,11 +7806,11 @@ exports.PutObjectRetentionCommand = PutObjectRetentionCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutObjectTaggingCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
-const models_0_1 = __nccwpck_require__(51628);
+const models_1_1 = __nccwpck_require__(6958);
 const Aws_restXml_1 = __nccwpck_require__(39809);
 class PutObjectTaggingCommand extends smithy_client_1.Command {
     constructor(input) {
@@ -7259,7 +7820,11 @@ class PutObjectTaggingCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7268,8 +7833,8 @@ class PutObjectTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutObjectTaggingRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.PutObjectTaggingOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.PutObjectTaggingRequest.filterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.PutObjectTaggingOutput.filterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -7293,11 +7858,11 @@ exports.PutObjectTaggingCommand = PutObjectTaggingCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PutPublicAccessBlockCommand = void 0;
-const middleware_apply_body_checksum_1 = __nccwpck_require__(75092);
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
-const models_0_1 = __nccwpck_require__(51628);
+const models_1_1 = __nccwpck_require__(6958);
 const Aws_restXml_1 = __nccwpck_require__(39809);
 class PutPublicAccessBlockCommand extends smithy_client_1.Command {
     constructor(input) {
@@ -7307,7 +7872,11 @@ class PutPublicAccessBlockCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
-        this.middlewareStack.use(middleware_apply_body_checksum_1.getApplyMd5BodyChecksumPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: true,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7316,7 +7885,7 @@ class PutPublicAccessBlockCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutPublicAccessBlockRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.PutPublicAccessBlockRequest.filterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7342,9 +7911,9 @@ exports.PutPublicAccessBlockCommand = PutPublicAccessBlockCommand;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RestoreObjectCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
-const models_0_1 = __nccwpck_require__(51628);
 const models_1_1 = __nccwpck_require__(6958);
 const Aws_restXml_1 = __nccwpck_require__(39809);
 class RestoreObjectCommand extends smithy_client_1.Command {
@@ -7355,6 +7924,11 @@ class RestoreObjectCommand extends smithy_client_1.Command {
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: false,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7364,7 +7938,7 @@ class RestoreObjectCommand extends smithy_client_1.Command {
             clientName,
             commandName,
             inputFilterSensitiveLog: models_1_1.RestoreObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.RestoreObjectOutput.filterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.RestoreObjectOutput.filterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -7437,6 +8011,7 @@ exports.SelectObjectContentCommand = SelectObjectContentCommand;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UploadPartCommand = void 0;
 const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const middleware_flexible_checksums_1 = __nccwpck_require__(13799);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const middleware_ssec_1 = __nccwpck_require__(49718);
 const smithy_client_1 = __nccwpck_require__(4963);
@@ -7451,6 +8026,11 @@ class UploadPartCommand extends smithy_client_1.Command {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
         this.middlewareStack.use(middleware_ssec_1.getSsecPlugin(configuration));
         this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
+        this.middlewareStack.use(middleware_flexible_checksums_1.getFlexibleChecksumsPlugin(configuration, {
+            input: this.input,
+            requestAlgorithmMember: "ChecksumAlgorithm",
+            requestChecksumRequired: false,
+        }));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7534,7 +8114,6 @@ exports.UploadPartCopyCommand = UploadPartCopyCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.WriteGetObjectResponseCommand = void 0;
-const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_1_1 = __nccwpck_require__(6958);
@@ -7546,7 +8125,6 @@ class WriteGetObjectResponseCommand extends smithy_client_1.Command {
     }
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use(middleware_serde_1.getSerdePlugin(configuration, this.serialize, this.deserialize));
-        this.middlewareStack.use(middleware_bucket_endpoint_1.getBucketEndpointPlugin(configuration));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -7623,6 +8201,7 @@ tslib_1.__exportStar(__nccwpck_require__(38464), exports);
 tslib_1.__exportStar(__nccwpck_require__(99497), exports);
 tslib_1.__exportStar(__nccwpck_require__(28346), exports);
 tslib_1.__exportStar(__nccwpck_require__(31091), exports);
+tslib_1.__exportStar(__nccwpck_require__(78340), exports);
 tslib_1.__exportStar(__nccwpck_require__(34155), exports);
 tslib_1.__exportStar(__nccwpck_require__(20141), exports);
 tslib_1.__exportStar(__nccwpck_require__(39079), exports);
@@ -8143,6 +8722,7 @@ exports.defaultRegionInfoProvider = defaultRegionInfoProvider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.S3ServiceException = void 0;
 const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(67862), exports);
 tslib_1.__exportStar(__nccwpck_require__(22034), exports);
@@ -8150,6 +8730,27 @@ tslib_1.__exportStar(__nccwpck_require__(73706), exports);
 tslib_1.__exportStar(__nccwpck_require__(56684), exports);
 tslib_1.__exportStar(__nccwpck_require__(4448), exports);
 tslib_1.__exportStar(__nccwpck_require__(6908), exports);
+var S3ServiceException_1 = __nccwpck_require__(37614);
+Object.defineProperty(exports, "S3ServiceException", ({ enumerable: true, get: function () { return S3ServiceException_1.S3ServiceException; } }));
+
+
+/***/ }),
+
+/***/ 37614:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.S3ServiceException = void 0;
+const smithy_client_1 = __nccwpck_require__(4963);
+class S3ServiceException extends smithy_client_1.ServiceException {
+    constructor(options) {
+        super(options);
+        Object.setPrototypeOf(this, S3ServiceException.prototype);
+    }
+}
+exports.S3ServiceException = S3ServiceException;
 
 
 /***/ }),
@@ -8173,12 +8774,14 @@ tslib_1.__exportStar(__nccwpck_require__(6958), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Tag = exports.GetBucketAclRequest = exports.GetBucketAclOutput = exports.GetBucketAccelerateConfigurationRequest = exports.GetBucketAccelerateConfigurationOutput = exports.DeletePublicAccessBlockRequest = exports.DeleteObjectTaggingRequest = exports.DeleteObjectTaggingOutput = exports.DeleteObjectsRequest = exports.Delete = exports.ObjectIdentifier = exports.DeleteObjectsOutput = exports._Error = exports.DeletedObject = exports.DeleteObjectRequest = exports.DeleteObjectOutput = exports.DeleteBucketWebsiteRequest = exports.DeleteBucketTaggingRequest = exports.DeleteBucketReplicationRequest = exports.DeleteBucketPolicyRequest = exports.DeleteBucketOwnershipControlsRequest = exports.DeleteBucketMetricsConfigurationRequest = exports.DeleteBucketLifecycleRequest = exports.DeleteBucketInventoryConfigurationRequest = exports.DeleteBucketIntelligentTieringConfigurationRequest = exports.DeleteBucketEncryptionRequest = exports.DeleteBucketCorsRequest = exports.DeleteBucketAnalyticsConfigurationRequest = exports.DeleteBucketRequest = exports.CreateMultipartUploadRequest = exports.CreateMultipartUploadOutput = exports.CreateBucketRequest = exports.CreateBucketConfiguration = exports.CreateBucketOutput = exports.CopyObjectRequest = exports.CopyObjectOutput = exports.CopyObjectResult = exports.CompleteMultipartUploadRequest = exports.CompletedMultipartUpload = exports.CompletedPart = exports.CompleteMultipartUploadOutput = exports.AccessControlTranslation = exports.AccessControlPolicy = exports.Owner = exports.Grant = exports.Grantee = exports.AccelerateConfiguration = exports.AbortMultipartUploadRequest = exports.AbortMultipartUploadOutput = exports.AbortIncompleteMultipartUpload = void 0;
-exports.MetricsFilter = exports.MetricsAndOperator = exports.GetBucketLoggingRequest = exports.GetBucketLoggingOutput = exports.LoggingEnabled = exports.TargetGrant = exports.GetBucketLocationRequest = exports.GetBucketLocationOutput = exports.GetBucketLifecycleConfigurationRequest = exports.GetBucketLifecycleConfigurationOutput = exports.LifecycleRule = exports.Transition = exports.NoncurrentVersionTransition = exports.NoncurrentVersionExpiration = exports.LifecycleRuleFilter = exports.LifecycleRuleAndOperator = exports.LifecycleExpiration = exports.GetBucketInventoryConfigurationRequest = exports.GetBucketInventoryConfigurationOutput = exports.InventoryConfiguration = exports.InventorySchedule = exports.InventoryFilter = exports.InventoryDestination = exports.InventoryS3BucketDestination = exports.InventoryEncryption = exports.SSES3 = exports.SSEKMS = exports.GetBucketIntelligentTieringConfigurationRequest = exports.GetBucketIntelligentTieringConfigurationOutput = exports.IntelligentTieringConfiguration = exports.Tiering = exports.IntelligentTieringFilter = exports.IntelligentTieringAndOperator = exports.GetBucketEncryptionRequest = exports.GetBucketEncryptionOutput = exports.ServerSideEncryptionConfiguration = exports.ServerSideEncryptionRule = exports.ServerSideEncryptionByDefault = exports.GetBucketCorsRequest = exports.GetBucketCorsOutput = exports.CORSRule = exports.GetBucketAnalyticsConfigurationRequest = exports.GetBucketAnalyticsConfigurationOutput = exports.AnalyticsConfiguration = exports.StorageClassAnalysis = exports.StorageClassAnalysisDataExport = exports.AnalyticsExportDestination = exports.AnalyticsS3BucketDestination = exports.AnalyticsFilter = exports.AnalyticsAndOperator = void 0;
-exports.GetBucketWebsiteOutput = exports.RoutingRule = exports.Redirect = exports.Condition = exports.RedirectAllRequestsTo = exports.IndexDocument = exports.ErrorDocument = exports.GetBucketVersioningRequest = exports.GetBucketVersioningOutput = exports.GetBucketTaggingRequest = exports.GetBucketTaggingOutput = exports.GetBucketRequestPaymentRequest = exports.GetBucketRequestPaymentOutput = exports.GetBucketReplicationRequest = exports.GetBucketReplicationOutput = exports.ReplicationConfiguration = exports.ReplicationRule = exports.SourceSelectionCriteria = exports.SseKmsEncryptedObjects = exports.ReplicaModifications = exports.ReplicationRuleFilter = exports.ReplicationRuleAndOperator = exports.ExistingObjectReplication = exports.Destination = exports.ReplicationTime = exports.Metrics = exports.ReplicationTimeValue = exports.EncryptionConfiguration = exports.DeleteMarkerReplication = exports.GetBucketPolicyStatusRequest = exports.GetBucketPolicyStatusOutput = exports.PolicyStatus = exports.GetBucketPolicyRequest = exports.GetBucketPolicyOutput = exports.GetBucketOwnershipControlsRequest = exports.GetBucketOwnershipControlsOutput = exports.OwnershipControls = exports.OwnershipControlsRule = exports.NotificationConfiguration = exports.TopicConfiguration = exports.QueueConfiguration = exports.LambdaFunctionConfiguration = exports.NotificationConfigurationFilter = exports.S3KeyFilter = exports.FilterRule = exports.EventBridgeConfiguration = exports.GetBucketNotificationConfigurationRequest = exports.GetBucketMetricsConfigurationRequest = exports.GetBucketMetricsConfigurationOutput = exports.MetricsConfiguration = void 0;
-exports.ListObjectVersionsRequest = exports.ListObjectVersionsOutput = exports.ObjectVersion = exports.DeleteMarkerEntry = exports.ListObjectsV2Request = exports.ListObjectsV2Output = exports.ListObjectsRequest = exports.ListObjectsOutput = exports._Object = exports.ListMultipartUploadsRequest = exports.ListMultipartUploadsOutput = exports.MultipartUpload = exports.Initiator = exports.CommonPrefix = exports.ListBucketsOutput = exports.Bucket = exports.ListBucketMetricsConfigurationsRequest = exports.ListBucketMetricsConfigurationsOutput = exports.ListBucketInventoryConfigurationsRequest = exports.ListBucketInventoryConfigurationsOutput = exports.ListBucketIntelligentTieringConfigurationsRequest = exports.ListBucketIntelligentTieringConfigurationsOutput = exports.ListBucketAnalyticsConfigurationsRequest = exports.ListBucketAnalyticsConfigurationsOutput = exports.HeadObjectRequest = exports.HeadObjectOutput = exports.HeadBucketRequest = exports.GetPublicAccessBlockRequest = exports.GetPublicAccessBlockOutput = exports.PublicAccessBlockConfiguration = exports.GetObjectTorrentRequest = exports.GetObjectTorrentOutput = exports.GetObjectTaggingRequest = exports.GetObjectTaggingOutput = exports.GetObjectRetentionRequest = exports.GetObjectRetentionOutput = exports.ObjectLockRetention = exports.GetObjectLockConfigurationRequest = exports.GetObjectLockConfigurationOutput = exports.ObjectLockConfiguration = exports.ObjectLockRule = exports.DefaultRetention = exports.GetObjectLegalHoldRequest = exports.GetObjectLegalHoldOutput = exports.ObjectLockLegalHold = exports.GetObjectAclRequest = exports.GetObjectAclOutput = exports.GetObjectRequest = exports.GetObjectOutput = exports.GetBucketWebsiteRequest = void 0;
-exports.RestoreObjectOutput = exports.PutPublicAccessBlockRequest = exports.PutObjectTaggingRequest = exports.PutObjectTaggingOutput = exports.PutObjectRetentionRequest = exports.PutObjectRetentionOutput = exports.PutObjectLockConfigurationRequest = exports.PutObjectLockConfigurationOutput = exports.PutObjectLegalHoldRequest = exports.PutObjectLegalHoldOutput = exports.PutObjectAclRequest = exports.PutObjectAclOutput = exports.PutObjectRequest = exports.PutObjectOutput = exports.PutBucketWebsiteRequest = exports.WebsiteConfiguration = exports.PutBucketVersioningRequest = exports.VersioningConfiguration = exports.PutBucketTaggingRequest = exports.Tagging = exports.PutBucketRequestPaymentRequest = exports.RequestPaymentConfiguration = exports.PutBucketReplicationRequest = exports.PutBucketPolicyRequest = exports.PutBucketOwnershipControlsRequest = exports.PutBucketNotificationConfigurationRequest = exports.PutBucketMetricsConfigurationRequest = exports.PutBucketLoggingRequest = exports.BucketLoggingStatus = exports.PutBucketLifecycleConfigurationRequest = exports.BucketLifecycleConfiguration = exports.PutBucketInventoryConfigurationRequest = exports.PutBucketIntelligentTieringConfigurationRequest = exports.PutBucketEncryptionRequest = exports.PutBucketCorsRequest = exports.CORSConfiguration = exports.PutBucketAnalyticsConfigurationRequest = exports.PutBucketAclRequest = exports.PutBucketAccelerateConfigurationRequest = exports.ListPartsRequest = exports.ListPartsOutput = exports.Part = void 0;
+exports.DeletePublicAccessBlockRequest = exports.DeleteObjectTaggingRequest = exports.DeleteObjectTaggingOutput = exports.DeleteObjectsRequest = exports.Delete = exports.ObjectIdentifier = exports.DeleteObjectsOutput = exports._Error = exports.DeletedObject = exports.DeleteObjectRequest = exports.DeleteObjectOutput = exports.DeleteBucketWebsiteRequest = exports.DeleteBucketTaggingRequest = exports.DeleteBucketReplicationRequest = exports.DeleteBucketPolicyRequest = exports.DeleteBucketOwnershipControlsRequest = exports.DeleteBucketMetricsConfigurationRequest = exports.DeleteBucketLifecycleRequest = exports.DeleteBucketInventoryConfigurationRequest = exports.DeleteBucketIntelligentTieringConfigurationRequest = exports.DeleteBucketEncryptionRequest = exports.DeleteBucketCorsRequest = exports.DeleteBucketAnalyticsConfigurationRequest = exports.DeleteBucketRequest = exports.CreateMultipartUploadRequest = exports.CreateMultipartUploadOutput = exports.CreateBucketRequest = exports.CreateBucketConfiguration = exports.CreateBucketOutput = exports.BucketAlreadyOwnedByYou = exports.BucketAlreadyExists = exports.ObjectNotInActiveTierError = exports.CopyObjectRequest = exports.ChecksumAlgorithm = exports.CopyObjectOutput = exports.CopyObjectResult = exports.CompleteMultipartUploadRequest = exports.CompletedMultipartUpload = exports.CompletedPart = exports.CompleteMultipartUploadOutput = exports.AccessControlTranslation = exports.AccessControlPolicy = exports.Owner = exports.Grant = exports.Grantee = exports.AccelerateConfiguration = exports.NoSuchUpload = exports.AbortMultipartUploadRequest = exports.AbortMultipartUploadOutput = exports.AbortIncompleteMultipartUpload = void 0;
+exports.TargetGrant = exports.GetBucketLocationRequest = exports.GetBucketLocationOutput = exports.GetBucketLifecycleConfigurationRequest = exports.GetBucketLifecycleConfigurationOutput = exports.LifecycleRule = exports.Transition = exports.NoncurrentVersionTransition = exports.NoncurrentVersionExpiration = exports.LifecycleRuleFilter = exports.LifecycleRuleAndOperator = exports.LifecycleExpiration = exports.GetBucketInventoryConfigurationRequest = exports.GetBucketInventoryConfigurationOutput = exports.InventoryConfiguration = exports.InventorySchedule = exports.InventoryFilter = exports.InventoryDestination = exports.InventoryS3BucketDestination = exports.InventoryEncryption = exports.SSES3 = exports.SSEKMS = exports.GetBucketIntelligentTieringConfigurationRequest = exports.GetBucketIntelligentTieringConfigurationOutput = exports.IntelligentTieringConfiguration = exports.Tiering = exports.IntelligentTieringFilter = exports.IntelligentTieringAndOperator = exports.GetBucketEncryptionRequest = exports.GetBucketEncryptionOutput = exports.ServerSideEncryptionConfiguration = exports.ServerSideEncryptionRule = exports.ServerSideEncryptionByDefault = exports.GetBucketCorsRequest = exports.GetBucketCorsOutput = exports.CORSRule = exports.GetBucketAnalyticsConfigurationRequest = exports.GetBucketAnalyticsConfigurationOutput = exports.AnalyticsConfiguration = exports.StorageClassAnalysis = exports.StorageClassAnalysisDataExport = exports.AnalyticsExportDestination = exports.AnalyticsS3BucketDestination = exports.AnalyticsFilter = exports.AnalyticsAndOperator = exports.Tag = exports.GetBucketAclRequest = exports.GetBucketAclOutput = exports.GetBucketAccelerateConfigurationRequest = exports.GetBucketAccelerateConfigurationOutput = void 0;
+exports.IndexDocument = exports.ErrorDocument = exports.GetBucketVersioningRequest = exports.GetBucketVersioningOutput = exports.GetBucketTaggingRequest = exports.GetBucketTaggingOutput = exports.GetBucketRequestPaymentRequest = exports.GetBucketRequestPaymentOutput = exports.GetBucketReplicationRequest = exports.GetBucketReplicationOutput = exports.ReplicationConfiguration = exports.ReplicationRule = exports.SourceSelectionCriteria = exports.SseKmsEncryptedObjects = exports.ReplicaModifications = exports.ReplicationRuleFilter = exports.ReplicationRuleAndOperator = exports.ExistingObjectReplication = exports.Destination = exports.ReplicationTime = exports.Metrics = exports.ReplicationTimeValue = exports.EncryptionConfiguration = exports.DeleteMarkerReplication = exports.GetBucketPolicyStatusRequest = exports.GetBucketPolicyStatusOutput = exports.PolicyStatus = exports.GetBucketPolicyRequest = exports.GetBucketPolicyOutput = exports.GetBucketOwnershipControlsRequest = exports.GetBucketOwnershipControlsOutput = exports.OwnershipControls = exports.OwnershipControlsRule = exports.NotificationConfiguration = exports.TopicConfiguration = exports.QueueConfiguration = exports.LambdaFunctionConfiguration = exports.NotificationConfigurationFilter = exports.S3KeyFilter = exports.FilterRule = exports.EventBridgeConfiguration = exports.GetBucketNotificationConfigurationRequest = exports.GetBucketMetricsConfigurationRequest = exports.GetBucketMetricsConfigurationOutput = exports.MetricsConfiguration = exports.MetricsFilter = exports.MetricsAndOperator = exports.GetBucketLoggingRequest = exports.GetBucketLoggingOutput = exports.LoggingEnabled = void 0;
+exports.Bucket = exports.ListBucketMetricsConfigurationsRequest = exports.ListBucketMetricsConfigurationsOutput = exports.ListBucketInventoryConfigurationsRequest = exports.ListBucketInventoryConfigurationsOutput = exports.ListBucketIntelligentTieringConfigurationsRequest = exports.ListBucketIntelligentTieringConfigurationsOutput = exports.ListBucketAnalyticsConfigurationsRequest = exports.ListBucketAnalyticsConfigurationsOutput = exports.HeadObjectRequest = exports.HeadObjectOutput = exports.NotFound = exports.HeadBucketRequest = exports.GetPublicAccessBlockRequest = exports.GetPublicAccessBlockOutput = exports.PublicAccessBlockConfiguration = exports.GetObjectTorrentRequest = exports.GetObjectTorrentOutput = exports.GetObjectTaggingRequest = exports.GetObjectTaggingOutput = exports.GetObjectRetentionRequest = exports.GetObjectRetentionOutput = exports.ObjectLockRetention = exports.GetObjectLockConfigurationRequest = exports.GetObjectLockConfigurationOutput = exports.ObjectLockConfiguration = exports.ObjectLockRule = exports.DefaultRetention = exports.GetObjectLegalHoldRequest = exports.GetObjectLegalHoldOutput = exports.ObjectLockLegalHold = exports.GetObjectAttributesRequest = exports.ObjectAttributes = exports.GetObjectAttributesOutput = exports.GetObjectAttributesParts = exports.ObjectPart = exports.Checksum = exports.GetObjectAclRequest = exports.GetObjectAclOutput = exports.NoSuchKey = exports.InvalidObjectState = exports.GetObjectRequest = exports.ChecksumMode = exports.GetObjectOutput = exports.GetBucketWebsiteRequest = exports.GetBucketWebsiteOutput = exports.RoutingRule = exports.Redirect = exports.Condition = exports.RedirectAllRequestsTo = void 0;
+exports.PutObjectLegalHoldRequest = exports.PutObjectLegalHoldOutput = exports.PutObjectAclRequest = exports.PutObjectAclOutput = exports.PutObjectRequest = exports.PutObjectOutput = exports.PutBucketWebsiteRequest = exports.WebsiteConfiguration = exports.PutBucketVersioningRequest = exports.VersioningConfiguration = exports.PutBucketTaggingRequest = exports.Tagging = exports.PutBucketRequestPaymentRequest = exports.RequestPaymentConfiguration = exports.PutBucketReplicationRequest = exports.PutBucketPolicyRequest = exports.PutBucketOwnershipControlsRequest = exports.PutBucketNotificationConfigurationRequest = exports.PutBucketMetricsConfigurationRequest = exports.PutBucketLoggingRequest = exports.BucketLoggingStatus = exports.PutBucketLifecycleConfigurationRequest = exports.BucketLifecycleConfiguration = exports.PutBucketInventoryConfigurationRequest = exports.PutBucketIntelligentTieringConfigurationRequest = exports.PutBucketEncryptionRequest = exports.PutBucketCorsRequest = exports.CORSConfiguration = exports.PutBucketAnalyticsConfigurationRequest = exports.PutBucketAclRequest = exports.PutBucketAccelerateConfigurationRequest = exports.ListPartsRequest = exports.ListPartsOutput = exports.Part = exports.ListObjectVersionsRequest = exports.ListObjectVersionsOutput = exports.ObjectVersion = exports.DeleteMarkerEntry = exports.ListObjectsV2Request = exports.ListObjectsV2Output = exports.NoSuchBucket = exports.ListObjectsRequest = exports.ListObjectsOutput = exports._Object = exports.ListMultipartUploadsRequest = exports.ListMultipartUploadsOutput = exports.MultipartUpload = exports.Initiator = exports.CommonPrefix = exports.ListBucketsOutput = void 0;
+exports.PutObjectLockConfigurationRequest = exports.PutObjectLockConfigurationOutput = void 0;
 const smithy_client_1 = __nccwpck_require__(4963);
+const S3ServiceException_1 = __nccwpck_require__(37614);
 var AbortIncompleteMultipartUpload;
 (function (AbortIncompleteMultipartUpload) {
     AbortIncompleteMultipartUpload.filterSensitiveLog = (obj) => ({
@@ -8197,6 +8800,19 @@ var AbortMultipartUploadRequest;
         ...obj,
     });
 })(AbortMultipartUploadRequest = exports.AbortMultipartUploadRequest || (exports.AbortMultipartUploadRequest = {}));
+class NoSuchUpload extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "NoSuchUpload",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "NoSuchUpload";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, NoSuchUpload.prototype);
+    }
+}
+exports.NoSuchUpload = NoSuchUpload;
 var AccelerateConfiguration;
 (function (AccelerateConfiguration) {
     AccelerateConfiguration.filterSensitiveLog = (obj) => ({
@@ -8256,6 +8872,7 @@ var CompleteMultipartUploadRequest;
 (function (CompleteMultipartUploadRequest) {
     CompleteMultipartUploadRequest.filterSensitiveLog = (obj) => ({
         ...obj,
+        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
     });
 })(CompleteMultipartUploadRequest = exports.CompleteMultipartUploadRequest || (exports.CompleteMultipartUploadRequest = {}));
 var CopyObjectResult;
@@ -8272,6 +8889,13 @@ var CopyObjectOutput;
         ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
     });
 })(CopyObjectOutput = exports.CopyObjectOutput || (exports.CopyObjectOutput = {}));
+var ChecksumAlgorithm;
+(function (ChecksumAlgorithm) {
+    ChecksumAlgorithm["CRC32"] = "CRC32";
+    ChecksumAlgorithm["CRC32C"] = "CRC32C";
+    ChecksumAlgorithm["SHA1"] = "SHA1";
+    ChecksumAlgorithm["SHA256"] = "SHA256";
+})(ChecksumAlgorithm = exports.ChecksumAlgorithm || (exports.ChecksumAlgorithm = {}));
 var CopyObjectRequest;
 (function (CopyObjectRequest) {
     CopyObjectRequest.filterSensitiveLog = (obj) => ({
@@ -8282,6 +8906,45 @@ var CopyObjectRequest;
         ...(obj.CopySourceSSECustomerKey && { CopySourceSSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
     });
 })(CopyObjectRequest = exports.CopyObjectRequest || (exports.CopyObjectRequest = {}));
+class ObjectNotInActiveTierError extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "ObjectNotInActiveTierError",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "ObjectNotInActiveTierError";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, ObjectNotInActiveTierError.prototype);
+    }
+}
+exports.ObjectNotInActiveTierError = ObjectNotInActiveTierError;
+class BucketAlreadyExists extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "BucketAlreadyExists",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "BucketAlreadyExists";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, BucketAlreadyExists.prototype);
+    }
+}
+exports.BucketAlreadyExists = BucketAlreadyExists;
+class BucketAlreadyOwnedByYou extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "BucketAlreadyOwnedByYou",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "BucketAlreadyOwnedByYou";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, BucketAlreadyOwnedByYou.prototype);
+    }
+}
+exports.BucketAlreadyOwnedByYou = BucketAlreadyOwnedByYou;
 var CreateBucketOutput;
 (function (CreateBucketOutput) {
     CreateBucketOutput.filterSensitiveLog = (obj) => ({
@@ -9213,6 +9876,10 @@ var GetObjectOutput;
         ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
     });
 })(GetObjectOutput = exports.GetObjectOutput || (exports.GetObjectOutput = {}));
+var ChecksumMode;
+(function (ChecksumMode) {
+    ChecksumMode["ENABLED"] = "ENABLED";
+})(ChecksumMode = exports.ChecksumMode || (exports.ChecksumMode = {}));
 var GetObjectRequest;
 (function (GetObjectRequest) {
     GetObjectRequest.filterSensitiveLog = (obj) => ({
@@ -9220,6 +9887,34 @@ var GetObjectRequest;
         ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
     });
 })(GetObjectRequest = exports.GetObjectRequest || (exports.GetObjectRequest = {}));
+class InvalidObjectState extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "InvalidObjectState",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "InvalidObjectState";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, InvalidObjectState.prototype);
+        this.StorageClass = opts.StorageClass;
+        this.AccessTier = opts.AccessTier;
+    }
+}
+exports.InvalidObjectState = InvalidObjectState;
+class NoSuchKey extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "NoSuchKey",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "NoSuchKey";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, NoSuchKey.prototype);
+    }
+}
+exports.NoSuchKey = NoSuchKey;
 var GetObjectAclOutput;
 (function (GetObjectAclOutput) {
     GetObjectAclOutput.filterSensitiveLog = (obj) => ({
@@ -9232,6 +9927,45 @@ var GetObjectAclRequest;
         ...obj,
     });
 })(GetObjectAclRequest = exports.GetObjectAclRequest || (exports.GetObjectAclRequest = {}));
+var Checksum;
+(function (Checksum) {
+    Checksum.filterSensitiveLog = (obj) => ({
+        ...obj,
+    });
+})(Checksum = exports.Checksum || (exports.Checksum = {}));
+var ObjectPart;
+(function (ObjectPart) {
+    ObjectPart.filterSensitiveLog = (obj) => ({
+        ...obj,
+    });
+})(ObjectPart = exports.ObjectPart || (exports.ObjectPart = {}));
+var GetObjectAttributesParts;
+(function (GetObjectAttributesParts) {
+    GetObjectAttributesParts.filterSensitiveLog = (obj) => ({
+        ...obj,
+    });
+})(GetObjectAttributesParts = exports.GetObjectAttributesParts || (exports.GetObjectAttributesParts = {}));
+var GetObjectAttributesOutput;
+(function (GetObjectAttributesOutput) {
+    GetObjectAttributesOutput.filterSensitiveLog = (obj) => ({
+        ...obj,
+    });
+})(GetObjectAttributesOutput = exports.GetObjectAttributesOutput || (exports.GetObjectAttributesOutput = {}));
+var ObjectAttributes;
+(function (ObjectAttributes) {
+    ObjectAttributes["CHECKSUM"] = "Checksum";
+    ObjectAttributes["ETAG"] = "ETag";
+    ObjectAttributes["OBJECT_PARTS"] = "ObjectParts";
+    ObjectAttributes["OBJECT_SIZE"] = "ObjectSize";
+    ObjectAttributes["STORAGE_CLASS"] = "StorageClass";
+})(ObjectAttributes = exports.ObjectAttributes || (exports.ObjectAttributes = {}));
+var GetObjectAttributesRequest;
+(function (GetObjectAttributesRequest) {
+    GetObjectAttributesRequest.filterSensitiveLog = (obj) => ({
+        ...obj,
+        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+    });
+})(GetObjectAttributesRequest = exports.GetObjectAttributesRequest || (exports.GetObjectAttributesRequest = {}));
 var ObjectLockLegalHold;
 (function (ObjectLockLegalHold) {
     ObjectLockLegalHold.filterSensitiveLog = (obj) => ({
@@ -9346,6 +10080,19 @@ var HeadBucketRequest;
         ...obj,
     });
 })(HeadBucketRequest = exports.HeadBucketRequest || (exports.HeadBucketRequest = {}));
+class NotFound extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "NotFound",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "NotFound";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, NotFound.prototype);
+    }
+}
+exports.NotFound = NotFound;
 var HeadObjectOutput;
 (function (HeadObjectOutput) {
     HeadObjectOutput.filterSensitiveLog = (obj) => ({
@@ -9477,6 +10224,19 @@ var ListObjectsRequest;
         ...obj,
     });
 })(ListObjectsRequest = exports.ListObjectsRequest || (exports.ListObjectsRequest = {}));
+class NoSuchBucket extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "NoSuchBucket",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "NoSuchBucket";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, NoSuchBucket.prototype);
+    }
+}
+exports.NoSuchBucket = NoSuchBucket;
 var ListObjectsV2Output;
 (function (ListObjectsV2Output) {
     ListObjectsV2Output.filterSensitiveLog = (obj) => ({
@@ -9529,6 +10289,7 @@ var ListPartsRequest;
 (function (ListPartsRequest) {
     ListPartsRequest.filterSensitiveLog = (obj) => ({
         ...obj,
+        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
     });
 })(ListPartsRequest = exports.ListPartsRequest || (exports.ListPartsRequest = {}));
 var PutBucketAccelerateConfigurationRequest;
@@ -9753,6 +10514,19 @@ var PutObjectLockConfigurationRequest;
         ...obj,
     });
 })(PutObjectLockConfigurationRequest = exports.PutObjectLockConfigurationRequest || (exports.PutObjectLockConfigurationRequest = {}));
+
+
+/***/ }),
+
+/***/ 6958:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.WriteGetObjectResponseRequest = exports.UploadPartCopyRequest = exports.UploadPartCopyOutput = exports.CopyPartResult = exports.UploadPartRequest = exports.UploadPartOutput = exports.SelectObjectContentRequest = exports.ScanRange = exports.RequestProgress = exports.SelectObjectContentOutput = exports.SelectObjectContentEventStream = exports.StatsEvent = exports.Stats = exports.RecordsEvent = exports.ProgressEvent = exports.Progress = exports.EndEvent = exports.ContinuationEvent = exports.RestoreObjectRequest = exports.RestoreRequest = exports.RestoreRequestType = exports.SelectParameters = exports.OutputSerialization = exports.JSONOutput = exports.CSVOutput = exports.QuoteFields = exports.InputSerialization = exports.ParquetInput = exports.JSONInput = exports.JSONType = exports.CSVInput = exports.FileHeaderInfo = exports.OutputLocation = exports.S3Location = exports.MetadataEntry = exports.Encryption = exports.GlacierJobParameters = exports.RestoreObjectOutput = exports.ObjectAlreadyInActiveTierError = exports.PutPublicAccessBlockRequest = exports.PutObjectTaggingRequest = exports.PutObjectTaggingOutput = exports.PutObjectRetentionRequest = exports.PutObjectRetentionOutput = void 0;
+const smithy_client_1 = __nccwpck_require__(4963);
+const S3ServiceException_1 = __nccwpck_require__(37614);
 var PutObjectRetentionOutput;
 (function (PutObjectRetentionOutput) {
     PutObjectRetentionOutput.filterSensitiveLog = (obj) => ({
@@ -9783,24 +10557,25 @@ var PutPublicAccessBlockRequest;
         ...obj,
     });
 })(PutPublicAccessBlockRequest = exports.PutPublicAccessBlockRequest || (exports.PutPublicAccessBlockRequest = {}));
+class ObjectAlreadyInActiveTierError extends S3ServiceException_1.S3ServiceException {
+    constructor(opts) {
+        super({
+            name: "ObjectAlreadyInActiveTierError",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "ObjectAlreadyInActiveTierError";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, ObjectAlreadyInActiveTierError.prototype);
+    }
+}
+exports.ObjectAlreadyInActiveTierError = ObjectAlreadyInActiveTierError;
 var RestoreObjectOutput;
 (function (RestoreObjectOutput) {
     RestoreObjectOutput.filterSensitiveLog = (obj) => ({
         ...obj,
     });
 })(RestoreObjectOutput = exports.RestoreObjectOutput || (exports.RestoreObjectOutput = {}));
-
-
-/***/ }),
-
-/***/ 6958:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.WriteGetObjectResponseRequest = exports.UploadPartCopyRequest = exports.UploadPartCopyOutput = exports.CopyPartResult = exports.UploadPartRequest = exports.UploadPartOutput = exports.SelectObjectContentRequest = exports.ScanRange = exports.RequestProgress = exports.SelectObjectContentOutput = exports.SelectObjectContentEventStream = exports.StatsEvent = exports.Stats = exports.RecordsEvent = exports.ProgressEvent = exports.Progress = exports.EndEvent = exports.ContinuationEvent = exports.RestoreObjectRequest = exports.RestoreRequest = exports.RestoreRequestType = exports.SelectParameters = exports.OutputSerialization = exports.JSONOutput = exports.CSVOutput = exports.QuoteFields = exports.InputSerialization = exports.ParquetInput = exports.JSONInput = exports.JSONType = exports.CSVInput = exports.FileHeaderInfo = exports.OutputLocation = exports.S3Location = exports.MetadataEntry = exports.Encryption = exports.GlacierJobParameters = void 0;
-const smithy_client_1 = __nccwpck_require__(4963);
 var GlacierJobParameters;
 (function (GlacierJobParameters) {
     GlacierJobParameters.filterSensitiveLog = (obj) => ({
@@ -10176,16 +10951,18 @@ tslib_1.__exportStar(__nccwpck_require__(82064), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.serializeAws_restXmlGetPublicAccessBlockCommand = exports.serializeAws_restXmlGetObjectTorrentCommand = exports.serializeAws_restXmlGetObjectTaggingCommand = exports.serializeAws_restXmlGetObjectRetentionCommand = exports.serializeAws_restXmlGetObjectLockConfigurationCommand = exports.serializeAws_restXmlGetObjectLegalHoldCommand = exports.serializeAws_restXmlGetObjectAclCommand = exports.serializeAws_restXmlGetObjectCommand = exports.serializeAws_restXmlGetBucketWebsiteCommand = exports.serializeAws_restXmlGetBucketVersioningCommand = exports.serializeAws_restXmlGetBucketTaggingCommand = exports.serializeAws_restXmlGetBucketRequestPaymentCommand = exports.serializeAws_restXmlGetBucketReplicationCommand = exports.serializeAws_restXmlGetBucketPolicyStatusCommand = exports.serializeAws_restXmlGetBucketPolicyCommand = exports.serializeAws_restXmlGetBucketOwnershipControlsCommand = exports.serializeAws_restXmlGetBucketNotificationConfigurationCommand = exports.serializeAws_restXmlGetBucketMetricsConfigurationCommand = exports.serializeAws_restXmlGetBucketLoggingCommand = exports.serializeAws_restXmlGetBucketLocationCommand = exports.serializeAws_restXmlGetBucketLifecycleConfigurationCommand = exports.serializeAws_restXmlGetBucketInventoryConfigurationCommand = exports.serializeAws_restXmlGetBucketIntelligentTieringConfigurationCommand = exports.serializeAws_restXmlGetBucketEncryptionCommand = exports.serializeAws_restXmlGetBucketCorsCommand = exports.serializeAws_restXmlGetBucketAnalyticsConfigurationCommand = exports.serializeAws_restXmlGetBucketAclCommand = exports.serializeAws_restXmlGetBucketAccelerateConfigurationCommand = exports.serializeAws_restXmlDeletePublicAccessBlockCommand = exports.serializeAws_restXmlDeleteObjectTaggingCommand = exports.serializeAws_restXmlDeleteObjectsCommand = exports.serializeAws_restXmlDeleteObjectCommand = exports.serializeAws_restXmlDeleteBucketWebsiteCommand = exports.serializeAws_restXmlDeleteBucketTaggingCommand = exports.serializeAws_restXmlDeleteBucketReplicationCommand = exports.serializeAws_restXmlDeleteBucketPolicyCommand = exports.serializeAws_restXmlDeleteBucketOwnershipControlsCommand = exports.serializeAws_restXmlDeleteBucketMetricsConfigurationCommand = exports.serializeAws_restXmlDeleteBucketLifecycleCommand = exports.serializeAws_restXmlDeleteBucketInventoryConfigurationCommand = exports.serializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommand = exports.serializeAws_restXmlDeleteBucketEncryptionCommand = exports.serializeAws_restXmlDeleteBucketCorsCommand = exports.serializeAws_restXmlDeleteBucketAnalyticsConfigurationCommand = exports.serializeAws_restXmlDeleteBucketCommand = exports.serializeAws_restXmlCreateMultipartUploadCommand = exports.serializeAws_restXmlCreateBucketCommand = exports.serializeAws_restXmlCopyObjectCommand = exports.serializeAws_restXmlCompleteMultipartUploadCommand = exports.serializeAws_restXmlAbortMultipartUploadCommand = void 0;
-exports.deserializeAws_restXmlDeleteBucketCorsCommand = exports.deserializeAws_restXmlDeleteBucketAnalyticsConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketCommand = exports.deserializeAws_restXmlCreateMultipartUploadCommand = exports.deserializeAws_restXmlCreateBucketCommand = exports.deserializeAws_restXmlCopyObjectCommand = exports.deserializeAws_restXmlCompleteMultipartUploadCommand = exports.deserializeAws_restXmlAbortMultipartUploadCommand = exports.serializeAws_restXmlWriteGetObjectResponseCommand = exports.serializeAws_restXmlUploadPartCopyCommand = exports.serializeAws_restXmlUploadPartCommand = exports.serializeAws_restXmlSelectObjectContentCommand = exports.serializeAws_restXmlRestoreObjectCommand = exports.serializeAws_restXmlPutPublicAccessBlockCommand = exports.serializeAws_restXmlPutObjectTaggingCommand = exports.serializeAws_restXmlPutObjectRetentionCommand = exports.serializeAws_restXmlPutObjectLockConfigurationCommand = exports.serializeAws_restXmlPutObjectLegalHoldCommand = exports.serializeAws_restXmlPutObjectAclCommand = exports.serializeAws_restXmlPutObjectCommand = exports.serializeAws_restXmlPutBucketWebsiteCommand = exports.serializeAws_restXmlPutBucketVersioningCommand = exports.serializeAws_restXmlPutBucketTaggingCommand = exports.serializeAws_restXmlPutBucketRequestPaymentCommand = exports.serializeAws_restXmlPutBucketReplicationCommand = exports.serializeAws_restXmlPutBucketPolicyCommand = exports.serializeAws_restXmlPutBucketOwnershipControlsCommand = exports.serializeAws_restXmlPutBucketNotificationConfigurationCommand = exports.serializeAws_restXmlPutBucketMetricsConfigurationCommand = exports.serializeAws_restXmlPutBucketLoggingCommand = exports.serializeAws_restXmlPutBucketLifecycleConfigurationCommand = exports.serializeAws_restXmlPutBucketInventoryConfigurationCommand = exports.serializeAws_restXmlPutBucketIntelligentTieringConfigurationCommand = exports.serializeAws_restXmlPutBucketEncryptionCommand = exports.serializeAws_restXmlPutBucketCorsCommand = exports.serializeAws_restXmlPutBucketAnalyticsConfigurationCommand = exports.serializeAws_restXmlPutBucketAclCommand = exports.serializeAws_restXmlPutBucketAccelerateConfigurationCommand = exports.serializeAws_restXmlListPartsCommand = exports.serializeAws_restXmlListObjectVersionsCommand = exports.serializeAws_restXmlListObjectsV2Command = exports.serializeAws_restXmlListObjectsCommand = exports.serializeAws_restXmlListMultipartUploadsCommand = exports.serializeAws_restXmlListBucketsCommand = exports.serializeAws_restXmlListBucketMetricsConfigurationsCommand = exports.serializeAws_restXmlListBucketInventoryConfigurationsCommand = exports.serializeAws_restXmlListBucketIntelligentTieringConfigurationsCommand = exports.serializeAws_restXmlListBucketAnalyticsConfigurationsCommand = exports.serializeAws_restXmlHeadObjectCommand = exports.serializeAws_restXmlHeadBucketCommand = void 0;
-exports.deserializeAws_restXmlListMultipartUploadsCommand = exports.deserializeAws_restXmlListBucketsCommand = exports.deserializeAws_restXmlListBucketMetricsConfigurationsCommand = exports.deserializeAws_restXmlListBucketInventoryConfigurationsCommand = exports.deserializeAws_restXmlListBucketIntelligentTieringConfigurationsCommand = exports.deserializeAws_restXmlListBucketAnalyticsConfigurationsCommand = exports.deserializeAws_restXmlHeadObjectCommand = exports.deserializeAws_restXmlHeadBucketCommand = exports.deserializeAws_restXmlGetPublicAccessBlockCommand = exports.deserializeAws_restXmlGetObjectTorrentCommand = exports.deserializeAws_restXmlGetObjectTaggingCommand = exports.deserializeAws_restXmlGetObjectRetentionCommand = exports.deserializeAws_restXmlGetObjectLockConfigurationCommand = exports.deserializeAws_restXmlGetObjectLegalHoldCommand = exports.deserializeAws_restXmlGetObjectAclCommand = exports.deserializeAws_restXmlGetObjectCommand = exports.deserializeAws_restXmlGetBucketWebsiteCommand = exports.deserializeAws_restXmlGetBucketVersioningCommand = exports.deserializeAws_restXmlGetBucketTaggingCommand = exports.deserializeAws_restXmlGetBucketRequestPaymentCommand = exports.deserializeAws_restXmlGetBucketReplicationCommand = exports.deserializeAws_restXmlGetBucketPolicyStatusCommand = exports.deserializeAws_restXmlGetBucketPolicyCommand = exports.deserializeAws_restXmlGetBucketOwnershipControlsCommand = exports.deserializeAws_restXmlGetBucketNotificationConfigurationCommand = exports.deserializeAws_restXmlGetBucketMetricsConfigurationCommand = exports.deserializeAws_restXmlGetBucketLoggingCommand = exports.deserializeAws_restXmlGetBucketLocationCommand = exports.deserializeAws_restXmlGetBucketLifecycleConfigurationCommand = exports.deserializeAws_restXmlGetBucketInventoryConfigurationCommand = exports.deserializeAws_restXmlGetBucketIntelligentTieringConfigurationCommand = exports.deserializeAws_restXmlGetBucketEncryptionCommand = exports.deserializeAws_restXmlGetBucketCorsCommand = exports.deserializeAws_restXmlGetBucketAnalyticsConfigurationCommand = exports.deserializeAws_restXmlGetBucketAclCommand = exports.deserializeAws_restXmlGetBucketAccelerateConfigurationCommand = exports.deserializeAws_restXmlDeletePublicAccessBlockCommand = exports.deserializeAws_restXmlDeleteObjectTaggingCommand = exports.deserializeAws_restXmlDeleteObjectsCommand = exports.deserializeAws_restXmlDeleteObjectCommand = exports.deserializeAws_restXmlDeleteBucketWebsiteCommand = exports.deserializeAws_restXmlDeleteBucketTaggingCommand = exports.deserializeAws_restXmlDeleteBucketReplicationCommand = exports.deserializeAws_restXmlDeleteBucketPolicyCommand = exports.deserializeAws_restXmlDeleteBucketOwnershipControlsCommand = exports.deserializeAws_restXmlDeleteBucketMetricsConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketLifecycleCommand = exports.deserializeAws_restXmlDeleteBucketInventoryConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketEncryptionCommand = void 0;
-exports.deserializeAws_restXmlWriteGetObjectResponseCommand = exports.deserializeAws_restXmlUploadPartCopyCommand = exports.deserializeAws_restXmlUploadPartCommand = exports.deserializeAws_restXmlSelectObjectContentCommand = exports.deserializeAws_restXmlRestoreObjectCommand = exports.deserializeAws_restXmlPutPublicAccessBlockCommand = exports.deserializeAws_restXmlPutObjectTaggingCommand = exports.deserializeAws_restXmlPutObjectRetentionCommand = exports.deserializeAws_restXmlPutObjectLockConfigurationCommand = exports.deserializeAws_restXmlPutObjectLegalHoldCommand = exports.deserializeAws_restXmlPutObjectAclCommand = exports.deserializeAws_restXmlPutObjectCommand = exports.deserializeAws_restXmlPutBucketWebsiteCommand = exports.deserializeAws_restXmlPutBucketVersioningCommand = exports.deserializeAws_restXmlPutBucketTaggingCommand = exports.deserializeAws_restXmlPutBucketRequestPaymentCommand = exports.deserializeAws_restXmlPutBucketReplicationCommand = exports.deserializeAws_restXmlPutBucketPolicyCommand = exports.deserializeAws_restXmlPutBucketOwnershipControlsCommand = exports.deserializeAws_restXmlPutBucketNotificationConfigurationCommand = exports.deserializeAws_restXmlPutBucketMetricsConfigurationCommand = exports.deserializeAws_restXmlPutBucketLoggingCommand = exports.deserializeAws_restXmlPutBucketLifecycleConfigurationCommand = exports.deserializeAws_restXmlPutBucketInventoryConfigurationCommand = exports.deserializeAws_restXmlPutBucketIntelligentTieringConfigurationCommand = exports.deserializeAws_restXmlPutBucketEncryptionCommand = exports.deserializeAws_restXmlPutBucketCorsCommand = exports.deserializeAws_restXmlPutBucketAnalyticsConfigurationCommand = exports.deserializeAws_restXmlPutBucketAclCommand = exports.deserializeAws_restXmlPutBucketAccelerateConfigurationCommand = exports.deserializeAws_restXmlListPartsCommand = exports.deserializeAws_restXmlListObjectVersionsCommand = exports.deserializeAws_restXmlListObjectsV2Command = exports.deserializeAws_restXmlListObjectsCommand = void 0;
+exports.serializeAws_restXmlGetObjectTorrentCommand = exports.serializeAws_restXmlGetObjectTaggingCommand = exports.serializeAws_restXmlGetObjectRetentionCommand = exports.serializeAws_restXmlGetObjectLockConfigurationCommand = exports.serializeAws_restXmlGetObjectLegalHoldCommand = exports.serializeAws_restXmlGetObjectAttributesCommand = exports.serializeAws_restXmlGetObjectAclCommand = exports.serializeAws_restXmlGetObjectCommand = exports.serializeAws_restXmlGetBucketWebsiteCommand = exports.serializeAws_restXmlGetBucketVersioningCommand = exports.serializeAws_restXmlGetBucketTaggingCommand = exports.serializeAws_restXmlGetBucketRequestPaymentCommand = exports.serializeAws_restXmlGetBucketReplicationCommand = exports.serializeAws_restXmlGetBucketPolicyStatusCommand = exports.serializeAws_restXmlGetBucketPolicyCommand = exports.serializeAws_restXmlGetBucketOwnershipControlsCommand = exports.serializeAws_restXmlGetBucketNotificationConfigurationCommand = exports.serializeAws_restXmlGetBucketMetricsConfigurationCommand = exports.serializeAws_restXmlGetBucketLoggingCommand = exports.serializeAws_restXmlGetBucketLocationCommand = exports.serializeAws_restXmlGetBucketLifecycleConfigurationCommand = exports.serializeAws_restXmlGetBucketInventoryConfigurationCommand = exports.serializeAws_restXmlGetBucketIntelligentTieringConfigurationCommand = exports.serializeAws_restXmlGetBucketEncryptionCommand = exports.serializeAws_restXmlGetBucketCorsCommand = exports.serializeAws_restXmlGetBucketAnalyticsConfigurationCommand = exports.serializeAws_restXmlGetBucketAclCommand = exports.serializeAws_restXmlGetBucketAccelerateConfigurationCommand = exports.serializeAws_restXmlDeletePublicAccessBlockCommand = exports.serializeAws_restXmlDeleteObjectTaggingCommand = exports.serializeAws_restXmlDeleteObjectsCommand = exports.serializeAws_restXmlDeleteObjectCommand = exports.serializeAws_restXmlDeleteBucketWebsiteCommand = exports.serializeAws_restXmlDeleteBucketTaggingCommand = exports.serializeAws_restXmlDeleteBucketReplicationCommand = exports.serializeAws_restXmlDeleteBucketPolicyCommand = exports.serializeAws_restXmlDeleteBucketOwnershipControlsCommand = exports.serializeAws_restXmlDeleteBucketMetricsConfigurationCommand = exports.serializeAws_restXmlDeleteBucketLifecycleCommand = exports.serializeAws_restXmlDeleteBucketInventoryConfigurationCommand = exports.serializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommand = exports.serializeAws_restXmlDeleteBucketEncryptionCommand = exports.serializeAws_restXmlDeleteBucketCorsCommand = exports.serializeAws_restXmlDeleteBucketAnalyticsConfigurationCommand = exports.serializeAws_restXmlDeleteBucketCommand = exports.serializeAws_restXmlCreateMultipartUploadCommand = exports.serializeAws_restXmlCreateBucketCommand = exports.serializeAws_restXmlCopyObjectCommand = exports.serializeAws_restXmlCompleteMultipartUploadCommand = exports.serializeAws_restXmlAbortMultipartUploadCommand = void 0;
+exports.deserializeAws_restXmlDeleteBucketAnalyticsConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketCommand = exports.deserializeAws_restXmlCreateMultipartUploadCommand = exports.deserializeAws_restXmlCreateBucketCommand = exports.deserializeAws_restXmlCopyObjectCommand = exports.deserializeAws_restXmlCompleteMultipartUploadCommand = exports.deserializeAws_restXmlAbortMultipartUploadCommand = exports.serializeAws_restXmlWriteGetObjectResponseCommand = exports.serializeAws_restXmlUploadPartCopyCommand = exports.serializeAws_restXmlUploadPartCommand = exports.serializeAws_restXmlSelectObjectContentCommand = exports.serializeAws_restXmlRestoreObjectCommand = exports.serializeAws_restXmlPutPublicAccessBlockCommand = exports.serializeAws_restXmlPutObjectTaggingCommand = exports.serializeAws_restXmlPutObjectRetentionCommand = exports.serializeAws_restXmlPutObjectLockConfigurationCommand = exports.serializeAws_restXmlPutObjectLegalHoldCommand = exports.serializeAws_restXmlPutObjectAclCommand = exports.serializeAws_restXmlPutObjectCommand = exports.serializeAws_restXmlPutBucketWebsiteCommand = exports.serializeAws_restXmlPutBucketVersioningCommand = exports.serializeAws_restXmlPutBucketTaggingCommand = exports.serializeAws_restXmlPutBucketRequestPaymentCommand = exports.serializeAws_restXmlPutBucketReplicationCommand = exports.serializeAws_restXmlPutBucketPolicyCommand = exports.serializeAws_restXmlPutBucketOwnershipControlsCommand = exports.serializeAws_restXmlPutBucketNotificationConfigurationCommand = exports.serializeAws_restXmlPutBucketMetricsConfigurationCommand = exports.serializeAws_restXmlPutBucketLoggingCommand = exports.serializeAws_restXmlPutBucketLifecycleConfigurationCommand = exports.serializeAws_restXmlPutBucketInventoryConfigurationCommand = exports.serializeAws_restXmlPutBucketIntelligentTieringConfigurationCommand = exports.serializeAws_restXmlPutBucketEncryptionCommand = exports.serializeAws_restXmlPutBucketCorsCommand = exports.serializeAws_restXmlPutBucketAnalyticsConfigurationCommand = exports.serializeAws_restXmlPutBucketAclCommand = exports.serializeAws_restXmlPutBucketAccelerateConfigurationCommand = exports.serializeAws_restXmlListPartsCommand = exports.serializeAws_restXmlListObjectVersionsCommand = exports.serializeAws_restXmlListObjectsV2Command = exports.serializeAws_restXmlListObjectsCommand = exports.serializeAws_restXmlListMultipartUploadsCommand = exports.serializeAws_restXmlListBucketsCommand = exports.serializeAws_restXmlListBucketMetricsConfigurationsCommand = exports.serializeAws_restXmlListBucketInventoryConfigurationsCommand = exports.serializeAws_restXmlListBucketIntelligentTieringConfigurationsCommand = exports.serializeAws_restXmlListBucketAnalyticsConfigurationsCommand = exports.serializeAws_restXmlHeadObjectCommand = exports.serializeAws_restXmlHeadBucketCommand = exports.serializeAws_restXmlGetPublicAccessBlockCommand = void 0;
+exports.deserializeAws_restXmlListBucketMetricsConfigurationsCommand = exports.deserializeAws_restXmlListBucketInventoryConfigurationsCommand = exports.deserializeAws_restXmlListBucketIntelligentTieringConfigurationsCommand = exports.deserializeAws_restXmlListBucketAnalyticsConfigurationsCommand = exports.deserializeAws_restXmlHeadObjectCommand = exports.deserializeAws_restXmlHeadBucketCommand = exports.deserializeAws_restXmlGetPublicAccessBlockCommand = exports.deserializeAws_restXmlGetObjectTorrentCommand = exports.deserializeAws_restXmlGetObjectTaggingCommand = exports.deserializeAws_restXmlGetObjectRetentionCommand = exports.deserializeAws_restXmlGetObjectLockConfigurationCommand = exports.deserializeAws_restXmlGetObjectLegalHoldCommand = exports.deserializeAws_restXmlGetObjectAttributesCommand = exports.deserializeAws_restXmlGetObjectAclCommand = exports.deserializeAws_restXmlGetObjectCommand = exports.deserializeAws_restXmlGetBucketWebsiteCommand = exports.deserializeAws_restXmlGetBucketVersioningCommand = exports.deserializeAws_restXmlGetBucketTaggingCommand = exports.deserializeAws_restXmlGetBucketRequestPaymentCommand = exports.deserializeAws_restXmlGetBucketReplicationCommand = exports.deserializeAws_restXmlGetBucketPolicyStatusCommand = exports.deserializeAws_restXmlGetBucketPolicyCommand = exports.deserializeAws_restXmlGetBucketOwnershipControlsCommand = exports.deserializeAws_restXmlGetBucketNotificationConfigurationCommand = exports.deserializeAws_restXmlGetBucketMetricsConfigurationCommand = exports.deserializeAws_restXmlGetBucketLoggingCommand = exports.deserializeAws_restXmlGetBucketLocationCommand = exports.deserializeAws_restXmlGetBucketLifecycleConfigurationCommand = exports.deserializeAws_restXmlGetBucketInventoryConfigurationCommand = exports.deserializeAws_restXmlGetBucketIntelligentTieringConfigurationCommand = exports.deserializeAws_restXmlGetBucketEncryptionCommand = exports.deserializeAws_restXmlGetBucketCorsCommand = exports.deserializeAws_restXmlGetBucketAnalyticsConfigurationCommand = exports.deserializeAws_restXmlGetBucketAclCommand = exports.deserializeAws_restXmlGetBucketAccelerateConfigurationCommand = exports.deserializeAws_restXmlDeletePublicAccessBlockCommand = exports.deserializeAws_restXmlDeleteObjectTaggingCommand = exports.deserializeAws_restXmlDeleteObjectsCommand = exports.deserializeAws_restXmlDeleteObjectCommand = exports.deserializeAws_restXmlDeleteBucketWebsiteCommand = exports.deserializeAws_restXmlDeleteBucketTaggingCommand = exports.deserializeAws_restXmlDeleteBucketReplicationCommand = exports.deserializeAws_restXmlDeleteBucketPolicyCommand = exports.deserializeAws_restXmlDeleteBucketOwnershipControlsCommand = exports.deserializeAws_restXmlDeleteBucketMetricsConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketLifecycleCommand = exports.deserializeAws_restXmlDeleteBucketInventoryConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommand = exports.deserializeAws_restXmlDeleteBucketEncryptionCommand = exports.deserializeAws_restXmlDeleteBucketCorsCommand = void 0;
+exports.deserializeAws_restXmlWriteGetObjectResponseCommand = exports.deserializeAws_restXmlUploadPartCopyCommand = exports.deserializeAws_restXmlUploadPartCommand = exports.deserializeAws_restXmlSelectObjectContentCommand = exports.deserializeAws_restXmlRestoreObjectCommand = exports.deserializeAws_restXmlPutPublicAccessBlockCommand = exports.deserializeAws_restXmlPutObjectTaggingCommand = exports.deserializeAws_restXmlPutObjectRetentionCommand = exports.deserializeAws_restXmlPutObjectLockConfigurationCommand = exports.deserializeAws_restXmlPutObjectLegalHoldCommand = exports.deserializeAws_restXmlPutObjectAclCommand = exports.deserializeAws_restXmlPutObjectCommand = exports.deserializeAws_restXmlPutBucketWebsiteCommand = exports.deserializeAws_restXmlPutBucketVersioningCommand = exports.deserializeAws_restXmlPutBucketTaggingCommand = exports.deserializeAws_restXmlPutBucketRequestPaymentCommand = exports.deserializeAws_restXmlPutBucketReplicationCommand = exports.deserializeAws_restXmlPutBucketPolicyCommand = exports.deserializeAws_restXmlPutBucketOwnershipControlsCommand = exports.deserializeAws_restXmlPutBucketNotificationConfigurationCommand = exports.deserializeAws_restXmlPutBucketMetricsConfigurationCommand = exports.deserializeAws_restXmlPutBucketLoggingCommand = exports.deserializeAws_restXmlPutBucketLifecycleConfigurationCommand = exports.deserializeAws_restXmlPutBucketInventoryConfigurationCommand = exports.deserializeAws_restXmlPutBucketIntelligentTieringConfigurationCommand = exports.deserializeAws_restXmlPutBucketEncryptionCommand = exports.deserializeAws_restXmlPutBucketCorsCommand = exports.deserializeAws_restXmlPutBucketAnalyticsConfigurationCommand = exports.deserializeAws_restXmlPutBucketAclCommand = exports.deserializeAws_restXmlPutBucketAccelerateConfigurationCommand = exports.deserializeAws_restXmlListPartsCommand = exports.deserializeAws_restXmlListObjectVersionsCommand = exports.deserializeAws_restXmlListObjectsV2Command = exports.deserializeAws_restXmlListObjectsCommand = exports.deserializeAws_restXmlListMultipartUploadsCommand = exports.deserializeAws_restXmlListBucketsCommand = void 0;
 const protocol_http_1 = __nccwpck_require__(70223);
 const smithy_client_1 = __nccwpck_require__(4963);
 const xml_builder_1 = __nccwpck_require__(42329);
 const entities_1 = __nccwpck_require__(3000);
 const fast_xml_parser_1 = __nccwpck_require__(27448);
 const models_0_1 = __nccwpck_require__(51628);
+const models_1_1 = __nccwpck_require__(6958);
+const S3ServiceException_1 = __nccwpck_require__(37614);
 const serializeAws_restXmlAbortMultipartUploadCommand = async (input, context) => {
     const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
     const headers = {
@@ -10239,9 +11016,22 @@ const serializeAws_restXmlCompleteMultipartUploadCommand = async (input, context
     const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
     const headers = {
         "content-type": "application/xml",
+        ...(isSerializableHeaderValue(input.ChecksumCRC32) && { "x-amz-checksum-crc32": input.ChecksumCRC32 }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32C) && { "x-amz-checksum-crc32c": input.ChecksumCRC32C }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA1) && { "x-amz-checksum-sha1": input.ChecksumSHA1 }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA256) && { "x-amz-checksum-sha256": input.ChecksumSHA256 }),
         ...(isSerializableHeaderValue(input.RequestPayer) && { "x-amz-request-payer": input.RequestPayer }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerAlgorithm) && {
+            "x-amz-server-side-encryption-customer-algorithm": input.SSECustomerAlgorithm,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerKey) && {
+            "x-amz-server-side-encryption-customer-key": input.SSECustomerKey,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerKeyMD5) && {
+            "x-amz-server-side-encryption-customer-key-md5": input.SSECustomerKeyMD5,
         }),
     };
     let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}/{Key+}";
@@ -10301,6 +11091,7 @@ const serializeAws_restXmlCopyObjectCommand = async (input, context) => {
     const headers = {
         ...(isSerializableHeaderValue(input.ACL) && { "x-amz-acl": input.ACL }),
         ...(isSerializableHeaderValue(input.CacheControl) && { "cache-control": input.CacheControl }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && { "x-amz-checksum-algorithm": input.ChecksumAlgorithm }),
         ...(isSerializableHeaderValue(input.ContentDisposition) && { "content-disposition": input.ContentDisposition }),
         ...(isSerializableHeaderValue(input.ContentEncoding) && { "content-encoding": input.ContentEncoding }),
         ...(isSerializableHeaderValue(input.ContentLanguage) && { "content-language": input.ContentLanguage }),
@@ -10519,6 +11310,7 @@ const serializeAws_restXmlCreateMultipartUploadCommand = async (input, context) 
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && { "x-amz-checksum-algorithm": input.ChecksumAlgorithm }),
         ...(input.Metadata !== undefined &&
             Object.keys(input.Metadata).reduce((acc, suffix) => ({
                 ...acc,
@@ -11068,6 +11860,9 @@ const serializeAws_restXmlDeleteObjectsCommand = async (input, context) => {
         }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
+        }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
         }),
     };
     let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}";
@@ -11899,6 +12694,7 @@ const serializeAws_restXmlGetObjectCommand = async (input, context) => {
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
+        ...(isSerializableHeaderValue(input.ChecksumMode) && { "x-amz-checksum-mode": input.ChecksumMode }),
     };
     let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}/{Key+}";
     if (input.Bucket !== undefined) {
@@ -12001,6 +12797,69 @@ const serializeAws_restXmlGetObjectAclCommand = async (input, context) => {
     });
 };
 exports.serializeAws_restXmlGetObjectAclCommand = serializeAws_restXmlGetObjectAclCommand;
+const serializeAws_restXmlGetObjectAttributesCommand = async (input, context) => {
+    const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
+    const headers = {
+        ...(isSerializableHeaderValue(input.MaxParts) && { "x-amz-max-parts": input.MaxParts.toString() }),
+        ...(isSerializableHeaderValue(input.PartNumberMarker) && { "x-amz-part-number-marker": input.PartNumberMarker }),
+        ...(isSerializableHeaderValue(input.SSECustomerAlgorithm) && {
+            "x-amz-server-side-encryption-customer-algorithm": input.SSECustomerAlgorithm,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerKey) && {
+            "x-amz-server-side-encryption-customer-key": input.SSECustomerKey,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerKeyMD5) && {
+            "x-amz-server-side-encryption-customer-key-md5": input.SSECustomerKeyMD5,
+        }),
+        ...(isSerializableHeaderValue(input.RequestPayer) && { "x-amz-request-payer": input.RequestPayer }),
+        ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
+            "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
+        }),
+        ...(isSerializableHeaderValue(input.ObjectAttributes) && {
+            "x-amz-object-attributes": (input.ObjectAttributes || []).map((_entry) => _entry).join(", "),
+        }),
+    };
+    let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}/{Key+}";
+    if (input.Bucket !== undefined) {
+        const labelValue = input.Bucket;
+        if (labelValue.length <= 0) {
+            throw new Error("Empty value provided for input HTTP label: Bucket.");
+        }
+        resolvedPath = resolvedPath.replace("{Bucket}", smithy_client_1.extendedEncodeURIComponent(labelValue));
+    }
+    else {
+        throw new Error("No value provided for input HTTP label: Bucket.");
+    }
+    if (input.Key !== undefined) {
+        const labelValue = input.Key;
+        if (labelValue.length <= 0) {
+            throw new Error("Empty value provided for input HTTP label: Key.");
+        }
+        resolvedPath = resolvedPath.replace("{Key+}", labelValue
+            .split("/")
+            .map((segment) => smithy_client_1.extendedEncodeURIComponent(segment))
+            .join("/"));
+    }
+    else {
+        throw new Error("No value provided for input HTTP label: Key.");
+    }
+    const query = {
+        attributes: "",
+        ...(input.VersionId !== undefined && { versionId: input.VersionId }),
+    };
+    let body;
+    return new protocol_http_1.HttpRequest({
+        protocol,
+        hostname,
+        port,
+        method: "GET",
+        headers,
+        path: resolvedPath,
+        query,
+        body,
+    });
+};
+exports.serializeAws_restXmlGetObjectAttributesCommand = serializeAws_restXmlGetObjectAttributesCommand;
 const serializeAws_restXmlGetObjectLegalHoldCommand = async (input, context) => {
     const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
     const headers = {
@@ -12319,6 +13178,7 @@ const serializeAws_restXmlHeadObjectCommand = async (input, context) => {
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
+        ...(isSerializableHeaderValue(input.ChecksumMode) && { "x-amz-checksum-mode": input.ChecksumMode }),
     };
     let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}/{Key+}";
     if (input.Bucket !== undefined) {
@@ -12688,6 +13548,15 @@ const serializeAws_restXmlListPartsCommand = async (input, context) => {
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
+        ...(isSerializableHeaderValue(input.SSECustomerAlgorithm) && {
+            "x-amz-server-side-encryption-customer-algorithm": input.SSECustomerAlgorithm,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerKey) && {
+            "x-amz-server-side-encryption-customer-key": input.SSECustomerKey,
+        }),
+        ...(isSerializableHeaderValue(input.SSECustomerKeyMD5) && {
+            "x-amz-server-side-encryption-customer-key-md5": input.SSECustomerKeyMD5,
+        }),
     };
     let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}/{Key+}";
     if (input.Bucket !== undefined) {
@@ -12739,6 +13608,9 @@ const serializeAws_restXmlPutBucketAccelerateConfigurationCommand = async (input
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
     };
     let resolvedPath = `${(basePath === null || basePath === void 0 ? void 0 : basePath.endsWith("/")) ? basePath.slice(0, -1) : basePath || ""}` + "/{Bucket}";
     if (input.Bucket !== undefined) {
@@ -12783,6 +13655,9 @@ const serializeAws_restXmlPutBucketAclCommand = async (input, context) => {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ACL) && { "x-amz-acl": input.ACL }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.GrantFullControl) && { "x-amz-grant-full-control": input.GrantFullControl }),
         ...(isSerializableHeaderValue(input.GrantRead) && { "x-amz-grant-read": input.GrantRead }),
         ...(isSerializableHeaderValue(input.GrantReadACP) && { "x-amz-grant-read-acp": input.GrantReadACP }),
@@ -12880,6 +13755,9 @@ const serializeAws_restXmlPutBucketCorsCommand = async (input, context) => {
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -12926,6 +13804,9 @@ const serializeAws_restXmlPutBucketEncryptionCommand = async (input, context) =>
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13060,6 +13941,9 @@ const serializeAws_restXmlPutBucketLifecycleConfigurationCommand = async (input,
     const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
     const headers = {
         "content-type": "application/xml",
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13107,6 +13991,9 @@ const serializeAws_restXmlPutBucketLoggingCommand = async (input, context) => {
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13293,6 +14180,9 @@ const serializeAws_restXmlPutBucketPolicyCommand = async (input, context) => {
     const headers = {
         "content-type": "text/plain",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ConfirmRemoveSelfBucketAccess) && {
             "x-amz-confirm-remove-self-bucket-access": input.ConfirmRemoveSelfBucketAccess.toString(),
         }),
@@ -13340,6 +14230,9 @@ const serializeAws_restXmlPutBucketReplicationCommand = async (input, context) =
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.Token) && { "x-amz-bucket-object-lock-token": input.Token }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
@@ -13387,6 +14280,9 @@ const serializeAws_restXmlPutBucketRequestPaymentCommand = async (input, context
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13433,6 +14329,9 @@ const serializeAws_restXmlPutBucketTaggingCommand = async (input, context) => {
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13479,6 +14378,9 @@ const serializeAws_restXmlPutBucketVersioningCommand = async (input, context) =>
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.MFA) && { "x-amz-mfa": input.MFA }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
@@ -13526,6 +14428,9 @@ const serializeAws_restXmlPutBucketWebsiteCommand = async (input, context) => {
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13579,6 +14484,13 @@ const serializeAws_restXmlPutObjectCommand = async (input, context) => {
         ...(isSerializableHeaderValue(input.ContentLength) && { "content-length": input.ContentLength.toString() }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
         ...(isSerializableHeaderValue(input.ContentType) && { "content-type": input.ContentType }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32) && { "x-amz-checksum-crc32": input.ChecksumCRC32 }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32C) && { "x-amz-checksum-crc32c": input.ChecksumCRC32C }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA1) && { "x-amz-checksum-sha1": input.ChecksumSHA1 }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA256) && { "x-amz-checksum-sha256": input.ChecksumSHA256 }),
         ...(isSerializableHeaderValue(input.Expires) && { expires: smithy_client_1.dateToUtcString(input.Expires).toString() }),
         ...(isSerializableHeaderValue(input.GrantFullControl) && { "x-amz-grant-full-control": input.GrantFullControl }),
         ...(isSerializableHeaderValue(input.GrantRead) && { "x-amz-grant-read": input.GrantRead }),
@@ -13681,6 +14593,9 @@ const serializeAws_restXmlPutObjectAclCommand = async (input, context) => {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ACL) && { "x-amz-acl": input.ACL }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.GrantFullControl) && { "x-amz-grant-full-control": input.GrantFullControl }),
         ...(isSerializableHeaderValue(input.GrantRead) && { "x-amz-grant-read": input.GrantRead }),
         ...(isSerializableHeaderValue(input.GrantReadACP) && { "x-amz-grant-read-acp": input.GrantReadACP }),
@@ -13748,6 +14663,9 @@ const serializeAws_restXmlPutObjectLegalHoldCommand = async (input, context) => 
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.RequestPayer) && { "x-amz-request-payer": input.RequestPayer }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13811,6 +14729,9 @@ const serializeAws_restXmlPutObjectLockConfigurationCommand = async (input, cont
         ...(isSerializableHeaderValue(input.RequestPayer) && { "x-amz-request-payer": input.RequestPayer }),
         ...(isSerializableHeaderValue(input.Token) && { "x-amz-bucket-object-lock-token": input.Token }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13861,6 +14782,9 @@ const serializeAws_restXmlPutObjectRetentionCommand = async (input, context) => 
             "x-amz-bypass-governance-retention": input.BypassGovernanceRetention.toString(),
         }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13922,6 +14846,9 @@ const serializeAws_restXmlPutObjectTaggingCommand = async (input, context) => {
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -13983,6 +14910,9 @@ const serializeAws_restXmlPutPublicAccessBlockCommand = async (input, context) =
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -14029,6 +14959,9 @@ const serializeAws_restXmlRestoreObjectCommand = async (input, context) => {
     const headers = {
         "content-type": "application/xml",
         ...(isSerializableHeaderValue(input.RequestPayer) && { "x-amz-request-payer": input.RequestPayer }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
         ...(isSerializableHeaderValue(input.ExpectedBucketOwner) && {
             "x-amz-expected-bucket-owner": input.ExpectedBucketOwner,
         }),
@@ -14180,6 +15113,13 @@ const serializeAws_restXmlUploadPartCommand = async (input, context) => {
         "content-type": "application/octet-stream",
         ...(isSerializableHeaderValue(input.ContentLength) && { "content-length": input.ContentLength.toString() }),
         ...(isSerializableHeaderValue(input.ContentMD5) && { "content-md5": input.ContentMD5 }),
+        ...(isSerializableHeaderValue(input.ChecksumAlgorithm) && {
+            "x-amz-sdk-checksum-algorithm": input.ChecksumAlgorithm,
+        }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32) && { "x-amz-checksum-crc32": input.ChecksumCRC32 }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32C) && { "x-amz-checksum-crc32c": input.ChecksumCRC32C }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA1) && { "x-amz-checksum-sha1": input.ChecksumSHA1 }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA256) && { "x-amz-checksum-sha256": input.ChecksumSHA256 }),
         ...(isSerializableHeaderValue(input.SSECustomerAlgorithm) && {
             "x-amz-server-side-encryption-customer-algorithm": input.SSECustomerAlgorithm,
         }),
@@ -14353,6 +15293,18 @@ const serializeAws_restXmlWriteGetObjectResponseCommand = async (input, context)
         ...(isSerializableHeaderValue(input.ContentLength) && { "content-length": input.ContentLength.toString() }),
         ...(isSerializableHeaderValue(input.ContentRange) && { "x-amz-fwd-header-content-range": input.ContentRange }),
         ...(isSerializableHeaderValue(input.ContentType) && { "x-amz-fwd-header-content-type": input.ContentType }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32) && {
+            "x-amz-fwd-header-x-amz-checksum-crc32": input.ChecksumCRC32,
+        }),
+        ...(isSerializableHeaderValue(input.ChecksumCRC32C) && {
+            "x-amz-fwd-header-x-amz-checksum-crc32c": input.ChecksumCRC32C,
+        }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA1) && {
+            "x-amz-fwd-header-x-amz-checksum-sha1": input.ChecksumSHA1,
+        }),
+        ...(isSerializableHeaderValue(input.ChecksumSHA256) && {
+            "x-amz-fwd-header-x-amz-checksum-sha256": input.ChecksumSHA256,
+        }),
         ...(isSerializableHeaderValue(input.DeleteMarker) && {
             "x-amz-fwd-header-x-amz-delete-marker": input.DeleteMarker.toString(),
         }),
@@ -14476,27 +15428,16 @@ const deserializeAws_restXmlAbortMultipartUploadCommandError = async (output, co
     switch (errorCode) {
         case "NoSuchUpload":
         case "com.amazonaws.s3#NoSuchUpload":
-            response = {
-                ...(await deserializeAws_restXmlNoSuchUploadResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNoSuchUploadResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlCompleteMultipartUploadCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -14506,6 +15447,10 @@ const deserializeAws_restXmlCompleteMultipartUploadCommand = async (output, cont
         $metadata: deserializeMetadata(output),
         Bucket: undefined,
         BucketKeyEnabled: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
         ETag: undefined,
         Expiration: undefined,
         Key: undefined,
@@ -14537,6 +15482,18 @@ const deserializeAws_restXmlCompleteMultipartUploadCommand = async (output, cont
     if (data["Bucket"] !== undefined) {
         contents.Bucket = smithy_client_1.expectString(data["Bucket"]);
     }
+    if (data["ChecksumCRC32"] !== undefined) {
+        contents.ChecksumCRC32 = smithy_client_1.expectString(data["ChecksumCRC32"]);
+    }
+    if (data["ChecksumCRC32C"] !== undefined) {
+        contents.ChecksumCRC32C = smithy_client_1.expectString(data["ChecksumCRC32C"]);
+    }
+    if (data["ChecksumSHA1"] !== undefined) {
+        contents.ChecksumSHA1 = smithy_client_1.expectString(data["ChecksumSHA1"]);
+    }
+    if (data["ChecksumSHA256"] !== undefined) {
+        contents.ChecksumSHA256 = smithy_client_1.expectString(data["ChecksumSHA256"]);
+    }
     if (data["ETag"] !== undefined) {
         contents.ETag = smithy_client_1.expectString(data["ETag"]);
     }
@@ -14560,19 +15517,13 @@ const deserializeAws_restXmlCompleteMultipartUploadCommandError = async (output,
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlCopyObjectCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -14638,27 +15589,16 @@ const deserializeAws_restXmlCopyObjectCommandError = async (output, context) => 
     switch (errorCode) {
         case "ObjectNotInActiveTierError":
         case "com.amazonaws.s3#ObjectNotInActiveTierError":
-            response = {
-                ...(await deserializeAws_restXmlObjectNotInActiveTierErrorResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlObjectNotInActiveTierErrorResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlCreateBucketCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -14686,35 +15626,19 @@ const deserializeAws_restXmlCreateBucketCommandError = async (output, context) =
     switch (errorCode) {
         case "BucketAlreadyExists":
         case "com.amazonaws.s3#BucketAlreadyExists":
-            response = {
-                ...(await deserializeAws_restXmlBucketAlreadyExistsResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlBucketAlreadyExistsResponse(parsedOutput, context);
         case "BucketAlreadyOwnedByYou":
         case "com.amazonaws.s3#BucketAlreadyOwnedByYou":
-            response = {
-                ...(await deserializeAws_restXmlBucketAlreadyOwnedByYouResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlBucketAlreadyOwnedByYouResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlCreateMultipartUploadCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -14726,6 +15650,7 @@ const deserializeAws_restXmlCreateMultipartUploadCommand = async (output, contex
         AbortRuleId: undefined,
         Bucket: undefined,
         BucketKeyEnabled: undefined,
+        ChecksumAlgorithm: undefined,
         Key: undefined,
         RequestCharged: undefined,
         SSECustomerAlgorithm: undefined,
@@ -14762,6 +15687,9 @@ const deserializeAws_restXmlCreateMultipartUploadCommand = async (output, contex
     if (output.headers["x-amz-request-charged"] !== undefined) {
         contents.RequestCharged = output.headers["x-amz-request-charged"];
     }
+    if (output.headers["x-amz-checksum-algorithm"] !== undefined) {
+        contents.ChecksumAlgorithm = output.headers["x-amz-checksum-algorithm"];
+    }
     const data = smithy_client_1.expectNonNull(smithy_client_1.expectObject(await parseBody(output.body, context)), "body");
     if (data["Bucket"] !== undefined) {
         contents.Bucket = smithy_client_1.expectString(data["Bucket"]);
@@ -14786,19 +15714,13 @@ const deserializeAws_restXmlCreateMultipartUploadCommandError = async (output, c
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -14822,19 +15744,13 @@ const deserializeAws_restXmlDeleteBucketCommandError = async (output, context) =
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketAnalyticsConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -14858,19 +15774,13 @@ const deserializeAws_restXmlDeleteBucketAnalyticsConfigurationCommandError = asy
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketCorsCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -14894,19 +15804,13 @@ const deserializeAws_restXmlDeleteBucketCorsCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketEncryptionCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -14930,19 +15834,13 @@ const deserializeAws_restXmlDeleteBucketEncryptionCommandError = async (output, 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -14966,19 +15864,13 @@ const deserializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommandEr
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketInventoryConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15002,19 +15894,13 @@ const deserializeAws_restXmlDeleteBucketInventoryConfigurationCommandError = asy
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketLifecycleCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15038,19 +15924,13 @@ const deserializeAws_restXmlDeleteBucketLifecycleCommandError = async (output, c
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketMetricsConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15074,19 +15954,13 @@ const deserializeAws_restXmlDeleteBucketMetricsConfigurationCommandError = async
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketOwnershipControlsCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15110,19 +15984,13 @@ const deserializeAws_restXmlDeleteBucketOwnershipControlsCommandError = async (o
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketPolicyCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15146,19 +16014,13 @@ const deserializeAws_restXmlDeleteBucketPolicyCommandError = async (output, cont
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketReplicationCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15182,19 +16044,13 @@ const deserializeAws_restXmlDeleteBucketReplicationCommandError = async (output,
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketTaggingCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15218,19 +16074,13 @@ const deserializeAws_restXmlDeleteBucketTaggingCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteBucketWebsiteCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15254,19 +16104,13 @@ const deserializeAws_restXmlDeleteBucketWebsiteCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteObjectCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15302,19 +16146,13 @@ const deserializeAws_restXmlDeleteObjectCommandError = async (output, context) =
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteObjectsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15356,19 +16194,13 @@ const deserializeAws_restXmlDeleteObjectsCommandError = async (output, context) 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeleteObjectTaggingCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15396,19 +16228,13 @@ const deserializeAws_restXmlDeleteObjectTaggingCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlDeletePublicAccessBlockCommand = async (output, context) => {
     if (output.statusCode !== 204 && output.statusCode >= 300) {
@@ -15432,19 +16258,13 @@ const deserializeAws_restXmlDeletePublicAccessBlockCommandError = async (output,
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketAccelerateConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15472,19 +16292,13 @@ const deserializeAws_restXmlGetBucketAccelerateConfigurationCommandError = async
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketAclCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15519,19 +16333,13 @@ const deserializeAws_restXmlGetBucketAclCommandError = async (output, context) =
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketAnalyticsConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15557,19 +16365,13 @@ const deserializeAws_restXmlGetBucketAnalyticsConfigurationCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketCorsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15600,19 +16402,13 @@ const deserializeAws_restXmlGetBucketCorsCommandError = async (output, context) 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketEncryptionCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15638,19 +16434,13 @@ const deserializeAws_restXmlGetBucketEncryptionCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketIntelligentTieringConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15676,19 +16466,13 @@ const deserializeAws_restXmlGetBucketIntelligentTieringConfigurationCommandError
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketInventoryConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15714,19 +16498,13 @@ const deserializeAws_restXmlGetBucketInventoryConfigurationCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketLifecycleConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15757,19 +16535,13 @@ const deserializeAws_restXmlGetBucketLifecycleConfigurationCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketLocationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15797,19 +16569,13 @@ const deserializeAws_restXmlGetBucketLocationCommandError = async (output, conte
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketLoggingCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15837,19 +16603,13 @@ const deserializeAws_restXmlGetBucketLoggingCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketMetricsConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15875,19 +16635,13 @@ const deserializeAws_restXmlGetBucketMetricsConfigurationCommandError = async (o
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketNotificationConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15936,19 +16690,13 @@ const deserializeAws_restXmlGetBucketNotificationConfigurationCommandError = asy
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketOwnershipControlsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -15974,19 +16722,13 @@ const deserializeAws_restXmlGetBucketOwnershipControlsCommandError = async (outp
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketPolicyCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16012,19 +16754,13 @@ const deserializeAws_restXmlGetBucketPolicyCommandError = async (output, context
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketPolicyStatusCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16050,19 +16786,13 @@ const deserializeAws_restXmlGetBucketPolicyStatusCommandError = async (output, c
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketReplicationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16088,19 +16818,13 @@ const deserializeAws_restXmlGetBucketReplicationCommandError = async (output, co
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketRequestPaymentCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16128,19 +16852,13 @@ const deserializeAws_restXmlGetBucketRequestPaymentCommandError = async (output,
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketTaggingCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16171,19 +16889,13 @@ const deserializeAws_restXmlGetBucketTaggingCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketVersioningCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16215,19 +16927,13 @@ const deserializeAws_restXmlGetBucketVersioningCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetBucketWebsiteCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16270,19 +16976,13 @@ const deserializeAws_restXmlGetBucketWebsiteCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetObjectCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16294,6 +16994,10 @@ const deserializeAws_restXmlGetObjectCommand = async (output, context) => {
         Body: undefined,
         BucketKeyEnabled: undefined,
         CacheControl: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
         ContentDisposition: undefined,
         ContentEncoding: undefined,
         ContentLanguage: undefined,
@@ -16343,6 +17047,18 @@ const deserializeAws_restXmlGetObjectCommand = async (output, context) => {
     }
     if (output.headers["etag"] !== undefined) {
         contents.ETag = output.headers["etag"];
+    }
+    if (output.headers["x-amz-checksum-crc32"] !== undefined) {
+        contents.ChecksumCRC32 = output.headers["x-amz-checksum-crc32"];
+    }
+    if (output.headers["x-amz-checksum-crc32c"] !== undefined) {
+        contents.ChecksumCRC32C = output.headers["x-amz-checksum-crc32c"];
+    }
+    if (output.headers["x-amz-checksum-sha1"] !== undefined) {
+        contents.ChecksumSHA1 = output.headers["x-amz-checksum-sha1"];
+    }
+    if (output.headers["x-amz-checksum-sha256"] !== undefined) {
+        contents.ChecksumSHA256 = output.headers["x-amz-checksum-sha256"];
     }
     if (output.headers["x-amz-missing-meta"] !== undefined) {
         contents.MissingMeta = smithy_client_1.strictParseInt32(output.headers["x-amz-missing-meta"]);
@@ -16437,35 +17153,19 @@ const deserializeAws_restXmlGetObjectCommandError = async (output, context) => {
     switch (errorCode) {
         case "InvalidObjectState":
         case "com.amazonaws.s3#InvalidObjectState":
-            response = {
-                ...(await deserializeAws_restXmlInvalidObjectStateResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlInvalidObjectStateResponse(parsedOutput, context);
         case "NoSuchKey":
         case "com.amazonaws.s3#NoSuchKey":
-            response = {
-                ...(await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetObjectAclCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16504,27 +17204,85 @@ const deserializeAws_restXmlGetObjectAclCommandError = async (output, context) =
     switch (errorCode) {
         case "NoSuchKey":
         case "com.amazonaws.s3#NoSuchKey":
-            response = {
-                ...(await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
+};
+const deserializeAws_restXmlGetObjectAttributesCommand = async (output, context) => {
+    if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return deserializeAws_restXmlGetObjectAttributesCommandError(output, context);
+    }
+    const contents = {
+        $metadata: deserializeMetadata(output),
+        Checksum: undefined,
+        DeleteMarker: undefined,
+        ETag: undefined,
+        LastModified: undefined,
+        ObjectParts: undefined,
+        ObjectSize: undefined,
+        RequestCharged: undefined,
+        StorageClass: undefined,
+        VersionId: undefined,
+    };
+    if (output.headers["x-amz-delete-marker"] !== undefined) {
+        contents.DeleteMarker = smithy_client_1.parseBoolean(output.headers["x-amz-delete-marker"]);
+    }
+    if (output.headers["last-modified"] !== undefined) {
+        contents.LastModified = smithy_client_1.expectNonNull(smithy_client_1.parseRfc7231DateTime(output.headers["last-modified"]));
+    }
+    if (output.headers["x-amz-version-id"] !== undefined) {
+        contents.VersionId = output.headers["x-amz-version-id"];
+    }
+    if (output.headers["x-amz-request-charged"] !== undefined) {
+        contents.RequestCharged = output.headers["x-amz-request-charged"];
+    }
+    const data = smithy_client_1.expectNonNull(smithy_client_1.expectObject(await parseBody(output.body, context)), "body");
+    if (data["Checksum"] !== undefined) {
+        contents.Checksum = deserializeAws_restXmlChecksum(data["Checksum"], context);
+    }
+    if (data["ETag"] !== undefined) {
+        contents.ETag = smithy_client_1.expectString(data["ETag"]);
+    }
+    if (data["ObjectParts"] !== undefined) {
+        contents.ObjectParts = deserializeAws_restXmlGetObjectAttributesParts(data["ObjectParts"], context);
+    }
+    if (data["ObjectSize"] !== undefined) {
+        contents.ObjectSize = smithy_client_1.strictParseLong(data["ObjectSize"]);
+    }
+    if (data["StorageClass"] !== undefined) {
+        contents.StorageClass = smithy_client_1.expectString(data["StorageClass"]);
+    }
+    return Promise.resolve(contents);
+};
+exports.deserializeAws_restXmlGetObjectAttributesCommand = deserializeAws_restXmlGetObjectAttributesCommand;
+const deserializeAws_restXmlGetObjectAttributesCommandError = async (output, context) => {
+    const parsedOutput = {
+        ...output,
+        body: await parseBody(output.body, context),
+    };
+    let response;
+    let errorCode = "UnknownError";
+    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    switch (errorCode) {
+        case "NoSuchKey":
+        case "com.amazonaws.s3#NoSuchKey":
+            throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
+        default:
+            const parsedBody = parsedOutput.body;
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
+                $fault: "client",
+                $metadata: deserializeMetadata(output),
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
+    }
 };
 const deserializeAws_restXmlGetObjectLegalHoldCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16550,19 +17308,13 @@ const deserializeAws_restXmlGetObjectLegalHoldCommandError = async (output, cont
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetObjectLockConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16588,19 +17340,13 @@ const deserializeAws_restXmlGetObjectLockConfigurationCommandError = async (outp
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetObjectRetentionCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16626,19 +17372,13 @@ const deserializeAws_restXmlGetObjectRetentionCommandError = async (output, cont
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetObjectTaggingCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16673,19 +17413,13 @@ const deserializeAws_restXmlGetObjectTaggingCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetObjectTorrentCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16715,19 +17449,13 @@ const deserializeAws_restXmlGetObjectTorrentCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlGetPublicAccessBlockCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16753,19 +17481,13 @@ const deserializeAws_restXmlGetPublicAccessBlockCommandError = async (output, co
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlHeadBucketCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16789,27 +17511,16 @@ const deserializeAws_restXmlHeadBucketCommandError = async (output, context) => 
     switch (errorCode) {
         case "NotFound":
         case "com.amazonaws.s3#NotFound":
-            response = {
-                ...(await deserializeAws_restXmlNotFoundResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNotFoundResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlHeadObjectCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -16821,6 +17532,10 @@ const deserializeAws_restXmlHeadObjectCommand = async (output, context) => {
         ArchiveStatus: undefined,
         BucketKeyEnabled: undefined,
         CacheControl: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
         ContentDisposition: undefined,
         ContentEncoding: undefined,
         ContentLanguage: undefined,
@@ -16868,6 +17583,18 @@ const deserializeAws_restXmlHeadObjectCommand = async (output, context) => {
     }
     if (output.headers["content-length"] !== undefined) {
         contents.ContentLength = smithy_client_1.strictParseLong(output.headers["content-length"]);
+    }
+    if (output.headers["x-amz-checksum-crc32"] !== undefined) {
+        contents.ChecksumCRC32 = output.headers["x-amz-checksum-crc32"];
+    }
+    if (output.headers["x-amz-checksum-crc32c"] !== undefined) {
+        contents.ChecksumCRC32C = output.headers["x-amz-checksum-crc32c"];
+    }
+    if (output.headers["x-amz-checksum-sha1"] !== undefined) {
+        contents.ChecksumSHA1 = output.headers["x-amz-checksum-sha1"];
+    }
+    if (output.headers["x-amz-checksum-sha256"] !== undefined) {
+        contents.ChecksumSHA256 = output.headers["x-amz-checksum-sha256"];
     }
     if (output.headers["etag"] !== undefined) {
         contents.ETag = output.headers["etag"];
@@ -16958,27 +17685,16 @@ const deserializeAws_restXmlHeadObjectCommandError = async (output, context) => 
     switch (errorCode) {
         case "NotFound":
         case "com.amazonaws.s3#NotFound":
-            response = {
-                ...(await deserializeAws_restXmlNotFoundResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNotFoundResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListBucketAnalyticsConfigurationsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17021,19 +17737,13 @@ const deserializeAws_restXmlListBucketAnalyticsConfigurationsCommandError = asyn
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListBucketIntelligentTieringConfigurationsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17076,19 +17786,13 @@ const deserializeAws_restXmlListBucketIntelligentTieringConfigurationsCommandErr
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListBucketInventoryConfigurationsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17131,19 +17835,13 @@ const deserializeAws_restXmlListBucketInventoryConfigurationsCommandError = asyn
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListBucketMetricsConfigurationsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17186,19 +17884,13 @@ const deserializeAws_restXmlListBucketMetricsConfigurationsCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListBucketsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17233,19 +17925,13 @@ const deserializeAws_restXmlListBucketsCommandError = async (output, context) =>
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListMultipartUploadsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17323,19 +18009,13 @@ const deserializeAws_restXmlListMultipartUploadsCommandError = async (output, co
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListObjectsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17405,27 +18085,16 @@ const deserializeAws_restXmlListObjectsCommandError = async (output, context) =>
     switch (errorCode) {
         case "NoSuchBucket":
         case "com.amazonaws.s3#NoSuchBucket":
-            response = {
-                ...(await deserializeAws_restXmlNoSuchBucketResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNoSuchBucketResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListObjectsV2Command = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17503,27 +18172,16 @@ const deserializeAws_restXmlListObjectsV2CommandError = async (output, context) 
     switch (errorCode) {
         case "NoSuchBucket":
         case "com.amazonaws.s3#NoSuchBucket":
-            response = {
-                ...(await deserializeAws_restXmlNoSuchBucketResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNoSuchBucketResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListObjectVersionsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17608,19 +18266,13 @@ const deserializeAws_restXmlListObjectVersionsCommandError = async (output, cont
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlListPartsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17631,6 +18283,7 @@ const deserializeAws_restXmlListPartsCommand = async (output, context) => {
         AbortDate: undefined,
         AbortRuleId: undefined,
         Bucket: undefined,
+        ChecksumAlgorithm: undefined,
         Initiator: undefined,
         IsTruncated: undefined,
         Key: undefined,
@@ -17655,6 +18308,9 @@ const deserializeAws_restXmlListPartsCommand = async (output, context) => {
     const data = smithy_client_1.expectNonNull(smithy_client_1.expectObject(await parseBody(output.body, context)), "body");
     if (data["Bucket"] !== undefined) {
         contents.Bucket = smithy_client_1.expectString(data["Bucket"]);
+    }
+    if (data["ChecksumAlgorithm"] !== undefined) {
+        contents.ChecksumAlgorithm = smithy_client_1.expectString(data["ChecksumAlgorithm"]);
     }
     if (data["Initiator"] !== undefined) {
         contents.Initiator = deserializeAws_restXmlInitiator(data["Initiator"], context);
@@ -17703,19 +18359,13 @@ const deserializeAws_restXmlListPartsCommandError = async (output, context) => {
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketAccelerateConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17739,19 +18389,13 @@ const deserializeAws_restXmlPutBucketAccelerateConfigurationCommandError = async
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketAclCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17775,19 +18419,13 @@ const deserializeAws_restXmlPutBucketAclCommandError = async (output, context) =
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketAnalyticsConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17811,19 +18449,13 @@ const deserializeAws_restXmlPutBucketAnalyticsConfigurationCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketCorsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17847,19 +18479,13 @@ const deserializeAws_restXmlPutBucketCorsCommandError = async (output, context) 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketEncryptionCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17883,19 +18509,13 @@ const deserializeAws_restXmlPutBucketEncryptionCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketIntelligentTieringConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17919,19 +18539,13 @@ const deserializeAws_restXmlPutBucketIntelligentTieringConfigurationCommandError
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketInventoryConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17955,19 +18569,13 @@ const deserializeAws_restXmlPutBucketInventoryConfigurationCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketLifecycleConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -17991,19 +18599,13 @@ const deserializeAws_restXmlPutBucketLifecycleConfigurationCommandError = async 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketLoggingCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18027,19 +18629,13 @@ const deserializeAws_restXmlPutBucketLoggingCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketMetricsConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18063,19 +18659,13 @@ const deserializeAws_restXmlPutBucketMetricsConfigurationCommandError = async (o
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketNotificationConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18099,19 +18689,13 @@ const deserializeAws_restXmlPutBucketNotificationConfigurationCommandError = asy
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketOwnershipControlsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18135,19 +18719,13 @@ const deserializeAws_restXmlPutBucketOwnershipControlsCommandError = async (outp
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketPolicyCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18171,19 +18749,13 @@ const deserializeAws_restXmlPutBucketPolicyCommandError = async (output, context
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketReplicationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18207,19 +18779,13 @@ const deserializeAws_restXmlPutBucketReplicationCommandError = async (output, co
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketRequestPaymentCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18243,19 +18809,13 @@ const deserializeAws_restXmlPutBucketRequestPaymentCommandError = async (output,
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketTaggingCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18279,19 +18839,13 @@ const deserializeAws_restXmlPutBucketTaggingCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketVersioningCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18315,19 +18869,13 @@ const deserializeAws_restXmlPutBucketVersioningCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutBucketWebsiteCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18351,19 +18899,13 @@ const deserializeAws_restXmlPutBucketWebsiteCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutObjectCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18372,6 +18914,10 @@ const deserializeAws_restXmlPutObjectCommand = async (output, context) => {
     const contents = {
         $metadata: deserializeMetadata(output),
         BucketKeyEnabled: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
         ETag: undefined,
         Expiration: undefined,
         RequestCharged: undefined,
@@ -18387,6 +18933,18 @@ const deserializeAws_restXmlPutObjectCommand = async (output, context) => {
     }
     if (output.headers["etag"] !== undefined) {
         contents.ETag = output.headers["etag"];
+    }
+    if (output.headers["x-amz-checksum-crc32"] !== undefined) {
+        contents.ChecksumCRC32 = output.headers["x-amz-checksum-crc32"];
+    }
+    if (output.headers["x-amz-checksum-crc32c"] !== undefined) {
+        contents.ChecksumCRC32C = output.headers["x-amz-checksum-crc32c"];
+    }
+    if (output.headers["x-amz-checksum-sha1"] !== undefined) {
+        contents.ChecksumSHA1 = output.headers["x-amz-checksum-sha1"];
+    }
+    if (output.headers["x-amz-checksum-sha256"] !== undefined) {
+        contents.ChecksumSHA256 = output.headers["x-amz-checksum-sha256"];
     }
     if (output.headers["x-amz-server-side-encryption"] !== undefined) {
         contents.ServerSideEncryption = output.headers["x-amz-server-side-encryption"];
@@ -18427,19 +18985,13 @@ const deserializeAws_restXmlPutObjectCommandError = async (output, context) => {
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutObjectAclCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18467,27 +19019,16 @@ const deserializeAws_restXmlPutObjectAclCommandError = async (output, context) =
     switch (errorCode) {
         case "NoSuchKey":
         case "com.amazonaws.s3#NoSuchKey":
-            response = {
-                ...(await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutObjectLegalHoldCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18515,19 +19056,13 @@ const deserializeAws_restXmlPutObjectLegalHoldCommandError = async (output, cont
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutObjectLockConfigurationCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18555,19 +19090,13 @@ const deserializeAws_restXmlPutObjectLockConfigurationCommandError = async (outp
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutObjectRetentionCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18595,19 +19124,13 @@ const deserializeAws_restXmlPutObjectRetentionCommandError = async (output, cont
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutObjectTaggingCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18635,19 +19158,13 @@ const deserializeAws_restXmlPutObjectTaggingCommandError = async (output, contex
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlPutPublicAccessBlockCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18671,19 +19188,13 @@ const deserializeAws_restXmlPutPublicAccessBlockCommandError = async (output, co
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlRestoreObjectCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18715,27 +19226,16 @@ const deserializeAws_restXmlRestoreObjectCommandError = async (output, context) 
     switch (errorCode) {
         case "ObjectAlreadyInActiveTierError":
         case "com.amazonaws.s3#ObjectAlreadyInActiveTierError":
-            response = {
-                ...(await deserializeAws_restXmlObjectAlreadyInActiveTierErrorResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restXmlObjectAlreadyInActiveTierErrorResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlSelectObjectContentCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18775,19 +19275,13 @@ const deserializeAws_restXmlSelectObjectContentCommandError = async (output, con
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlUploadPartCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18796,6 +19290,10 @@ const deserializeAws_restXmlUploadPartCommand = async (output, context) => {
     const contents = {
         $metadata: deserializeMetadata(output),
         BucketKeyEnabled: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
         ETag: undefined,
         RequestCharged: undefined,
         SSECustomerAlgorithm: undefined,
@@ -18808,6 +19306,18 @@ const deserializeAws_restXmlUploadPartCommand = async (output, context) => {
     }
     if (output.headers["etag"] !== undefined) {
         contents.ETag = output.headers["etag"];
+    }
+    if (output.headers["x-amz-checksum-crc32"] !== undefined) {
+        contents.ChecksumCRC32 = output.headers["x-amz-checksum-crc32"];
+    }
+    if (output.headers["x-amz-checksum-crc32c"] !== undefined) {
+        contents.ChecksumCRC32C = output.headers["x-amz-checksum-crc32c"];
+    }
+    if (output.headers["x-amz-checksum-sha1"] !== undefined) {
+        contents.ChecksumSHA1 = output.headers["x-amz-checksum-sha1"];
+    }
+    if (output.headers["x-amz-checksum-sha256"] !== undefined) {
+        contents.ChecksumSHA256 = output.headers["x-amz-checksum-sha256"];
     }
     if (output.headers["x-amz-server-side-encryption-customer-algorithm"] !== undefined) {
         contents.SSECustomerAlgorithm = output.headers["x-amz-server-side-encryption-customer-algorithm"];
@@ -18839,19 +19349,13 @@ const deserializeAws_restXmlUploadPartCommandError = async (output, context) => 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlUploadPartCopyCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18905,19 +19409,13 @@ const deserializeAws_restXmlUploadPartCopyCommandError = async (output, context)
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlWriteGetObjectResponseCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -18941,19 +19439,13 @@ const deserializeAws_restXmlWriteGetObjectResponseCommandError = async (output, 
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new S3ServiceException_1.S3ServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restXmlSelectObjectContentEventStream_event = async (output, context) => {
     if (output["Records"] !== undefined) {
@@ -19007,31 +19499,25 @@ const deserializeAws_restXmlStatsEvent_event = async (output, context) => {
     return contents;
 };
 const deserializeAws_restXmlBucketAlreadyExistsResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "BucketAlreadyExists",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.BucketAlreadyExists({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlBucketAlreadyOwnedByYouResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "BucketAlreadyOwnedByYou",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.BucketAlreadyOwnedByYou({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlInvalidObjectStateResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "InvalidObjectState",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-        AccessTier: undefined,
-        StorageClass: undefined,
-    };
+    const contents = {};
     const data = parsedOutput.body;
     if (data["AccessTier"] !== undefined) {
         contents.AccessTier = smithy_client_1.expectString(data["AccessTier"]);
@@ -19039,61 +19525,65 @@ const deserializeAws_restXmlInvalidObjectStateResponse = async (parsedOutput, co
     if (data["StorageClass"] !== undefined) {
         contents.StorageClass = smithy_client_1.expectString(data["StorageClass"]);
     }
-    return contents;
+    const exception = new models_0_1.InvalidObjectState({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlNoSuchBucketResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "NoSuchBucket",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.NoSuchBucket({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlNoSuchKeyResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "NoSuchKey",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.NoSuchKey({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlNoSuchUploadResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "NoSuchUpload",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.NoSuchUpload({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlNotFoundResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "NotFound",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.NotFound({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlObjectAlreadyInActiveTierErrorResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "ObjectAlreadyInActiveTierError",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_1_1.ObjectAlreadyInActiveTierError({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restXmlObjectNotInActiveTierErrorResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "ObjectNotInActiveTierError",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-    };
+    const contents = {};
     const data = parsedOutput.body;
-    return contents;
+    const exception = new models_0_1.ObjectNotInActiveTierError({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const serializeAws_restXmlAbortIncompleteMultipartUpload = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AbortIncompleteMultipartUpload");
@@ -19291,6 +19781,28 @@ const serializeAws_restXmlCompletedPart = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CompletedPart");
     if (input.ETag !== undefined && input.ETag !== null) {
         const node = new xml_builder_1.XmlNode("ETag").addChildNode(new xml_builder_1.XmlText(input.ETag)).withName("ETag");
+        bodyNode.addChildNode(node);
+    }
+    if (input.ChecksumCRC32 !== undefined && input.ChecksumCRC32 !== null) {
+        const node = new xml_builder_1.XmlNode("ChecksumCRC32")
+            .addChildNode(new xml_builder_1.XmlText(input.ChecksumCRC32))
+            .withName("ChecksumCRC32");
+        bodyNode.addChildNode(node);
+    }
+    if (input.ChecksumCRC32C !== undefined && input.ChecksumCRC32C !== null) {
+        const node = new xml_builder_1.XmlNode("ChecksumCRC32C")
+            .addChildNode(new xml_builder_1.XmlText(input.ChecksumCRC32C))
+            .withName("ChecksumCRC32C");
+        bodyNode.addChildNode(node);
+    }
+    if (input.ChecksumSHA1 !== undefined && input.ChecksumSHA1 !== null) {
+        const node = new xml_builder_1.XmlNode("ChecksumSHA1").addChildNode(new xml_builder_1.XmlText(input.ChecksumSHA1)).withName("ChecksumSHA1");
+        bodyNode.addChildNode(node);
+    }
+    if (input.ChecksumSHA256 !== undefined && input.ChecksumSHA256 !== null) {
+        const node = new xml_builder_1.XmlNode("ChecksumSHA256")
+            .addChildNode(new xml_builder_1.XmlText(input.ChecksumSHA256))
+            .withName("ChecksumSHA256");
         bodyNode.addChildNode(node);
     }
     if (input.PartNumber !== undefined && input.PartNumber !== null) {
@@ -21287,6 +21799,37 @@ const deserializeAws_restXmlBuckets = (output, context) => {
         return deserializeAws_restXmlBucket(entry, context);
     });
 };
+const deserializeAws_restXmlChecksum = (output, context) => {
+    const contents = {
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
+    };
+    if (output["ChecksumCRC32"] !== undefined) {
+        contents.ChecksumCRC32 = smithy_client_1.expectString(output["ChecksumCRC32"]);
+    }
+    if (output["ChecksumCRC32C"] !== undefined) {
+        contents.ChecksumCRC32C = smithy_client_1.expectString(output["ChecksumCRC32C"]);
+    }
+    if (output["ChecksumSHA1"] !== undefined) {
+        contents.ChecksumSHA1 = smithy_client_1.expectString(output["ChecksumSHA1"]);
+    }
+    if (output["ChecksumSHA256"] !== undefined) {
+        contents.ChecksumSHA256 = smithy_client_1.expectString(output["ChecksumSHA256"]);
+    }
+    return contents;
+};
+const deserializeAws_restXmlChecksumAlgorithmList = (output, context) => {
+    return (output || [])
+        .filter((e) => e != null)
+        .map((entry) => {
+        if (entry === null) {
+            return null;
+        }
+        return smithy_client_1.expectString(entry);
+    });
+};
 const deserializeAws_restXmlCommonPrefix = (output, context) => {
     const contents = {
         Prefix: undefined,
@@ -21327,12 +21870,28 @@ const deserializeAws_restXmlCopyObjectResult = (output, context) => {
     const contents = {
         ETag: undefined,
         LastModified: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
     };
     if (output["ETag"] !== undefined) {
         contents.ETag = smithy_client_1.expectString(output["ETag"]);
     }
     if (output["LastModified"] !== undefined) {
         contents.LastModified = smithy_client_1.expectNonNull(smithy_client_1.parseRfc3339DateTime(output["LastModified"]));
+    }
+    if (output["ChecksumCRC32"] !== undefined) {
+        contents.ChecksumCRC32 = smithy_client_1.expectString(output["ChecksumCRC32"]);
+    }
+    if (output["ChecksumCRC32C"] !== undefined) {
+        contents.ChecksumCRC32C = smithy_client_1.expectString(output["ChecksumCRC32C"]);
+    }
+    if (output["ChecksumSHA1"] !== undefined) {
+        contents.ChecksumSHA1 = smithy_client_1.expectString(output["ChecksumSHA1"]);
+    }
+    if (output["ChecksumSHA256"] !== undefined) {
+        contents.ChecksumSHA256 = smithy_client_1.expectString(output["ChecksumSHA256"]);
     }
     return contents;
 };
@@ -21340,12 +21899,28 @@ const deserializeAws_restXmlCopyPartResult = (output, context) => {
     const contents = {
         ETag: undefined,
         LastModified: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
     };
     if (output["ETag"] !== undefined) {
         contents.ETag = smithy_client_1.expectString(output["ETag"]);
     }
     if (output["LastModified"] !== undefined) {
         contents.LastModified = smithy_client_1.expectNonNull(smithy_client_1.parseRfc3339DateTime(output["LastModified"]));
+    }
+    if (output["ChecksumCRC32"] !== undefined) {
+        contents.ChecksumCRC32 = smithy_client_1.expectString(output["ChecksumCRC32"]);
+    }
+    if (output["ChecksumCRC32C"] !== undefined) {
+        contents.ChecksumCRC32C = smithy_client_1.expectString(output["ChecksumCRC32C"]);
+    }
+    if (output["ChecksumSHA1"] !== undefined) {
+        contents.ChecksumSHA1 = smithy_client_1.expectString(output["ChecksumSHA1"]);
+    }
+    if (output["ChecksumSHA256"] !== undefined) {
+        contents.ChecksumSHA256 = smithy_client_1.expectString(output["ChecksumSHA256"]);
     }
     return contents;
 };
@@ -21633,6 +22208,38 @@ const deserializeAws_restXmlFilterRuleList = (output, context) => {
         }
         return deserializeAws_restXmlFilterRule(entry, context);
     });
+};
+const deserializeAws_restXmlGetObjectAttributesParts = (output, context) => {
+    const contents = {
+        TotalPartsCount: undefined,
+        PartNumberMarker: undefined,
+        NextPartNumberMarker: undefined,
+        MaxParts: undefined,
+        IsTruncated: undefined,
+        Parts: undefined,
+    };
+    if (output["PartsCount"] !== undefined) {
+        contents.TotalPartsCount = smithy_client_1.strictParseInt32(output["PartsCount"]);
+    }
+    if (output["PartNumberMarker"] !== undefined) {
+        contents.PartNumberMarker = smithy_client_1.expectString(output["PartNumberMarker"]);
+    }
+    if (output["NextPartNumberMarker"] !== undefined) {
+        contents.NextPartNumberMarker = smithy_client_1.expectString(output["NextPartNumberMarker"]);
+    }
+    if (output["MaxParts"] !== undefined) {
+        contents.MaxParts = smithy_client_1.strictParseInt32(output["MaxParts"]);
+    }
+    if (output["IsTruncated"] !== undefined) {
+        contents.IsTruncated = smithy_client_1.parseBoolean(output["IsTruncated"]);
+    }
+    if (output.Part === "") {
+        contents.Parts = [];
+    }
+    if (output["Part"] !== undefined) {
+        contents.Parts = deserializeAws_restXmlPartsList(smithy_client_1.getArrayIfSingleItem(output["Part"]), context);
+    }
+    return contents;
 };
 const deserializeAws_restXmlGrant = (output, context) => {
     const contents = {
@@ -22159,6 +22766,7 @@ const deserializeAws_restXmlMultipartUpload = (output, context) => {
         StorageClass: undefined,
         Owner: undefined,
         Initiator: undefined,
+        ChecksumAlgorithm: undefined,
     };
     if (output["UploadId"] !== undefined) {
         contents.UploadId = smithy_client_1.expectString(output["UploadId"]);
@@ -22177,6 +22785,9 @@ const deserializeAws_restXmlMultipartUpload = (output, context) => {
     }
     if (output["Initiator"] !== undefined) {
         contents.Initiator = deserializeAws_restXmlInitiator(output["Initiator"], context);
+    }
+    if (output["ChecksumAlgorithm"] !== undefined) {
+        contents.ChecksumAlgorithm = smithy_client_1.expectString(output["ChecksumAlgorithm"]);
     }
     return contents;
 };
@@ -22244,6 +22855,7 @@ const deserializeAws_restXml_Object = (output, context) => {
         Key: undefined,
         LastModified: undefined,
         ETag: undefined,
+        ChecksumAlgorithm: undefined,
         Size: undefined,
         StorageClass: undefined,
         Owner: undefined,
@@ -22256,6 +22868,12 @@ const deserializeAws_restXml_Object = (output, context) => {
     }
     if (output["ETag"] !== undefined) {
         contents.ETag = smithy_client_1.expectString(output["ETag"]);
+    }
+    if (output.ChecksumAlgorithm === "") {
+        contents.ChecksumAlgorithm = [];
+    }
+    if (output["ChecksumAlgorithm"] !== undefined) {
+        contents.ChecksumAlgorithm = deserializeAws_restXmlChecksumAlgorithmList(smithy_client_1.getArrayIfSingleItem(output["ChecksumAlgorithm"]), context);
     }
     if (output["Size"] !== undefined) {
         contents.Size = smithy_client_1.strictParseLong(output["Size"]);
@@ -22322,9 +22940,39 @@ const deserializeAws_restXmlObjectLockRule = (output, context) => {
     }
     return contents;
 };
+const deserializeAws_restXmlObjectPart = (output, context) => {
+    const contents = {
+        PartNumber: undefined,
+        Size: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
+    };
+    if (output["PartNumber"] !== undefined) {
+        contents.PartNumber = smithy_client_1.strictParseInt32(output["PartNumber"]);
+    }
+    if (output["Size"] !== undefined) {
+        contents.Size = smithy_client_1.strictParseLong(output["Size"]);
+    }
+    if (output["ChecksumCRC32"] !== undefined) {
+        contents.ChecksumCRC32 = smithy_client_1.expectString(output["ChecksumCRC32"]);
+    }
+    if (output["ChecksumCRC32C"] !== undefined) {
+        contents.ChecksumCRC32C = smithy_client_1.expectString(output["ChecksumCRC32C"]);
+    }
+    if (output["ChecksumSHA1"] !== undefined) {
+        contents.ChecksumSHA1 = smithy_client_1.expectString(output["ChecksumSHA1"]);
+    }
+    if (output["ChecksumSHA256"] !== undefined) {
+        contents.ChecksumSHA256 = smithy_client_1.expectString(output["ChecksumSHA256"]);
+    }
+    return contents;
+};
 const deserializeAws_restXmlObjectVersion = (output, context) => {
     const contents = {
         ETag: undefined,
+        ChecksumAlgorithm: undefined,
         Size: undefined,
         StorageClass: undefined,
         Key: undefined,
@@ -22335,6 +22983,12 @@ const deserializeAws_restXmlObjectVersion = (output, context) => {
     };
     if (output["ETag"] !== undefined) {
         contents.ETag = smithy_client_1.expectString(output["ETag"]);
+    }
+    if (output.ChecksumAlgorithm === "") {
+        contents.ChecksumAlgorithm = [];
+    }
+    if (output["ChecksumAlgorithm"] !== undefined) {
+        contents.ChecksumAlgorithm = deserializeAws_restXmlChecksumAlgorithmList(smithy_client_1.getArrayIfSingleItem(output["ChecksumAlgorithm"]), context);
     }
     if (output["Size"] !== undefined) {
         contents.Size = smithy_client_1.strictParseLong(output["Size"]);
@@ -22419,6 +23073,10 @@ const deserializeAws_restXmlPart = (output, context) => {
         LastModified: undefined,
         ETag: undefined,
         Size: undefined,
+        ChecksumCRC32: undefined,
+        ChecksumCRC32C: undefined,
+        ChecksumSHA1: undefined,
+        ChecksumSHA256: undefined,
     };
     if (output["PartNumber"] !== undefined) {
         contents.PartNumber = smithy_client_1.strictParseInt32(output["PartNumber"]);
@@ -22432,6 +23090,18 @@ const deserializeAws_restXmlPart = (output, context) => {
     if (output["Size"] !== undefined) {
         contents.Size = smithy_client_1.strictParseLong(output["Size"]);
     }
+    if (output["ChecksumCRC32"] !== undefined) {
+        contents.ChecksumCRC32 = smithy_client_1.expectString(output["ChecksumCRC32"]);
+    }
+    if (output["ChecksumCRC32C"] !== undefined) {
+        contents.ChecksumCRC32C = smithy_client_1.expectString(output["ChecksumCRC32C"]);
+    }
+    if (output["ChecksumSHA1"] !== undefined) {
+        contents.ChecksumSHA1 = smithy_client_1.expectString(output["ChecksumSHA1"]);
+    }
+    if (output["ChecksumSHA256"] !== undefined) {
+        contents.ChecksumSHA256 = smithy_client_1.expectString(output["ChecksumSHA256"]);
+    }
     return contents;
 };
 const deserializeAws_restXmlParts = (output, context) => {
@@ -22442,6 +23112,16 @@ const deserializeAws_restXmlParts = (output, context) => {
             return null;
         }
         return deserializeAws_restXmlPart(entry, context);
+    });
+};
+const deserializeAws_restXmlPartsList = (output, context) => {
+    return (output || [])
+        .filter((e) => e != null)
+        .map((entry) => {
+        if (entry === null) {
+            return null;
+        }
+        return deserializeAws_restXmlObjectPart(entry, context);
     });
 };
 const deserializeAws_restXmlPolicyStatus = (output, context) => {
@@ -23112,13 +23792,14 @@ const node_config_provider_1 = __nccwpck_require__(87684);
 const node_http_handler_1 = __nccwpck_require__(68805);
 const util_base64_node_1 = __nccwpck_require__(18588);
 const util_body_length_node_1 = __nccwpck_require__(74147);
+const util_stream_node_1 = __nccwpck_require__(23809);
 const util_user_agent_node_1 = __nccwpck_require__(98095);
 const util_utf8_node_1 = __nccwpck_require__(66278);
 const runtimeConfig_shared_1 = __nccwpck_require__(5239);
 const smithy_client_1 = __nccwpck_require__(4963);
 const util_defaults_mode_node_1 = __nccwpck_require__(74243);
 const getRuntimeConfig = (config) => {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w;
     const defaultsMode = util_defaults_mode_node_1.resolveDefaultsModeConfig(config);
     const defaultConfigProvider = () => defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
     const clientSharedValues = runtimeConfig_shared_1.getRuntimeConfig(config);
@@ -23133,22 +23814,24 @@ const getRuntimeConfig = (config) => {
         credentialDefaultProvider: (_d = config === null || config === void 0 ? void 0 : config.credentialDefaultProvider) !== null && _d !== void 0 ? _d : client_sts_1.decorateDefaultCredentialProvider(credential_provider_node_1.defaultProvider),
         defaultUserAgentProvider: (_e = config === null || config === void 0 ? void 0 : config.defaultUserAgentProvider) !== null && _e !== void 0 ? _e : util_user_agent_node_1.defaultUserAgent({ serviceId: clientSharedValues.serviceId, clientVersion: package_json_1.default.version }),
         eventStreamSerdeProvider: (_f = config === null || config === void 0 ? void 0 : config.eventStreamSerdeProvider) !== null && _f !== void 0 ? _f : eventstream_serde_node_1.eventStreamSerdeProvider,
-        maxAttempts: (_g = config === null || config === void 0 ? void 0 : config.maxAttempts) !== null && _g !== void 0 ? _g : node_config_provider_1.loadConfig(middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS),
-        md5: (_h = config === null || config === void 0 ? void 0 : config.md5) !== null && _h !== void 0 ? _h : hash_node_1.Hash.bind(null, "md5"),
-        region: (_j = config === null || config === void 0 ? void 0 : config.region) !== null && _j !== void 0 ? _j : node_config_provider_1.loadConfig(config_resolver_1.NODE_REGION_CONFIG_OPTIONS, config_resolver_1.NODE_REGION_CONFIG_FILE_OPTIONS),
-        requestHandler: (_k = config === null || config === void 0 ? void 0 : config.requestHandler) !== null && _k !== void 0 ? _k : new node_http_handler_1.NodeHttpHandler(defaultConfigProvider),
-        retryMode: (_l = config === null || config === void 0 ? void 0 : config.retryMode) !== null && _l !== void 0 ? _l : node_config_provider_1.loadConfig({
+        getAwsChunkedEncodingStream: (_g = config === null || config === void 0 ? void 0 : config.getAwsChunkedEncodingStream) !== null && _g !== void 0 ? _g : util_stream_node_1.getAwsChunkedEncodingStream,
+        maxAttempts: (_h = config === null || config === void 0 ? void 0 : config.maxAttempts) !== null && _h !== void 0 ? _h : node_config_provider_1.loadConfig(middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS),
+        md5: (_j = config === null || config === void 0 ? void 0 : config.md5) !== null && _j !== void 0 ? _j : hash_node_1.Hash.bind(null, "md5"),
+        region: (_k = config === null || config === void 0 ? void 0 : config.region) !== null && _k !== void 0 ? _k : node_config_provider_1.loadConfig(config_resolver_1.NODE_REGION_CONFIG_OPTIONS, config_resolver_1.NODE_REGION_CONFIG_FILE_OPTIONS),
+        requestHandler: (_l = config === null || config === void 0 ? void 0 : config.requestHandler) !== null && _l !== void 0 ? _l : new node_http_handler_1.NodeHttpHandler(defaultConfigProvider),
+        retryMode: (_m = config === null || config === void 0 ? void 0 : config.retryMode) !== null && _m !== void 0 ? _m : node_config_provider_1.loadConfig({
             ...middleware_retry_1.NODE_RETRY_MODE_CONFIG_OPTIONS,
             default: async () => (await defaultConfigProvider()).retryMode || middleware_retry_1.DEFAULT_RETRY_MODE,
         }),
-        sha256: (_m = config === null || config === void 0 ? void 0 : config.sha256) !== null && _m !== void 0 ? _m : hash_node_1.Hash.bind(null, "sha256"),
-        streamCollector: (_o = config === null || config === void 0 ? void 0 : config.streamCollector) !== null && _o !== void 0 ? _o : node_http_handler_1.streamCollector,
-        streamHasher: (_p = config === null || config === void 0 ? void 0 : config.streamHasher) !== null && _p !== void 0 ? _p : hash_stream_node_1.fileStreamHasher,
-        useArnRegion: (_q = config === null || config === void 0 ? void 0 : config.useArnRegion) !== null && _q !== void 0 ? _q : node_config_provider_1.loadConfig(middleware_bucket_endpoint_1.NODE_USE_ARN_REGION_CONFIG_OPTIONS),
-        useDualstackEndpoint: (_r = config === null || config === void 0 ? void 0 : config.useDualstackEndpoint) !== null && _r !== void 0 ? _r : node_config_provider_1.loadConfig(config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS),
-        useFipsEndpoint: (_s = config === null || config === void 0 ? void 0 : config.useFipsEndpoint) !== null && _s !== void 0 ? _s : node_config_provider_1.loadConfig(config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS),
-        utf8Decoder: (_t = config === null || config === void 0 ? void 0 : config.utf8Decoder) !== null && _t !== void 0 ? _t : util_utf8_node_1.fromUtf8,
-        utf8Encoder: (_u = config === null || config === void 0 ? void 0 : config.utf8Encoder) !== null && _u !== void 0 ? _u : util_utf8_node_1.toUtf8,
+        sha1: (_o = config === null || config === void 0 ? void 0 : config.sha1) !== null && _o !== void 0 ? _o : hash_node_1.Hash.bind(null, "sha1"),
+        sha256: (_p = config === null || config === void 0 ? void 0 : config.sha256) !== null && _p !== void 0 ? _p : hash_node_1.Hash.bind(null, "sha256"),
+        streamCollector: (_q = config === null || config === void 0 ? void 0 : config.streamCollector) !== null && _q !== void 0 ? _q : node_http_handler_1.streamCollector,
+        streamHasher: (_r = config === null || config === void 0 ? void 0 : config.streamHasher) !== null && _r !== void 0 ? _r : hash_stream_node_1.readableStreamHasher,
+        useArnRegion: (_s = config === null || config === void 0 ? void 0 : config.useArnRegion) !== null && _s !== void 0 ? _s : node_config_provider_1.loadConfig(middleware_bucket_endpoint_1.NODE_USE_ARN_REGION_CONFIG_OPTIONS),
+        useDualstackEndpoint: (_t = config === null || config === void 0 ? void 0 : config.useDualstackEndpoint) !== null && _t !== void 0 ? _t : node_config_provider_1.loadConfig(config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS),
+        useFipsEndpoint: (_u = config === null || config === void 0 ? void 0 : config.useFipsEndpoint) !== null && _u !== void 0 ? _u : node_config_provider_1.loadConfig(config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS),
+        utf8Decoder: (_v = config === null || config === void 0 ? void 0 : config.utf8Decoder) !== null && _v !== void 0 ? _v : util_utf8_node_1.fromUtf8,
+        utf8Encoder: (_w = config === null || config === void 0 ? void 0 : config.utf8Encoder) !== null && _w !== void 0 ? _w : util_utf8_node_1.toUtf8,
     };
 };
 exports.getRuntimeConfig = getRuntimeConfig;
@@ -23959,12 +24642,34 @@ exports.defaultRegionInfoProvider = defaultRegionInfoProvider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SSOServiceException = void 0;
 const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(69838), exports);
 tslib_1.__exportStar(__nccwpck_require__(71057), exports);
 tslib_1.__exportStar(__nccwpck_require__(65706), exports);
 tslib_1.__exportStar(__nccwpck_require__(14952), exports);
 tslib_1.__exportStar(__nccwpck_require__(36773), exports);
+var SSOServiceException_1 = __nccwpck_require__(81517);
+Object.defineProperty(exports, "SSOServiceException", ({ enumerable: true, get: function () { return SSOServiceException_1.SSOServiceException; } }));
+
+
+/***/ }),
+
+/***/ 81517:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SSOServiceException = void 0;
+const smithy_client_1 = __nccwpck_require__(4963);
+class SSOServiceException extends smithy_client_1.ServiceException {
+    constructor(options) {
+        super(options);
+        Object.setPrototypeOf(this, SSOServiceException.prototype);
+    }
+}
+exports.SSOServiceException = SSOServiceException;
 
 
 /***/ }),
@@ -23987,8 +24692,9 @@ tslib_1.__exportStar(__nccwpck_require__(66390), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LogoutRequest = exports.ListAccountsResponse = exports.ListAccountsRequest = exports.ListAccountRolesResponse = exports.RoleInfo = exports.ListAccountRolesRequest = exports.GetRoleCredentialsResponse = exports.RoleCredentials = exports.GetRoleCredentialsRequest = exports.AccountInfo = void 0;
+exports.LogoutRequest = exports.ListAccountsResponse = exports.ListAccountsRequest = exports.ListAccountRolesResponse = exports.RoleInfo = exports.ListAccountRolesRequest = exports.UnauthorizedException = exports.TooManyRequestsException = exports.ResourceNotFoundException = exports.InvalidRequestException = exports.GetRoleCredentialsResponse = exports.RoleCredentials = exports.GetRoleCredentialsRequest = exports.AccountInfo = void 0;
 const smithy_client_1 = __nccwpck_require__(4963);
+const SSOServiceException_1 = __nccwpck_require__(81517);
 var AccountInfo;
 (function (AccountInfo) {
     AccountInfo.filterSensitiveLog = (obj) => ({
@@ -24017,6 +24723,58 @@ var GetRoleCredentialsResponse;
         ...(obj.roleCredentials && { roleCredentials: RoleCredentials.filterSensitiveLog(obj.roleCredentials) }),
     });
 })(GetRoleCredentialsResponse = exports.GetRoleCredentialsResponse || (exports.GetRoleCredentialsResponse = {}));
+class InvalidRequestException extends SSOServiceException_1.SSOServiceException {
+    constructor(opts) {
+        super({
+            name: "InvalidRequestException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "InvalidRequestException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, InvalidRequestException.prototype);
+    }
+}
+exports.InvalidRequestException = InvalidRequestException;
+class ResourceNotFoundException extends SSOServiceException_1.SSOServiceException {
+    constructor(opts) {
+        super({
+            name: "ResourceNotFoundException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "ResourceNotFoundException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, ResourceNotFoundException.prototype);
+    }
+}
+exports.ResourceNotFoundException = ResourceNotFoundException;
+class TooManyRequestsException extends SSOServiceException_1.SSOServiceException {
+    constructor(opts) {
+        super({
+            name: "TooManyRequestsException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "TooManyRequestsException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, TooManyRequestsException.prototype);
+    }
+}
+exports.TooManyRequestsException = TooManyRequestsException;
+class UnauthorizedException extends SSOServiceException_1.SSOServiceException {
+    constructor(opts) {
+        super({
+            name: "UnauthorizedException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "UnauthorizedException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, UnauthorizedException.prototype);
+    }
+}
+exports.UnauthorizedException = UnauthorizedException;
 var ListAccountRolesRequest;
 (function (ListAccountRolesRequest) {
     ListAccountRolesRequest.filterSensitiveLog = (obj) => ({
@@ -24179,6 +24937,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.deserializeAws_restJson1LogoutCommand = exports.deserializeAws_restJson1ListAccountsCommand = exports.deserializeAws_restJson1ListAccountRolesCommand = exports.deserializeAws_restJson1GetRoleCredentialsCommand = exports.serializeAws_restJson1LogoutCommand = exports.serializeAws_restJson1ListAccountsCommand = exports.serializeAws_restJson1ListAccountRolesCommand = exports.serializeAws_restJson1GetRoleCredentialsCommand = void 0;
 const protocol_http_1 = __nccwpck_require__(70223);
 const smithy_client_1 = __nccwpck_require__(4963);
+const models_0_1 = __nccwpck_require__(66390);
+const SSOServiceException_1 = __nccwpck_require__(81517);
 const serializeAws_restJson1GetRoleCredentialsCommand = async (input, context) => {
     const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
     const headers = {
@@ -24293,51 +25053,25 @@ const deserializeAws_restJson1GetRoleCredentialsCommandError = async (output, co
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
-            response = {
-                ...(await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context);
         case "ResourceNotFoundException":
         case "com.amazonaws.sso#ResourceNotFoundException":
-            response = {
-                ...(await deserializeAws_restJson1ResourceNotFoundExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1ResourceNotFoundExceptionResponse(parsedOutput, context);
         case "TooManyRequestsException":
         case "com.amazonaws.sso#TooManyRequestsException":
-            response = {
-                ...(await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context);
         case "UnauthorizedException":
         case "com.amazonaws.sso#UnauthorizedException":
-            response = {
-                ...(await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new SSOServiceException_1.SSOServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restJson1ListAccountRolesCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -24369,51 +25103,25 @@ const deserializeAws_restJson1ListAccountRolesCommandError = async (output, cont
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
-            response = {
-                ...(await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context);
         case "ResourceNotFoundException":
         case "com.amazonaws.sso#ResourceNotFoundException":
-            response = {
-                ...(await deserializeAws_restJson1ResourceNotFoundExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1ResourceNotFoundExceptionResponse(parsedOutput, context);
         case "TooManyRequestsException":
         case "com.amazonaws.sso#TooManyRequestsException":
-            response = {
-                ...(await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context);
         case "UnauthorizedException":
         case "com.amazonaws.sso#UnauthorizedException":
-            response = {
-                ...(await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new SSOServiceException_1.SSOServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restJson1ListAccountsCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -24445,51 +25153,25 @@ const deserializeAws_restJson1ListAccountsCommandError = async (output, context)
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
-            response = {
-                ...(await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context);
         case "ResourceNotFoundException":
         case "com.amazonaws.sso#ResourceNotFoundException":
-            response = {
-                ...(await deserializeAws_restJson1ResourceNotFoundExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1ResourceNotFoundExceptionResponse(parsedOutput, context);
         case "TooManyRequestsException":
         case "com.amazonaws.sso#TooManyRequestsException":
-            response = {
-                ...(await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context);
         case "UnauthorizedException":
         case "com.amazonaws.sso#UnauthorizedException":
-            response = {
-                ...(await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new SSOServiceException_1.SSOServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restJson1LogoutCommand = async (output, context) => {
     if (output.statusCode !== 200 && output.statusCode >= 300) {
@@ -24513,95 +25195,70 @@ const deserializeAws_restJson1LogoutCommandError = async (output, context) => {
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
-            response = {
-                ...(await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1InvalidRequestExceptionResponse(parsedOutput, context);
         case "TooManyRequestsException":
         case "com.amazonaws.sso#TooManyRequestsException":
-            response = {
-                ...(await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1TooManyRequestsExceptionResponse(parsedOutput, context);
         case "UnauthorizedException":
         case "com.amazonaws.sso#UnauthorizedException":
-            response = {
-                ...(await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.code || parsedBody.Code || errorCode;
-            response = {
-                ...parsedBody,
-                name: `${errorCode}`,
-                message: parsedBody.message || parsedBody.Message || errorCode,
+            response = new SSOServiceException_1.SSOServiceException({
+                name: parsedBody.code || parsedBody.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_restJson1InvalidRequestExceptionResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "InvalidRequestException",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-        message: undefined,
-    };
+    const contents = {};
     const data = parsedOutput.body;
     if (data.message !== undefined && data.message !== null) {
         contents.message = smithy_client_1.expectString(data.message);
     }
-    return contents;
+    const exception = new models_0_1.InvalidRequestException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restJson1ResourceNotFoundExceptionResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "ResourceNotFoundException",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-        message: undefined,
-    };
+    const contents = {};
     const data = parsedOutput.body;
     if (data.message !== undefined && data.message !== null) {
         contents.message = smithy_client_1.expectString(data.message);
     }
-    return contents;
+    const exception = new models_0_1.ResourceNotFoundException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restJson1TooManyRequestsExceptionResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "TooManyRequestsException",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-        message: undefined,
-    };
+    const contents = {};
     const data = parsedOutput.body;
     if (data.message !== undefined && data.message !== null) {
         contents.message = smithy_client_1.expectString(data.message);
     }
-    return contents;
+    const exception = new models_0_1.TooManyRequestsException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restJson1UnauthorizedExceptionResponse = async (parsedOutput, context) => {
-    const contents = {
-        name: "UnauthorizedException",
-        $fault: "client",
-        $metadata: deserializeMetadata(parsedOutput),
-        message: undefined,
-    };
+    const contents = {};
     const data = parsedOutput.body;
     if (data.message !== undefined && data.message !== null) {
         contents.message = smithy_client_1.expectString(data.message);
     }
-    return contents;
+    const exception = new models_0_1.UnauthorizedException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+    });
+    return smithy_client_1.decorateServiceException(exception, parsedOutput.body);
 };
 const deserializeAws_restJson1AccountInfo = (output, context) => {
     return {
@@ -24611,7 +25268,7 @@ const deserializeAws_restJson1AccountInfo = (output, context) => {
     };
 };
 const deserializeAws_restJson1AccountListType = (output, context) => {
-    return (output || [])
+    const retVal = (output || [])
         .filter((e) => e != null)
         .map((entry) => {
         if (entry === null) {
@@ -24619,6 +25276,7 @@ const deserializeAws_restJson1AccountListType = (output, context) => {
         }
         return deserializeAws_restJson1AccountInfo(entry, context);
     });
+    return retVal;
 };
 const deserializeAws_restJson1RoleCredentials = (output, context) => {
     return {
@@ -24635,7 +25293,7 @@ const deserializeAws_restJson1RoleInfo = (output, context) => {
     };
 };
 const deserializeAws_restJson1RoleListType = (output, context) => {
-    return (output || [])
+    const retVal = (output || [])
         .filter((e) => e != null)
         .map((entry) => {
         if (entry === null) {
@@ -24643,6 +25301,7 @@ const deserializeAws_restJson1RoleListType = (output, context) => {
         }
         return deserializeAws_restJson1RoleInfo(entry, context);
     });
+    return retVal;
 };
 const deserializeMetadata = (output) => {
     var _a;
@@ -25654,12 +26313,34 @@ exports.defaultRegionInfoProvider = defaultRegionInfoProvider;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.STSServiceException = void 0;
 const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(32605), exports);
 tslib_1.__exportStar(__nccwpck_require__(64195), exports);
 tslib_1.__exportStar(__nccwpck_require__(55716), exports);
 tslib_1.__exportStar(__nccwpck_require__(88028), exports);
 tslib_1.__exportStar(__nccwpck_require__(20106), exports);
+var STSServiceException_1 = __nccwpck_require__(26450);
+Object.defineProperty(exports, "STSServiceException", ({ enumerable: true, get: function () { return STSServiceException_1.STSServiceException; } }));
+
+
+/***/ }),
+
+/***/ 26450:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.STSServiceException = void 0;
+const smithy_client_1 = __nccwpck_require__(4963);
+class STSServiceException extends smithy_client_1.ServiceException {
+    constructor(options) {
+        super(options);
+        Object.setPrototypeOf(this, STSServiceException.prototype);
+    }
+}
+exports.STSServiceException = STSServiceException;
 
 
 /***/ }),
@@ -25677,12 +26358,13 @@ tslib_1.__exportStar(__nccwpck_require__(21780), exports);
 /***/ }),
 
 /***/ 21780:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GetSessionTokenResponse = exports.GetSessionTokenRequest = exports.GetFederationTokenResponse = exports.FederatedUser = exports.GetFederationTokenRequest = exports.GetCallerIdentityResponse = exports.GetCallerIdentityRequest = exports.GetAccessKeyInfoResponse = exports.GetAccessKeyInfoRequest = exports.DecodeAuthorizationMessageResponse = exports.DecodeAuthorizationMessageRequest = exports.AssumeRoleWithWebIdentityResponse = exports.AssumeRoleWithWebIdentityRequest = exports.AssumeRoleWithSAMLResponse = exports.AssumeRoleWithSAMLRequest = exports.AssumeRoleResponse = exports.Credentials = exports.AssumeRoleRequest = exports.Tag = exports.PolicyDescriptorType = exports.AssumedRoleUser = void 0;
+exports.GetSessionTokenResponse = exports.GetSessionTokenRequest = exports.GetFederationTokenResponse = exports.FederatedUser = exports.GetFederationTokenRequest = exports.GetCallerIdentityResponse = exports.GetCallerIdentityRequest = exports.GetAccessKeyInfoResponse = exports.GetAccessKeyInfoRequest = exports.InvalidAuthorizationMessageException = exports.DecodeAuthorizationMessageResponse = exports.DecodeAuthorizationMessageRequest = exports.IDPCommunicationErrorException = exports.AssumeRoleWithWebIdentityResponse = exports.AssumeRoleWithWebIdentityRequest = exports.InvalidIdentityTokenException = exports.IDPRejectedClaimException = exports.AssumeRoleWithSAMLResponse = exports.AssumeRoleWithSAMLRequest = exports.RegionDisabledException = exports.PackedPolicyTooLargeException = exports.MalformedPolicyDocumentException = exports.ExpiredTokenException = exports.AssumeRoleResponse = exports.Credentials = exports.AssumeRoleRequest = exports.Tag = exports.PolicyDescriptorType = exports.AssumedRoleUser = void 0;
+const STSServiceException_1 = __nccwpck_require__(26450);
 var AssumedRoleUser;
 (function (AssumedRoleUser) {
     AssumedRoleUser.filterSensitiveLog = (obj) => ({
@@ -25719,6 +26401,58 @@ var AssumeRoleResponse;
         ...obj,
     });
 })(AssumeRoleResponse = exports.AssumeRoleResponse || (exports.AssumeRoleResponse = {}));
+class ExpiredTokenException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "ExpiredTokenException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "ExpiredTokenException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, ExpiredTokenException.prototype);
+    }
+}
+exports.ExpiredTokenException = ExpiredTokenException;
+class MalformedPolicyDocumentException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "MalformedPolicyDocumentException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "MalformedPolicyDocumentException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, MalformedPolicyDocumentException.prototype);
+    }
+}
+exports.MalformedPolicyDocumentException = MalformedPolicyDocumentException;
+class PackedPolicyTooLargeException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "PackedPolicyTooLargeException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "PackedPolicyTooLargeException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, PackedPolicyTooLargeException.prototype);
+    }
+}
+exports.PackedPolicyTooLargeException = PackedPolicyTooLargeException;
+class RegionDisabledException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "RegionDisabledException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "RegionDisabledException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, RegionDisabledException.prototype);
+    }
+}
+exports.RegionDisabledException = RegionDisabledException;
 var AssumeRoleWithSAMLRequest;
 (function (AssumeRoleWithSAMLRequest) {
     AssumeRoleWithSAMLRequest.filterSensitiveLog = (obj) => ({
@@ -25731,6 +26465,32 @@ var AssumeRoleWithSAMLResponse;
         ...obj,
     });
 })(AssumeRoleWithSAMLResponse = exports.AssumeRoleWithSAMLResponse || (exports.AssumeRoleWithSAMLResponse = {}));
+class IDPRejectedClaimException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "IDPRejectedClaimException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "IDPRejectedClaimException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, IDPRejectedClaimException.prototype);
+    }
+}
+exports.IDPRejectedClaimException = IDPRejectedClaimException;
+class InvalidIdentityTokenException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "InvalidIdentityTokenException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "InvalidIdentityTokenException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, InvalidIdentityTokenException.prototype);
+    }
+}
+exports.InvalidIdentityTokenException = InvalidIdentityTokenException;
 var AssumeRoleWithWebIdentityRequest;
 (function (AssumeRoleWithWebIdentityRequest) {
     AssumeRoleWithWebIdentityRequest.filterSensitiveLog = (obj) => ({
@@ -25743,6 +26503,19 @@ var AssumeRoleWithWebIdentityResponse;
         ...obj,
     });
 })(AssumeRoleWithWebIdentityResponse = exports.AssumeRoleWithWebIdentityResponse || (exports.AssumeRoleWithWebIdentityResponse = {}));
+class IDPCommunicationErrorException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "IDPCommunicationErrorException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "IDPCommunicationErrorException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, IDPCommunicationErrorException.prototype);
+    }
+}
+exports.IDPCommunicationErrorException = IDPCommunicationErrorException;
 var DecodeAuthorizationMessageRequest;
 (function (DecodeAuthorizationMessageRequest) {
     DecodeAuthorizationMessageRequest.filterSensitiveLog = (obj) => ({
@@ -25755,6 +26528,19 @@ var DecodeAuthorizationMessageResponse;
         ...obj,
     });
 })(DecodeAuthorizationMessageResponse = exports.DecodeAuthorizationMessageResponse || (exports.DecodeAuthorizationMessageResponse = {}));
+class InvalidAuthorizationMessageException extends STSServiceException_1.STSServiceException {
+    constructor(opts) {
+        super({
+            name: "InvalidAuthorizationMessageException",
+            $fault: "client",
+            ...opts,
+        });
+        this.name = "InvalidAuthorizationMessageException";
+        this.$fault = "client";
+        Object.setPrototypeOf(this, InvalidAuthorizationMessageException.prototype);
+    }
+}
+exports.InvalidAuthorizationMessageException = InvalidAuthorizationMessageException;
 var GetAccessKeyInfoRequest;
 (function (GetAccessKeyInfoRequest) {
     GetAccessKeyInfoRequest.filterSensitiveLog = (obj) => ({
@@ -25824,6 +26610,8 @@ const protocol_http_1 = __nccwpck_require__(70223);
 const smithy_client_1 = __nccwpck_require__(4963);
 const entities_1 = __nccwpck_require__(3000);
 const fast_xml_parser_1 = __nccwpck_require__(27448);
+const models_0_1 = __nccwpck_require__(21780);
+const STSServiceException_1 = __nccwpck_require__(26450);
 const serializeAws_queryAssumeRoleCommand = async (input, context) => {
     const headers = {
         "content-type": "application/x-www-form-urlencoded",
@@ -25953,51 +26741,25 @@ const deserializeAws_queryAssumeRoleCommandError = async (output, context) => {
     switch (errorCode) {
         case "ExpiredTokenException":
         case "com.amazonaws.sts#ExpiredTokenException":
-            response = {
-                ...(await deserializeAws_queryExpiredTokenExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryExpiredTokenExceptionResponse(parsedOutput, context);
         case "MalformedPolicyDocumentException":
         case "com.amazonaws.sts#MalformedPolicyDocumentException":
-            response = {
-                ...(await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context);
         case "PackedPolicyTooLargeException":
         case "com.amazonaws.sts#PackedPolicyTooLargeException":
-            response = {
-                ...(await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context);
         case "RegionDisabledException":
         case "com.amazonaws.sts#RegionDisabledException":
-            response = {
-                ...(await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryAssumeRoleWithSAMLCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26024,67 +26786,31 @@ const deserializeAws_queryAssumeRoleWithSAMLCommandError = async (output, contex
     switch (errorCode) {
         case "ExpiredTokenException":
         case "com.amazonaws.sts#ExpiredTokenException":
-            response = {
-                ...(await deserializeAws_queryExpiredTokenExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryExpiredTokenExceptionResponse(parsedOutput, context);
         case "IDPRejectedClaimException":
         case "com.amazonaws.sts#IDPRejectedClaimException":
-            response = {
-                ...(await deserializeAws_queryIDPRejectedClaimExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryIDPRejectedClaimExceptionResponse(parsedOutput, context);
         case "InvalidIdentityTokenException":
         case "com.amazonaws.sts#InvalidIdentityTokenException":
-            response = {
-                ...(await deserializeAws_queryInvalidIdentityTokenExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryInvalidIdentityTokenExceptionResponse(parsedOutput, context);
         case "MalformedPolicyDocumentException":
         case "com.amazonaws.sts#MalformedPolicyDocumentException":
-            response = {
-                ...(await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context);
         case "PackedPolicyTooLargeException":
         case "com.amazonaws.sts#PackedPolicyTooLargeException":
-            response = {
-                ...(await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context);
         case "RegionDisabledException":
         case "com.amazonaws.sts#RegionDisabledException":
-            response = {
-                ...(await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryAssumeRoleWithWebIdentityCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26111,75 +26837,34 @@ const deserializeAws_queryAssumeRoleWithWebIdentityCommandError = async (output,
     switch (errorCode) {
         case "ExpiredTokenException":
         case "com.amazonaws.sts#ExpiredTokenException":
-            response = {
-                ...(await deserializeAws_queryExpiredTokenExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryExpiredTokenExceptionResponse(parsedOutput, context);
         case "IDPCommunicationErrorException":
         case "com.amazonaws.sts#IDPCommunicationErrorException":
-            response = {
-                ...(await deserializeAws_queryIDPCommunicationErrorExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryIDPCommunicationErrorExceptionResponse(parsedOutput, context);
         case "IDPRejectedClaimException":
         case "com.amazonaws.sts#IDPRejectedClaimException":
-            response = {
-                ...(await deserializeAws_queryIDPRejectedClaimExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryIDPRejectedClaimExceptionResponse(parsedOutput, context);
         case "InvalidIdentityTokenException":
         case "com.amazonaws.sts#InvalidIdentityTokenException":
-            response = {
-                ...(await deserializeAws_queryInvalidIdentityTokenExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryInvalidIdentityTokenExceptionResponse(parsedOutput, context);
         case "MalformedPolicyDocumentException":
         case "com.amazonaws.sts#MalformedPolicyDocumentException":
-            response = {
-                ...(await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context);
         case "PackedPolicyTooLargeException":
         case "com.amazonaws.sts#PackedPolicyTooLargeException":
-            response = {
-                ...(await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context);
         case "RegionDisabledException":
         case "com.amazonaws.sts#RegionDisabledException":
-            response = {
-                ...(await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryDecodeAuthorizationMessageCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26206,27 +26891,16 @@ const deserializeAws_queryDecodeAuthorizationMessageCommandError = async (output
     switch (errorCode) {
         case "InvalidAuthorizationMessageException":
         case "com.amazonaws.sts#InvalidAuthorizationMessageException":
-            response = {
-                ...(await deserializeAws_queryInvalidAuthorizationMessageExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryInvalidAuthorizationMessageExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryGetAccessKeyInfoCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26253,19 +26927,13 @@ const deserializeAws_queryGetAccessKeyInfoCommandError = async (output, context)
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryGetCallerIdentityCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26292,19 +26960,13 @@ const deserializeAws_queryGetCallerIdentityCommandError = async (output, context
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryGetFederationTokenCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26331,43 +26993,22 @@ const deserializeAws_queryGetFederationTokenCommandError = async (output, contex
     switch (errorCode) {
         case "MalformedPolicyDocumentException":
         case "com.amazonaws.sts#MalformedPolicyDocumentException":
-            response = {
-                ...(await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryMalformedPolicyDocumentExceptionResponse(parsedOutput, context);
         case "PackedPolicyTooLargeException":
         case "com.amazonaws.sts#PackedPolicyTooLargeException":
-            response = {
-                ...(await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryPackedPolicyTooLargeExceptionResponse(parsedOutput, context);
         case "RegionDisabledException":
         case "com.amazonaws.sts#RegionDisabledException":
-            response = {
-                ...(await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryGetSessionTokenCommand = async (output, context) => {
     if (output.statusCode >= 300) {
@@ -26394,115 +27035,88 @@ const deserializeAws_queryGetSessionTokenCommandError = async (output, context) 
     switch (errorCode) {
         case "RegionDisabledException":
         case "com.amazonaws.sts#RegionDisabledException":
-            response = {
-                ...(await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context)),
-                name: errorCode,
-                $metadata: deserializeMetadata(output),
-            };
-            break;
+            throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
-            errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
-            response = {
-                ...parsedBody.Error,
-                name: `${errorCode}`,
-                message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+            response = new STSServiceException_1.STSServiceException({
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
                 $fault: "client",
                 $metadata: deserializeMetadata(output),
-            };
+            });
+            throw smithy_client_1.decorateServiceException(response, parsedBody.Error);
     }
-    const message = response.message || response.Message || errorCode;
-    response.message = message;
-    delete response.Message;
-    return Promise.reject(Object.assign(new Error(message), response));
 };
 const deserializeAws_queryExpiredTokenExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryExpiredTokenException(body.Error, context);
-    const contents = {
-        name: "ExpiredTokenException",
-        $fault: "client",
+    const exception = new models_0_1.ExpiredTokenException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryIDPCommunicationErrorExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryIDPCommunicationErrorException(body.Error, context);
-    const contents = {
-        name: "IDPCommunicationErrorException",
-        $fault: "client",
+    const exception = new models_0_1.IDPCommunicationErrorException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryIDPRejectedClaimExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryIDPRejectedClaimException(body.Error, context);
-    const contents = {
-        name: "IDPRejectedClaimException",
-        $fault: "client",
+    const exception = new models_0_1.IDPRejectedClaimException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryInvalidAuthorizationMessageExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryInvalidAuthorizationMessageException(body.Error, context);
-    const contents = {
-        name: "InvalidAuthorizationMessageException",
-        $fault: "client",
+    const exception = new models_0_1.InvalidAuthorizationMessageException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryInvalidIdentityTokenExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryInvalidIdentityTokenException(body.Error, context);
-    const contents = {
-        name: "InvalidIdentityTokenException",
-        $fault: "client",
+    const exception = new models_0_1.InvalidIdentityTokenException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryMalformedPolicyDocumentExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryMalformedPolicyDocumentException(body.Error, context);
-    const contents = {
-        name: "MalformedPolicyDocumentException",
-        $fault: "client",
+    const exception = new models_0_1.MalformedPolicyDocumentException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryPackedPolicyTooLargeExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryPackedPolicyTooLargeException(body.Error, context);
-    const contents = {
-        name: "PackedPolicyTooLargeException",
-        $fault: "client",
+    const exception = new models_0_1.PackedPolicyTooLargeException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const deserializeAws_queryRegionDisabledExceptionResponse = async (parsedOutput, context) => {
     const body = parsedOutput.body;
     const deserialized = deserializeAws_queryRegionDisabledException(body.Error, context);
-    const contents = {
-        name: "RegionDisabledException",
-        $fault: "client",
+    const exception = new models_0_1.RegionDisabledException({
         $metadata: deserializeMetadata(parsedOutput),
         ...deserialized,
-    };
-    return contents;
+    });
+    return smithy_client_1.decorateServiceException(exception, body);
 };
 const serializeAws_queryAssumeRoleRequest = (input, context) => {
     const entries = {};
@@ -27595,7 +28209,7 @@ tslib_1.__exportStar(__nccwpck_require__(26167), exports);
 
 /***/ }),
 
-/***/ 15972:
+/***/ 80255:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -27607,23 +28221,34 @@ exports.ENV_KEY = "AWS_ACCESS_KEY_ID";
 exports.ENV_SECRET = "AWS_SECRET_ACCESS_KEY";
 exports.ENV_SESSION = "AWS_SESSION_TOKEN";
 exports.ENV_EXPIRATION = "AWS_CREDENTIAL_EXPIRATION";
-function fromEnv() {
-    return () => {
-        const accessKeyId = process.env[exports.ENV_KEY];
-        const secretAccessKey = process.env[exports.ENV_SECRET];
-        const expiry = process.env[exports.ENV_EXPIRATION];
-        if (accessKeyId && secretAccessKey) {
-            return Promise.resolve({
-                accessKeyId,
-                secretAccessKey,
-                sessionToken: process.env[exports.ENV_SESSION],
-                expiration: expiry ? new Date(expiry) : undefined,
-            });
-        }
-        return Promise.reject(new property_provider_1.CredentialsProviderError("Unable to find environment variable credentials."));
-    };
-}
+const fromEnv = () => async () => {
+    const accessKeyId = process.env[exports.ENV_KEY];
+    const secretAccessKey = process.env[exports.ENV_SECRET];
+    const sessionToken = process.env[exports.ENV_SESSION];
+    const expiry = process.env[exports.ENV_EXPIRATION];
+    if (accessKeyId && secretAccessKey) {
+        return {
+            accessKeyId,
+            secretAccessKey,
+            ...(sessionToken && { sessionToken }),
+            ...(expiry && { expiration: new Date(expiry) }),
+        };
+    }
+    throw new property_provider_1.CredentialsProviderError("Unable to find environment variable credentials.");
+};
 exports.fromEnv = fromEnv;
+
+
+/***/ }),
+
+/***/ 15972:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(80255), exports);
 
 
 /***/ }),
@@ -28034,90 +28659,105 @@ const getFromEndpointModeConfig = async () => {
 
 /***/ }),
 
-/***/ 74203:
+/***/ 55442:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.fromIni = void 0;
-const credential_provider_env_1 = __nccwpck_require__(15972);
-const credential_provider_imds_1 = __nccwpck_require__(25898);
-const credential_provider_sso_1 = __nccwpck_require__(26414);
-const credential_provider_web_identity_1 = __nccwpck_require__(15646);
+const util_credentials_1 = __nccwpck_require__(98598);
+const resolveProfileData_1 = __nccwpck_require__(95653);
+const fromIni = (init = {}) => async () => {
+    const profiles = await util_credentials_1.parseKnownFiles(init);
+    return resolveProfileData_1.resolveProfileData(util_credentials_1.getMasterProfileName(init), profiles, init);
+};
+exports.fromIni = fromIni;
+
+
+/***/ }),
+
+/***/ 74203:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(55442), exports);
+
+
+/***/ }),
+
+/***/ 60853:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveAssumeRoleCredentials = exports.isAssumeRoleProfile = void 0;
 const property_provider_1 = __nccwpck_require__(74462);
 const util_credentials_1 = __nccwpck_require__(98598);
-const isStaticCredsProfile = (arg) => Boolean(arg) &&
-    typeof arg === "object" &&
-    typeof arg.aws_access_key_id === "string" &&
-    typeof arg.aws_secret_access_key === "string" &&
-    ["undefined", "string"].indexOf(typeof arg.aws_session_token) > -1;
-const isWebIdentityProfile = (arg) => Boolean(arg) &&
-    typeof arg === "object" &&
-    typeof arg.web_identity_token_file === "string" &&
-    typeof arg.role_arn === "string" &&
-    ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1;
+const resolveCredentialSource_1 = __nccwpck_require__(82458);
+const resolveProfileData_1 = __nccwpck_require__(95653);
 const isAssumeRoleProfile = (arg) => Boolean(arg) &&
     typeof arg === "object" &&
     typeof arg.role_arn === "string" &&
     ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1 &&
     ["undefined", "string"].indexOf(typeof arg.external_id) > -1 &&
-    ["undefined", "string"].indexOf(typeof arg.mfa_serial) > -1;
-const isAssumeRoleWithSourceProfile = (arg) => isAssumeRoleProfile(arg) && typeof arg.source_profile === "string" && typeof arg.credential_source === "undefined";
-const isAssumeRoleWithProviderProfile = (arg) => isAssumeRoleProfile(arg) && typeof arg.credential_source === "string" && typeof arg.source_profile === "undefined";
-const fromIni = (init = {}) => async () => {
-    const profiles = await util_credentials_1.parseKnownFiles(init);
-    return resolveProfileData(util_credentials_1.getMasterProfileName(init), profiles, init);
-};
-exports.fromIni = fromIni;
-const resolveProfileData = async (profileName, profiles, options, visitedProfiles = {}) => {
+    ["undefined", "string"].indexOf(typeof arg.mfa_serial) > -1 &&
+    (isAssumeRoleWithSourceProfile(arg) || isAssumeRoleWithProviderProfile(arg));
+exports.isAssumeRoleProfile = isAssumeRoleProfile;
+const isAssumeRoleWithSourceProfile = (arg) => typeof arg.source_profile === "string" && typeof arg.credential_source === "undefined";
+const isAssumeRoleWithProviderProfile = (arg) => typeof arg.credential_source === "string" && typeof arg.source_profile === "undefined";
+const resolveAssumeRoleCredentials = async (profileName, profiles, options, visitedProfiles = {}) => {
     const data = profiles[profileName];
-    if (Object.keys(visitedProfiles).length > 0 && isStaticCredsProfile(data)) {
-        return resolveStaticCredentials(data);
+    if (!options.roleAssumer) {
+        throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} requires a role to be assumed, but no role assumption callback was provided.`, false);
     }
-    if (isAssumeRoleWithSourceProfile(data) || isAssumeRoleWithProviderProfile(data)) {
-        const { external_id: ExternalId, mfa_serial, role_arn: RoleArn, role_session_name: RoleSessionName = "aws-sdk-js-" + Date.now(), source_profile, credential_source, } = data;
-        if (!options.roleAssumer) {
-            throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} requires a role to be assumed, but no` + ` role assumption callback was provided.`, false);
+    const { source_profile } = data;
+    if (source_profile && source_profile in visitedProfiles) {
+        throw new property_provider_1.CredentialsProviderError(`Detected a cycle attempting to resolve credentials for profile` +
+            ` ${util_credentials_1.getMasterProfileName(options)}. Profiles visited: ` +
+            Object.keys(visitedProfiles).join(", "), false);
+    }
+    const sourceCredsProvider = source_profile
+        ? resolveProfileData_1.resolveProfileData(source_profile, profiles, options, {
+            ...visitedProfiles,
+            [source_profile]: true,
+        })
+        : resolveCredentialSource_1.resolveCredentialSource(data.credential_source, profileName)();
+    const params = {
+        RoleArn: data.role_arn,
+        RoleSessionName: data.role_session_name || `aws-sdk-js-${Date.now()}`,
+        ExternalId: data.external_id,
+    };
+    const { mfa_serial } = data;
+    if (mfa_serial) {
+        if (!options.mfaCodeProvider) {
+            throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} requires multi-factor authentication, but no MFA code callback was provided.`, false);
         }
-        if (source_profile && source_profile in visitedProfiles) {
-            throw new property_provider_1.CredentialsProviderError(`Detected a cycle attempting to resolve credentials for profile` +
-                ` ${util_credentials_1.getMasterProfileName(options)}. Profiles visited: ` +
-                Object.keys(visitedProfiles).join(", "), false);
-        }
-        const sourceCreds = source_profile
-            ? resolveProfileData(source_profile, profiles, options, {
-                ...visitedProfiles,
-                [source_profile]: true,
-            })
-            : resolveCredentialSource(credential_source, profileName)();
-        const params = { RoleArn, RoleSessionName, ExternalId };
-        if (mfa_serial) {
-            if (!options.mfaCodeProvider) {
-                throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} requires multi-factor authentication,` + ` but no MFA code callback was provided.`, false);
-            }
-            params.SerialNumber = mfa_serial;
-            params.TokenCode = await options.mfaCodeProvider(mfa_serial);
-        }
-        return options.roleAssumer(await sourceCreds, params);
+        params.SerialNumber = mfa_serial;
+        params.TokenCode = await options.mfaCodeProvider(mfa_serial);
     }
-    if (isStaticCredsProfile(data)) {
-        return resolveStaticCredentials(data);
-    }
-    if (isWebIdentityProfile(data)) {
-        return resolveWebIdentityCredentials(data, options);
-    }
-    if (credential_provider_sso_1.isSsoProfile(data)) {
-        const { sso_start_url, sso_account_id, sso_region, sso_role_name } = credential_provider_sso_1.validateSsoProfile(data);
-        return credential_provider_sso_1.fromSSO({
-            ssoStartUrl: sso_start_url,
-            ssoAccountId: sso_account_id,
-            ssoRegion: sso_region,
-            ssoRoleName: sso_role_name,
-        })();
-    }
-    throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} could not be found or parsed in shared` + ` credentials file.`);
+    const sourceCreds = await sourceCredsProvider;
+    return options.roleAssumer(sourceCreds, params);
 };
+exports.resolveAssumeRoleCredentials = resolveAssumeRoleCredentials;
+
+
+/***/ }),
+
+/***/ 82458:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveCredentialSource = void 0;
+const credential_provider_env_1 = __nccwpck_require__(15972);
+const credential_provider_imds_1 = __nccwpck_require__(25898);
+const property_provider_1 = __nccwpck_require__(74462);
 const resolveCredentialSource = (credentialSource, profileName) => {
     const sourceProvidersMap = {
         EcsContainer: credential_provider_imds_1.fromContainerMetadata,
@@ -28132,17 +28772,147 @@ const resolveCredentialSource = (credentialSource, profileName) => {
             `expected EcsContainer or Ec2InstanceMetadata or Environment.`);
     }
 };
+exports.resolveCredentialSource = resolveCredentialSource;
+
+
+/***/ }),
+
+/***/ 95653:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveProfileData = void 0;
+const property_provider_1 = __nccwpck_require__(74462);
+const resolveAssumeRoleCredentials_1 = __nccwpck_require__(60853);
+const resolveSsoCredentials_1 = __nccwpck_require__(59867);
+const resolveStaticCredentials_1 = __nccwpck_require__(33071);
+const resolveWebIdentityCredentials_1 = __nccwpck_require__(58342);
+const resolveProfileData = async (profileName, profiles, options, visitedProfiles = {}) => {
+    const data = profiles[profileName];
+    if (Object.keys(visitedProfiles).length > 0 && resolveStaticCredentials_1.isStaticCredsProfile(data)) {
+        return resolveStaticCredentials_1.resolveStaticCredentials(data);
+    }
+    if (resolveAssumeRoleCredentials_1.isAssumeRoleProfile(data)) {
+        return resolveAssumeRoleCredentials_1.resolveAssumeRoleCredentials(profileName, profiles, options, visitedProfiles);
+    }
+    if (resolveStaticCredentials_1.isStaticCredsProfile(data)) {
+        return resolveStaticCredentials_1.resolveStaticCredentials(data);
+    }
+    if (resolveWebIdentityCredentials_1.isWebIdentityProfile(data)) {
+        return resolveWebIdentityCredentials_1.resolveWebIdentityCredentials(data, options);
+    }
+    if (resolveSsoCredentials_1.isSsoProfile(data)) {
+        return resolveSsoCredentials_1.resolveSsoCredentials(data);
+    }
+    throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} could not be found or parsed in shared credentials file.`);
+};
+exports.resolveProfileData = resolveProfileData;
+
+
+/***/ }),
+
+/***/ 59867:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveSsoCredentials = exports.isSsoProfile = void 0;
+const credential_provider_sso_1 = __nccwpck_require__(26414);
+var credential_provider_sso_2 = __nccwpck_require__(26414);
+Object.defineProperty(exports, "isSsoProfile", ({ enumerable: true, get: function () { return credential_provider_sso_2.isSsoProfile; } }));
+const resolveSsoCredentials = (data) => {
+    const { sso_start_url, sso_account_id, sso_region, sso_role_name } = credential_provider_sso_1.validateSsoProfile(data);
+    return credential_provider_sso_1.fromSSO({
+        ssoStartUrl: sso_start_url,
+        ssoAccountId: sso_account_id,
+        ssoRegion: sso_region,
+        ssoRoleName: sso_role_name,
+    })();
+};
+exports.resolveSsoCredentials = resolveSsoCredentials;
+
+
+/***/ }),
+
+/***/ 33071:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveStaticCredentials = exports.isStaticCredsProfile = void 0;
+const isStaticCredsProfile = (arg) => Boolean(arg) &&
+    typeof arg === "object" &&
+    typeof arg.aws_access_key_id === "string" &&
+    typeof arg.aws_secret_access_key === "string" &&
+    ["undefined", "string"].indexOf(typeof arg.aws_session_token) > -1;
+exports.isStaticCredsProfile = isStaticCredsProfile;
 const resolveStaticCredentials = (profile) => Promise.resolve({
     accessKeyId: profile.aws_access_key_id,
     secretAccessKey: profile.aws_secret_access_key,
     sessionToken: profile.aws_session_token,
 });
+exports.resolveStaticCredentials = resolveStaticCredentials;
+
+
+/***/ }),
+
+/***/ 58342:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveWebIdentityCredentials = exports.isWebIdentityProfile = void 0;
+const credential_provider_web_identity_1 = __nccwpck_require__(15646);
+const isWebIdentityProfile = (arg) => Boolean(arg) &&
+    typeof arg === "object" &&
+    typeof arg.web_identity_token_file === "string" &&
+    typeof arg.role_arn === "string" &&
+    ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1;
+exports.isWebIdentityProfile = isWebIdentityProfile;
 const resolveWebIdentityCredentials = async (profile, options) => credential_provider_web_identity_1.fromTokenFile({
     webIdentityTokenFile: profile.web_identity_token_file,
     roleArn: profile.role_arn,
     roleSessionName: profile.role_session_name,
     roleAssumerWithWebIdentity: options.roleAssumerWithWebIdentity,
 })();
+exports.resolveWebIdentityCredentials = resolveWebIdentityCredentials;
+
+
+/***/ }),
+
+/***/ 15560:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.defaultProvider = void 0;
+const credential_provider_env_1 = __nccwpck_require__(15972);
+const credential_provider_ini_1 = __nccwpck_require__(74203);
+const credential_provider_process_1 = __nccwpck_require__(89969);
+const credential_provider_sso_1 = __nccwpck_require__(26414);
+const credential_provider_web_identity_1 = __nccwpck_require__(15646);
+const property_provider_1 = __nccwpck_require__(74462);
+const shared_ini_file_loader_1 = __nccwpck_require__(67387);
+const util_credentials_1 = __nccwpck_require__(98598);
+const remoteProvider_1 = __nccwpck_require__(50626);
+const defaultProvider = (init = {}) => {
+    const options = {
+        profile: process.env[util_credentials_1.ENV_PROFILE],
+        ...init,
+        ...(!init.loadedConfig && { loadedConfig: shared_ini_file_loader_1.loadSharedConfigFiles(init) }),
+    };
+    const providerChain = property_provider_1.chain(...(options.profile ? [] : [credential_provider_env_1.fromEnv()]), credential_provider_sso_1.fromSSO(options), credential_provider_ini_1.fromIni(options), credential_provider_process_1.fromProcess(options), credential_provider_web_identity_1.fromTokenFile(options), remoteProvider_1.remoteProvider(options), async () => {
+        throw new property_provider_1.CredentialsProviderError("Could not load credentials from any providers", false);
+    });
+    return property_provider_1.memoize(providerChain, (credentials) => credentials.expiration !== undefined && credentials.expiration.getTime() - Date.now() < 300000, (credentials) => credentials.expiration !== undefined);
+};
+exports.defaultProvider = defaultProvider;
 
 
 /***/ }),
@@ -28153,46 +28923,85 @@ const resolveWebIdentityCredentials = async (profile, options) => credential_pro
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.defaultProvider = exports.ENV_IMDS_DISABLED = void 0;
-const credential_provider_env_1 = __nccwpck_require__(15972);
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(15560), exports);
+
+
+/***/ }),
+
+/***/ 50626:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.remoteProvider = exports.ENV_IMDS_DISABLED = void 0;
 const credential_provider_imds_1 = __nccwpck_require__(25898);
-const credential_provider_ini_1 = __nccwpck_require__(74203);
-const credential_provider_process_1 = __nccwpck_require__(89969);
-const credential_provider_sso_1 = __nccwpck_require__(26414);
-const credential_provider_web_identity_1 = __nccwpck_require__(15646);
 const property_provider_1 = __nccwpck_require__(74462);
-const shared_ini_file_loader_1 = __nccwpck_require__(67387);
-const util_credentials_1 = __nccwpck_require__(98598);
 exports.ENV_IMDS_DISABLED = "AWS_EC2_METADATA_DISABLED";
-const defaultProvider = (init = {}) => {
-    const options = { profile: process.env[util_credentials_1.ENV_PROFILE], ...init };
-    if (!options.loadedConfig)
-        options.loadedConfig = shared_ini_file_loader_1.loadSharedConfigFiles(init);
-    const providers = [
-        credential_provider_sso_1.fromSSO(options),
-        credential_provider_ini_1.fromIni(options),
-        credential_provider_process_1.fromProcess(options),
-        credential_provider_web_identity_1.fromTokenFile(options),
-        remoteProvider(options),
-        async () => {
-            throw new property_provider_1.CredentialsProviderError("Could not load credentials from any providers", false);
-        },
-    ];
-    if (!options.profile)
-        providers.unshift(credential_provider_env_1.fromEnv());
-    const providerChain = property_provider_1.chain(...providers);
-    return property_provider_1.memoize(providerChain, (credentials) => credentials.expiration !== undefined && credentials.expiration.getTime() - Date.now() < 300000, (credentials) => credentials.expiration !== undefined);
-};
-exports.defaultProvider = defaultProvider;
 const remoteProvider = (init) => {
     if (process.env[credential_provider_imds_1.ENV_CMDS_RELATIVE_URI] || process.env[credential_provider_imds_1.ENV_CMDS_FULL_URI]) {
         return credential_provider_imds_1.fromContainerMetadata(init);
     }
     if (process.env[exports.ENV_IMDS_DISABLED]) {
-        return () => Promise.reject(new property_provider_1.CredentialsProviderError("EC2 Instance Metadata Service access disabled"));
+        return async () => {
+            throw new property_provider_1.CredentialsProviderError("EC2 Instance Metadata Service access disabled");
+        };
     }
     return credential_provider_imds_1.fromInstanceMetadata(init);
 };
+exports.remoteProvider = remoteProvider;
+
+
+/***/ }),
+
+/***/ 72650:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.fromProcess = void 0;
+const util_credentials_1 = __nccwpck_require__(98598);
+const resolveProcessCredentials_1 = __nccwpck_require__(74926);
+const fromProcess = (init = {}) => async () => {
+    const profiles = await util_credentials_1.parseKnownFiles(init);
+    return resolveProcessCredentials_1.resolveProcessCredentials(util_credentials_1.getMasterProfileName(init), profiles);
+};
+exports.fromProcess = fromProcess;
+
+
+/***/ }),
+
+/***/ 41104:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getValidatedProcessCredentials = void 0;
+const getValidatedProcessCredentials = (profileName, data) => {
+    if (data.Version !== 1) {
+        throw Error(`Profile ${profileName} credential_process did not return Version 1.`);
+    }
+    if (data.AccessKeyId === undefined || data.SecretAccessKey === undefined) {
+        throw Error(`Profile ${profileName} credential_process returned invalid credentials.`);
+    }
+    if (data.Expiration) {
+        const currentTime = new Date();
+        const expireTime = new Date(data.Expiration);
+        if (expireTime < currentTime) {
+            throw Error(`Profile ${profileName} credential_process returned expired credentials.`);
+        }
+    }
+    return {
+        accessKeyId: data.AccessKeyId,
+        secretAccessKey: data.SecretAccessKey,
+        ...(data.SessionToken && { sessionToken: data.SessionToken }),
+        ...(data.Expiration && { expiration: new Date(data.Expiration) }),
+    };
+};
+exports.getValidatedProcessCredentials = getValidatedProcessCredentials;
 
 
 /***/ }),
@@ -28203,56 +29012,43 @@ const remoteProvider = (init) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.fromProcess = exports.ENV_PROFILE = void 0;
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(72650), exports);
+
+
+/***/ }),
+
+/***/ 74926:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveProcessCredentials = void 0;
 const property_provider_1 = __nccwpck_require__(74462);
-const util_credentials_1 = __nccwpck_require__(98598);
 const child_process_1 = __nccwpck_require__(32081);
-exports.ENV_PROFILE = "AWS_PROFILE";
-const fromProcess = (init = {}) => async () => {
-    const profiles = await util_credentials_1.parseKnownFiles(init);
-    return resolveProcessCredentials(util_credentials_1.getMasterProfileName(init), profiles);
-};
-exports.fromProcess = fromProcess;
+const util_1 = __nccwpck_require__(73837);
+const getValidatedProcessCredentials_1 = __nccwpck_require__(41104);
 const resolveProcessCredentials = async (profileName, profiles) => {
     const profile = profiles[profileName];
     if (profiles[profileName]) {
         const credentialProcess = profile["credential_process"];
         if (credentialProcess !== undefined) {
-            return await execPromise(credentialProcess)
-                .then((processResult) => {
+            const execPromise = util_1.promisify(child_process_1.exec);
+            try {
+                const { stdout } = await execPromise(credentialProcess);
                 let data;
                 try {
-                    data = JSON.parse(processResult);
+                    data = JSON.parse(stdout.trim());
                 }
                 catch (_a) {
                     throw Error(`Profile ${profileName} credential_process returned invalid JSON.`);
                 }
-                const { Version: version, AccessKeyId: accessKeyId, SecretAccessKey: secretAccessKey, SessionToken: sessionToken, Expiration: expiration, } = data;
-                if (version !== 1) {
-                    throw Error(`Profile ${profileName} credential_process did not return Version 1.`);
-                }
-                if (accessKeyId === undefined || secretAccessKey === undefined) {
-                    throw Error(`Profile ${profileName} credential_process returned invalid credentials.`);
-                }
-                let expirationUnix;
-                if (expiration) {
-                    const currentTime = new Date();
-                    const expireTime = new Date(expiration);
-                    if (expireTime < currentTime) {
-                        throw Error(`Profile ${profileName} credential_process returned expired credentials.`);
-                    }
-                    expirationUnix = Math.floor(new Date(expiration).valueOf() / 1000);
-                }
-                return {
-                    accessKeyId,
-                    secretAccessKey,
-                    sessionToken,
-                    expirationUnix,
-                };
-            })
-                .catch((error) => {
+                return getValidatedProcessCredentials_1.getValidatedProcessCredentials(profileName, data);
+            }
+            catch (error) {
                 throw new property_provider_1.CredentialsProviderError(error.message);
-            });
+            }
         }
         else {
             throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} did not contain credential_process.`);
@@ -28262,46 +29058,34 @@ const resolveProcessCredentials = async (profileName, profiles) => {
         throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} could not be found in shared credentials file.`);
     }
 };
-const execPromise = (command) => new Promise(function (resolve, reject) {
-    child_process_1.exec(command, (error, stdout) => {
-        if (error) {
-            reject(error);
-            return;
-        }
-        resolve(stdout.trim());
-    });
-});
+exports.resolveProcessCredentials = resolveProcessCredentials;
 
 
 /***/ }),
 
-/***/ 26414:
+/***/ 35959:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isSsoProfile = exports.validateSsoProfile = exports.fromSSO = exports.EXPIRE_WINDOW_MS = void 0;
-const client_sso_1 = __nccwpck_require__(82666);
+exports.fromSSO = void 0;
 const property_provider_1 = __nccwpck_require__(74462);
-const shared_ini_file_loader_1 = __nccwpck_require__(67387);
 const util_credentials_1 = __nccwpck_require__(98598);
-const crypto_1 = __nccwpck_require__(6113);
-const fs_1 = __nccwpck_require__(57147);
-const path_1 = __nccwpck_require__(71017);
-exports.EXPIRE_WINDOW_MS = 15 * 60 * 1000;
-const SHOULD_FAIL_CREDENTIAL_CHAIN = false;
+const isSsoProfile_1 = __nccwpck_require__(32572);
+const resolveSSOCredentials_1 = __nccwpck_require__(94729);
+const validateSsoProfile_1 = __nccwpck_require__(48098);
 const fromSSO = (init = {}) => async () => {
     const { ssoStartUrl, ssoAccountId, ssoRegion, ssoRoleName, ssoClient } = init;
     if (!ssoStartUrl && !ssoAccountId && !ssoRegion && !ssoRoleName) {
         const profiles = await util_credentials_1.parseKnownFiles(init);
         const profileName = util_credentials_1.getMasterProfileName(init);
         const profile = profiles[profileName];
-        if (!exports.isSsoProfile(profile)) {
+        if (!isSsoProfile_1.isSsoProfile(profile)) {
             throw new property_provider_1.CredentialsProviderError(`Profile ${profileName} is not configured with SSO credentials.`);
         }
-        const { sso_start_url, sso_account_id, sso_region, sso_role_name } = exports.validateSsoProfile(profile);
-        return resolveSSOCredentials({
+        const { sso_start_url, sso_account_id, sso_region, sso_role_name } = validateSsoProfile_1.validateSsoProfile(profile);
+        return resolveSSOCredentials_1.resolveSSOCredentials({
             ssoStartUrl: sso_start_url,
             ssoAccountId: sso_account_id,
             ssoRegion: sso_region,
@@ -28314,24 +29098,76 @@ const fromSSO = (init = {}) => async () => {
             ' "ssoAccountId", "ssoRegion", "ssoRoleName"');
     }
     else {
-        return resolveSSOCredentials({ ssoStartUrl, ssoAccountId, ssoRegion, ssoRoleName, ssoClient });
+        return resolveSSOCredentials_1.resolveSSOCredentials({ ssoStartUrl, ssoAccountId, ssoRegion, ssoRoleName, ssoClient });
     }
 };
 exports.fromSSO = fromSSO;
+
+
+/***/ }),
+
+/***/ 26414:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(35959), exports);
+tslib_1.__exportStar(__nccwpck_require__(32572), exports);
+tslib_1.__exportStar(__nccwpck_require__(86623), exports);
+tslib_1.__exportStar(__nccwpck_require__(48098), exports);
+
+
+/***/ }),
+
+/***/ 32572:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isSsoProfile = void 0;
+const isSsoProfile = (arg) => arg &&
+    (typeof arg.sso_start_url === "string" ||
+        typeof arg.sso_account_id === "string" ||
+        typeof arg.sso_region === "string" ||
+        typeof arg.sso_role_name === "string");
+exports.isSsoProfile = isSsoProfile;
+
+
+/***/ }),
+
+/***/ 94729:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveSSOCredentials = void 0;
+const client_sso_1 = __nccwpck_require__(82666);
+const property_provider_1 = __nccwpck_require__(74462);
+const shared_ini_file_loader_1 = __nccwpck_require__(67387);
+const crypto_1 = __nccwpck_require__(6113);
+const fs_1 = __nccwpck_require__(57147);
+const path_1 = __nccwpck_require__(71017);
+const EXPIRE_WINDOW_MS = 15 * 60 * 1000;
+const SHOULD_FAIL_CREDENTIAL_CHAIN = false;
+const { readFile } = fs_1.promises;
 const resolveSSOCredentials = async ({ ssoStartUrl, ssoAccountId, ssoRegion, ssoRoleName, ssoClient, }) => {
     const hasher = crypto_1.createHash("sha1");
     const cacheName = hasher.update(ssoStartUrl).digest("hex");
     const tokenFile = path_1.join(shared_ini_file_loader_1.getHomeDir(), ".aws", "sso", "cache", `${cacheName}.json`);
     let token;
+    const refreshMessage = `To refresh this SSO session run aws sso login with the corresponding profile.`;
     try {
-        token = JSON.parse(fs_1.readFileSync(tokenFile, { encoding: "utf-8" }));
-        if (new Date(token.expiresAt).getTime() - Date.now() <= exports.EXPIRE_WINDOW_MS) {
-            throw new Error("SSO token is expired.");
-        }
+        token = JSON.parse(await readFile(tokenFile, "utf8"));
     }
     catch (e) {
-        throw new property_provider_1.CredentialsProviderError(`The SSO session associated with this profile has expired or is otherwise invalid. To refresh this SSO session ` +
-            `run aws sso login with the corresponding profile.`, SHOULD_FAIL_CREDENTIAL_CHAIN);
+        throw new property_provider_1.CredentialsProviderError(`The SSO session associated with this profile is invalid. ${refreshMessage}`, SHOULD_FAIL_CREDENTIAL_CHAIN);
+    }
+    if (new Date(token.expiresAt).getTime() - Date.now() <= EXPIRE_WINDOW_MS) {
+        throw new property_provider_1.CredentialsProviderError(`The SSO session associated with this profile has expired. ${refreshMessage}`, SHOULD_FAIL_CREDENTIAL_CHAIN);
     }
     const { accessToken } = token;
     const sso = ssoClient || new client_sso_1.SSOClient({ region: ssoRegion });
@@ -28352,21 +29188,38 @@ const resolveSSOCredentials = async ({ ssoStartUrl, ssoAccountId, ssoRegion, sso
     }
     return { accessKeyId, secretAccessKey, sessionToken, expiration: new Date(expiration) };
 };
+exports.resolveSSOCredentials = resolveSSOCredentials;
+
+
+/***/ }),
+
+/***/ 86623:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 48098:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.validateSsoProfile = void 0;
+const property_provider_1 = __nccwpck_require__(74462);
 const validateSsoProfile = (profile) => {
     const { sso_start_url, sso_account_id, sso_region, sso_role_name } = profile;
     if (!sso_start_url || !sso_account_id || !sso_region || !sso_role_name) {
         throw new property_provider_1.CredentialsProviderError(`Profile is configured with invalid SSO credentials. Required parameters "sso_account_id", "sso_region", ` +
-            `"sso_role_name", "sso_start_url". Got ${Object.keys(profile).join(", ")}\nReference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html`, SHOULD_FAIL_CREDENTIAL_CHAIN);
+            `"sso_role_name", "sso_start_url". Got ${Object.keys(profile).join(", ")}\nReference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html`, false);
     }
     return profile;
 };
 exports.validateSsoProfile = validateSsoProfile;
-const isSsoProfile = (arg) => arg &&
-    (typeof arg.sso_start_url === "string" ||
-        typeof arg.sso_account_id === "string" ||
-        typeof arg.sso_region === "string" ||
-        typeof arg.sso_role_name === "string");
-exports.isSsoProfile = isSsoProfile;
 
 
 /***/ }),
@@ -29262,6 +30115,23 @@ const isReadStream = (stream) => typeof stream.path === "string";
 
 /***/ }),
 
+/***/ 89970:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.fsCreateReadStream = void 0;
+const fs_1 = __nccwpck_require__(57147);
+const fsCreateReadStream = (readStream) => fs_1.createReadStream(readStream.path, {
+    start: readStream.start,
+    end: readStream.end,
+});
+exports.fsCreateReadStream = fsCreateReadStream;
+
+
+/***/ }),
+
 /***/ 61855:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -29275,6 +30145,21 @@ tslib_1.__exportStar(__nccwpck_require__(10047), exports);
 
 /***/ }),
 
+/***/ 72965:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isFileStream = void 0;
+const isFileStream = (stream) => typeof stream.path === "string" ||
+    Buffer.isBuffer(stream.path) ||
+    typeof stream.fd === "number";
+exports.isFileStream = isFileStream;
+
+
+/***/ }),
+
 /***/ 10047:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -29282,13 +30167,19 @@ tslib_1.__exportStar(__nccwpck_require__(10047), exports);
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.readableStreamHasher = void 0;
+const fsCreateReadStream_1 = __nccwpck_require__(89970);
 const HashCalculator_1 = __nccwpck_require__(68609);
+const isFileStream_1 = __nccwpck_require__(72965);
 const readableStreamHasher = (hashCtor, readableStream) => {
+    if (!isFileStream_1.isFileStream(readableStream) && readableStream.readableFlowing !== null) {
+        throw new Error("Unable to calculate hash for flowing readable stream");
+    }
+    const streamToPipe = isFileStream_1.isFileStream(readableStream) ? fsCreateReadStream_1.fsCreateReadStream(readableStream) : readableStream;
     const hash = new hashCtor();
     const hashCalculator = new HashCalculator_1.HashCalculator(hash);
-    readableStream.pipe(hashCalculator);
+    streamToPipe.pipe(hashCalculator);
     return new Promise((resolve, reject) => {
-        readableStream.on("error", (err) => {
+        streamToPipe.on("error", (err) => {
             hashCalculator.end();
             reject(err);
         });
@@ -29313,95 +30204,6 @@ exports.isArrayBuffer = void 0;
 const isArrayBuffer = (arg) => (typeof ArrayBuffer === "function" && arg instanceof ArrayBuffer) ||
     Object.prototype.toString.call(arg) === "[object ArrayBuffer]";
 exports.isArrayBuffer = isArrayBuffer;
-
-
-/***/ }),
-
-/***/ 72884:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getApplyMd5BodyChecksumPlugin = exports.applyMd5BodyChecksumMiddlewareOptions = exports.applyMd5BodyChecksumMiddleware = void 0;
-const is_array_buffer_1 = __nccwpck_require__(69126);
-const protocol_http_1 = __nccwpck_require__(70223);
-const applyMd5BodyChecksumMiddleware = (options) => (next) => async (args) => {
-    let { request } = args;
-    if (protocol_http_1.HttpRequest.isInstance(request)) {
-        const { body, headers } = request;
-        if (!hasHeader("content-md5", headers)) {
-            let digest;
-            if (body === undefined || typeof body === "string" || ArrayBuffer.isView(body) || is_array_buffer_1.isArrayBuffer(body)) {
-                const hash = new options.md5();
-                hash.update(body || "");
-                digest = hash.digest();
-            }
-            else {
-                digest = options.streamHasher(options.md5, body);
-            }
-            request = {
-                ...request,
-                headers: {
-                    ...headers,
-                    "content-md5": options.base64Encoder(await digest),
-                },
-            };
-        }
-    }
-    return next({
-        ...args,
-        request,
-    });
-};
-exports.applyMd5BodyChecksumMiddleware = applyMd5BodyChecksumMiddleware;
-exports.applyMd5BodyChecksumMiddlewareOptions = {
-    name: "applyMd5BodyChecksumMiddleware",
-    step: "build",
-    tags: ["SET_CONTENT_MD5", "BODY_CHECKSUM"],
-    override: true,
-};
-const getApplyMd5BodyChecksumPlugin = (config) => ({
-    applyToStack: (clientStack) => {
-        clientStack.add(exports.applyMd5BodyChecksumMiddleware(config), exports.applyMd5BodyChecksumMiddlewareOptions);
-    },
-});
-exports.getApplyMd5BodyChecksumPlugin = getApplyMd5BodyChecksumPlugin;
-const hasHeader = (soughtHeader, headers) => {
-    soughtHeader = soughtHeader.toLowerCase();
-    for (const headerName of Object.keys(headers)) {
-        if (soughtHeader === headerName.toLowerCase()) {
-            return true;
-        }
-    }
-    return false;
-};
-
-
-/***/ }),
-
-/***/ 75092:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __nccwpck_require__(4351);
-tslib_1.__exportStar(__nccwpck_require__(72884), exports);
-tslib_1.__exportStar(__nccwpck_require__(33750), exports);
-
-
-/***/ }),
-
-/***/ 33750:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.resolveMd5BodyChecksumConfig = void 0;
-const resolveMd5BodyChecksumConfig = (input) => input;
-exports.resolveMd5BodyChecksumConfig = resolveMd5BodyChecksumConfig;
 
 
 /***/ }),
@@ -29973,6 +30775,361 @@ const getAddExpectContinuePlugin = (options) => ({
     },
 });
 exports.getAddExpectContinuePlugin = getAddExpectContinuePlugin;
+
+
+/***/ }),
+
+/***/ 5972:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ChecksumLocation = exports.ChecksumAlgorithm = void 0;
+var ChecksumAlgorithm;
+(function (ChecksumAlgorithm) {
+    ChecksumAlgorithm["MD5"] = "MD5";
+    ChecksumAlgorithm["CRC32"] = "CRC32";
+    ChecksumAlgorithm["CRC32C"] = "CRC32C";
+    ChecksumAlgorithm["SHA1"] = "SHA1";
+    ChecksumAlgorithm["SHA256"] = "SHA256";
+})(ChecksumAlgorithm = exports.ChecksumAlgorithm || (exports.ChecksumAlgorithm = {}));
+var ChecksumLocation;
+(function (ChecksumLocation) {
+    ChecksumLocation["HEADER"] = "header";
+    ChecksumLocation["TRAILER"] = "trailer";
+})(ChecksumLocation = exports.ChecksumLocation || (exports.ChecksumLocation = {}));
+
+
+/***/ }),
+
+/***/ 20825:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.flexibleChecksumsMiddleware = void 0;
+const protocol_http_1 = __nccwpck_require__(70223);
+const getChecksum_1 = __nccwpck_require__(23568);
+const getChecksumAlgorithmForRequest_1 = __nccwpck_require__(13218);
+const getChecksumLocationName_1 = __nccwpck_require__(95633);
+const hasHeader_1 = __nccwpck_require__(37878);
+const isStreaming_1 = __nccwpck_require__(94786);
+const selectChecksumAlgorithmFunction_1 = __nccwpck_require__(30513);
+const validateChecksumFromResponse_1 = __nccwpck_require__(91773);
+const flexibleChecksumsMiddleware = (config, middlewareConfig) => (next) => async (args) => {
+    if (!protocol_http_1.HttpRequest.isInstance(args.request)) {
+        return next(args);
+    }
+    const { request } = args;
+    const { body: requestBody, headers } = request;
+    const { base64Encoder, streamHasher } = config;
+    const { input, requestChecksumRequired, requestAlgorithmMember } = middlewareConfig;
+    const checksumAlgorithm = getChecksumAlgorithmForRequest_1.getChecksumAlgorithmForRequest(input, {
+        requestChecksumRequired,
+        requestAlgorithmMember,
+    });
+    let updatedBody = requestBody;
+    let updatedHeaders = headers;
+    if (checksumAlgorithm) {
+        const checksumLocationName = getChecksumLocationName_1.getChecksumLocationName(checksumAlgorithm);
+        const checksumAlgorithmFn = selectChecksumAlgorithmFunction_1.selectChecksumAlgorithmFunction(checksumAlgorithm, config);
+        if (isStreaming_1.isStreaming(requestBody)) {
+            const { getAwsChunkedEncodingStream, bodyLengthChecker } = config;
+            updatedBody = getAwsChunkedEncodingStream(requestBody, {
+                base64Encoder,
+                bodyLengthChecker,
+                checksumLocationName,
+                checksumAlgorithmFn,
+                streamHasher,
+            });
+            updatedHeaders = {
+                ...headers,
+                "content-encoding": "aws-chunked",
+                "transfer-encoding": "chunked",
+                "x-amz-decoded-content-length": headers["content-length"],
+                "x-amz-content-sha256": "STREAMING-UNSIGNED-PAYLOAD-TRAILER",
+                "x-amz-trailer": checksumLocationName,
+            };
+            delete updatedHeaders["content-length"];
+        }
+        else if (!hasHeader_1.hasHeader(checksumLocationName, headers)) {
+            const checksum = await getChecksum_1.getChecksum(requestBody, { streamHasher, checksumAlgorithmFn, base64Encoder });
+            updatedHeaders = {
+                ...headers,
+                [checksumLocationName]: checksum,
+            };
+        }
+    }
+    const result = await next({
+        ...args,
+        request: {
+            ...request,
+            headers: updatedHeaders,
+            body: updatedBody,
+        },
+    });
+    const { requestValidationModeMember, responseAlgorithms } = middlewareConfig;
+    if (requestValidationModeMember && input[requestValidationModeMember] === "ENABLED") {
+        validateChecksumFromResponse_1.validateChecksumFromResponse(result.response, {
+            config,
+            responseAlgorithms,
+        });
+    }
+    return result;
+};
+exports.flexibleChecksumsMiddleware = flexibleChecksumsMiddleware;
+
+
+/***/ }),
+
+/***/ 23568:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getChecksum = void 0;
+const isStreaming_1 = __nccwpck_require__(94786);
+const stringHasher_1 = __nccwpck_require__(73044);
+const getChecksum = async (body, { streamHasher, checksumAlgorithmFn, base64Encoder }) => {
+    const digest = isStreaming_1.isStreaming(body) ? streamHasher(checksumAlgorithmFn, body) : stringHasher_1.stringHasher(checksumAlgorithmFn, body);
+    return base64Encoder(await digest);
+};
+exports.getChecksum = getChecksum;
+
+
+/***/ }),
+
+/***/ 13218:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getChecksumAlgorithmForRequest = void 0;
+const constants_1 = __nccwpck_require__(5972);
+const types_1 = __nccwpck_require__(70724);
+const getChecksumAlgorithmForRequest = (input, { requestChecksumRequired, requestAlgorithmMember }) => {
+    if (!requestAlgorithmMember || !input[requestAlgorithmMember]) {
+        return requestChecksumRequired ? constants_1.ChecksumAlgorithm.MD5 : undefined;
+    }
+    const checksumAlgorithm = input[requestAlgorithmMember];
+    if (!types_1.CLIENT_SUPPORTED_ALGORITHMS.includes(checksumAlgorithm)) {
+        throw new Error(`The checksum algorithm "${checksumAlgorithm}" is not supported by the client.` +
+            ` Select one of ${types_1.CLIENT_SUPPORTED_ALGORITHMS}.`);
+    }
+    return checksumAlgorithm;
+};
+exports.getChecksumAlgorithmForRequest = getChecksumAlgorithmForRequest;
+
+
+/***/ }),
+
+/***/ 29245:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getChecksumAlgorithmListForResponse = void 0;
+const types_1 = __nccwpck_require__(70724);
+const getChecksumAlgorithmListForResponse = (responseAlgorithms = []) => {
+    const validChecksumAlgorithms = [];
+    for (const algorithm of types_1.PRIORITY_ORDER_ALGORITHMS) {
+        if (!responseAlgorithms.includes(algorithm) || !types_1.CLIENT_SUPPORTED_ALGORITHMS.includes(algorithm)) {
+            continue;
+        }
+        validChecksumAlgorithms.push(algorithm);
+    }
+    return validChecksumAlgorithms;
+};
+exports.getChecksumAlgorithmListForResponse = getChecksumAlgorithmListForResponse;
+
+
+/***/ }),
+
+/***/ 95633:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getChecksumLocationName = void 0;
+const constants_1 = __nccwpck_require__(5972);
+const getChecksumLocationName = (algorithm) => algorithm === constants_1.ChecksumAlgorithm.MD5 ? "content-md5" : `x-amz-checksum-${algorithm.toLowerCase()}`;
+exports.getChecksumLocationName = getChecksumLocationName;
+
+
+/***/ }),
+
+/***/ 75028:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getFlexibleChecksumsPlugin = exports.flexibleChecksumsMiddlewareOptions = void 0;
+const flexibleChecksumsMiddleware_1 = __nccwpck_require__(20825);
+exports.flexibleChecksumsMiddlewareOptions = {
+    name: "flexibleChecksumsMiddleware",
+    step: "build",
+    tags: ["BODY_CHECKSUM"],
+    override: true,
+};
+const getFlexibleChecksumsPlugin = (config, middlewareConfig) => ({
+    applyToStack: (clientStack) => {
+        clientStack.add(flexibleChecksumsMiddleware_1.flexibleChecksumsMiddleware(config, middlewareConfig), exports.flexibleChecksumsMiddlewareOptions);
+    },
+});
+exports.getFlexibleChecksumsPlugin = getFlexibleChecksumsPlugin;
+
+
+/***/ }),
+
+/***/ 37878:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.hasHeader = void 0;
+const hasHeader = (header, headers) => {
+    const soughtHeader = header.toLowerCase();
+    for (const headerName of Object.keys(headers)) {
+        if (soughtHeader === headerName.toLowerCase()) {
+            return true;
+        }
+    }
+    return false;
+};
+exports.hasHeader = hasHeader;
+
+
+/***/ }),
+
+/***/ 13799:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(5972), exports);
+tslib_1.__exportStar(__nccwpck_require__(20825), exports);
+tslib_1.__exportStar(__nccwpck_require__(75028), exports);
+
+
+/***/ }),
+
+/***/ 94786:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isStreaming = void 0;
+const is_array_buffer_1 = __nccwpck_require__(69126);
+const isStreaming = (body) => body !== undefined && typeof body !== "string" && !ArrayBuffer.isView(body) && !is_array_buffer_1.isArrayBuffer(body);
+exports.isStreaming = isStreaming;
+
+
+/***/ }),
+
+/***/ 30513:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.selectChecksumAlgorithmFunction = void 0;
+const crc32_1 = __nccwpck_require__(47327);
+const crc32c_1 = __nccwpck_require__(27507);
+const constants_1 = __nccwpck_require__(5972);
+const selectChecksumAlgorithmFunction = (checksumAlgorithm, config) => ({
+    [constants_1.ChecksumAlgorithm.MD5]: config.md5,
+    [constants_1.ChecksumAlgorithm.CRC32]: crc32_1.AwsCrc32,
+    [constants_1.ChecksumAlgorithm.CRC32C]: crc32c_1.AwsCrc32c,
+    [constants_1.ChecksumAlgorithm.SHA1]: config.sha1,
+    [constants_1.ChecksumAlgorithm.SHA256]: config.sha256,
+}[checksumAlgorithm]);
+exports.selectChecksumAlgorithmFunction = selectChecksumAlgorithmFunction;
+
+
+/***/ }),
+
+/***/ 73044:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.stringHasher = void 0;
+const stringHasher = (checksumAlgorithmFn, body) => {
+    const hash = new checksumAlgorithmFn();
+    hash.update(body || "");
+    return hash.digest();
+};
+exports.stringHasher = stringHasher;
+
+
+/***/ }),
+
+/***/ 70724:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PRIORITY_ORDER_ALGORITHMS = exports.CLIENT_SUPPORTED_ALGORITHMS = void 0;
+const constants_1 = __nccwpck_require__(5972);
+exports.CLIENT_SUPPORTED_ALGORITHMS = [
+    constants_1.ChecksumAlgorithm.CRC32,
+    constants_1.ChecksumAlgorithm.CRC32C,
+    constants_1.ChecksumAlgorithm.SHA1,
+    constants_1.ChecksumAlgorithm.SHA256,
+];
+exports.PRIORITY_ORDER_ALGORITHMS = [
+    constants_1.ChecksumAlgorithm.CRC32,
+    constants_1.ChecksumAlgorithm.CRC32C,
+    constants_1.ChecksumAlgorithm.SHA1,
+    constants_1.ChecksumAlgorithm.SHA256,
+];
+
+
+/***/ }),
+
+/***/ 91773:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.validateChecksumFromResponse = void 0;
+const getChecksum_1 = __nccwpck_require__(23568);
+const getChecksumAlgorithmListForResponse_1 = __nccwpck_require__(29245);
+const getChecksumLocationName_1 = __nccwpck_require__(95633);
+const selectChecksumAlgorithmFunction_1 = __nccwpck_require__(30513);
+const validateChecksumFromResponse = async (response, { config, responseAlgorithms }) => {
+    const checksumAlgorithms = getChecksumAlgorithmListForResponse_1.getChecksumAlgorithmListForResponse(responseAlgorithms);
+    const { body: responseBody, headers: responseHeaders } = response;
+    for (const algorithm of checksumAlgorithms) {
+        const responseHeader = getChecksumLocationName_1.getChecksumLocationName(algorithm);
+        const checksumFromResponse = responseHeaders[responseHeader];
+        if (checksumFromResponse) {
+            const checksumAlgorithmFn = selectChecksumAlgorithmFunction_1.selectChecksumAlgorithmFunction(algorithm, config);
+            const { streamHasher, base64Encoder } = config;
+            const checksum = await getChecksum_1.getChecksum(responseBody, { streamHasher, checksumAlgorithmFn, base64Encoder });
+            if (checksum === checksumFromResponse) {
+                break;
+            }
+            throw new Error(`Checksum mismatch: expected "${checksum}" but received "${checksumFromResponse}"` +
+                ` in response header "${responseHeader}".`);
+        }
+    }
+};
+exports.validateChecksumFromResponse = validateChecksumFromResponse;
 
 
 /***/ }),
@@ -33157,33 +34314,82 @@ exports.isTransientError = isTransientError;
 
 /***/ }),
 
+/***/ 97363:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getHomeDir = void 0;
+const os_1 = __nccwpck_require__(22037);
+const path_1 = __nccwpck_require__(71017);
+const getHomeDir = () => {
+    const { HOME, USERPROFILE, HOMEPATH, HOMEDRIVE = `C:${path_1.sep}` } = process.env;
+    if (HOME)
+        return HOME;
+    if (USERPROFILE)
+        return USERPROFILE;
+    if (HOMEPATH)
+        return `${HOMEDRIVE}${HOMEPATH}`;
+    return os_1.homedir();
+};
+exports.getHomeDir = getHomeDir;
+
+
+/***/ }),
+
 /***/ 67387:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getHomeDir = exports.loadSharedConfigFiles = exports.ENV_CONFIG_PATH = exports.ENV_CREDENTIALS_PATH = void 0;
-const fs_1 = __nccwpck_require__(57147);
-const os_1 = __nccwpck_require__(22037);
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(97363), exports);
+tslib_1.__exportStar(__nccwpck_require__(57871), exports);
+tslib_1.__exportStar(__nccwpck_require__(84105), exports);
+
+
+/***/ }),
+
+/***/ 57871:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.loadSharedConfigFiles = exports.ENV_CONFIG_PATH = exports.ENV_CREDENTIALS_PATH = void 0;
 const path_1 = __nccwpck_require__(71017);
+const getHomeDir_1 = __nccwpck_require__(97363);
+const normalizeConfigFile_1 = __nccwpck_require__(9307);
+const parseIni_1 = __nccwpck_require__(82806);
+const slurpFile_1 = __nccwpck_require__(79242);
 exports.ENV_CREDENTIALS_PATH = "AWS_SHARED_CREDENTIALS_FILE";
 exports.ENV_CONFIG_PATH = "AWS_CONFIG_FILE";
 const swallowError = () => ({});
-const loadSharedConfigFiles = (init = {}) => {
-    const { filepath = process.env[exports.ENV_CREDENTIALS_PATH] || path_1.join(exports.getHomeDir(), ".aws", "credentials"), configFilepath = process.env[exports.ENV_CONFIG_PATH] || path_1.join(exports.getHomeDir(), ".aws", "config"), } = init;
-    return Promise.all([
-        slurpFile(configFilepath).then(parseIni).then(normalizeConfigFile).catch(swallowError),
-        slurpFile(filepath).then(parseIni).catch(swallowError),
-    ]).then((parsedFiles) => {
-        const [configFile, credentialsFile] = parsedFiles;
-        return {
-            configFile,
-            credentialsFile,
-        };
-    });
+const loadSharedConfigFiles = async (init = {}) => {
+    const { filepath = process.env[exports.ENV_CREDENTIALS_PATH] || path_1.join(getHomeDir_1.getHomeDir(), ".aws", "credentials"), configFilepath = process.env[exports.ENV_CONFIG_PATH] || path_1.join(getHomeDir_1.getHomeDir(), ".aws", "config"), } = init;
+    const parsedFiles = await Promise.all([
+        slurpFile_1.slurpFile(configFilepath).then(parseIni_1.parseIni).then(normalizeConfigFile_1.normalizeConfigFile).catch(swallowError),
+        slurpFile_1.slurpFile(filepath).then(parseIni_1.parseIni).catch(swallowError),
+    ]);
+    return {
+        configFile: parsedFiles[0],
+        credentialsFile: parsedFiles[1],
+    };
 };
 exports.loadSharedConfigFiles = loadSharedConfigFiles;
+
+
+/***/ }),
+
+/***/ 9307:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.normalizeConfigFile = void 0;
 const profileKeyRegex = /^profile\s(["'])?([^\1]+)\1$/;
 const normalizeConfigFile = (data) => {
     const map = {};
@@ -33201,6 +34407,18 @@ const normalizeConfigFile = (data) => {
     }
     return map;
 };
+exports.normalizeConfigFile = normalizeConfigFile;
+
+
+/***/ }),
+
+/***/ 82806:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.parseIni = void 0;
 const profileNameBlockList = ["__proto__", "profile __proto__"];
 const parseIni = (iniData) => {
     const map = {};
@@ -33224,27 +34442,62 @@ const parseIni = (iniData) => {
     }
     return map;
 };
+exports.parseIni = parseIni;
+
+
+/***/ }),
+
+/***/ 79242:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.slurpFile = void 0;
+const fs_1 = __nccwpck_require__(57147);
+const { readFile } = fs_1.promises;
+const fileStatusHash = {};
 const slurpFile = (path) => new Promise((resolve, reject) => {
-    fs_1.readFile(path, "utf8", (err, data) => {
-        if (err) {
-            reject(err);
-        }
-        else {
-            resolve(data);
-        }
-    });
+    if (!fileStatusHash[path]) {
+        fileStatusHash[path] = { isReading: true, contents: "", requestQueue: [] };
+        fileStatusHash[path].requestQueue.push({ resolve, reject });
+        readFile(path, "utf8")
+            .then((data) => {
+            fileStatusHash[path].isReading = false;
+            fileStatusHash[path].contents = data;
+            const { requestQueue } = fileStatusHash[path];
+            while (requestQueue.length) {
+                const { resolve } = requestQueue.pop();
+                resolve(data);
+            }
+        })
+            .catch((err) => {
+            fileStatusHash[path].isReading = false;
+            const { requestQueue } = fileStatusHash[path];
+            while (requestQueue.length) {
+                const { reject } = requestQueue.pop();
+                reject(err);
+            }
+        });
+    }
+    else if (fileStatusHash[path].isReading) {
+        fileStatusHash[path].requestQueue.push({ resolve, reject });
+    }
+    else {
+        resolve(fileStatusHash[path].contents);
+    }
 });
-const getHomeDir = () => {
-    const { HOME, USERPROFILE, HOMEPATH, HOMEDRIVE = `C:${path_1.sep}` } = process.env;
-    if (HOME)
-        return HOME;
-    if (USERPROFILE)
-        return USERPROFILE;
-    if (HOMEPATH)
-        return `${HOMEDRIVE}${HOMEPATH}`;
-    return os_1.homedir();
-};
-exports.getHomeDir = getHomeDir;
+exports.slurpFile = slurpFile;
+
+
+/***/ }),
+
+/***/ 84105:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 
 /***/ }),
@@ -34337,6 +35590,41 @@ exports.emitWarningIfUnsupportedVersion = emitWarningIfUnsupportedVersion;
 
 /***/ }),
 
+/***/ 57778:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.decorateServiceException = exports.ServiceException = void 0;
+class ServiceException extends Error {
+    constructor(options) {
+        super(options.message);
+        Object.setPrototypeOf(this, ServiceException.prototype);
+        this.name = options.name;
+        this.$fault = options.$fault;
+        this.$metadata = options.$metadata;
+    }
+}
+exports.ServiceException = ServiceException;
+const decorateServiceException = (exception, additions = {}) => {
+    Object.entries(additions)
+        .filter(([, v]) => v !== undefined)
+        .forEach(([k, v]) => {
+        if (exception[k] == undefined || exception[k] === "") {
+            exception[k] = v;
+        }
+    });
+    const message = exception.message || exception.Message || "UnknownError";
+    exception.message = message;
+    delete exception.Message;
+    return exception;
+};
+exports.decorateServiceException = decorateServiceException;
+
+
+/***/ }),
+
 /***/ 91927:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -34404,6 +35692,7 @@ tslib_1.__exportStar(__nccwpck_require__(78392), exports);
 tslib_1.__exportStar(__nccwpck_require__(24695), exports);
 tslib_1.__exportStar(__nccwpck_require__(33088), exports);
 tslib_1.__exportStar(__nccwpck_require__(12363), exports);
+tslib_1.__exportStar(__nccwpck_require__(57778), exports);
 tslib_1.__exportStar(__nccwpck_require__(91927), exports);
 tslib_1.__exportStar(__nccwpck_require__(86457), exports);
 tslib_1.__exportStar(__nccwpck_require__(95830), exports);
@@ -34924,16 +36213,42 @@ tslib_1.__exportStar(__nccwpck_require__(79509), exports);
 
 /***/ }),
 
+/***/ 89349:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getMasterProfileName = exports.DEFAULT_PROFILE = exports.ENV_PROFILE = void 0;
+exports.ENV_PROFILE = "AWS_PROFILE";
+exports.DEFAULT_PROFILE = "default";
+const getMasterProfileName = (init) => init.profile || process.env[exports.ENV_PROFILE] || exports.DEFAULT_PROFILE;
+exports.getMasterProfileName = getMasterProfileName;
+
+
+/***/ }),
+
 /***/ 98598:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getMasterProfileName = exports.parseKnownFiles = exports.DEFAULT_PROFILE = exports.ENV_PROFILE = void 0;
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(89349), exports);
+tslib_1.__exportStar(__nccwpck_require__(86329), exports);
+
+
+/***/ }),
+
+/***/ 86329:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.parseKnownFiles = void 0;
 const shared_ini_file_loader_1 = __nccwpck_require__(67387);
-exports.ENV_PROFILE = "AWS_PROFILE";
-exports.DEFAULT_PROFILE = "default";
 const parseKnownFiles = async (init) => {
     const { loadedConfig = shared_ini_file_loader_1.loadSharedConfigFiles(init) } = init;
     const parsedFiles = await loadedConfig;
@@ -34943,8 +36258,6 @@ const parseKnownFiles = async (init) => {
     };
 };
 exports.parseKnownFiles = parseKnownFiles;
-const getMasterProfileName = (init) => init.profile || process.env[exports.ENV_PROFILE] || exports.DEFAULT_PROFILE;
-exports.getMasterProfileName = getMasterProfileName;
 
 
 /***/ }),
@@ -35107,6 +36420,53 @@ function toHex(bytes) {
     return out;
 }
 exports.toHex = toHex;
+
+
+/***/ }),
+
+/***/ 86387:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getAwsChunkedEncodingStream = void 0;
+const stream_1 = __nccwpck_require__(12781);
+const getAwsChunkedEncodingStream = (readableStream, options) => {
+    const { base64Encoder, bodyLengthChecker, checksumAlgorithmFn, checksumLocationName, streamHasher } = options;
+    const checksumRequired = base64Encoder !== undefined &&
+        checksumAlgorithmFn !== undefined &&
+        checksumLocationName !== undefined &&
+        streamHasher !== undefined;
+    const digest = checksumRequired ? streamHasher(checksumAlgorithmFn, readableStream) : undefined;
+    const awsChunkedEncodingStream = new stream_1.Readable({ read: () => { } });
+    readableStream.on("data", (data) => {
+        awsChunkedEncodingStream.push(`${(bodyLengthChecker(data) || 0).toString(16)}\r\n${data.toString()}\r\n`);
+    });
+    readableStream.on("end", async () => {
+        awsChunkedEncodingStream.push(`0\r\n`);
+        if (checksumRequired) {
+            const checksum = base64Encoder(await digest);
+            awsChunkedEncodingStream.push(`${checksumLocationName}:${checksum}\r\n`);
+            awsChunkedEncodingStream.push(`\r\n`);
+        }
+        awsChunkedEncodingStream.push(null);
+    });
+    return awsChunkedEncodingStream;
+};
+exports.getAwsChunkedEncodingStream = getAwsChunkedEncodingStream;
+
+
+/***/ }),
+
+/***/ 23809:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const tslib_1 = __nccwpck_require__(4351);
+tslib_1.__exportStar(__nccwpck_require__(86387), exports);
 
 
 /***/ }),
@@ -46981,6 +48341,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AwsIotMqttConnectionConfigBuilder = void 0;
 const io = __importStar(__nccwpck_require__(86133));
+const io_1 = __nccwpck_require__(86133);
 const platform = __importStar(__nccwpck_require__(97377));
 const auth_1 = __nccwpck_require__(20919);
 /**
@@ -47012,7 +48373,7 @@ class AwsIotMqttConnectionConfigBuilder {
      * @param key_path - Path to private key, in PEM format
      */
     static new_mtls_builder_from_path(cert_path, key_path) {
-        let builder = new AwsIotMqttConnectionConfigBuilder(io.TlsContextOptions.create_client_with_mtls_from_path(cert_path, key_path));
+        let builder = new AwsIotMqttConnectionConfigBuilder(io_1.TlsContextOptions.create_client_with_mtls_from_path(cert_path, key_path));
         builder.params.port = 8883;
         if (io.is_alpn_available()) {
             builder.tls_ctx_options.alpn_list.unshift('x-amzn-mqtt-ca');
@@ -47025,7 +48386,21 @@ class AwsIotMqttConnectionConfigBuilder {
      * @param private_key - Private key, in PEM format
      */
     static new_mtls_builder(cert, private_key) {
-        let builder = new AwsIotMqttConnectionConfigBuilder(io.TlsContextOptions.create_client_with_mtls(cert, private_key));
+        let builder = new AwsIotMqttConnectionConfigBuilder(io_1.TlsContextOptions.create_client_with_mtls(cert, private_key));
+        builder.params.port = 8883;
+        if (io.is_alpn_available()) {
+            builder.tls_ctx_options.alpn_list.unshift('x-amzn-mqtt-ca');
+        }
+        return builder;
+    }
+    /**
+     * Create a new builder with mTLS using a PKCS#11 library for private key operations.
+     *
+     * NOTE: This configuration only works on Unix devices.
+     * @param pkcs11_options - PKCS#11 options.
+     */
+    static new_mtls_pkcs11_builder(pkcs11_options) {
+        let builder = new AwsIotMqttConnectionConfigBuilder(io_1.TlsContextOptions.create_client_with_mtls_pkcs11(pkcs11_options));
         builder.params.port = 8883;
         if (io.is_alpn_available()) {
             builder.tls_ctx_options.alpn_list.unshift('x-amzn-mqtt-ca');
@@ -47065,7 +48440,7 @@ class AwsIotMqttConnectionConfigBuilder {
     static new_with_websockets(options) {
         let tls_ctx_options = options === null || options === void 0 ? void 0 : options.tls_ctx_options;
         if (!tls_ctx_options) {
-            tls_ctx_options = new io.TlsContextOptions();
+            tls_ctx_options = new io_1.TlsContextOptions();
             tls_ctx_options.alpn_list = [];
         }
         let builder = new AwsIotMqttConnectionConfigBuilder(tls_ctx_options);
@@ -47958,7 +49333,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TlsConnectionOptions = exports.ServerTlsContext = exports.ClientTlsContext = exports.TlsContext = exports.TlsContextOptions = exports.SocketOptions = exports.ClientBootstrap = exports.InputStream = exports.is_alpn_available = exports.enable_logging = exports.LogLevel = exports.error_code_to_name = exports.error_code_to_string = void 0;
+exports.Pkcs11Lib = exports.TlsConnectionOptions = exports.ServerTlsContext = exports.ClientTlsContext = exports.TlsContext = exports.TlsContextOptions = exports.SocketOptions = exports.ClientBootstrap = exports.InputStream = exports.is_alpn_available = exports.enable_logging = exports.LogLevel = exports.error_code_to_name = exports.error_code_to_string = void 0;
 /**
  *
  * @packageDocumentation
@@ -48131,9 +49506,10 @@ class TlsContextOptions {
         this.certificate_authority = certificate_authority;
     }
     /**
-     * Creates a client with secure-by-default options, along with a client cert and private key
-     * @param certificate - Client certificate, in PEM format
-     * @param private_key - Client private key, in PEM format
+     * Create options configured for mutual TLS in client mode,
+     * with client certificate and private key provided as in-memory strings.
+     * @param certificate - Client certificate file contents, in PEM format
+     * @param private_key - Client private key file contents, in PEM format
      *
      * @returns newly configured TlsContextOptions object
      */
@@ -48145,7 +49521,8 @@ class TlsContextOptions {
         return opt;
     }
     /**
-     * Creates a client with secure-by-default options, along with a client cert and private key
+     * Create options configured for mutual TLS in client mode,
+     * with client certificate and private key provided via filepath.
      * @param certificate_filepath - Path to client certificate, in PEM format
      * @param private_key_filepath - Path to private key, in PEM format
      *
@@ -48159,16 +49536,39 @@ class TlsContextOptions {
         return opt;
     }
     /**
-     * Creates a TLS context with secure-by-default options, along with a client cert and password
-     * @param pkcs12_filepath - Path to client certificate in PKCS#12 format
+     * Create options for mutual TLS in client mode,
+     * with client certificate and private key bundled in a single PKCS#12 file.
+     * @param pkcs12_filepath - Path to PKCS#12 file containing client certificate and private key.
      * @param pkcs12_password - PKCS#12 password
      *
      * @returns newly configured TlsContextOptions object
     */
-    static create_client_with_mtls_pkcs_from_path(pkcs12_filepath, pkcs12_password) {
+    static create_client_with_mtls_pkcs12_from_path(pkcs12_filepath, pkcs12_password) {
         let opt = new TlsContextOptions();
         opt.pkcs12_filepath = pkcs12_filepath;
         opt.pkcs12_password = pkcs12_password;
+        opt.verify_peer = true;
+        return opt;
+    }
+    /**
+     * @deprecated Renamed [[create_client_with_mtls_pkcs12_from_path]]
+     */
+    static create_client_with_mtls_pkcs_from_path(pkcs12_filepath, pkcs12_password) {
+        return this.create_client_with_mtls_pkcs12_from_path(pkcs12_filepath, pkcs12_password);
+    }
+    /**
+     * Create options configured for mutual TLS in client mode,
+     * using a PKCS#11 library for private key operations.
+     *
+     * NOTE: This configuration only works on Unix devices.
+     *
+     * @param options - PKCS#11 options
+     *
+     * @returns newly configured TlsContextOptions object
+     */
+    static create_client_with_mtls_pkcs11(options) {
+        let opt = new TlsContextOptions();
+        opt.pkcs11_options = options;
         opt.verify_peer = true;
         return opt;
     }
@@ -48214,7 +49614,7 @@ exports.TlsContextOptions = TlsContextOptions;
  */
 class TlsContext extends native_resource_1.NativeResource {
     constructor(ctx_opt) {
-        super(binding_1.default.io_tls_ctx_new(ctx_opt.min_tls_version, ctx_opt.ca_filepath, ctx_opt.ca_dirpath, ctx_opt.certificate_authority, (ctx_opt.alpn_list && ctx_opt.alpn_list.length > 0) ? ctx_opt.alpn_list.join(';') : undefined, ctx_opt.certificate_filepath, ctx_opt.certificate, ctx_opt.private_key_filepath, ctx_opt.private_key, ctx_opt.pkcs12_filepath, ctx_opt.pkcs12_password, ctx_opt.verify_peer));
+        super(binding_1.default.io_tls_ctx_new(ctx_opt.min_tls_version, ctx_opt.ca_filepath, ctx_opt.ca_dirpath, ctx_opt.certificate_authority, (ctx_opt.alpn_list && ctx_opt.alpn_list.length > 0) ? ctx_opt.alpn_list.join(';') : undefined, ctx_opt.certificate_filepath, ctx_opt.certificate, ctx_opt.private_key_filepath, ctx_opt.private_key, ctx_opt.pkcs12_filepath, ctx_opt.pkcs12_password, ctx_opt.pkcs11_options, ctx_opt.verify_peer));
     }
 }
 exports.TlsContext = TlsContext;
@@ -48269,6 +49669,63 @@ class TlsConnectionOptions extends native_resource_1.NativeResource {
     }
 }
 exports.TlsConnectionOptions = TlsConnectionOptions;
+/**
+ * Handle to a loaded PKCS#11 library.
+ *
+ * For most use cases, a single instance of Pkcs11Lib should be used
+ * for the lifetime of your application.
+ *
+ * nodejs only.
+ * @category TLS
+ */
+class Pkcs11Lib extends native_resource_1.NativeResource {
+    /**
+     * @param path - Path to PKCS#11 library.
+     * @param behavior - Specifies how `C_Initialize()` and `C_Finalize()`
+     *                   will be called on the PKCS#11 library.
+     */
+    constructor(path, behavior = Pkcs11Lib.InitializeFinalizeBehavior.DEFAULT) {
+        super(binding_1.default.io_pkcs11_lib_new(path, behavior));
+    }
+    /**
+     * Release the PKCS#11 library immediately, without waiting for the GC.
+     */
+    close() {
+        binding_1.default.io_pkcs11_lib_close(this.native_handle());
+    }
+}
+exports.Pkcs11Lib = Pkcs11Lib;
+(function (Pkcs11Lib) {
+    /**
+     * Controls `C_Initialize()` and `C_Finalize()` are called on the PKCS#11 library.
+     */
+    let InitializeFinalizeBehavior;
+    (function (InitializeFinalizeBehavior) {
+        /**
+         * Default behavior that accommodates most use cases.
+         *
+         * `C_Initialize()` is called on creation, and "already-initialized"
+         * errors are ignored. `C_Finalize()` is never called, just in case
+         * another part of your application is still using the PKCS#11 library.
+         */
+        InitializeFinalizeBehavior[InitializeFinalizeBehavior["DEFAULT"] = 0] = "DEFAULT";
+        /**
+         * Skip calling `C_Initialize()` and `C_Finalize()`.
+         *
+         * Use this if your application has already initialized the PKCS#11 library,
+         * and you do not want `C_Initialize()` called again.
+         */
+        InitializeFinalizeBehavior[InitializeFinalizeBehavior["OMIT"] = 1] = "OMIT";
+        /**
+         * `C_Initialize()` is called on creation and `C_Finalize()` is called on cleanup.
+         *
+         * If `C_Initialize()` reports that's it's already initialized, this is
+         * treated as an error. Use this if you need perfect cleanup (ex: running
+         * valgrind with --leak-check).
+         */
+        InitializeFinalizeBehavior[InitializeFinalizeBehavior["STRICT"] = 2] = "STRICT";
+    })(InitializeFinalizeBehavior = Pkcs11Lib.InitializeFinalizeBehavior || (Pkcs11Lib.InitializeFinalizeBehavior = {}));
+})(Pkcs11Lib = exports.Pkcs11Lib || (exports.Pkcs11Lib = {}));
 //# sourceMappingURL=io.js.map
 
 /***/ }),
@@ -87849,7 +89306,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90707,7 +92164,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -102991,7 +104448,7 @@ module.exports = yargsParser;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.49.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-*","test":"yarn test:unit","test:e2e":"ts-mocha test/**/*.ispec.ts && karma start karma.conf.js","test:unit":"ts-mocha test/**/*.spec.ts"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/client-sts":"3.49.0","@aws-sdk/config-resolver":"3.49.0","@aws-sdk/credential-provider-node":"3.49.0","@aws-sdk/eventstream-serde-browser":"3.49.0","@aws-sdk/eventstream-serde-config-resolver":"3.49.0","@aws-sdk/eventstream-serde-node":"3.49.0","@aws-sdk/fetch-http-handler":"3.49.0","@aws-sdk/hash-blob-browser":"3.49.0","@aws-sdk/hash-node":"3.49.0","@aws-sdk/hash-stream-node":"3.49.0","@aws-sdk/invalid-dependency":"3.49.0","@aws-sdk/md5-js":"3.49.0","@aws-sdk/middleware-apply-body-checksum":"3.49.0","@aws-sdk/middleware-bucket-endpoint":"3.49.0","@aws-sdk/middleware-content-length":"3.49.0","@aws-sdk/middleware-expect-continue":"3.49.0","@aws-sdk/middleware-host-header":"3.49.0","@aws-sdk/middleware-location-constraint":"3.49.0","@aws-sdk/middleware-logger":"3.49.0","@aws-sdk/middleware-retry":"3.49.0","@aws-sdk/middleware-sdk-s3":"3.49.0","@aws-sdk/middleware-serde":"3.49.0","@aws-sdk/middleware-signing":"3.49.0","@aws-sdk/middleware-ssec":"3.49.0","@aws-sdk/middleware-stack":"3.49.0","@aws-sdk/middleware-user-agent":"3.49.0","@aws-sdk/node-config-provider":"3.49.0","@aws-sdk/node-http-handler":"3.49.0","@aws-sdk/protocol-http":"3.49.0","@aws-sdk/smithy-client":"3.49.0","@aws-sdk/types":"3.49.0","@aws-sdk/url-parser":"3.49.0","@aws-sdk/util-base64-browser":"3.49.0","@aws-sdk/util-base64-node":"3.49.0","@aws-sdk/util-body-length-browser":"3.49.0","@aws-sdk/util-body-length-node":"3.49.0","@aws-sdk/util-defaults-mode-browser":"3.49.0","@aws-sdk/util-defaults-mode-node":"3.49.0","@aws-sdk/util-user-agent-browser":"3.49.0","@aws-sdk/util-user-agent-node":"3.49.0","@aws-sdk/util-utf8-browser":"3.49.0","@aws-sdk/util-utf8-node":"3.49.0","@aws-sdk/util-waiter":"3.49.0","@aws-sdk/xml-builder":"3.49.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.0"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.49.0","@tsconfig/recommended":"1.0.1","@types/chai":"^4.2.11","@types/mocha":"^8.0.4","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.3.5"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.53.1","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","test":"yarn test:unit","test:e2e":"ts-mocha test/**/*.ispec.ts && karma start karma.conf.js","test:unit":"ts-mocha test/**/*.spec.ts"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"2.0.0","@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/client-sts":"3.53.0","@aws-sdk/config-resolver":"3.53.0","@aws-sdk/credential-provider-node":"3.53.0","@aws-sdk/eventstream-serde-browser":"3.53.0","@aws-sdk/eventstream-serde-config-resolver":"3.53.0","@aws-sdk/eventstream-serde-node":"3.53.0","@aws-sdk/fetch-http-handler":"3.53.0","@aws-sdk/hash-blob-browser":"3.53.0","@aws-sdk/hash-node":"3.53.0","@aws-sdk/hash-stream-node":"3.53.1","@aws-sdk/invalid-dependency":"3.53.0","@aws-sdk/md5-js":"3.53.0","@aws-sdk/middleware-bucket-endpoint":"3.53.0","@aws-sdk/middleware-content-length":"3.53.0","@aws-sdk/middleware-expect-continue":"3.53.0","@aws-sdk/middleware-flexible-checksums":"3.53.0","@aws-sdk/middleware-host-header":"3.53.0","@aws-sdk/middleware-location-constraint":"3.53.0","@aws-sdk/middleware-logger":"3.53.0","@aws-sdk/middleware-retry":"3.53.0","@aws-sdk/middleware-sdk-s3":"3.53.0","@aws-sdk/middleware-serde":"3.53.0","@aws-sdk/middleware-signing":"3.53.0","@aws-sdk/middleware-ssec":"3.53.0","@aws-sdk/middleware-stack":"3.53.0","@aws-sdk/middleware-user-agent":"3.53.0","@aws-sdk/node-config-provider":"3.53.0","@aws-sdk/node-http-handler":"3.53.0","@aws-sdk/protocol-http":"3.53.0","@aws-sdk/smithy-client":"3.53.0","@aws-sdk/types":"3.53.0","@aws-sdk/url-parser":"3.53.0","@aws-sdk/util-base64-browser":"3.52.0","@aws-sdk/util-base64-node":"3.52.0","@aws-sdk/util-body-length-browser":"3.52.0","@aws-sdk/util-body-length-node":"3.52.0","@aws-sdk/util-defaults-mode-browser":"3.53.0","@aws-sdk/util-defaults-mode-node":"3.53.0","@aws-sdk/util-stream-browser":"3.53.0","@aws-sdk/util-stream-node":"3.53.0","@aws-sdk/util-user-agent-browser":"3.53.0","@aws-sdk/util-user-agent-node":"3.53.0","@aws-sdk/util-utf8-browser":"3.52.0","@aws-sdk/util-utf8-node":"3.52.0","@aws-sdk/util-waiter":"3.53.0","@aws-sdk/xml-builder":"3.52.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.0"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.52.0","@tsconfig/recommended":"1.0.1","@types/chai":"^4.2.11","@types/mocha":"^8.0.4","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.3.5"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
 
 /***/ }),
 
@@ -102999,7 +104456,7 @@ module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native","version":"3.49.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-*"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.49.0","@aws-sdk/fetch-http-handler":"3.49.0","@aws-sdk/hash-node":"3.49.0","@aws-sdk/invalid-dependency":"3.49.0","@aws-sdk/middleware-content-length":"3.49.0","@aws-sdk/middleware-host-header":"3.49.0","@aws-sdk/middleware-logger":"3.49.0","@aws-sdk/middleware-retry":"3.49.0","@aws-sdk/middleware-serde":"3.49.0","@aws-sdk/middleware-stack":"3.49.0","@aws-sdk/middleware-user-agent":"3.49.0","@aws-sdk/node-config-provider":"3.49.0","@aws-sdk/node-http-handler":"3.49.0","@aws-sdk/protocol-http":"3.49.0","@aws-sdk/smithy-client":"3.49.0","@aws-sdk/types":"3.49.0","@aws-sdk/url-parser":"3.49.0","@aws-sdk/util-base64-browser":"3.49.0","@aws-sdk/util-base64-node":"3.49.0","@aws-sdk/util-body-length-browser":"3.49.0","@aws-sdk/util-body-length-node":"3.49.0","@aws-sdk/util-defaults-mode-browser":"3.49.0","@aws-sdk/util-defaults-mode-node":"3.49.0","@aws-sdk/util-user-agent-browser":"3.49.0","@aws-sdk/util-user-agent-node":"3.49.0","@aws-sdk/util-utf8-browser":"3.49.0","@aws-sdk/util-utf8-node":"3.49.0","tslib":"^2.3.0"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.49.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.3.5"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sso"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native","version":"3.53.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.53.0","@aws-sdk/fetch-http-handler":"3.53.0","@aws-sdk/hash-node":"3.53.0","@aws-sdk/invalid-dependency":"3.53.0","@aws-sdk/middleware-content-length":"3.53.0","@aws-sdk/middleware-host-header":"3.53.0","@aws-sdk/middleware-logger":"3.53.0","@aws-sdk/middleware-retry":"3.53.0","@aws-sdk/middleware-serde":"3.53.0","@aws-sdk/middleware-stack":"3.53.0","@aws-sdk/middleware-user-agent":"3.53.0","@aws-sdk/node-config-provider":"3.53.0","@aws-sdk/node-http-handler":"3.53.0","@aws-sdk/protocol-http":"3.53.0","@aws-sdk/smithy-client":"3.53.0","@aws-sdk/types":"3.53.0","@aws-sdk/url-parser":"3.53.0","@aws-sdk/util-base64-browser":"3.52.0","@aws-sdk/util-base64-node":"3.52.0","@aws-sdk/util-body-length-browser":"3.52.0","@aws-sdk/util-body-length-node":"3.52.0","@aws-sdk/util-defaults-mode-browser":"3.53.0","@aws-sdk/util-defaults-mode-node":"3.53.0","@aws-sdk/util-user-agent-browser":"3.53.0","@aws-sdk/util-user-agent-node":"3.53.0","@aws-sdk/util-utf8-browser":"3.52.0","@aws-sdk/util-utf8-node":"3.52.0","tslib":"^2.3.0"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.52.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.3.5"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sso"}}');
 
 /***/ }),
 
@@ -103007,7 +104464,7 @@ module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SD
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-sts","description":"AWS SDK for JavaScript Sts Client for Node.js, Browser and React Native","version":"3.49.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-*"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.49.0","@aws-sdk/credential-provider-node":"3.49.0","@aws-sdk/fetch-http-handler":"3.49.0","@aws-sdk/hash-node":"3.49.0","@aws-sdk/invalid-dependency":"3.49.0","@aws-sdk/middleware-content-length":"3.49.0","@aws-sdk/middleware-host-header":"3.49.0","@aws-sdk/middleware-logger":"3.49.0","@aws-sdk/middleware-retry":"3.49.0","@aws-sdk/middleware-sdk-sts":"3.49.0","@aws-sdk/middleware-serde":"3.49.0","@aws-sdk/middleware-signing":"3.49.0","@aws-sdk/middleware-stack":"3.49.0","@aws-sdk/middleware-user-agent":"3.49.0","@aws-sdk/node-config-provider":"3.49.0","@aws-sdk/node-http-handler":"3.49.0","@aws-sdk/protocol-http":"3.49.0","@aws-sdk/smithy-client":"3.49.0","@aws-sdk/types":"3.49.0","@aws-sdk/url-parser":"3.49.0","@aws-sdk/util-base64-browser":"3.49.0","@aws-sdk/util-base64-node":"3.49.0","@aws-sdk/util-body-length-browser":"3.49.0","@aws-sdk/util-body-length-node":"3.49.0","@aws-sdk/util-defaults-mode-browser":"3.49.0","@aws-sdk/util-defaults-mode-node":"3.49.0","@aws-sdk/util-user-agent-browser":"3.49.0","@aws-sdk/util-user-agent-node":"3.49.0","@aws-sdk/util-utf8-browser":"3.49.0","@aws-sdk/util-utf8-node":"3.49.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.0"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.49.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.3.5"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sts","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sts"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-sts","description":"AWS SDK for JavaScript Sts Client for Node.js, Browser and React Native","version":"3.53.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.53.0","@aws-sdk/credential-provider-node":"3.53.0","@aws-sdk/fetch-http-handler":"3.53.0","@aws-sdk/hash-node":"3.53.0","@aws-sdk/invalid-dependency":"3.53.0","@aws-sdk/middleware-content-length":"3.53.0","@aws-sdk/middleware-host-header":"3.53.0","@aws-sdk/middleware-logger":"3.53.0","@aws-sdk/middleware-retry":"3.53.0","@aws-sdk/middleware-sdk-sts":"3.53.0","@aws-sdk/middleware-serde":"3.53.0","@aws-sdk/middleware-signing":"3.53.0","@aws-sdk/middleware-stack":"3.53.0","@aws-sdk/middleware-user-agent":"3.53.0","@aws-sdk/node-config-provider":"3.53.0","@aws-sdk/node-http-handler":"3.53.0","@aws-sdk/protocol-http":"3.53.0","@aws-sdk/smithy-client":"3.53.0","@aws-sdk/types":"3.53.0","@aws-sdk/url-parser":"3.53.0","@aws-sdk/util-base64-browser":"3.52.0","@aws-sdk/util-base64-node":"3.52.0","@aws-sdk/util-body-length-browser":"3.52.0","@aws-sdk/util-body-length-node":"3.52.0","@aws-sdk/util-defaults-mode-browser":"3.53.0","@aws-sdk/util-defaults-mode-node":"3.53.0","@aws-sdk/util-user-agent-browser":"3.53.0","@aws-sdk/util-user-agent-node":"3.53.0","@aws-sdk/util-utf8-browser":"3.52.0","@aws-sdk/util-utf8-node":"3.52.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.0"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.52.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.3.5"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sts","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sts"}}');
 
 /***/ }),
 
@@ -103047,7 +104504,7 @@ module.exports = JSON.parse('{"repositories":"\'repositories\' (plural) Not supp
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"aws-crt","version":"1.10.6","description":"NodeJS/browser bindings to the aws-c-* libraries","homepage":"https://github.com/awslabs/aws-crt-nodejs","repository":"github:awslabs/aws-crt-nodejs","contributors":["AWS Common Runtime Team <aws-sdk-common-runtime@amazon.com>"],"license":"Apache-2.0","main":"./dist/index.js","browser":"./dist.browser/browser.js","types":"./dist/index.d.ts","scripts":{"tsc":"node ./scripts/tsc.js","test":"npm run test:native","test:node":"npm run test:native","test:native":"npx jest --runInBand --verbose --config test/native/jest.config.js --forceExit","test:browser":"npx jest --runInBand --verbose --config test/browser/jest.config.js --forceExit","test:browser:ci":"npm run install:puppeteer && npm run test:browser","install:puppeteer":"npm install --save-dev jest-puppeteer puppeteer @types/puppeteer","prepare":"node ./scripts/tsc.js && node ./scripts/build.js","install":"node ./scripts/install.js"},"devDependencies":{"@types/crypto-js":"^3.1.43","@types/jest":"^27.0.1","@types/node":"^10.17.54","@types/puppeteer":"^5.4.4","@types/uuid":"^3.4.8","@types/ws":"^7.4.7","aws-sdk":"^2.848.0","jest":"^27.2.1","jest-puppeteer":"^5.0.4","jest-runtime":"^27.2.1","puppeteer":"^3.3.0","ts-jest":"^27.0.5","typedoc":"^0.17.8","typedoc-plugin-as-member-of":"^1.0.2","typedoc-plugin-external-module-name":"^4.0.6","typedoc-plugin-remove-references":"^0.0.5","typescript":"^3.9.9","uuid":"^8.3.2","yargs":"^17.2.1"},"dependencies":{"axios":"^0.24.0","cmake-js":"6.3.0","crypto-js":"^4.0.0","fastestsmallesttextencoderdecoder":"^1.0.22","@httptoolkit/websocket-stream":"^6.0.0","mqtt":"^4.3.4","tar":"^6.1.11","ws":"^7.5.5"}}');
+module.exports = JSON.parse('{"name":"aws-crt","version":"1.11.0","description":"NodeJS/browser bindings to the aws-c-* libraries","homepage":"https://github.com/awslabs/aws-crt-nodejs","repository":"github:awslabs/aws-crt-nodejs","contributors":["AWS Common Runtime Team <aws-sdk-common-runtime@amazon.com>"],"license":"Apache-2.0","main":"./dist/index.js","browser":"./dist.browser/browser.js","types":"./dist/index.d.ts","scripts":{"tsc":"node ./scripts/tsc.js","test":"npm run test:native","test:node":"npm run test:native","test:native":"npx jest --runInBand --verbose --config test/native/jest.config.js --forceExit","test:browser":"npx jest --runInBand --verbose --config test/browser/jest.config.js --forceExit","test:browser:ci":"npm run install:puppeteer && npm run test:browser","install:puppeteer":"npm install --save-dev jest-puppeteer puppeteer @types/puppeteer","prepare":"node ./scripts/tsc.js && node ./scripts/build.js","install":"node ./scripts/install.js"},"devDependencies":{"@types/crypto-js":"^3.1.43","@types/jest":"^27.0.1","@types/node":"^10.17.54","@types/puppeteer":"^5.4.4","@types/uuid":"^3.4.8","@types/ws":"^7.4.7","aws-sdk":"^2.848.0","jest":"^27.2.1","jest-puppeteer":"^5.0.4","jest-runtime":"^27.2.1","puppeteer":"^3.3.0","ts-jest":"^27.0.5","typedoc":"^0.17.8","typedoc-plugin-as-member-of":"^1.0.2","typedoc-plugin-external-module-name":"^4.0.6","typedoc-plugin-remove-references":"^0.0.5","typescript":"^3.9.9","uuid":"^8.3.2","yargs":"^17.2.1"},"dependencies":{"axios":"^0.24.0","cmake-js":"6.3.0","crypto-js":"^4.0.0","fastestsmallesttextencoderdecoder":"^1.0.22","@httptoolkit/websocket-stream":"^6.0.0","mqtt":"^4.3.4","tar":"^6.1.11","ws":"^7.5.5"}}');
 
 /***/ }),
 
