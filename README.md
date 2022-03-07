@@ -24,7 +24,7 @@ jobs:
     name: Upload images to S3
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Upload images
         uses: katydecorah/images-to-s3-action@v3.1.1
         env:
