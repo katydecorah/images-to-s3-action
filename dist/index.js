@@ -425,6 +425,13 @@ Object.defineProperty(exports, "summary", ({ enumerable: true, get: function () 
  */
 var summary_2 = __nccwpck_require__(81327);
 Object.defineProperty(exports, "markdownSummary", ({ enumerable: true, get: function () { return summary_2.markdownSummary; } }));
+/**
+ * Path exports
+ */
+var path_utils_1 = __nccwpck_require__(2981);
+Object.defineProperty(exports, "toPosixPath", ({ enumerable: true, get: function () { return path_utils_1.toPosixPath; } }));
+Object.defineProperty(exports, "toWin32Path", ({ enumerable: true, get: function () { return path_utils_1.toWin32Path; } }));
+Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: function () { return path_utils_1.toPlatformPath; } }));
 //# sourceMappingURL=core.js.map
 
 /***/ }),
@@ -559,6 +566,71 @@ class OidcClient {
 }
 exports.OidcClient = OidcClient;
 //# sourceMappingURL=oidc-utils.js.map
+
+/***/ }),
+
+/***/ 2981:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
+const path = __importStar(__nccwpck_require__(71017));
+/**
+ * toPosixPath converts the given path to the posix form. On Windows, \\ will be
+ * replaced with /.
+ *
+ * @param pth. Path to transform.
+ * @return string Posix path.
+ */
+function toPosixPath(pth) {
+    return pth.replace(/[\\]/g, '/');
+}
+exports.toPosixPath = toPosixPath;
+/**
+ * toWin32Path converts the given path to the win32 form. On Linux, / will be
+ * replaced with \\.
+ *
+ * @param pth. Path to transform.
+ * @return string Win32 path.
+ */
+function toWin32Path(pth) {
+    return pth.replace(/[/]/g, '\\');
+}
+exports.toWin32Path = toWin32Path;
+/**
+ * toPlatformPath converts the given path to a platform-specific path. It does
+ * this by replacing instances of / and \ with the platform-specific path
+ * separator.
+ *
+ * @param pth The path to platformize.
+ * @return string The platform-specific path.
+ */
+function toPlatformPath(pth) {
+    return pth.replace(/[/\\]/g, path.sep);
+}
+exports.toPlatformPath = toPlatformPath;
+//# sourceMappingURL=path-utils.js.map
 
 /***/ }),
 
@@ -4064,6 +4136,7 @@ const middleware_content_length_1 = __nccwpck_require__(42245);
 const middleware_expect_continue_1 = __nccwpck_require__(81990);
 const middleware_host_header_1 = __nccwpck_require__(22545);
 const middleware_logger_1 = __nccwpck_require__(20014);
+const middleware_recursion_detection_1 = __nccwpck_require__(85525);
 const middleware_retry_1 = __nccwpck_require__(96064);
 const middleware_sdk_s3_1 = __nccwpck_require__(81139);
 const middleware_signing_1 = __nccwpck_require__(14935);
@@ -4087,9 +4160,9 @@ class S3Client extends smithy_client_1.Client {
         this.middlewareStack.use((0, middleware_content_length_1.getContentLengthPlugin)(this.config));
         this.middlewareStack.use((0, middleware_host_header_1.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, middleware_logger_1.getLoggerPlugin)(this.config));
+        this.middlewareStack.use((0, middleware_recursion_detection_1.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, middleware_signing_1.getAwsAuthPlugin)(this.config));
         this.middlewareStack.use((0, middleware_sdk_s3_1.getValidateBucketNamePlugin)(this.config));
-        this.middlewareStack.use((0, middleware_sdk_s3_1.getUseRegionalEndpointPlugin)(this.config));
         this.middlewareStack.use((0, middleware_expect_continue_1.getAddExpectContinuePlugin)(this.config));
         this.middlewareStack.use((0, middleware_user_agent_1.getUserAgentPlugin)(this.config));
     }
@@ -8508,6 +8581,7 @@ exports.UploadPartCopyCommand = UploadPartCopyCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.WriteGetObjectResponseCommand = void 0;
+const middleware_sdk_s3_1 = __nccwpck_require__(81139);
 const middleware_serde_1 = __nccwpck_require__(93631);
 const smithy_client_1 = __nccwpck_require__(4963);
 const models_1_1 = __nccwpck_require__(6958);
@@ -8519,6 +8593,7 @@ class WriteGetObjectResponseCommand extends smithy_client_1.Command {
     }
     resolveMiddleware(clientStack, configuration, options) {
         this.middlewareStack.use((0, middleware_serde_1.getSerdePlugin)(configuration, this.serialize, this.deserialize));
+        this.middlewareStack.use((0, middleware_sdk_s3_1.getWriteGetObjectResponseEndpointPlugin)(configuration));
         const stack = clientStack.concat(this.middlewareStack);
         const { logger } = configuration;
         const clientName = "S3Client";
@@ -15819,18 +15894,19 @@ const deserializeAws_restXmlAbortMultipartUploadCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NoSuchUpload":
         case "com.amazonaws.s3#NoSuchUpload":
             throw await deserializeAws_restXmlNoSuchUploadResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -15908,15 +15984,16 @@ const deserializeAws_restXmlCompleteMultipartUploadCommandError = async (output,
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -15980,18 +16057,19 @@ const deserializeAws_restXmlCopyObjectCommandError = async (output, context) => 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "ObjectNotInActiveTierError":
         case "com.amazonaws.s3#ObjectNotInActiveTierError":
             throw await deserializeAws_restXmlObjectNotInActiveTierErrorResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16017,8 +16095,7 @@ const deserializeAws_restXmlCreateBucketCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "BucketAlreadyExists":
         case "com.amazonaws.s3#BucketAlreadyExists":
@@ -16028,10 +16105,12 @@ const deserializeAws_restXmlCreateBucketCommandError = async (output, context) =
             throw await deserializeAws_restXmlBucketAlreadyOwnedByYouResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16105,15 +16184,16 @@ const deserializeAws_restXmlCreateMultipartUploadCommandError = async (output, c
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16135,15 +16215,16 @@ const deserializeAws_restXmlDeleteBucketCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16165,15 +16246,16 @@ const deserializeAws_restXmlDeleteBucketAnalyticsConfigurationCommandError = asy
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16195,15 +16277,16 @@ const deserializeAws_restXmlDeleteBucketCorsCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16225,15 +16308,16 @@ const deserializeAws_restXmlDeleteBucketEncryptionCommandError = async (output, 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16255,15 +16339,16 @@ const deserializeAws_restXmlDeleteBucketIntelligentTieringConfigurationCommandEr
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16285,15 +16370,16 @@ const deserializeAws_restXmlDeleteBucketInventoryConfigurationCommandError = asy
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16315,15 +16401,16 @@ const deserializeAws_restXmlDeleteBucketLifecycleCommandError = async (output, c
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16345,15 +16432,16 @@ const deserializeAws_restXmlDeleteBucketMetricsConfigurationCommandError = async
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16375,15 +16463,16 @@ const deserializeAws_restXmlDeleteBucketOwnershipControlsCommandError = async (o
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16405,15 +16494,16 @@ const deserializeAws_restXmlDeleteBucketPolicyCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16435,15 +16525,16 @@ const deserializeAws_restXmlDeleteBucketReplicationCommandError = async (output,
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16465,15 +16556,16 @@ const deserializeAws_restXmlDeleteBucketTaggingCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16495,15 +16587,16 @@ const deserializeAws_restXmlDeleteBucketWebsiteCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16537,15 +16630,16 @@ const deserializeAws_restXmlDeleteObjectCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16567,13 +16661,13 @@ const deserializeAws_restXmlDeleteObjectsCommand = async (output, context) => {
     if (data.Deleted === "") {
         contents.Deleted = [];
     }
-    if (data["Deleted"] !== undefined) {
+    else if (data["Deleted"] !== undefined) {
         contents.Deleted = deserializeAws_restXmlDeletedObjects((0, smithy_client_1.getArrayIfSingleItem)(data["Deleted"]), context);
     }
     if (data.Error === "") {
         contents.Errors = [];
     }
-    if (data["Error"] !== undefined) {
+    else if (data["Error"] !== undefined) {
         contents.Errors = deserializeAws_restXmlErrors((0, smithy_client_1.getArrayIfSingleItem)(data["Error"]), context);
     }
     return Promise.resolve(contents);
@@ -16585,15 +16679,16 @@ const deserializeAws_restXmlDeleteObjectsCommandError = async (output, context) 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16619,15 +16714,16 @@ const deserializeAws_restXmlDeleteObjectTaggingCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16649,15 +16745,16 @@ const deserializeAws_restXmlDeletePublicAccessBlockCommandError = async (output,
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16683,15 +16780,16 @@ const deserializeAws_restXmlGetBucketAccelerateConfigurationCommandError = async
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16709,7 +16807,7 @@ const deserializeAws_restXmlGetBucketAclCommand = async (output, context) => {
     if (data.AccessControlList === "") {
         contents.Grants = [];
     }
-    if (data["AccessControlList"] !== undefined && data["AccessControlList"]["Grant"] !== undefined) {
+    else if (data["AccessControlList"] !== undefined && data["AccessControlList"]["Grant"] !== undefined) {
         contents.Grants = deserializeAws_restXmlGrants((0, smithy_client_1.getArrayIfSingleItem)(data["AccessControlList"]["Grant"]), context);
     }
     if (data["Owner"] !== undefined) {
@@ -16724,15 +16822,16 @@ const deserializeAws_restXmlGetBucketAclCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16756,15 +16855,16 @@ const deserializeAws_restXmlGetBucketAnalyticsConfigurationCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16781,7 +16881,7 @@ const deserializeAws_restXmlGetBucketCorsCommand = async (output, context) => {
     if (data.CORSRule === "") {
         contents.CORSRules = [];
     }
-    if (data["CORSRule"] !== undefined) {
+    else if (data["CORSRule"] !== undefined) {
         contents.CORSRules = deserializeAws_restXmlCORSRules((0, smithy_client_1.getArrayIfSingleItem)(data["CORSRule"]), context);
     }
     return Promise.resolve(contents);
@@ -16793,15 +16893,16 @@ const deserializeAws_restXmlGetBucketCorsCommandError = async (output, context) 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16825,15 +16926,16 @@ const deserializeAws_restXmlGetBucketEncryptionCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16857,15 +16959,16 @@ const deserializeAws_restXmlGetBucketIntelligentTieringConfigurationCommandError
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16889,15 +16992,16 @@ const deserializeAws_restXmlGetBucketInventoryConfigurationCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16914,7 +17018,7 @@ const deserializeAws_restXmlGetBucketLifecycleConfigurationCommand = async (outp
     if (data.Rule === "") {
         contents.Rules = [];
     }
-    if (data["Rule"] !== undefined) {
+    else if (data["Rule"] !== undefined) {
         contents.Rules = deserializeAws_restXmlLifecycleRules((0, smithy_client_1.getArrayIfSingleItem)(data["Rule"]), context);
     }
     return Promise.resolve(contents);
@@ -16926,15 +17030,16 @@ const deserializeAws_restXmlGetBucketLifecycleConfigurationCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16960,15 +17065,16 @@ const deserializeAws_restXmlGetBucketLocationCommandError = async (output, conte
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -16994,15 +17100,16 @@ const deserializeAws_restXmlGetBucketLoggingCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17026,15 +17133,16 @@ const deserializeAws_restXmlGetBucketMetricsConfigurationCommandError = async (o
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17057,19 +17165,19 @@ const deserializeAws_restXmlGetBucketNotificationConfigurationCommand = async (o
     if (data.CloudFunctionConfiguration === "") {
         contents.LambdaFunctionConfigurations = [];
     }
-    if (data["CloudFunctionConfiguration"] !== undefined) {
+    else if (data["CloudFunctionConfiguration"] !== undefined) {
         contents.LambdaFunctionConfigurations = deserializeAws_restXmlLambdaFunctionConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["CloudFunctionConfiguration"]), context);
     }
     if (data.QueueConfiguration === "") {
         contents.QueueConfigurations = [];
     }
-    if (data["QueueConfiguration"] !== undefined) {
+    else if (data["QueueConfiguration"] !== undefined) {
         contents.QueueConfigurations = deserializeAws_restXmlQueueConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["QueueConfiguration"]), context);
     }
     if (data.TopicConfiguration === "") {
         contents.TopicConfigurations = [];
     }
-    if (data["TopicConfiguration"] !== undefined) {
+    else if (data["TopicConfiguration"] !== undefined) {
         contents.TopicConfigurations = deserializeAws_restXmlTopicConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["TopicConfiguration"]), context);
     }
     return Promise.resolve(contents);
@@ -17081,15 +17189,16 @@ const deserializeAws_restXmlGetBucketNotificationConfigurationCommandError = asy
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17113,15 +17222,16 @@ const deserializeAws_restXmlGetBucketOwnershipControlsCommandError = async (outp
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17145,15 +17255,16 @@ const deserializeAws_restXmlGetBucketPolicyCommandError = async (output, context
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17177,15 +17288,16 @@ const deserializeAws_restXmlGetBucketPolicyStatusCommandError = async (output, c
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17209,15 +17321,16 @@ const deserializeAws_restXmlGetBucketReplicationCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17243,15 +17356,16 @@ const deserializeAws_restXmlGetBucketRequestPaymentCommandError = async (output,
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17268,7 +17382,7 @@ const deserializeAws_restXmlGetBucketTaggingCommand = async (output, context) =>
     if (data.TagSet === "") {
         contents.TagSet = [];
     }
-    if (data["TagSet"] !== undefined && data["TagSet"]["Tag"] !== undefined) {
+    else if (data["TagSet"] !== undefined && data["TagSet"]["Tag"] !== undefined) {
         contents.TagSet = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(data["TagSet"]["Tag"]), context);
     }
     return Promise.resolve(contents);
@@ -17280,15 +17394,16 @@ const deserializeAws_restXmlGetBucketTaggingCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17318,15 +17433,16 @@ const deserializeAws_restXmlGetBucketVersioningCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17355,7 +17471,7 @@ const deserializeAws_restXmlGetBucketWebsiteCommand = async (output, context) =>
     if (data.RoutingRules === "") {
         contents.RoutingRules = [];
     }
-    if (data["RoutingRules"] !== undefined && data["RoutingRules"]["RoutingRule"] !== undefined) {
+    else if (data["RoutingRules"] !== undefined && data["RoutingRules"]["RoutingRule"] !== undefined) {
         contents.RoutingRules = deserializeAws_restXmlRoutingRules((0, smithy_client_1.getArrayIfSingleItem)(data["RoutingRules"]["RoutingRule"]), context);
     }
     return Promise.resolve(contents);
@@ -17367,15 +17483,16 @@ const deserializeAws_restXmlGetBucketWebsiteCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17544,8 +17661,7 @@ const deserializeAws_restXmlGetObjectCommandError = async (output, context) => {
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "InvalidObjectState":
         case "com.amazonaws.s3#InvalidObjectState":
@@ -17555,10 +17671,12 @@ const deserializeAws_restXmlGetObjectCommandError = async (output, context) => {
             throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17580,7 +17698,7 @@ const deserializeAws_restXmlGetObjectAclCommand = async (output, context) => {
     if (data.AccessControlList === "") {
         contents.Grants = [];
     }
-    if (data["AccessControlList"] !== undefined && data["AccessControlList"]["Grant"] !== undefined) {
+    else if (data["AccessControlList"] !== undefined && data["AccessControlList"]["Grant"] !== undefined) {
         contents.Grants = deserializeAws_restXmlGrants((0, smithy_client_1.getArrayIfSingleItem)(data["AccessControlList"]["Grant"]), context);
     }
     if (data["Owner"] !== undefined) {
@@ -17595,18 +17713,19 @@ const deserializeAws_restXmlGetObjectAclCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NoSuchKey":
         case "com.amazonaws.s3#NoSuchKey":
             throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17664,18 +17783,19 @@ const deserializeAws_restXmlGetObjectAttributesCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NoSuchKey":
         case "com.amazonaws.s3#NoSuchKey":
             throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17699,15 +17819,16 @@ const deserializeAws_restXmlGetObjectLegalHoldCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17731,15 +17852,16 @@ const deserializeAws_restXmlGetObjectLockConfigurationCommandError = async (outp
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17763,15 +17885,16 @@ const deserializeAws_restXmlGetObjectRetentionCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17792,7 +17915,7 @@ const deserializeAws_restXmlGetObjectTaggingCommand = async (output, context) =>
     if (data.TagSet === "") {
         contents.TagSet = [];
     }
-    if (data["TagSet"] !== undefined && data["TagSet"]["Tag"] !== undefined) {
+    else if (data["TagSet"] !== undefined && data["TagSet"]["Tag"] !== undefined) {
         contents.TagSet = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(data["TagSet"]["Tag"]), context);
     }
     return Promise.resolve(contents);
@@ -17804,15 +17927,16 @@ const deserializeAws_restXmlGetObjectTaggingCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17840,15 +17964,16 @@ const deserializeAws_restXmlGetObjectTorrentCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17872,15 +17997,16 @@ const deserializeAws_restXmlGetPublicAccessBlockCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -17902,18 +18028,19 @@ const deserializeAws_restXmlHeadBucketCommandError = async (output, context) => 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NotFound":
         case "com.amazonaws.s3#NotFound":
             throw await deserializeAws_restXmlNotFoundResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18076,18 +18203,19 @@ const deserializeAws_restXmlHeadObjectCommandError = async (output, context) => 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NotFound":
         case "com.amazonaws.s3#NotFound":
             throw await deserializeAws_restXmlNotFoundResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18107,7 +18235,7 @@ const deserializeAws_restXmlListBucketAnalyticsConfigurationsCommand = async (ou
     if (data.AnalyticsConfiguration === "") {
         contents.AnalyticsConfigurationList = [];
     }
-    if (data["AnalyticsConfiguration"] !== undefined) {
+    else if (data["AnalyticsConfiguration"] !== undefined) {
         contents.AnalyticsConfigurationList = deserializeAws_restXmlAnalyticsConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["AnalyticsConfiguration"]), context);
     }
     if (data["ContinuationToken"] !== undefined) {
@@ -18128,15 +18256,16 @@ const deserializeAws_restXmlListBucketAnalyticsConfigurationsCommandError = asyn
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18159,7 +18288,7 @@ const deserializeAws_restXmlListBucketIntelligentTieringConfigurationsCommand = 
     if (data.IntelligentTieringConfiguration === "") {
         contents.IntelligentTieringConfigurationList = [];
     }
-    if (data["IntelligentTieringConfiguration"] !== undefined) {
+    else if (data["IntelligentTieringConfiguration"] !== undefined) {
         contents.IntelligentTieringConfigurationList = deserializeAws_restXmlIntelligentTieringConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["IntelligentTieringConfiguration"]), context);
     }
     if (data["IsTruncated"] !== undefined) {
@@ -18177,15 +18306,16 @@ const deserializeAws_restXmlListBucketIntelligentTieringConfigurationsCommandErr
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18208,7 +18338,7 @@ const deserializeAws_restXmlListBucketInventoryConfigurationsCommand = async (ou
     if (data.InventoryConfiguration === "") {
         contents.InventoryConfigurationList = [];
     }
-    if (data["InventoryConfiguration"] !== undefined) {
+    else if (data["InventoryConfiguration"] !== undefined) {
         contents.InventoryConfigurationList = deserializeAws_restXmlInventoryConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["InventoryConfiguration"]), context);
     }
     if (data["IsTruncated"] !== undefined) {
@@ -18226,15 +18356,16 @@ const deserializeAws_restXmlListBucketInventoryConfigurationsCommandError = asyn
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18260,7 +18391,7 @@ const deserializeAws_restXmlListBucketMetricsConfigurationsCommand = async (outp
     if (data.MetricsConfiguration === "") {
         contents.MetricsConfigurationList = [];
     }
-    if (data["MetricsConfiguration"] !== undefined) {
+    else if (data["MetricsConfiguration"] !== undefined) {
         contents.MetricsConfigurationList = deserializeAws_restXmlMetricsConfigurationList((0, smithy_client_1.getArrayIfSingleItem)(data["MetricsConfiguration"]), context);
     }
     if (data["NextContinuationToken"] !== undefined) {
@@ -18275,15 +18406,16 @@ const deserializeAws_restXmlListBucketMetricsConfigurationsCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18301,7 +18433,7 @@ const deserializeAws_restXmlListBucketsCommand = async (output, context) => {
     if (data.Buckets === "") {
         contents.Buckets = [];
     }
-    if (data["Buckets"] !== undefined && data["Buckets"]["Bucket"] !== undefined) {
+    else if (data["Buckets"] !== undefined && data["Buckets"]["Bucket"] !== undefined) {
         contents.Buckets = deserializeAws_restXmlBuckets((0, smithy_client_1.getArrayIfSingleItem)(data["Buckets"]["Bucket"]), context);
     }
     if (data["Owner"] !== undefined) {
@@ -18316,15 +18448,16 @@ const deserializeAws_restXmlListBucketsCommandError = async (output, context) =>
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18355,7 +18488,7 @@ const deserializeAws_restXmlListMultipartUploadsCommand = async (output, context
     if (data.CommonPrefixes === "") {
         contents.CommonPrefixes = [];
     }
-    if (data["CommonPrefixes"] !== undefined) {
+    else if (data["CommonPrefixes"] !== undefined) {
         contents.CommonPrefixes = deserializeAws_restXmlCommonPrefixList((0, smithy_client_1.getArrayIfSingleItem)(data["CommonPrefixes"]), context);
     }
     if (data["Delimiter"] !== undefined) {
@@ -18388,7 +18521,7 @@ const deserializeAws_restXmlListMultipartUploadsCommand = async (output, context
     if (data.Upload === "") {
         contents.Uploads = [];
     }
-    if (data["Upload"] !== undefined) {
+    else if (data["Upload"] !== undefined) {
         contents.Uploads = deserializeAws_restXmlMultipartUploadList((0, smithy_client_1.getArrayIfSingleItem)(data["Upload"]), context);
     }
     return Promise.resolve(contents);
@@ -18400,15 +18533,16 @@ const deserializeAws_restXmlListMultipartUploadsCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18434,13 +18568,13 @@ const deserializeAws_restXmlListObjectsCommand = async (output, context) => {
     if (data.CommonPrefixes === "") {
         contents.CommonPrefixes = [];
     }
-    if (data["CommonPrefixes"] !== undefined) {
+    else if (data["CommonPrefixes"] !== undefined) {
         contents.CommonPrefixes = deserializeAws_restXmlCommonPrefixList((0, smithy_client_1.getArrayIfSingleItem)(data["CommonPrefixes"]), context);
     }
     if (data.Contents === "") {
         contents.Contents = [];
     }
-    if (data["Contents"] !== undefined) {
+    else if (data["Contents"] !== undefined) {
         contents.Contents = deserializeAws_restXmlObjectList((0, smithy_client_1.getArrayIfSingleItem)(data["Contents"]), context);
     }
     if (data["Delimiter"] !== undefined) {
@@ -18476,18 +18610,19 @@ const deserializeAws_restXmlListObjectsCommandError = async (output, context) =>
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NoSuchBucket":
         case "com.amazonaws.s3#NoSuchBucket":
             throw await deserializeAws_restXmlNoSuchBucketResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18515,13 +18650,13 @@ const deserializeAws_restXmlListObjectsV2Command = async (output, context) => {
     if (data.CommonPrefixes === "") {
         contents.CommonPrefixes = [];
     }
-    if (data["CommonPrefixes"] !== undefined) {
+    else if (data["CommonPrefixes"] !== undefined) {
         contents.CommonPrefixes = deserializeAws_restXmlCommonPrefixList((0, smithy_client_1.getArrayIfSingleItem)(data["CommonPrefixes"]), context);
     }
     if (data.Contents === "") {
         contents.Contents = [];
     }
-    if (data["Contents"] !== undefined) {
+    else if (data["Contents"] !== undefined) {
         contents.Contents = deserializeAws_restXmlObjectList((0, smithy_client_1.getArrayIfSingleItem)(data["Contents"]), context);
     }
     if (data["ContinuationToken"] !== undefined) {
@@ -18563,18 +18698,19 @@ const deserializeAws_restXmlListObjectsV2CommandError = async (output, context) 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NoSuchBucket":
         case "com.amazonaws.s3#NoSuchBucket":
             throw await deserializeAws_restXmlNoSuchBucketResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18603,13 +18739,13 @@ const deserializeAws_restXmlListObjectVersionsCommand = async (output, context) 
     if (data.CommonPrefixes === "") {
         contents.CommonPrefixes = [];
     }
-    if (data["CommonPrefixes"] !== undefined) {
+    else if (data["CommonPrefixes"] !== undefined) {
         contents.CommonPrefixes = deserializeAws_restXmlCommonPrefixList((0, smithy_client_1.getArrayIfSingleItem)(data["CommonPrefixes"]), context);
     }
     if (data.DeleteMarker === "") {
         contents.DeleteMarkers = [];
     }
-    if (data["DeleteMarker"] !== undefined) {
+    else if (data["DeleteMarker"] !== undefined) {
         contents.DeleteMarkers = deserializeAws_restXmlDeleteMarkers((0, smithy_client_1.getArrayIfSingleItem)(data["DeleteMarker"]), context);
     }
     if (data["Delimiter"] !== undefined) {
@@ -18645,7 +18781,7 @@ const deserializeAws_restXmlListObjectVersionsCommand = async (output, context) 
     if (data.Version === "") {
         contents.Versions = [];
     }
-    if (data["Version"] !== undefined) {
+    else if (data["Version"] !== undefined) {
         contents.Versions = deserializeAws_restXmlObjectVersionList((0, smithy_client_1.getArrayIfSingleItem)(data["Version"]), context);
     }
     return Promise.resolve(contents);
@@ -18657,15 +18793,16 @@ const deserializeAws_restXmlListObjectVersionsCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18732,7 +18869,7 @@ const deserializeAws_restXmlListPartsCommand = async (output, context) => {
     if (data.Part === "") {
         contents.Parts = [];
     }
-    if (data["Part"] !== undefined) {
+    else if (data["Part"] !== undefined) {
         contents.Parts = deserializeAws_restXmlParts((0, smithy_client_1.getArrayIfSingleItem)(data["Part"]), context);
     }
     if (data["StorageClass"] !== undefined) {
@@ -18750,15 +18887,16 @@ const deserializeAws_restXmlListPartsCommandError = async (output, context) => {
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18780,15 +18918,16 @@ const deserializeAws_restXmlPutBucketAccelerateConfigurationCommandError = async
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18810,15 +18949,16 @@ const deserializeAws_restXmlPutBucketAclCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18840,15 +18980,16 @@ const deserializeAws_restXmlPutBucketAnalyticsConfigurationCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18870,15 +19011,16 @@ const deserializeAws_restXmlPutBucketCorsCommandError = async (output, context) 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18900,15 +19042,16 @@ const deserializeAws_restXmlPutBucketEncryptionCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18930,15 +19073,16 @@ const deserializeAws_restXmlPutBucketIntelligentTieringConfigurationCommandError
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18960,15 +19104,16 @@ const deserializeAws_restXmlPutBucketInventoryConfigurationCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -18990,15 +19135,16 @@ const deserializeAws_restXmlPutBucketLifecycleConfigurationCommandError = async 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19020,15 +19166,16 @@ const deserializeAws_restXmlPutBucketLoggingCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19050,15 +19197,16 @@ const deserializeAws_restXmlPutBucketMetricsConfigurationCommandError = async (o
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19080,15 +19228,16 @@ const deserializeAws_restXmlPutBucketNotificationConfigurationCommandError = asy
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19110,15 +19259,16 @@ const deserializeAws_restXmlPutBucketOwnershipControlsCommandError = async (outp
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19140,15 +19290,16 @@ const deserializeAws_restXmlPutBucketPolicyCommandError = async (output, context
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19170,15 +19321,16 @@ const deserializeAws_restXmlPutBucketReplicationCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19200,15 +19352,16 @@ const deserializeAws_restXmlPutBucketRequestPaymentCommandError = async (output,
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19230,15 +19383,16 @@ const deserializeAws_restXmlPutBucketTaggingCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19260,15 +19414,16 @@ const deserializeAws_restXmlPutBucketVersioningCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19290,15 +19445,16 @@ const deserializeAws_restXmlPutBucketWebsiteCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19376,15 +19532,16 @@ const deserializeAws_restXmlPutObjectCommandError = async (output, context) => {
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19410,18 +19567,19 @@ const deserializeAws_restXmlPutObjectAclCommandError = async (output, context) =
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "NoSuchKey":
         case "com.amazonaws.s3#NoSuchKey":
             throw await deserializeAws_restXmlNoSuchKeyResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19447,15 +19605,16 @@ const deserializeAws_restXmlPutObjectLegalHoldCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19481,15 +19640,16 @@ const deserializeAws_restXmlPutObjectLockConfigurationCommandError = async (outp
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19515,15 +19675,16 @@ const deserializeAws_restXmlPutObjectRetentionCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19549,15 +19710,16 @@ const deserializeAws_restXmlPutObjectTaggingCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19579,15 +19741,16 @@ const deserializeAws_restXmlPutPublicAccessBlockCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19617,18 +19780,19 @@ const deserializeAws_restXmlRestoreObjectCommandError = async (output, context) 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "ObjectAlreadyInActiveTierError":
         case "com.amazonaws.s3#ObjectAlreadyInActiveTierError":
             throw await deserializeAws_restXmlObjectAlreadyInActiveTierErrorResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19666,15 +19830,16 @@ const deserializeAws_restXmlSelectObjectContentCommandError = async (output, con
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19740,15 +19905,16 @@ const deserializeAws_restXmlUploadPartCommandError = async (output, context) => 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19800,15 +19966,16 @@ const deserializeAws_restXmlUploadPartCopyCommandError = async (output, context)
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -19830,15 +19997,16 @@ const deserializeAws_restXmlWriteGetObjectResponseCommandError = async (output, 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new S3ServiceException_1.S3ServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -22092,7 +22260,7 @@ const deserializeAws_restXmlAnalyticsAndOperator = (output, context) => {
     if (output.Tag === "") {
         contents.Tags = [];
     }
-    if (output["Tag"] !== undefined) {
+    else if (output["Tag"] !== undefined) {
         contents.Tags = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(output["Tag"]), context);
     }
     return contents;
@@ -22106,7 +22274,9 @@ const deserializeAws_restXmlAnalyticsConfiguration = (output, context) => {
     if (output["Id"] !== undefined) {
         contents.Id = (0, smithy_client_1.expectString)(output["Id"]);
     }
-    if (output["Filter"] !== undefined) {
+    if (output.Filter === "") {
+    }
+    else if (output["Filter"] !== undefined) {
         contents.Filter = deserializeAws_restXmlAnalyticsFilter((0, smithy_client_1.expectUnion)(output["Filter"]), context);
     }
     if (output["StorageClassAnalysis"] !== undefined) {
@@ -22335,25 +22505,25 @@ const deserializeAws_restXmlCORSRule = (output, context) => {
     if (output.AllowedHeader === "") {
         contents.AllowedHeaders = [];
     }
-    if (output["AllowedHeader"] !== undefined) {
+    else if (output["AllowedHeader"] !== undefined) {
         contents.AllowedHeaders = deserializeAws_restXmlAllowedHeaders((0, smithy_client_1.getArrayIfSingleItem)(output["AllowedHeader"]), context);
     }
     if (output.AllowedMethod === "") {
         contents.AllowedMethods = [];
     }
-    if (output["AllowedMethod"] !== undefined) {
+    else if (output["AllowedMethod"] !== undefined) {
         contents.AllowedMethods = deserializeAws_restXmlAllowedMethods((0, smithy_client_1.getArrayIfSingleItem)(output["AllowedMethod"]), context);
     }
     if (output.AllowedOrigin === "") {
         contents.AllowedOrigins = [];
     }
-    if (output["AllowedOrigin"] !== undefined) {
+    else if (output["AllowedOrigin"] !== undefined) {
         contents.AllowedOrigins = deserializeAws_restXmlAllowedOrigins((0, smithy_client_1.getArrayIfSingleItem)(output["AllowedOrigin"]), context);
     }
     if (output.ExposeHeader === "") {
         contents.ExposeHeaders = [];
     }
-    if (output["ExposeHeader"] !== undefined) {
+    else if (output["ExposeHeader"] !== undefined) {
         contents.ExposeHeaders = deserializeAws_restXmlExposeHeaders((0, smithy_client_1.getArrayIfSingleItem)(output["ExposeHeader"]), context);
     }
     if (output["MaxAgeSeconds"] !== undefined) {
@@ -22632,7 +22802,7 @@ const deserializeAws_restXmlGetObjectAttributesParts = (output, context) => {
     if (output.Part === "") {
         contents.Parts = [];
     }
-    if (output["Part"] !== undefined) {
+    else if (output["Part"] !== undefined) {
         contents.Parts = deserializeAws_restXmlPartsList((0, smithy_client_1.getArrayIfSingleItem)(output["Part"]), context);
     }
     return contents;
@@ -22718,7 +22888,7 @@ const deserializeAws_restXmlIntelligentTieringAndOperator = (output, context) =>
     if (output.Tag === "") {
         contents.Tags = [];
     }
-    if (output["Tag"] !== undefined) {
+    else if (output["Tag"] !== undefined) {
         contents.Tags = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(output["Tag"]), context);
     }
     return contents;
@@ -22742,7 +22912,7 @@ const deserializeAws_restXmlIntelligentTieringConfiguration = (output, context) 
     if (output.Tiering === "") {
         contents.Tierings = [];
     }
-    if (output["Tiering"] !== undefined) {
+    else if (output["Tiering"] !== undefined) {
         contents.Tierings = deserializeAws_restXmlTieringList((0, smithy_client_1.getArrayIfSingleItem)(output["Tiering"]), context);
     }
     return contents;
@@ -22802,7 +22972,7 @@ const deserializeAws_restXmlInventoryConfiguration = (output, context) => {
     if (output.OptionalFields === "") {
         contents.OptionalFields = [];
     }
-    if (output["OptionalFields"] !== undefined && output["OptionalFields"]["Field"] !== undefined) {
+    else if (output["OptionalFields"] !== undefined && output["OptionalFields"]["Field"] !== undefined) {
         contents.OptionalFields = deserializeAws_restXmlInventoryOptionalFields((0, smithy_client_1.getArrayIfSingleItem)(output["OptionalFields"]["Field"]), context);
     }
     if (output["Schedule"] !== undefined) {
@@ -22911,7 +23081,7 @@ const deserializeAws_restXmlLambdaFunctionConfiguration = (output, context) => {
     if (output.Event === "") {
         contents.Events = [];
     }
-    if (output["Event"] !== undefined) {
+    else if (output["Event"] !== undefined) {
         contents.Events = deserializeAws_restXmlEventList((0, smithy_client_1.getArrayIfSingleItem)(output["Event"]), context);
     }
     if (output["Filter"] !== undefined) {
@@ -22967,7 +23137,9 @@ const deserializeAws_restXmlLifecycleRule = (output, context) => {
     if (output["Prefix"] !== undefined) {
         contents.Prefix = (0, smithy_client_1.expectString)(output["Prefix"]);
     }
-    if (output["Filter"] !== undefined) {
+    if (output.Filter === "") {
+    }
+    else if (output["Filter"] !== undefined) {
         contents.Filter = deserializeAws_restXmlLifecycleRuleFilter((0, smithy_client_1.expectUnion)(output["Filter"]), context);
     }
     if (output["Status"] !== undefined) {
@@ -22976,13 +23148,13 @@ const deserializeAws_restXmlLifecycleRule = (output, context) => {
     if (output.Transition === "") {
         contents.Transitions = [];
     }
-    if (output["Transition"] !== undefined) {
+    else if (output["Transition"] !== undefined) {
         contents.Transitions = deserializeAws_restXmlTransitionList((0, smithy_client_1.getArrayIfSingleItem)(output["Transition"]), context);
     }
     if (output.NoncurrentVersionTransition === "") {
         contents.NoncurrentVersionTransitions = [];
     }
-    if (output["NoncurrentVersionTransition"] !== undefined) {
+    else if (output["NoncurrentVersionTransition"] !== undefined) {
         contents.NoncurrentVersionTransitions = deserializeAws_restXmlNoncurrentVersionTransitionList((0, smithy_client_1.getArrayIfSingleItem)(output["NoncurrentVersionTransition"]), context);
     }
     if (output["NoncurrentVersionExpiration"] !== undefined) {
@@ -23006,7 +23178,7 @@ const deserializeAws_restXmlLifecycleRuleAndOperator = (output, context) => {
     if (output.Tag === "") {
         contents.Tags = [];
     }
-    if (output["Tag"] !== undefined) {
+    else if (output["Tag"] !== undefined) {
         contents.Tags = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(output["Tag"]), context);
     }
     if (output["ObjectSizeGreaterThan"] !== undefined) {
@@ -23067,7 +23239,7 @@ const deserializeAws_restXmlLoggingEnabled = (output, context) => {
     if (output.TargetGrants === "") {
         contents.TargetGrants = [];
     }
-    if (output["TargetGrants"] !== undefined && output["TargetGrants"]["Grant"] !== undefined) {
+    else if (output["TargetGrants"] !== undefined && output["TargetGrants"]["Grant"] !== undefined) {
         contents.TargetGrants = deserializeAws_restXmlTargetGrants((0, smithy_client_1.getArrayIfSingleItem)(output["TargetGrants"]["Grant"]), context);
     }
     if (output["TargetPrefix"] !== undefined) {
@@ -23100,7 +23272,7 @@ const deserializeAws_restXmlMetricsAndOperator = (output, context) => {
     if (output.Tag === "") {
         contents.Tags = [];
     }
-    if (output["Tag"] !== undefined) {
+    else if (output["Tag"] !== undefined) {
         contents.Tags = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(output["Tag"]), context);
     }
     if (output["AccessPointArn"] !== undefined) {
@@ -23116,7 +23288,9 @@ const deserializeAws_restXmlMetricsConfiguration = (output, context) => {
     if (output["Id"] !== undefined) {
         contents.Id = (0, smithy_client_1.expectString)(output["Id"]);
     }
-    if (output["Filter"] !== undefined) {
+    if (output.Filter === "") {
+    }
+    else if (output["Filter"] !== undefined) {
         contents.Filter = deserializeAws_restXmlMetricsFilter((0, smithy_client_1.expectUnion)(output["Filter"]), context);
     }
     return contents;
@@ -23268,7 +23442,7 @@ const deserializeAws_restXml_Object = (output, context) => {
     if (output.ChecksumAlgorithm === "") {
         contents.ChecksumAlgorithm = [];
     }
-    if (output["ChecksumAlgorithm"] !== undefined) {
+    else if (output["ChecksumAlgorithm"] !== undefined) {
         contents.ChecksumAlgorithm = deserializeAws_restXmlChecksumAlgorithmList((0, smithy_client_1.getArrayIfSingleItem)(output["ChecksumAlgorithm"]), context);
     }
     if (output["Size"] !== undefined) {
@@ -23383,7 +23557,7 @@ const deserializeAws_restXmlObjectVersion = (output, context) => {
     if (output.ChecksumAlgorithm === "") {
         contents.ChecksumAlgorithm = [];
     }
-    if (output["ChecksumAlgorithm"] !== undefined) {
+    else if (output["ChecksumAlgorithm"] !== undefined) {
         contents.ChecksumAlgorithm = deserializeAws_restXmlChecksumAlgorithmList((0, smithy_client_1.getArrayIfSingleItem)(output["ChecksumAlgorithm"]), context);
     }
     if (output["Size"] !== undefined) {
@@ -23439,7 +23613,7 @@ const deserializeAws_restXmlOwnershipControls = (output, context) => {
     if (output.Rule === "") {
         contents.Rules = [];
     }
-    if (output["Rule"] !== undefined) {
+    else if (output["Rule"] !== undefined) {
         contents.Rules = deserializeAws_restXmlOwnershipControlsRules((0, smithy_client_1.getArrayIfSingleItem)(output["Rule"]), context);
     }
     return contents;
@@ -23592,7 +23766,7 @@ const deserializeAws_restXmlQueueConfiguration = (output, context) => {
     if (output.Event === "") {
         contents.Events = [];
     }
-    if (output["Event"] !== undefined) {
+    else if (output["Event"] !== undefined) {
         contents.Events = deserializeAws_restXmlEventList((0, smithy_client_1.getArrayIfSingleItem)(output["Event"]), context);
     }
     if (output["Filter"] !== undefined) {
@@ -23677,7 +23851,7 @@ const deserializeAws_restXmlReplicationConfiguration = (output, context) => {
     if (output.Rule === "") {
         contents.Rules = [];
     }
-    if (output["Rule"] !== undefined) {
+    else if (output["Rule"] !== undefined) {
         contents.Rules = deserializeAws_restXmlReplicationRules((0, smithy_client_1.getArrayIfSingleItem)(output["Rule"]), context);
     }
     return contents;
@@ -23703,7 +23877,9 @@ const deserializeAws_restXmlReplicationRule = (output, context) => {
     if (output["Prefix"] !== undefined) {
         contents.Prefix = (0, smithy_client_1.expectString)(output["Prefix"]);
     }
-    if (output["Filter"] !== undefined) {
+    if (output.Filter === "") {
+    }
+    else if (output["Filter"] !== undefined) {
         contents.Filter = deserializeAws_restXmlReplicationRuleFilter((0, smithy_client_1.expectUnion)(output["Filter"]), context);
     }
     if (output["Status"] !== undefined) {
@@ -23734,7 +23910,7 @@ const deserializeAws_restXmlReplicationRuleAndOperator = (output, context) => {
     if (output.Tag === "") {
         contents.Tags = [];
     }
-    if (output["Tag"] !== undefined) {
+    else if (output["Tag"] !== undefined) {
         contents.Tags = deserializeAws_restXmlTagSet((0, smithy_client_1.getArrayIfSingleItem)(output["Tag"]), context);
     }
     return contents;
@@ -23819,7 +23995,7 @@ const deserializeAws_restXmlS3KeyFilter = (output, context) => {
     if (output.FilterRule === "") {
         contents.FilterRules = [];
     }
-    if (output["FilterRule"] !== undefined) {
+    else if (output["FilterRule"] !== undefined) {
         contents.FilterRules = deserializeAws_restXmlFilterRuleList((0, smithy_client_1.getArrayIfSingleItem)(output["FilterRule"]), context);
     }
     return contents;
@@ -23872,7 +24048,7 @@ const deserializeAws_restXmlServerSideEncryptionConfiguration = (output, context
     if (output.Rule === "") {
         contents.Rules = [];
     }
-    if (output["Rule"] !== undefined) {
+    else if (output["Rule"] !== undefined) {
         contents.Rules = deserializeAws_restXmlServerSideEncryptionRules((0, smithy_client_1.getArrayIfSingleItem)(output["Rule"]), context);
     }
     return contents;
@@ -24068,7 +24244,7 @@ const deserializeAws_restXmlTopicConfiguration = (output, context) => {
     if (output.Event === "") {
         contents.Events = [];
     }
-    if (output["Event"] !== undefined) {
+    else if (output["Event"] !== undefined) {
         contents.Events = deserializeAws_restXmlEventList((0, smithy_client_1.getArrayIfSingleItem)(output["Event"]), context);
     }
     if (output["Filter"] !== undefined) {
@@ -24161,7 +24337,6 @@ const loadRestXmlErrorCode = (output, data) => {
     if (output.statusCode == 404) {
         return "NotFound";
     }
-    return "";
 };
 
 
@@ -24521,6 +24696,7 @@ const config_resolver_1 = __nccwpck_require__(56153);
 const middleware_content_length_1 = __nccwpck_require__(42245);
 const middleware_host_header_1 = __nccwpck_require__(22545);
 const middleware_logger_1 = __nccwpck_require__(20014);
+const middleware_recursion_detection_1 = __nccwpck_require__(85525);
 const middleware_retry_1 = __nccwpck_require__(96064);
 const middleware_user_agent_1 = __nccwpck_require__(64688);
 const smithy_client_1 = __nccwpck_require__(4963);
@@ -24539,6 +24715,7 @@ class SSOClient extends smithy_client_1.Client {
         this.middlewareStack.use((0, middleware_content_length_1.getContentLengthPlugin)(this.config));
         this.middlewareStack.use((0, middleware_host_header_1.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, middleware_logger_1.getLoggerPlugin)(this.config));
+        this.middlewareStack.use((0, middleware_recursion_detection_1.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, middleware_user_agent_1.getUserAgentPlugin)(this.config));
     }
     destroy() {
@@ -24830,6 +25007,15 @@ const regionHash = {
             },
         ],
         signingRegion: "eu-north-1",
+    },
+    "eu-south-1": {
+        variants: [
+            {
+                hostname: "portal.sso.eu-south-1.amazonaws.com",
+                tags: [],
+            },
+        ],
+        signingRegion: "eu-south-1",
     },
     "eu-west-1": {
         variants: [
@@ -25457,8 +25643,7 @@ const deserializeAws_restJson1GetRoleCredentialsCommandError = async (output, co
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
@@ -25474,10 +25659,12 @@ const deserializeAws_restJson1GetRoleCredentialsCommandError = async (output, co
             throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new SSOServiceException_1.SSOServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -25507,8 +25694,7 @@ const deserializeAws_restJson1ListAccountRolesCommandError = async (output, cont
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
@@ -25524,10 +25710,12 @@ const deserializeAws_restJson1ListAccountRolesCommandError = async (output, cont
             throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new SSOServiceException_1.SSOServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -25557,8 +25745,7 @@ const deserializeAws_restJson1ListAccountsCommandError = async (output, context)
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
@@ -25574,10 +25761,12 @@ const deserializeAws_restJson1ListAccountsCommandError = async (output, context)
             throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new SSOServiceException_1.SSOServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -25599,8 +25788,7 @@ const deserializeAws_restJson1LogoutCommandError = async (output, context) => {
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
+    const errorCode = loadRestJsonErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "InvalidRequestException":
         case "com.amazonaws.sso#InvalidRequestException":
@@ -25613,10 +25801,12 @@ const deserializeAws_restJson1LogoutCommandError = async (output, context) => {
             throw await deserializeAws_restJson1UnauthorizedExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new SSOServiceException_1.SSOServiceException({
-                name: parsedBody.code || parsedBody.Code || errorCode,
+                name: parsedBody.code || parsedBody.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
@@ -25761,7 +25951,6 @@ const loadRestJsonErrorCode = (output, data) => {
     if (data["__type"] !== undefined) {
         return sanitizeErrorCode(data["__type"]);
     }
-    return "";
 };
 
 
@@ -25995,6 +26184,7 @@ const config_resolver_1 = __nccwpck_require__(56153);
 const middleware_content_length_1 = __nccwpck_require__(42245);
 const middleware_host_header_1 = __nccwpck_require__(22545);
 const middleware_logger_1 = __nccwpck_require__(20014);
+const middleware_recursion_detection_1 = __nccwpck_require__(85525);
 const middleware_retry_1 = __nccwpck_require__(96064);
 const middleware_sdk_sts_1 = __nccwpck_require__(55959);
 const middleware_user_agent_1 = __nccwpck_require__(64688);
@@ -26015,6 +26205,7 @@ class STSClient extends smithy_client_1.Client {
         this.middlewareStack.use((0, middleware_content_length_1.getContentLengthPlugin)(this.config));
         this.middlewareStack.use((0, middleware_host_header_1.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, middleware_logger_1.getLoggerPlugin)(this.config));
+        this.middlewareStack.use((0, middleware_recursion_detection_1.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, middleware_user_agent_1.getUserAgentPlugin)(this.config));
     }
     destroy() {
@@ -27147,8 +27338,7 @@ const deserializeAws_queryAssumeRoleCommandError = async (output, context) => {
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "ExpiredTokenException":
         case "com.amazonaws.sts#ExpiredTokenException":
@@ -27164,10 +27354,12 @@ const deserializeAws_queryAssumeRoleCommandError = async (output, context) => {
             throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27192,8 +27384,7 @@ const deserializeAws_queryAssumeRoleWithSAMLCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "ExpiredTokenException":
         case "com.amazonaws.sts#ExpiredTokenException":
@@ -27215,10 +27406,12 @@ const deserializeAws_queryAssumeRoleWithSAMLCommandError = async (output, contex
             throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27243,8 +27436,7 @@ const deserializeAws_queryAssumeRoleWithWebIdentityCommandError = async (output,
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "ExpiredTokenException":
         case "com.amazonaws.sts#ExpiredTokenException":
@@ -27269,10 +27461,12 @@ const deserializeAws_queryAssumeRoleWithWebIdentityCommandError = async (output,
             throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27297,18 +27491,19 @@ const deserializeAws_queryDecodeAuthorizationMessageCommandError = async (output
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "InvalidAuthorizationMessageException":
         case "com.amazonaws.sts#InvalidAuthorizationMessageException":
             throw await deserializeAws_queryInvalidAuthorizationMessageExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27333,15 +27528,16 @@ const deserializeAws_queryGetAccessKeyInfoCommandError = async (output, context)
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27366,15 +27562,16 @@ const deserializeAws_queryGetCallerIdentityCommandError = async (output, context
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27399,8 +27596,7 @@ const deserializeAws_queryGetFederationTokenCommandError = async (output, contex
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "MalformedPolicyDocumentException":
         case "com.amazonaws.sts#MalformedPolicyDocumentException":
@@ -27413,10 +27609,12 @@ const deserializeAws_queryGetFederationTokenCommandError = async (output, contex
             throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -27441,18 +27639,19 @@ const deserializeAws_queryGetSessionTokenCommandError = async (output, context) 
         body: await parseBody(output.body, context),
     };
     let response;
-    let errorCode = "UnknownError";
-    errorCode = loadQueryErrorCode(output, parsedOutput.body);
+    const errorCode = loadQueryErrorCode(output, parsedOutput.body);
     switch (errorCode) {
         case "RegionDisabledException":
         case "com.amazonaws.sts#RegionDisabledException":
             throw await deserializeAws_queryRegionDisabledExceptionResponse(parsedOutput, context);
         default:
             const parsedBody = parsedOutput.body;
+            const $metadata = deserializeMetadata(output);
+            const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : undefined;
             response = new STSServiceException_1.STSServiceException({
-                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode,
+                name: parsedBody.Error.code || parsedBody.Error.Code || errorCode || statusCode || "UnknowError",
                 $fault: "client",
-                $metadata: deserializeMetadata(output),
+                $metadata,
             });
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody.Error);
     }
@@ -28089,7 +28288,6 @@ const loadQueryErrorCode = (output, data) => {
     if (output.statusCode == 404) {
         return "NotFound";
     }
-    return "";
 };
 
 
@@ -29736,21 +29934,21 @@ tslib_1.__exportStar(__nccwpck_require__(47905), exports);
 
 /***/ }),
 
-/***/ 10729:
+/***/ 5779:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.EventStreamMarshaller = void 0;
+exports.EventStreamCodec = void 0;
 const crc32_1 = __nccwpck_require__(47327);
-const HeaderMarshaller_1 = __nccwpck_require__(53496);
-const splitMessage_1 = __nccwpck_require__(56431);
-class EventStreamMarshaller {
+const HeaderMarshaller_1 = __nccwpck_require__(22650);
+const splitMessage_1 = __nccwpck_require__(84558);
+class EventStreamCodec {
     constructor(toUtf8, fromUtf8) {
         this.headerMarshaller = new HeaderMarshaller_1.HeaderMarshaller(toUtf8, fromUtf8);
     }
-    marshall({ headers: rawHeaders, body }) {
+    encode({ headers: rawHeaders, body }) {
         const headers = this.headerMarshaller.format(rawHeaders);
         const length = headers.byteLength + body.byteLength + 16;
         const out = new Uint8Array(length);
@@ -29764,7 +29962,7 @@ class EventStreamMarshaller {
         view.setUint32(length - 4, checksum.update(out.subarray(8, length - 4)).digest(), false);
         return out;
     }
-    unmarshall(message) {
+    decode(message) {
         const { headers, body } = (0, splitMessage_1.splitMessage)(message);
         return { headers: this.headerMarshaller.parse(headers), body };
     }
@@ -29772,12 +29970,12 @@ class EventStreamMarshaller {
         return this.headerMarshaller.format(rawHeaders);
     }
 }
-exports.EventStreamMarshaller = EventStreamMarshaller;
+exports.EventStreamCodec = EventStreamCodec;
 
 
 /***/ }),
 
-/***/ 53496:
+/***/ 22650:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29785,7 +29983,7 @@ exports.EventStreamMarshaller = EventStreamMarshaller;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HeaderMarshaller = void 0;
 const util_hex_encoding_1 = __nccwpck_require__(1968);
-const Int64_1 = __nccwpck_require__(49435);
+const Int64_1 = __nccwpck_require__(86220);
 class HeaderMarshaller {
     constructor(toUtf8, fromUtf8) {
         this.toUtf8 = toUtf8;
@@ -29971,7 +30169,7 @@ const UUID_PATTERN = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{
 
 /***/ }),
 
-/***/ 49435:
+/***/ 86220:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29987,7 +30185,7 @@ class Int64 {
         }
     }
     static fromNumber(number) {
-        if (number > 9223372036854775807 || number < -9223372036854775808) {
+        if (number > 9223372036854776000 || number < -9223372036854776000) {
             throw new Error(`${number} is too large (or, if negative, too small) to represent as an Int64`);
         }
         const bytes = new Uint8Array(8);
@@ -30026,7 +30224,7 @@ function negate(bytes) {
 
 /***/ }),
 
-/***/ 83975:
+/***/ 59516:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -30036,21 +30234,21 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 17372:
+/***/ 14825:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tslib_1 = __nccwpck_require__(4351);
-tslib_1.__exportStar(__nccwpck_require__(10729), exports);
-tslib_1.__exportStar(__nccwpck_require__(49435), exports);
-tslib_1.__exportStar(__nccwpck_require__(83975), exports);
+tslib_1.__exportStar(__nccwpck_require__(5779), exports);
+tslib_1.__exportStar(__nccwpck_require__(86220), exports);
+tslib_1.__exportStar(__nccwpck_require__(59516), exports);
 
 
 /***/ }),
 
-/***/ 56431:
+/***/ 84558:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -30127,13 +30325,11 @@ tslib_1.__exportStar(__nccwpck_require__(73404), exports);
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventStreamMarshaller = void 0;
-const eventstream_marshaller_1 = __nccwpck_require__(17372);
 const eventstream_serde_universal_1 = __nccwpck_require__(58632);
 const stream_1 = __nccwpck_require__(12781);
 const utils_1 = __nccwpck_require__(54686);
 class EventStreamMarshaller {
     constructor({ utf8Encoder, utf8Decoder }) {
-        this.eventMarshaller = new eventstream_marshaller_1.EventStreamMarshaller(utf8Encoder, utf8Decoder);
         this.universalMarshaller = new eventstream_serde_universal_1.EventStreamMarshaller({
             utf8Decoder,
             utf8Encoder,
@@ -30256,18 +30452,18 @@ exports.readabletoIterable = readabletoIterable;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventStreamMarshaller = void 0;
-const eventstream_marshaller_1 = __nccwpck_require__(17372);
+const eventstream_codec_1 = __nccwpck_require__(14825);
 const getChunkedStream_1 = __nccwpck_require__(31366);
 const getUnmarshalledStream_1 = __nccwpck_require__(73949);
 class EventStreamMarshaller {
     constructor({ utf8Encoder, utf8Decoder }) {
-        this.eventMarshaller = new eventstream_marshaller_1.EventStreamMarshaller(utf8Encoder, utf8Decoder);
+        this.eventStreamCodec = new eventstream_codec_1.EventStreamCodec(utf8Encoder, utf8Decoder);
         this.utfEncoder = utf8Encoder;
     }
     deserialize(body, deserializer) {
         const chunkedStream = (0, getChunkedStream_1.getChunkedStream)(body);
         const unmarshalledStream = (0, getUnmarshalledStream_1.getUnmarshalledStream)(chunkedStream, {
-            eventMarshaller: this.eventMarshaller,
+            eventStreamCodec: this.eventStreamCodec,
             deserializer,
             toUtf8: this.utfEncoder,
         });
@@ -30277,7 +30473,7 @@ class EventStreamMarshaller {
         const self = this;
         const serializedIterator = async function* () {
             for await (const chunk of input) {
-                const payloadBuf = self.eventMarshaller.marshall(serializer(chunk));
+                const payloadBuf = self.eventStreamCodec.encode(serializer(chunk));
                 yield payloadBuf;
             }
             yield new Uint8Array(0);
@@ -30381,7 +30577,7 @@ function getUnmarshalledStream(source, options) {
     return {
         [Symbol.asyncIterator]: async function* () {
             for await (const chunk of source) {
-                const message = options.eventMarshaller.unmarshall(chunk);
+                const message = options.eventStreamCodec.decode(chunk);
                 const { value: messageType } = message.headers[":message-type"];
                 if (messageType === "error") {
                     const unmodeledError = new Error(message.headers[":error-message"].value || "UnknownError");
@@ -31673,6 +31869,53 @@ exports.getLoggerPlugin = getLoggerPlugin;
 
 /***/ }),
 
+/***/ 85525:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getRecursionDetectionPlugin = exports.addRecursionDetectionMiddlewareOptions = exports.recursionDetectionMiddleware = void 0;
+const protocol_http_1 = __nccwpck_require__(70223);
+const TRACE_ID_HEADER_NAME = "X-Amzn-Trace-Id";
+const ENV_LAMBDA_FUNCTION_NAME = "AWS_LAMBDA_FUNCTION_NAME";
+const ENV_TRACE_ID = "_X_AMZN_TRACE_ID";
+const recursionDetectionMiddleware = (options) => (next) => async (args) => {
+    const { request } = args;
+    if (!protocol_http_1.HttpRequest.isInstance(request) ||
+        options.runtime !== "node" ||
+        request.headers.hasOwnProperty(TRACE_ID_HEADER_NAME)) {
+        return next(args);
+    }
+    const functionName = process.env[ENV_LAMBDA_FUNCTION_NAME];
+    const traceId = process.env[ENV_TRACE_ID];
+    const nonEmptyString = (str) => typeof str === "string" && str.length > 0;
+    if (nonEmptyString(functionName) && nonEmptyString(traceId)) {
+        request.headers[TRACE_ID_HEADER_NAME] = traceId;
+    }
+    return next({
+        ...args,
+        request,
+    });
+};
+exports.recursionDetectionMiddleware = recursionDetectionMiddleware;
+exports.addRecursionDetectionMiddlewareOptions = {
+    step: "build",
+    tags: ["RECURSION_DETECTION"],
+    name: "recursionDetectionMiddleware",
+    override: true,
+    priority: "low",
+};
+const getRecursionDetectionPlugin = (options) => ({
+    applyToStack: (clientStack) => {
+        clientStack.add((0, exports.recursionDetectionMiddleware)(options), exports.addRecursionDetectionMiddlewareOptions);
+    },
+});
+exports.getRecursionDetectionPlugin = getRecursionDetectionPlugin;
+
+
+/***/ }),
+
 /***/ 47328:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -32888,8 +33131,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(51671), exports);
 tslib_1.__exportStar(__nccwpck_require__(10404), exports);
-tslib_1.__exportStar(__nccwpck_require__(92812), exports);
 tslib_1.__exportStar(__nccwpck_require__(56777), exports);
+tslib_1.__exportStar(__nccwpck_require__(1997), exports);
 
 
 /***/ }),
@@ -32948,43 +33191,6 @@ exports.getThrow200ExceptionsPlugin = getThrow200ExceptionsPlugin;
 
 /***/ }),
 
-/***/ 92812:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getUseRegionalEndpointPlugin = exports.useRegionalEndpointMiddlewareOptions = exports.useRegionalEndpointMiddleware = void 0;
-const protocol_http_1 = __nccwpck_require__(70223);
-const useRegionalEndpointMiddleware = (config) => (next) => async (args) => {
-    const { request } = args;
-    if (!protocol_http_1.HttpRequest.isInstance(request) || config.isCustomEndpoint)
-        return next({ ...args });
-    if (request.hostname === "s3.amazonaws.com") {
-        request.hostname = "s3.us-east-1.amazonaws.com";
-    }
-    else if ("aws-global" === (await config.region())) {
-        request.hostname = "s3.amazonaws.com";
-    }
-    return next({ ...args });
-};
-exports.useRegionalEndpointMiddleware = useRegionalEndpointMiddleware;
-exports.useRegionalEndpointMiddlewareOptions = {
-    step: "build",
-    tags: ["USE_REGIONAL_ENDPOINT", "S3"],
-    name: "useRegionalEndpointMiddleware",
-    override: true,
-};
-const getUseRegionalEndpointPlugin = (config) => ({
-    applyToStack: (clientStack) => {
-        clientStack.add((0, exports.useRegionalEndpointMiddleware)(config), exports.useRegionalEndpointMiddlewareOptions);
-    },
-});
-exports.getUseRegionalEndpointPlugin = getUseRegionalEndpointPlugin;
-
-
-/***/ }),
-
 /***/ 56777:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -33017,6 +33223,57 @@ const getValidateBucketNamePlugin = (unused) => ({
     },
 });
 exports.getValidateBucketNamePlugin = getValidateBucketNamePlugin;
+
+
+/***/ }),
+
+/***/ 1997:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getWriteGetObjectResponseEndpointPlugin = exports.writeGetObjectResponseEndpointMiddlewareOptions = exports.writeGetObjectResponseEndpointMiddleware = void 0;
+const middleware_bucket_endpoint_1 = __nccwpck_require__(96689);
+const protocol_http_1 = __nccwpck_require__(70223);
+const writeGetObjectResponseEndpointMiddleware = (config) => (next, context) => async (args) => {
+    const { region: regionProvider, isCustomEndpoint, disableHostPrefix } = config;
+    const region = await regionProvider();
+    const { request, input } = args;
+    if (!protocol_http_1.HttpRequest.isInstance(request))
+        return next({ ...args });
+    let hostname = request.hostname;
+    if (hostname.endsWith("s3.amazonaws.com") || hostname.endsWith("s3-external-1.amazonaws.com")) {
+        return next({ ...args });
+    }
+    if (!isCustomEndpoint) {
+        const [, suffix] = (0, middleware_bucket_endpoint_1.getSuffixForArnEndpoint)(request.hostname);
+        hostname = `s3-object-lambda.${region}.${suffix}`;
+    }
+    if (!disableHostPrefix && input.RequestRoute) {
+        hostname = `${input.RequestRoute}.${hostname}`;
+    }
+    request.hostname = hostname;
+    context["signing_service"] = "s3-object-lambda";
+    if (config.runtime === "node" && !request.headers["content-length"]) {
+        request.headers["transfer-encoding"] = "chunked";
+    }
+    return next({ ...args });
+};
+exports.writeGetObjectResponseEndpointMiddleware = writeGetObjectResponseEndpointMiddleware;
+exports.writeGetObjectResponseEndpointMiddlewareOptions = {
+    relation: "after",
+    toMiddleware: "contentLengthMiddleware",
+    tags: ["WRITE_GET_OBJECT_RESPONSE", "S3", "ENDPOINT"],
+    name: "writeGetObjectResponseEndpointMiddleware",
+    override: true,
+};
+const getWriteGetObjectResponseEndpointPlugin = (config) => ({
+    applyToStack: (clientStack) => {
+        clientStack.addRelativeTo((0, exports.writeGetObjectResponseEndpointMiddleware)(config), exports.writeGetObjectResponseEndpointMiddlewareOptions);
+    },
+});
+exports.getWriteGetObjectResponseEndpointPlugin = getWriteGetObjectResponseEndpointPlugin;
 
 
 /***/ }),
@@ -34903,19 +35160,26 @@ const parseIni = (iniData) => {
     const map = {};
     let currentSection;
     for (let line of iniData.split(/\r?\n/)) {
-        line = line.split(/(^|\s)[;#]/)[0];
-        const section = line.match(/^\s*\[([^\[\]]+)]\s*$/);
-        if (section) {
-            currentSection = section[1];
+        line = line.split(/(^|\s)[;#]/)[0].trim();
+        const isSection = line[0] === "[" && line[line.length - 1] === "]";
+        if (isSection) {
+            currentSection = line.substring(1, line.length - 1);
             if (profileNameBlockList.includes(currentSection)) {
                 throw new Error(`Found invalid profile name "${currentSection}"`);
             }
         }
         else if (currentSection) {
-            const item = line.match(/^\s*(.+?)\s*=\s*(.+?)\s*$/);
-            if (item) {
+            const indexOfEqualsSign = line.indexOf("=");
+            const start = 0;
+            const end = line.length - 1;
+            const isAssignment = indexOfEqualsSign !== -1 && indexOfEqualsSign !== start && indexOfEqualsSign !== end;
+            if (isAssignment) {
+                const [name, value] = [
+                    line.substring(0, indexOfEqualsSign).trim(),
+                    line.substring(indexOfEqualsSign + 1).trim(),
+                ];
                 map[currentSection] = map[currentSection] || {};
-                map[currentSection][item[1]] = item[2];
+                map[currentSection][name] = value;
             }
         }
     }
@@ -37293,499 +37557,6 @@ const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(74452), exports);
 tslib_1.__exportStar(__nccwpck_require__(82656), exports);
 
-
-/***/ }),
-
-/***/ 45211:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.codeFrameColumns = codeFrameColumns;
-exports["default"] = _default;
-
-var _highlight = __nccwpck_require__(36860);
-
-let deprecationWarningShown = false;
-
-function getDefs(chalk) {
-  return {
-    gutter: chalk.grey,
-    marker: chalk.red.bold,
-    message: chalk.red.bold
-  };
-}
-
-const NEWLINE = /\r\n|[\n\r\u2028\u2029]/;
-
-function getMarkerLines(loc, source, opts) {
-  const startLoc = Object.assign({
-    column: 0,
-    line: -1
-  }, loc.start);
-  const endLoc = Object.assign({}, startLoc, loc.end);
-  const {
-    linesAbove = 2,
-    linesBelow = 3
-  } = opts || {};
-  const startLine = startLoc.line;
-  const startColumn = startLoc.column;
-  const endLine = endLoc.line;
-  const endColumn = endLoc.column;
-  let start = Math.max(startLine - (linesAbove + 1), 0);
-  let end = Math.min(source.length, endLine + linesBelow);
-
-  if (startLine === -1) {
-    start = 0;
-  }
-
-  if (endLine === -1) {
-    end = source.length;
-  }
-
-  const lineDiff = endLine - startLine;
-  const markerLines = {};
-
-  if (lineDiff) {
-    for (let i = 0; i <= lineDiff; i++) {
-      const lineNumber = i + startLine;
-
-      if (!startColumn) {
-        markerLines[lineNumber] = true;
-      } else if (i === 0) {
-        const sourceLength = source[lineNumber - 1].length;
-        markerLines[lineNumber] = [startColumn, sourceLength - startColumn + 1];
-      } else if (i === lineDiff) {
-        markerLines[lineNumber] = [0, endColumn];
-      } else {
-        const sourceLength = source[lineNumber - i].length;
-        markerLines[lineNumber] = [0, sourceLength];
-      }
-    }
-  } else {
-    if (startColumn === endColumn) {
-      if (startColumn) {
-        markerLines[startLine] = [startColumn, 0];
-      } else {
-        markerLines[startLine] = true;
-      }
-    } else {
-      markerLines[startLine] = [startColumn, endColumn - startColumn];
-    }
-  }
-
-  return {
-    start,
-    end,
-    markerLines
-  };
-}
-
-function codeFrameColumns(rawLines, loc, opts = {}) {
-  const highlighted = (opts.highlightCode || opts.forceColor) && (0, _highlight.shouldHighlight)(opts);
-  const chalk = (0, _highlight.getChalk)(opts);
-  const defs = getDefs(chalk);
-
-  const maybeHighlight = (chalkFn, string) => {
-    return highlighted ? chalkFn(string) : string;
-  };
-
-  const lines = rawLines.split(NEWLINE);
-  const {
-    start,
-    end,
-    markerLines
-  } = getMarkerLines(loc, lines, opts);
-  const hasColumns = loc.start && typeof loc.start.column === "number";
-  const numberMaxWidth = String(end).length;
-  const highlightedLines = highlighted ? (0, _highlight.default)(rawLines, opts) : rawLines;
-  let frame = highlightedLines.split(NEWLINE, end).slice(start, end).map((line, index) => {
-    const number = start + 1 + index;
-    const paddedNumber = ` ${number}`.slice(-numberMaxWidth);
-    const gutter = ` ${paddedNumber} |`;
-    const hasMarker = markerLines[number];
-    const lastMarkerLine = !markerLines[number + 1];
-
-    if (hasMarker) {
-      let markerLine = "";
-
-      if (Array.isArray(hasMarker)) {
-        const markerSpacing = line.slice(0, Math.max(hasMarker[0] - 1, 0)).replace(/[^\t]/g, " ");
-        const numberOfMarkers = hasMarker[1] || 1;
-        markerLine = ["\n ", maybeHighlight(defs.gutter, gutter.replace(/\d/g, " ")), " ", markerSpacing, maybeHighlight(defs.marker, "^").repeat(numberOfMarkers)].join("");
-
-        if (lastMarkerLine && opts.message) {
-          markerLine += " " + maybeHighlight(defs.message, opts.message);
-        }
-      }
-
-      return [maybeHighlight(defs.marker, ">"), maybeHighlight(defs.gutter, gutter), line.length > 0 ? ` ${line}` : "", markerLine].join("");
-    } else {
-      return ` ${maybeHighlight(defs.gutter, gutter)}${line.length > 0 ? ` ${line}` : ""}`;
-    }
-  }).join("\n");
-
-  if (opts.message && !hasColumns) {
-    frame = `${" ".repeat(numberMaxWidth + 1)}${opts.message}\n${frame}`;
-  }
-
-  if (highlighted) {
-    return chalk.reset(frame);
-  } else {
-    return frame;
-  }
-}
-
-function _default(rawLines, lineNumber, colNumber, opts = {}) {
-  if (!deprecationWarningShown) {
-    deprecationWarningShown = true;
-    const message = "Passing lineNumber and colNumber is deprecated to @babel/code-frame. Please use `codeFrameColumns`.";
-
-    if (process.emitWarning) {
-      process.emitWarning(message, "DeprecationWarning");
-    } else {
-      const deprecationError = new Error(message);
-      deprecationError.name = "DeprecationWarning";
-      console.warn(new Error(message));
-    }
-  }
-
-  colNumber = Math.max(colNumber, 0);
-  const location = {
-    start: {
-      column: colNumber,
-      line: lineNumber
-    }
-  };
-  return codeFrameColumns(rawLines, location, opts);
-}
-
-/***/ }),
-
-/***/ 66396:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.isIdentifierChar = isIdentifierChar;
-exports.isIdentifierName = isIdentifierName;
-exports.isIdentifierStart = isIdentifierStart;
-let nonASCIIidentifierStartChars = "\xaa\xb5\xba\xc0-\xd6\xd8-\xf6\xf8-\u02c1\u02c6-\u02d1\u02e0-\u02e4\u02ec\u02ee\u0370-\u0374\u0376\u0377\u037a-\u037d\u037f\u0386\u0388-\u038a\u038c\u038e-\u03a1\u03a3-\u03f5\u03f7-\u0481\u048a-\u052f\u0531-\u0556\u0559\u0560-\u0588\u05d0-\u05ea\u05ef-\u05f2\u0620-\u064a\u066e\u066f\u0671-\u06d3\u06d5\u06e5\u06e6\u06ee\u06ef\u06fa-\u06fc\u06ff\u0710\u0712-\u072f\u074d-\u07a5\u07b1\u07ca-\u07ea\u07f4\u07f5\u07fa\u0800-\u0815\u081a\u0824\u0828\u0840-\u0858\u0860-\u086a\u0870-\u0887\u0889-\u088e\u08a0-\u08c9\u0904-\u0939\u093d\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098c\u098f\u0990\u0993-\u09a8\u09aa-\u09b0\u09b2\u09b6-\u09b9\u09bd\u09ce\u09dc\u09dd\u09df-\u09e1\u09f0\u09f1\u09fc\u0a05-\u0a0a\u0a0f\u0a10\u0a13-\u0a28\u0a2a-\u0a30\u0a32\u0a33\u0a35\u0a36\u0a38\u0a39\u0a59-\u0a5c\u0a5e\u0a72-\u0a74\u0a85-\u0a8d\u0a8f-\u0a91\u0a93-\u0aa8\u0aaa-\u0ab0\u0ab2\u0ab3\u0ab5-\u0ab9\u0abd\u0ad0\u0ae0\u0ae1\u0af9\u0b05-\u0b0c\u0b0f\u0b10\u0b13-\u0b28\u0b2a-\u0b30\u0b32\u0b33\u0b35-\u0b39\u0b3d\u0b5c\u0b5d\u0b5f-\u0b61\u0b71\u0b83\u0b85-\u0b8a\u0b8e-\u0b90\u0b92-\u0b95\u0b99\u0b9a\u0b9c\u0b9e\u0b9f\u0ba3\u0ba4\u0ba8-\u0baa\u0bae-\u0bb9\u0bd0\u0c05-\u0c0c\u0c0e-\u0c10\u0c12-\u0c28\u0c2a-\u0c39\u0c3d\u0c58-\u0c5a\u0c5d\u0c60\u0c61\u0c80\u0c85-\u0c8c\u0c8e-\u0c90\u0c92-\u0ca8\u0caa-\u0cb3\u0cb5-\u0cb9\u0cbd\u0cdd\u0cde\u0ce0\u0ce1\u0cf1\u0cf2\u0d04-\u0d0c\u0d0e-\u0d10\u0d12-\u0d3a\u0d3d\u0d4e\u0d54-\u0d56\u0d5f-\u0d61\u0d7a-\u0d7f\u0d85-\u0d96\u0d9a-\u0db1\u0db3-\u0dbb\u0dbd\u0dc0-\u0dc6\u0e01-\u0e30\u0e32\u0e33\u0e40-\u0e46\u0e81\u0e82\u0e84\u0e86-\u0e8a\u0e8c-\u0ea3\u0ea5\u0ea7-\u0eb0\u0eb2\u0eb3\u0ebd\u0ec0-\u0ec4\u0ec6\u0edc-\u0edf\u0f00\u0f40-\u0f47\u0f49-\u0f6c\u0f88-\u0f8c\u1000-\u102a\u103f\u1050-\u1055\u105a-\u105d\u1061\u1065\u1066\u106e-\u1070\u1075-\u1081\u108e\u10a0-\u10c5\u10c7\u10cd\u10d0-\u10fa\u10fc-\u1248\u124a-\u124d\u1250-\u1256\u1258\u125a-\u125d\u1260-\u1288\u128a-\u128d\u1290-\u12b0\u12b2-\u12b5\u12b8-\u12be\u12c0\u12c2-\u12c5\u12c8-\u12d6\u12d8-\u1310\u1312-\u1315\u1318-\u135a\u1380-\u138f\u13a0-\u13f5\u13f8-\u13fd\u1401-\u166c\u166f-\u167f\u1681-\u169a\u16a0-\u16ea\u16ee-\u16f8\u1700-\u1711\u171f-\u1731\u1740-\u1751\u1760-\u176c\u176e-\u1770\u1780-\u17b3\u17d7\u17dc\u1820-\u1878\u1880-\u18a8\u18aa\u18b0-\u18f5\u1900-\u191e\u1950-\u196d\u1970-\u1974\u1980-\u19ab\u19b0-\u19c9\u1a00-\u1a16\u1a20-\u1a54\u1aa7\u1b05-\u1b33\u1b45-\u1b4c\u1b83-\u1ba0\u1bae\u1baf\u1bba-\u1be5\u1c00-\u1c23\u1c4d-\u1c4f\u1c5a-\u1c7d\u1c80-\u1c88\u1c90-\u1cba\u1cbd-\u1cbf\u1ce9-\u1cec\u1cee-\u1cf3\u1cf5\u1cf6\u1cfa\u1d00-\u1dbf\u1e00-\u1f15\u1f18-\u1f1d\u1f20-\u1f45\u1f48-\u1f4d\u1f50-\u1f57\u1f59\u1f5b\u1f5d\u1f5f-\u1f7d\u1f80-\u1fb4\u1fb6-\u1fbc\u1fbe\u1fc2-\u1fc4\u1fc6-\u1fcc\u1fd0-\u1fd3\u1fd6-\u1fdb\u1fe0-\u1fec\u1ff2-\u1ff4\u1ff6-\u1ffc\u2071\u207f\u2090-\u209c\u2102\u2107\u210a-\u2113\u2115\u2118-\u211d\u2124\u2126\u2128\u212a-\u2139\u213c-\u213f\u2145-\u2149\u214e\u2160-\u2188\u2c00-\u2ce4\u2ceb-\u2cee\u2cf2\u2cf3\u2d00-\u2d25\u2d27\u2d2d\u2d30-\u2d67\u2d6f\u2d80-\u2d96\u2da0-\u2da6\u2da8-\u2dae\u2db0-\u2db6\u2db8-\u2dbe\u2dc0-\u2dc6\u2dc8-\u2dce\u2dd0-\u2dd6\u2dd8-\u2dde\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303c\u3041-\u3096\u309b-\u309f\u30a1-\u30fa\u30fc-\u30ff\u3105-\u312f\u3131-\u318e\u31a0-\u31bf\u31f0-\u31ff\u3400-\u4dbf\u4e00-\ua48c\ua4d0-\ua4fd\ua500-\ua60c\ua610-\ua61f\ua62a\ua62b\ua640-\ua66e\ua67f-\ua69d\ua6a0-\ua6ef\ua717-\ua71f\ua722-\ua788\ua78b-\ua7ca\ua7d0\ua7d1\ua7d3\ua7d5-\ua7d9\ua7f2-\ua801\ua803-\ua805\ua807-\ua80a\ua80c-\ua822\ua840-\ua873\ua882-\ua8b3\ua8f2-\ua8f7\ua8fb\ua8fd\ua8fe\ua90a-\ua925\ua930-\ua946\ua960-\ua97c\ua984-\ua9b2\ua9cf\ua9e0-\ua9e4\ua9e6-\ua9ef\ua9fa-\ua9fe\uaa00-\uaa28\uaa40-\uaa42\uaa44-\uaa4b\uaa60-\uaa76\uaa7a\uaa7e-\uaaaf\uaab1\uaab5\uaab6\uaab9-\uaabd\uaac0\uaac2\uaadb-\uaadd\uaae0-\uaaea\uaaf2-\uaaf4\uab01-\uab06\uab09-\uab0e\uab11-\uab16\uab20-\uab26\uab28-\uab2e\uab30-\uab5a\uab5c-\uab69\uab70-\uabe2\uac00-\ud7a3\ud7b0-\ud7c6\ud7cb-\ud7fb\uf900-\ufa6d\ufa70-\ufad9\ufb00-\ufb06\ufb13-\ufb17\ufb1d\ufb1f-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb3e\ufb40\ufb41\ufb43\ufb44\ufb46-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\uff21-\uff3a\uff41-\uff5a\uff66-\uffbe\uffc2-\uffc7\uffca-\uffcf\uffd2-\uffd7\uffda-\uffdc";
-let nonASCIIidentifierChars = "\u200c\u200d\xb7\u0300-\u036f\u0387\u0483-\u0487\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u0669\u0670\u06d6-\u06dc\u06df-\u06e4\u06e7\u06e8\u06ea-\u06ed\u06f0-\u06f9\u0711\u0730-\u074a\u07a6-\u07b0\u07c0-\u07c9\u07eb-\u07f3\u07fd\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0859-\u085b\u0898-\u089f\u08ca-\u08e1\u08e3-\u0903\u093a-\u093c\u093e-\u094f\u0951-\u0957\u0962\u0963\u0966-\u096f\u0981-\u0983\u09bc\u09be-\u09c4\u09c7\u09c8\u09cb-\u09cd\u09d7\u09e2\u09e3\u09e6-\u09ef\u09fe\u0a01-\u0a03\u0a3c\u0a3e-\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a66-\u0a71\u0a75\u0a81-\u0a83\u0abc\u0abe-\u0ac5\u0ac7-\u0ac9\u0acb-\u0acd\u0ae2\u0ae3\u0ae6-\u0aef\u0afa-\u0aff\u0b01-\u0b03\u0b3c\u0b3e-\u0b44\u0b47\u0b48\u0b4b-\u0b4d\u0b55-\u0b57\u0b62\u0b63\u0b66-\u0b6f\u0b82\u0bbe-\u0bc2\u0bc6-\u0bc8\u0bca-\u0bcd\u0bd7\u0be6-\u0bef\u0c00-\u0c04\u0c3c\u0c3e-\u0c44\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0c66-\u0c6f\u0c81-\u0c83\u0cbc\u0cbe-\u0cc4\u0cc6-\u0cc8\u0cca-\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0ce6-\u0cef\u0d00-\u0d03\u0d3b\u0d3c\u0d3e-\u0d44\u0d46-\u0d48\u0d4a-\u0d4d\u0d57\u0d62\u0d63\u0d66-\u0d6f\u0d81-\u0d83\u0dca\u0dcf-\u0dd4\u0dd6\u0dd8-\u0ddf\u0de6-\u0def\u0df2\u0df3\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0e50-\u0e59\u0eb1\u0eb4-\u0ebc\u0ec8-\u0ecd\u0ed0-\u0ed9\u0f18\u0f19\u0f20-\u0f29\u0f35\u0f37\u0f39\u0f3e\u0f3f\u0f71-\u0f84\u0f86\u0f87\u0f8d-\u0f97\u0f99-\u0fbc\u0fc6\u102b-\u103e\u1040-\u1049\u1056-\u1059\u105e-\u1060\u1062-\u1064\u1067-\u106d\u1071-\u1074\u1082-\u108d\u108f-\u109d\u135d-\u135f\u1369-\u1371\u1712-\u1715\u1732-\u1734\u1752\u1753\u1772\u1773\u17b4-\u17d3\u17dd\u17e0-\u17e9\u180b-\u180d\u180f-\u1819\u18a9\u1920-\u192b\u1930-\u193b\u1946-\u194f\u19d0-\u19da\u1a17-\u1a1b\u1a55-\u1a5e\u1a60-\u1a7c\u1a7f-\u1a89\u1a90-\u1a99\u1ab0-\u1abd\u1abf-\u1ace\u1b00-\u1b04\u1b34-\u1b44\u1b50-\u1b59\u1b6b-\u1b73\u1b80-\u1b82\u1ba1-\u1bad\u1bb0-\u1bb9\u1be6-\u1bf3\u1c24-\u1c37\u1c40-\u1c49\u1c50-\u1c59\u1cd0-\u1cd2\u1cd4-\u1ce8\u1ced\u1cf4\u1cf7-\u1cf9\u1dc0-\u1dff\u203f\u2040\u2054\u20d0-\u20dc\u20e1\u20e5-\u20f0\u2cef-\u2cf1\u2d7f\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua620-\ua629\ua66f\ua674-\ua67d\ua69e\ua69f\ua6f0\ua6f1\ua802\ua806\ua80b\ua823-\ua827\ua82c\ua880\ua881\ua8b4-\ua8c5\ua8d0-\ua8d9\ua8e0-\ua8f1\ua8ff-\ua909\ua926-\ua92d\ua947-\ua953\ua980-\ua983\ua9b3-\ua9c0\ua9d0-\ua9d9\ua9e5\ua9f0-\ua9f9\uaa29-\uaa36\uaa43\uaa4c\uaa4d\uaa50-\uaa59\uaa7b-\uaa7d\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uaaeb-\uaaef\uaaf5\uaaf6\uabe3-\uabea\uabec\uabed\uabf0-\uabf9\ufb1e\ufe00-\ufe0f\ufe20-\ufe2f\ufe33\ufe34\ufe4d-\ufe4f\uff10-\uff19\uff3f";
-const nonASCIIidentifierStart = new RegExp("[" + nonASCIIidentifierStartChars + "]");
-const nonASCIIidentifier = new RegExp("[" + nonASCIIidentifierStartChars + nonASCIIidentifierChars + "]");
-nonASCIIidentifierStartChars = nonASCIIidentifierChars = null;
-const astralIdentifierStartCodes = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 68, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 349, 41, 7, 1, 79, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 85, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 159, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 264, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 190, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1070, 4050, 582, 8634, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 689, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 43, 8, 8936, 3, 2, 6, 2, 1, 2, 290, 46, 2, 18, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 482, 44, 11, 6, 17, 0, 322, 29, 19, 43, 1269, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4152, 8, 221, 3, 5761, 15, 7472, 3104, 541, 1507, 4938];
-const astralIdentifierCodes = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 370, 1, 154, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 161, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 193, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 84, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 406, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 19306, 9, 87, 9, 39, 4, 60, 6, 26, 9, 1014, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4706, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 262, 6, 10, 9, 357, 0, 62, 13, 1495, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
-
-function isInAstralSet(code, set) {
-  let pos = 0x10000;
-
-  for (let i = 0, length = set.length; i < length; i += 2) {
-    pos += set[i];
-    if (pos > code) return false;
-    pos += set[i + 1];
-    if (pos >= code) return true;
-  }
-
-  return false;
-}
-
-function isIdentifierStart(code) {
-  if (code < 65) return code === 36;
-  if (code <= 90) return true;
-  if (code < 97) return code === 95;
-  if (code <= 122) return true;
-
-  if (code <= 0xffff) {
-    return code >= 0xaa && nonASCIIidentifierStart.test(String.fromCharCode(code));
-  }
-
-  return isInAstralSet(code, astralIdentifierStartCodes);
-}
-
-function isIdentifierChar(code) {
-  if (code < 48) return code === 36;
-  if (code < 58) return true;
-  if (code < 65) return false;
-  if (code <= 90) return true;
-  if (code < 97) return code === 95;
-  if (code <= 122) return true;
-
-  if (code <= 0xffff) {
-    return code >= 0xaa && nonASCIIidentifier.test(String.fromCharCode(code));
-  }
-
-  return isInAstralSet(code, astralIdentifierStartCodes) || isInAstralSet(code, astralIdentifierCodes);
-}
-
-function isIdentifierName(name) {
-  let isFirst = true;
-
-  for (let i = 0; i < name.length; i++) {
-    let cp = name.charCodeAt(i);
-
-    if ((cp & 0xfc00) === 0xd800 && i + 1 < name.length) {
-      const trail = name.charCodeAt(++i);
-
-      if ((trail & 0xfc00) === 0xdc00) {
-        cp = 0x10000 + ((cp & 0x3ff) << 10) + (trail & 0x3ff);
-      }
-    }
-
-    if (isFirst) {
-      isFirst = false;
-
-      if (!isIdentifierStart(cp)) {
-        return false;
-      }
-    } else if (!isIdentifierChar(cp)) {
-      return false;
-    }
-  }
-
-  return !isFirst;
-}
-
-/***/ }),
-
-/***/ 86607:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-Object.defineProperty(exports, "isIdentifierChar", ({
-  enumerable: true,
-  get: function () {
-    return _identifier.isIdentifierChar;
-  }
-}));
-Object.defineProperty(exports, "isIdentifierName", ({
-  enumerable: true,
-  get: function () {
-    return _identifier.isIdentifierName;
-  }
-}));
-Object.defineProperty(exports, "isIdentifierStart", ({
-  enumerable: true,
-  get: function () {
-    return _identifier.isIdentifierStart;
-  }
-}));
-Object.defineProperty(exports, "isKeyword", ({
-  enumerable: true,
-  get: function () {
-    return _keyword.isKeyword;
-  }
-}));
-Object.defineProperty(exports, "isReservedWord", ({
-  enumerable: true,
-  get: function () {
-    return _keyword.isReservedWord;
-  }
-}));
-Object.defineProperty(exports, "isStrictBindOnlyReservedWord", ({
-  enumerable: true,
-  get: function () {
-    return _keyword.isStrictBindOnlyReservedWord;
-  }
-}));
-Object.defineProperty(exports, "isStrictBindReservedWord", ({
-  enumerable: true,
-  get: function () {
-    return _keyword.isStrictBindReservedWord;
-  }
-}));
-Object.defineProperty(exports, "isStrictReservedWord", ({
-  enumerable: true,
-  get: function () {
-    return _keyword.isStrictReservedWord;
-  }
-}));
-
-var _identifier = __nccwpck_require__(66396);
-
-var _keyword = __nccwpck_require__(47249);
-
-/***/ }),
-
-/***/ 47249:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.isKeyword = isKeyword;
-exports.isReservedWord = isReservedWord;
-exports.isStrictBindOnlyReservedWord = isStrictBindOnlyReservedWord;
-exports.isStrictBindReservedWord = isStrictBindReservedWord;
-exports.isStrictReservedWord = isStrictReservedWord;
-const reservedWords = {
-  keyword: ["break", "case", "catch", "continue", "debugger", "default", "do", "else", "finally", "for", "function", "if", "return", "switch", "throw", "try", "var", "const", "while", "with", "new", "this", "super", "class", "extends", "export", "import", "null", "true", "false", "in", "instanceof", "typeof", "void", "delete"],
-  strict: ["implements", "interface", "let", "package", "private", "protected", "public", "static", "yield"],
-  strictBind: ["eval", "arguments"]
-};
-const keywords = new Set(reservedWords.keyword);
-const reservedWordsStrictSet = new Set(reservedWords.strict);
-const reservedWordsStrictBindSet = new Set(reservedWords.strictBind);
-
-function isReservedWord(word, inModule) {
-  return inModule && word === "await" || word === "enum";
-}
-
-function isStrictReservedWord(word, inModule) {
-  return isReservedWord(word, inModule) || reservedWordsStrictSet.has(word);
-}
-
-function isStrictBindOnlyReservedWord(word) {
-  return reservedWordsStrictBindSet.has(word);
-}
-
-function isStrictBindReservedWord(word, inModule) {
-  return isStrictReservedWord(word, inModule) || isStrictBindOnlyReservedWord(word);
-}
-
-function isKeyword(word) {
-  return keywords.has(word);
-}
-
-/***/ }),
-
-/***/ 36860:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = highlight;
-exports.getChalk = getChalk;
-exports.shouldHighlight = shouldHighlight;
-
-var _jsTokens = __nccwpck_require__(51531);
-
-var _helperValidatorIdentifier = __nccwpck_require__(86607);
-
-var _chalk = __nccwpck_require__(77658);
-
-const sometimesKeywords = new Set(["as", "async", "from", "get", "of", "set"]);
-
-function getDefs(chalk) {
-  return {
-    keyword: chalk.cyan,
-    capitalized: chalk.yellow,
-    jsxIdentifier: chalk.yellow,
-    punctuator: chalk.yellow,
-    number: chalk.magenta,
-    string: chalk.green,
-    regex: chalk.magenta,
-    comment: chalk.grey,
-    invalid: chalk.white.bgRed.bold
-  };
-}
-
-const NEWLINE = /\r\n|[\n\r\u2028\u2029]/;
-const BRACKET = /^[()[\]{}]$/;
-let tokenize;
-{
-  const JSX_TAG = /^[a-z][\w-]*$/i;
-
-  const getTokenType = function (token, offset, text) {
-    if (token.type === "name") {
-      if ((0, _helperValidatorIdentifier.isKeyword)(token.value) || (0, _helperValidatorIdentifier.isStrictReservedWord)(token.value, true) || sometimesKeywords.has(token.value)) {
-        return "keyword";
-      }
-
-      if (JSX_TAG.test(token.value) && (text[offset - 1] === "<" || text.substr(offset - 2, 2) == "</")) {
-        return "jsxIdentifier";
-      }
-
-      if (token.value[0] !== token.value[0].toLowerCase()) {
-        return "capitalized";
-      }
-    }
-
-    if (token.type === "punctuator" && BRACKET.test(token.value)) {
-      return "bracket";
-    }
-
-    if (token.type === "invalid" && (token.value === "@" || token.value === "#")) {
-      return "punctuator";
-    }
-
-    return token.type;
-  };
-
-  tokenize = function* (text) {
-    let match;
-
-    while (match = _jsTokens.default.exec(text)) {
-      const token = _jsTokens.matchToToken(match);
-
-      yield {
-        type: getTokenType(token, match.index, text),
-        value: token.value
-      };
-    }
-  };
-}
-
-function highlightTokens(defs, text) {
-  let highlighted = "";
-
-  for (const {
-    type,
-    value
-  } of tokenize(text)) {
-    const colorize = defs[type];
-
-    if (colorize) {
-      highlighted += value.split(NEWLINE).map(str => colorize(str)).join("\n");
-    } else {
-      highlighted += value;
-    }
-  }
-
-  return highlighted;
-}
-
-function shouldHighlight(options) {
-  return !!_chalk.supportsColor || options.forceColor;
-}
-
-function getChalk(options) {
-  return options.forceColor ? new _chalk.constructor({
-    enabled: true,
-    level: 1
-  }) : _chalk;
-}
-
-function highlight(code, options = {}) {
-  if (shouldHighlight(options)) {
-    const chalk = getChalk(options);
-    const defs = getDefs(chalk);
-    return highlightTokens(defs, code);
-  } else {
-    return code;
-  }
-}
 
 /***/ }),
 
@@ -42883,7 +42654,7 @@ module.exports = pLimit;
 const errorEx = __nccwpck_require__(23505);
 const fallback = __nccwpck_require__(89062);
 const {default: LinesAndColumns} = __nccwpck_require__(3042);
-const {codeFrameColumns} = __nccwpck_require__(45211);
+const {codeFrameColumns} = __nccwpck_require__(41322);
 
 const JSONError = errorEx('JSONError', {
 	fileName: errorEx.append('in %s'),
@@ -51702,7 +51473,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -89948,7 +89719,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -101223,6 +100994,499 @@ module.exports = require("util");
 
 /***/ }),
 
+/***/ 41322:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.codeFrameColumns = codeFrameColumns;
+exports["default"] = _default;
+
+var _highlight = __nccwpck_require__(87654);
+
+let deprecationWarningShown = false;
+
+function getDefs(chalk) {
+  return {
+    gutter: chalk.grey,
+    marker: chalk.red.bold,
+    message: chalk.red.bold
+  };
+}
+
+const NEWLINE = /\r\n|[\n\r\u2028\u2029]/;
+
+function getMarkerLines(loc, source, opts) {
+  const startLoc = Object.assign({
+    column: 0,
+    line: -1
+  }, loc.start);
+  const endLoc = Object.assign({}, startLoc, loc.end);
+  const {
+    linesAbove = 2,
+    linesBelow = 3
+  } = opts || {};
+  const startLine = startLoc.line;
+  const startColumn = startLoc.column;
+  const endLine = endLoc.line;
+  const endColumn = endLoc.column;
+  let start = Math.max(startLine - (linesAbove + 1), 0);
+  let end = Math.min(source.length, endLine + linesBelow);
+
+  if (startLine === -1) {
+    start = 0;
+  }
+
+  if (endLine === -1) {
+    end = source.length;
+  }
+
+  const lineDiff = endLine - startLine;
+  const markerLines = {};
+
+  if (lineDiff) {
+    for (let i = 0; i <= lineDiff; i++) {
+      const lineNumber = i + startLine;
+
+      if (!startColumn) {
+        markerLines[lineNumber] = true;
+      } else if (i === 0) {
+        const sourceLength = source[lineNumber - 1].length;
+        markerLines[lineNumber] = [startColumn, sourceLength - startColumn + 1];
+      } else if (i === lineDiff) {
+        markerLines[lineNumber] = [0, endColumn];
+      } else {
+        const sourceLength = source[lineNumber - i].length;
+        markerLines[lineNumber] = [0, sourceLength];
+      }
+    }
+  } else {
+    if (startColumn === endColumn) {
+      if (startColumn) {
+        markerLines[startLine] = [startColumn, 0];
+      } else {
+        markerLines[startLine] = true;
+      }
+    } else {
+      markerLines[startLine] = [startColumn, endColumn - startColumn];
+    }
+  }
+
+  return {
+    start,
+    end,
+    markerLines
+  };
+}
+
+function codeFrameColumns(rawLines, loc, opts = {}) {
+  const highlighted = (opts.highlightCode || opts.forceColor) && (0, _highlight.shouldHighlight)(opts);
+  const chalk = (0, _highlight.getChalk)(opts);
+  const defs = getDefs(chalk);
+
+  const maybeHighlight = (chalkFn, string) => {
+    return highlighted ? chalkFn(string) : string;
+  };
+
+  const lines = rawLines.split(NEWLINE);
+  const {
+    start,
+    end,
+    markerLines
+  } = getMarkerLines(loc, lines, opts);
+  const hasColumns = loc.start && typeof loc.start.column === "number";
+  const numberMaxWidth = String(end).length;
+  const highlightedLines = highlighted ? (0, _highlight.default)(rawLines, opts) : rawLines;
+  let frame = highlightedLines.split(NEWLINE, end).slice(start, end).map((line, index) => {
+    const number = start + 1 + index;
+    const paddedNumber = ` ${number}`.slice(-numberMaxWidth);
+    const gutter = ` ${paddedNumber} |`;
+    const hasMarker = markerLines[number];
+    const lastMarkerLine = !markerLines[number + 1];
+
+    if (hasMarker) {
+      let markerLine = "";
+
+      if (Array.isArray(hasMarker)) {
+        const markerSpacing = line.slice(0, Math.max(hasMarker[0] - 1, 0)).replace(/[^\t]/g, " ");
+        const numberOfMarkers = hasMarker[1] || 1;
+        markerLine = ["\n ", maybeHighlight(defs.gutter, gutter.replace(/\d/g, " ")), " ", markerSpacing, maybeHighlight(defs.marker, "^").repeat(numberOfMarkers)].join("");
+
+        if (lastMarkerLine && opts.message) {
+          markerLine += " " + maybeHighlight(defs.message, opts.message);
+        }
+      }
+
+      return [maybeHighlight(defs.marker, ">"), maybeHighlight(defs.gutter, gutter), line.length > 0 ? ` ${line}` : "", markerLine].join("");
+    } else {
+      return ` ${maybeHighlight(defs.gutter, gutter)}${line.length > 0 ? ` ${line}` : ""}`;
+    }
+  }).join("\n");
+
+  if (opts.message && !hasColumns) {
+    frame = `${" ".repeat(numberMaxWidth + 1)}${opts.message}\n${frame}`;
+  }
+
+  if (highlighted) {
+    return chalk.reset(frame);
+  } else {
+    return frame;
+  }
+}
+
+function _default(rawLines, lineNumber, colNumber, opts = {}) {
+  if (!deprecationWarningShown) {
+    deprecationWarningShown = true;
+    const message = "Passing lineNumber and colNumber is deprecated to @babel/code-frame. Please use `codeFrameColumns`.";
+
+    if (process.emitWarning) {
+      process.emitWarning(message, "DeprecationWarning");
+    } else {
+      const deprecationError = new Error(message);
+      deprecationError.name = "DeprecationWarning";
+      console.warn(new Error(message));
+    }
+  }
+
+  colNumber = Math.max(colNumber, 0);
+  const location = {
+    start: {
+      column: colNumber,
+      line: lineNumber
+    }
+  };
+  return codeFrameColumns(rawLines, location, opts);
+}
+
+/***/ }),
+
+/***/ 28875:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.isIdentifierChar = isIdentifierChar;
+exports.isIdentifierName = isIdentifierName;
+exports.isIdentifierStart = isIdentifierStart;
+let nonASCIIidentifierStartChars = "\xaa\xb5\xba\xc0-\xd6\xd8-\xf6\xf8-\u02c1\u02c6-\u02d1\u02e0-\u02e4\u02ec\u02ee\u0370-\u0374\u0376\u0377\u037a-\u037d\u037f\u0386\u0388-\u038a\u038c\u038e-\u03a1\u03a3-\u03f5\u03f7-\u0481\u048a-\u052f\u0531-\u0556\u0559\u0560-\u0588\u05d0-\u05ea\u05ef-\u05f2\u0620-\u064a\u066e\u066f\u0671-\u06d3\u06d5\u06e5\u06e6\u06ee\u06ef\u06fa-\u06fc\u06ff\u0710\u0712-\u072f\u074d-\u07a5\u07b1\u07ca-\u07ea\u07f4\u07f5\u07fa\u0800-\u0815\u081a\u0824\u0828\u0840-\u0858\u0860-\u086a\u0870-\u0887\u0889-\u088e\u08a0-\u08c9\u0904-\u0939\u093d\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098c\u098f\u0990\u0993-\u09a8\u09aa-\u09b0\u09b2\u09b6-\u09b9\u09bd\u09ce\u09dc\u09dd\u09df-\u09e1\u09f0\u09f1\u09fc\u0a05-\u0a0a\u0a0f\u0a10\u0a13-\u0a28\u0a2a-\u0a30\u0a32\u0a33\u0a35\u0a36\u0a38\u0a39\u0a59-\u0a5c\u0a5e\u0a72-\u0a74\u0a85-\u0a8d\u0a8f-\u0a91\u0a93-\u0aa8\u0aaa-\u0ab0\u0ab2\u0ab3\u0ab5-\u0ab9\u0abd\u0ad0\u0ae0\u0ae1\u0af9\u0b05-\u0b0c\u0b0f\u0b10\u0b13-\u0b28\u0b2a-\u0b30\u0b32\u0b33\u0b35-\u0b39\u0b3d\u0b5c\u0b5d\u0b5f-\u0b61\u0b71\u0b83\u0b85-\u0b8a\u0b8e-\u0b90\u0b92-\u0b95\u0b99\u0b9a\u0b9c\u0b9e\u0b9f\u0ba3\u0ba4\u0ba8-\u0baa\u0bae-\u0bb9\u0bd0\u0c05-\u0c0c\u0c0e-\u0c10\u0c12-\u0c28\u0c2a-\u0c39\u0c3d\u0c58-\u0c5a\u0c5d\u0c60\u0c61\u0c80\u0c85-\u0c8c\u0c8e-\u0c90\u0c92-\u0ca8\u0caa-\u0cb3\u0cb5-\u0cb9\u0cbd\u0cdd\u0cde\u0ce0\u0ce1\u0cf1\u0cf2\u0d04-\u0d0c\u0d0e-\u0d10\u0d12-\u0d3a\u0d3d\u0d4e\u0d54-\u0d56\u0d5f-\u0d61\u0d7a-\u0d7f\u0d85-\u0d96\u0d9a-\u0db1\u0db3-\u0dbb\u0dbd\u0dc0-\u0dc6\u0e01-\u0e30\u0e32\u0e33\u0e40-\u0e46\u0e81\u0e82\u0e84\u0e86-\u0e8a\u0e8c-\u0ea3\u0ea5\u0ea7-\u0eb0\u0eb2\u0eb3\u0ebd\u0ec0-\u0ec4\u0ec6\u0edc-\u0edf\u0f00\u0f40-\u0f47\u0f49-\u0f6c\u0f88-\u0f8c\u1000-\u102a\u103f\u1050-\u1055\u105a-\u105d\u1061\u1065\u1066\u106e-\u1070\u1075-\u1081\u108e\u10a0-\u10c5\u10c7\u10cd\u10d0-\u10fa\u10fc-\u1248\u124a-\u124d\u1250-\u1256\u1258\u125a-\u125d\u1260-\u1288\u128a-\u128d\u1290-\u12b0\u12b2-\u12b5\u12b8-\u12be\u12c0\u12c2-\u12c5\u12c8-\u12d6\u12d8-\u1310\u1312-\u1315\u1318-\u135a\u1380-\u138f\u13a0-\u13f5\u13f8-\u13fd\u1401-\u166c\u166f-\u167f\u1681-\u169a\u16a0-\u16ea\u16ee-\u16f8\u1700-\u1711\u171f-\u1731\u1740-\u1751\u1760-\u176c\u176e-\u1770\u1780-\u17b3\u17d7\u17dc\u1820-\u1878\u1880-\u18a8\u18aa\u18b0-\u18f5\u1900-\u191e\u1950-\u196d\u1970-\u1974\u1980-\u19ab\u19b0-\u19c9\u1a00-\u1a16\u1a20-\u1a54\u1aa7\u1b05-\u1b33\u1b45-\u1b4c\u1b83-\u1ba0\u1bae\u1baf\u1bba-\u1be5\u1c00-\u1c23\u1c4d-\u1c4f\u1c5a-\u1c7d\u1c80-\u1c88\u1c90-\u1cba\u1cbd-\u1cbf\u1ce9-\u1cec\u1cee-\u1cf3\u1cf5\u1cf6\u1cfa\u1d00-\u1dbf\u1e00-\u1f15\u1f18-\u1f1d\u1f20-\u1f45\u1f48-\u1f4d\u1f50-\u1f57\u1f59\u1f5b\u1f5d\u1f5f-\u1f7d\u1f80-\u1fb4\u1fb6-\u1fbc\u1fbe\u1fc2-\u1fc4\u1fc6-\u1fcc\u1fd0-\u1fd3\u1fd6-\u1fdb\u1fe0-\u1fec\u1ff2-\u1ff4\u1ff6-\u1ffc\u2071\u207f\u2090-\u209c\u2102\u2107\u210a-\u2113\u2115\u2118-\u211d\u2124\u2126\u2128\u212a-\u2139\u213c-\u213f\u2145-\u2149\u214e\u2160-\u2188\u2c00-\u2ce4\u2ceb-\u2cee\u2cf2\u2cf3\u2d00-\u2d25\u2d27\u2d2d\u2d30-\u2d67\u2d6f\u2d80-\u2d96\u2da0-\u2da6\u2da8-\u2dae\u2db0-\u2db6\u2db8-\u2dbe\u2dc0-\u2dc6\u2dc8-\u2dce\u2dd0-\u2dd6\u2dd8-\u2dde\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303c\u3041-\u3096\u309b-\u309f\u30a1-\u30fa\u30fc-\u30ff\u3105-\u312f\u3131-\u318e\u31a0-\u31bf\u31f0-\u31ff\u3400-\u4dbf\u4e00-\ua48c\ua4d0-\ua4fd\ua500-\ua60c\ua610-\ua61f\ua62a\ua62b\ua640-\ua66e\ua67f-\ua69d\ua6a0-\ua6ef\ua717-\ua71f\ua722-\ua788\ua78b-\ua7ca\ua7d0\ua7d1\ua7d3\ua7d5-\ua7d9\ua7f2-\ua801\ua803-\ua805\ua807-\ua80a\ua80c-\ua822\ua840-\ua873\ua882-\ua8b3\ua8f2-\ua8f7\ua8fb\ua8fd\ua8fe\ua90a-\ua925\ua930-\ua946\ua960-\ua97c\ua984-\ua9b2\ua9cf\ua9e0-\ua9e4\ua9e6-\ua9ef\ua9fa-\ua9fe\uaa00-\uaa28\uaa40-\uaa42\uaa44-\uaa4b\uaa60-\uaa76\uaa7a\uaa7e-\uaaaf\uaab1\uaab5\uaab6\uaab9-\uaabd\uaac0\uaac2\uaadb-\uaadd\uaae0-\uaaea\uaaf2-\uaaf4\uab01-\uab06\uab09-\uab0e\uab11-\uab16\uab20-\uab26\uab28-\uab2e\uab30-\uab5a\uab5c-\uab69\uab70-\uabe2\uac00-\ud7a3\ud7b0-\ud7c6\ud7cb-\ud7fb\uf900-\ufa6d\ufa70-\ufad9\ufb00-\ufb06\ufb13-\ufb17\ufb1d\ufb1f-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb3e\ufb40\ufb41\ufb43\ufb44\ufb46-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\uff21-\uff3a\uff41-\uff5a\uff66-\uffbe\uffc2-\uffc7\uffca-\uffcf\uffd2-\uffd7\uffda-\uffdc";
+let nonASCIIidentifierChars = "\u200c\u200d\xb7\u0300-\u036f\u0387\u0483-\u0487\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u0669\u0670\u06d6-\u06dc\u06df-\u06e4\u06e7\u06e8\u06ea-\u06ed\u06f0-\u06f9\u0711\u0730-\u074a\u07a6-\u07b0\u07c0-\u07c9\u07eb-\u07f3\u07fd\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0859-\u085b\u0898-\u089f\u08ca-\u08e1\u08e3-\u0903\u093a-\u093c\u093e-\u094f\u0951-\u0957\u0962\u0963\u0966-\u096f\u0981-\u0983\u09bc\u09be-\u09c4\u09c7\u09c8\u09cb-\u09cd\u09d7\u09e2\u09e3\u09e6-\u09ef\u09fe\u0a01-\u0a03\u0a3c\u0a3e-\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a66-\u0a71\u0a75\u0a81-\u0a83\u0abc\u0abe-\u0ac5\u0ac7-\u0ac9\u0acb-\u0acd\u0ae2\u0ae3\u0ae6-\u0aef\u0afa-\u0aff\u0b01-\u0b03\u0b3c\u0b3e-\u0b44\u0b47\u0b48\u0b4b-\u0b4d\u0b55-\u0b57\u0b62\u0b63\u0b66-\u0b6f\u0b82\u0bbe-\u0bc2\u0bc6-\u0bc8\u0bca-\u0bcd\u0bd7\u0be6-\u0bef\u0c00-\u0c04\u0c3c\u0c3e-\u0c44\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0c66-\u0c6f\u0c81-\u0c83\u0cbc\u0cbe-\u0cc4\u0cc6-\u0cc8\u0cca-\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0ce6-\u0cef\u0d00-\u0d03\u0d3b\u0d3c\u0d3e-\u0d44\u0d46-\u0d48\u0d4a-\u0d4d\u0d57\u0d62\u0d63\u0d66-\u0d6f\u0d81-\u0d83\u0dca\u0dcf-\u0dd4\u0dd6\u0dd8-\u0ddf\u0de6-\u0def\u0df2\u0df3\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0e50-\u0e59\u0eb1\u0eb4-\u0ebc\u0ec8-\u0ecd\u0ed0-\u0ed9\u0f18\u0f19\u0f20-\u0f29\u0f35\u0f37\u0f39\u0f3e\u0f3f\u0f71-\u0f84\u0f86\u0f87\u0f8d-\u0f97\u0f99-\u0fbc\u0fc6\u102b-\u103e\u1040-\u1049\u1056-\u1059\u105e-\u1060\u1062-\u1064\u1067-\u106d\u1071-\u1074\u1082-\u108d\u108f-\u109d\u135d-\u135f\u1369-\u1371\u1712-\u1715\u1732-\u1734\u1752\u1753\u1772\u1773\u17b4-\u17d3\u17dd\u17e0-\u17e9\u180b-\u180d\u180f-\u1819\u18a9\u1920-\u192b\u1930-\u193b\u1946-\u194f\u19d0-\u19da\u1a17-\u1a1b\u1a55-\u1a5e\u1a60-\u1a7c\u1a7f-\u1a89\u1a90-\u1a99\u1ab0-\u1abd\u1abf-\u1ace\u1b00-\u1b04\u1b34-\u1b44\u1b50-\u1b59\u1b6b-\u1b73\u1b80-\u1b82\u1ba1-\u1bad\u1bb0-\u1bb9\u1be6-\u1bf3\u1c24-\u1c37\u1c40-\u1c49\u1c50-\u1c59\u1cd0-\u1cd2\u1cd4-\u1ce8\u1ced\u1cf4\u1cf7-\u1cf9\u1dc0-\u1dff\u203f\u2040\u2054\u20d0-\u20dc\u20e1\u20e5-\u20f0\u2cef-\u2cf1\u2d7f\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua620-\ua629\ua66f\ua674-\ua67d\ua69e\ua69f\ua6f0\ua6f1\ua802\ua806\ua80b\ua823-\ua827\ua82c\ua880\ua881\ua8b4-\ua8c5\ua8d0-\ua8d9\ua8e0-\ua8f1\ua8ff-\ua909\ua926-\ua92d\ua947-\ua953\ua980-\ua983\ua9b3-\ua9c0\ua9d0-\ua9d9\ua9e5\ua9f0-\ua9f9\uaa29-\uaa36\uaa43\uaa4c\uaa4d\uaa50-\uaa59\uaa7b-\uaa7d\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uaaeb-\uaaef\uaaf5\uaaf6\uabe3-\uabea\uabec\uabed\uabf0-\uabf9\ufb1e\ufe00-\ufe0f\ufe20-\ufe2f\ufe33\ufe34\ufe4d-\ufe4f\uff10-\uff19\uff3f";
+const nonASCIIidentifierStart = new RegExp("[" + nonASCIIidentifierStartChars + "]");
+const nonASCIIidentifier = new RegExp("[" + nonASCIIidentifierStartChars + nonASCIIidentifierChars + "]");
+nonASCIIidentifierStartChars = nonASCIIidentifierChars = null;
+const astralIdentifierStartCodes = [0, 11, 2, 25, 2, 18, 2, 1, 2, 14, 3, 13, 35, 122, 70, 52, 268, 28, 4, 48, 48, 31, 14, 29, 6, 37, 11, 29, 3, 35, 5, 7, 2, 4, 43, 157, 19, 35, 5, 35, 5, 39, 9, 51, 13, 10, 2, 14, 2, 6, 2, 1, 2, 10, 2, 14, 2, 6, 2, 1, 68, 310, 10, 21, 11, 7, 25, 5, 2, 41, 2, 8, 70, 5, 3, 0, 2, 43, 2, 1, 4, 0, 3, 22, 11, 22, 10, 30, 66, 18, 2, 1, 11, 21, 11, 25, 71, 55, 7, 1, 65, 0, 16, 3, 2, 2, 2, 28, 43, 28, 4, 28, 36, 7, 2, 27, 28, 53, 11, 21, 11, 18, 14, 17, 111, 72, 56, 50, 14, 50, 14, 35, 349, 41, 7, 1, 79, 28, 11, 0, 9, 21, 43, 17, 47, 20, 28, 22, 13, 52, 58, 1, 3, 0, 14, 44, 33, 24, 27, 35, 30, 0, 3, 0, 9, 34, 4, 0, 13, 47, 15, 3, 22, 0, 2, 0, 36, 17, 2, 24, 85, 6, 2, 0, 2, 3, 2, 14, 2, 9, 8, 46, 39, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 4, 0, 19, 0, 13, 4, 159, 52, 19, 3, 21, 2, 31, 47, 21, 1, 2, 0, 185, 46, 42, 3, 37, 47, 21, 0, 60, 42, 14, 0, 72, 26, 38, 6, 186, 43, 117, 63, 32, 7, 3, 0, 3, 7, 2, 1, 2, 23, 16, 0, 2, 0, 95, 7, 3, 38, 17, 0, 2, 0, 29, 0, 11, 39, 8, 0, 22, 0, 12, 45, 20, 0, 19, 72, 264, 8, 2, 36, 18, 0, 50, 29, 113, 6, 2, 1, 2, 37, 22, 0, 26, 5, 2, 1, 2, 31, 15, 0, 328, 18, 190, 0, 80, 921, 103, 110, 18, 195, 2637, 96, 16, 1070, 4050, 582, 8634, 568, 8, 30, 18, 78, 18, 29, 19, 47, 17, 3, 32, 20, 6, 18, 689, 63, 129, 74, 6, 0, 67, 12, 65, 1, 2, 0, 29, 6135, 9, 1237, 43, 8, 8936, 3, 2, 6, 2, 1, 2, 290, 46, 2, 18, 3, 9, 395, 2309, 106, 6, 12, 4, 8, 8, 9, 5991, 84, 2, 70, 2, 1, 3, 0, 3, 1, 3, 3, 2, 11, 2, 0, 2, 6, 2, 64, 2, 3, 3, 7, 2, 6, 2, 27, 2, 3, 2, 4, 2, 0, 4, 6, 2, 339, 3, 24, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 30, 2, 24, 2, 7, 1845, 30, 482, 44, 11, 6, 17, 0, 322, 29, 19, 43, 1269, 6, 2, 3, 2, 1, 2, 14, 2, 196, 60, 67, 8, 0, 1205, 3, 2, 26, 2, 1, 2, 0, 3, 0, 2, 9, 2, 3, 2, 0, 2, 0, 7, 0, 5, 0, 2, 0, 2, 0, 2, 2, 2, 1, 2, 0, 3, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 2, 0, 3, 3, 2, 6, 2, 3, 2, 3, 2, 0, 2, 9, 2, 16, 6, 2, 2, 4, 2, 16, 4421, 42719, 33, 4152, 8, 221, 3, 5761, 15, 7472, 3104, 541, 1507, 4938];
+const astralIdentifierCodes = [509, 0, 227, 0, 150, 4, 294, 9, 1368, 2, 2, 1, 6, 3, 41, 2, 5, 0, 166, 1, 574, 3, 9, 9, 370, 1, 154, 10, 50, 3, 123, 2, 54, 14, 32, 10, 3, 1, 11, 3, 46, 10, 8, 0, 46, 9, 7, 2, 37, 13, 2, 9, 6, 1, 45, 0, 13, 2, 49, 13, 9, 3, 2, 11, 83, 11, 7, 0, 161, 11, 6, 9, 7, 3, 56, 1, 2, 6, 3, 1, 3, 2, 10, 0, 11, 1, 3, 6, 4, 4, 193, 17, 10, 9, 5, 0, 82, 19, 13, 9, 214, 6, 3, 8, 28, 1, 83, 16, 16, 9, 82, 12, 9, 9, 84, 14, 5, 9, 243, 14, 166, 9, 71, 5, 2, 1, 3, 3, 2, 0, 2, 1, 13, 9, 120, 6, 3, 6, 4, 0, 29, 9, 41, 6, 2, 3, 9, 0, 10, 10, 47, 15, 406, 7, 2, 7, 17, 9, 57, 21, 2, 13, 123, 5, 4, 0, 2, 1, 2, 6, 2, 0, 9, 9, 49, 4, 2, 1, 2, 4, 9, 9, 330, 3, 19306, 9, 87, 9, 39, 4, 60, 6, 26, 9, 1014, 0, 2, 54, 8, 3, 82, 0, 12, 1, 19628, 1, 4706, 45, 3, 22, 543, 4, 4, 5, 9, 7, 3, 6, 31, 3, 149, 2, 1418, 49, 513, 54, 5, 49, 9, 0, 15, 0, 23, 4, 2, 14, 1361, 6, 2, 16, 3, 6, 2, 1, 2, 4, 262, 6, 10, 9, 357, 0, 62, 13, 1495, 6, 110, 6, 6, 9, 4759, 9, 787719, 239];
+
+function isInAstralSet(code, set) {
+  let pos = 0x10000;
+
+  for (let i = 0, length = set.length; i < length; i += 2) {
+    pos += set[i];
+    if (pos > code) return false;
+    pos += set[i + 1];
+    if (pos >= code) return true;
+  }
+
+  return false;
+}
+
+function isIdentifierStart(code) {
+  if (code < 65) return code === 36;
+  if (code <= 90) return true;
+  if (code < 97) return code === 95;
+  if (code <= 122) return true;
+
+  if (code <= 0xffff) {
+    return code >= 0xaa && nonASCIIidentifierStart.test(String.fromCharCode(code));
+  }
+
+  return isInAstralSet(code, astralIdentifierStartCodes);
+}
+
+function isIdentifierChar(code) {
+  if (code < 48) return code === 36;
+  if (code < 58) return true;
+  if (code < 65) return false;
+  if (code <= 90) return true;
+  if (code < 97) return code === 95;
+  if (code <= 122) return true;
+
+  if (code <= 0xffff) {
+    return code >= 0xaa && nonASCIIidentifier.test(String.fromCharCode(code));
+  }
+
+  return isInAstralSet(code, astralIdentifierStartCodes) || isInAstralSet(code, astralIdentifierCodes);
+}
+
+function isIdentifierName(name) {
+  let isFirst = true;
+
+  for (let i = 0; i < name.length; i++) {
+    let cp = name.charCodeAt(i);
+
+    if ((cp & 0xfc00) === 0xd800 && i + 1 < name.length) {
+      const trail = name.charCodeAt(++i);
+
+      if ((trail & 0xfc00) === 0xdc00) {
+        cp = 0x10000 + ((cp & 0x3ff) << 10) + (trail & 0x3ff);
+      }
+    }
+
+    if (isFirst) {
+      isFirst = false;
+
+      if (!isIdentifierStart(cp)) {
+        return false;
+      }
+    } else if (!isIdentifierChar(cp)) {
+      return false;
+    }
+  }
+
+  return !isFirst;
+}
+
+/***/ }),
+
+/***/ 2738:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+Object.defineProperty(exports, "isIdentifierChar", ({
+  enumerable: true,
+  get: function () {
+    return _identifier.isIdentifierChar;
+  }
+}));
+Object.defineProperty(exports, "isIdentifierName", ({
+  enumerable: true,
+  get: function () {
+    return _identifier.isIdentifierName;
+  }
+}));
+Object.defineProperty(exports, "isIdentifierStart", ({
+  enumerable: true,
+  get: function () {
+    return _identifier.isIdentifierStart;
+  }
+}));
+Object.defineProperty(exports, "isKeyword", ({
+  enumerable: true,
+  get: function () {
+    return _keyword.isKeyword;
+  }
+}));
+Object.defineProperty(exports, "isReservedWord", ({
+  enumerable: true,
+  get: function () {
+    return _keyword.isReservedWord;
+  }
+}));
+Object.defineProperty(exports, "isStrictBindOnlyReservedWord", ({
+  enumerable: true,
+  get: function () {
+    return _keyword.isStrictBindOnlyReservedWord;
+  }
+}));
+Object.defineProperty(exports, "isStrictBindReservedWord", ({
+  enumerable: true,
+  get: function () {
+    return _keyword.isStrictBindReservedWord;
+  }
+}));
+Object.defineProperty(exports, "isStrictReservedWord", ({
+  enumerable: true,
+  get: function () {
+    return _keyword.isStrictReservedWord;
+  }
+}));
+
+var _identifier = __nccwpck_require__(28875);
+
+var _keyword = __nccwpck_require__(50017);
+
+/***/ }),
+
+/***/ 50017:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.isKeyword = isKeyword;
+exports.isReservedWord = isReservedWord;
+exports.isStrictBindOnlyReservedWord = isStrictBindOnlyReservedWord;
+exports.isStrictBindReservedWord = isStrictBindReservedWord;
+exports.isStrictReservedWord = isStrictReservedWord;
+const reservedWords = {
+  keyword: ["break", "case", "catch", "continue", "debugger", "default", "do", "else", "finally", "for", "function", "if", "return", "switch", "throw", "try", "var", "const", "while", "with", "new", "this", "super", "class", "extends", "export", "import", "null", "true", "false", "in", "instanceof", "typeof", "void", "delete"],
+  strict: ["implements", "interface", "let", "package", "private", "protected", "public", "static", "yield"],
+  strictBind: ["eval", "arguments"]
+};
+const keywords = new Set(reservedWords.keyword);
+const reservedWordsStrictSet = new Set(reservedWords.strict);
+const reservedWordsStrictBindSet = new Set(reservedWords.strictBind);
+
+function isReservedWord(word, inModule) {
+  return inModule && word === "await" || word === "enum";
+}
+
+function isStrictReservedWord(word, inModule) {
+  return isReservedWord(word, inModule) || reservedWordsStrictSet.has(word);
+}
+
+function isStrictBindOnlyReservedWord(word) {
+  return reservedWordsStrictBindSet.has(word);
+}
+
+function isStrictBindReservedWord(word, inModule) {
+  return isStrictReservedWord(word, inModule) || isStrictBindOnlyReservedWord(word);
+}
+
+function isKeyword(word) {
+  return keywords.has(word);
+}
+
+/***/ }),
+
+/***/ 87654:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = highlight;
+exports.getChalk = getChalk;
+exports.shouldHighlight = shouldHighlight;
+
+var _jsTokens = __nccwpck_require__(51531);
+
+var _helperValidatorIdentifier = __nccwpck_require__(2738);
+
+var _chalk = __nccwpck_require__(77658);
+
+const sometimesKeywords = new Set(["as", "async", "from", "get", "of", "set"]);
+
+function getDefs(chalk) {
+  return {
+    keyword: chalk.cyan,
+    capitalized: chalk.yellow,
+    jsxIdentifier: chalk.yellow,
+    punctuator: chalk.yellow,
+    number: chalk.magenta,
+    string: chalk.green,
+    regex: chalk.magenta,
+    comment: chalk.grey,
+    invalid: chalk.white.bgRed.bold
+  };
+}
+
+const NEWLINE = /\r\n|[\n\r\u2028\u2029]/;
+const BRACKET = /^[()[\]{}]$/;
+let tokenize;
+{
+  const JSX_TAG = /^[a-z][\w-]*$/i;
+
+  const getTokenType = function (token, offset, text) {
+    if (token.type === "name") {
+      if ((0, _helperValidatorIdentifier.isKeyword)(token.value) || (0, _helperValidatorIdentifier.isStrictReservedWord)(token.value, true) || sometimesKeywords.has(token.value)) {
+        return "keyword";
+      }
+
+      if (JSX_TAG.test(token.value) && (text[offset - 1] === "<" || text.slice(offset - 2, offset) == "</")) {
+        return "jsxIdentifier";
+      }
+
+      if (token.value[0] !== token.value[0].toLowerCase()) {
+        return "capitalized";
+      }
+    }
+
+    if (token.type === "punctuator" && BRACKET.test(token.value)) {
+      return "bracket";
+    }
+
+    if (token.type === "invalid" && (token.value === "@" || token.value === "#")) {
+      return "punctuator";
+    }
+
+    return token.type;
+  };
+
+  tokenize = function* (text) {
+    let match;
+
+    while (match = _jsTokens.default.exec(text)) {
+      const token = _jsTokens.matchToToken(match);
+
+      yield {
+        type: getTokenType(token, match.index, text),
+        value: token.value
+      };
+    }
+  };
+}
+
+function highlightTokens(defs, text) {
+  let highlighted = "";
+
+  for (const {
+    type,
+    value
+  } of tokenize(text)) {
+    const colorize = defs[type];
+
+    if (colorize) {
+      highlighted += value.split(NEWLINE).map(str => colorize(str)).join("\n");
+    } else {
+      highlighted += value;
+    }
+  }
+
+  return highlighted;
+}
+
+function shouldHighlight(options) {
+  return !!_chalk.supportsColor || options.forceColor;
+}
+
+function getChalk(options) {
+  return options.forceColor ? new _chalk.constructor({
+    enabled: true,
+    level: 1
+  }) : _chalk;
+}
+
+function highlight(code, options = {}) {
+  if (code !== "" && shouldHighlight(options)) {
+    const chalk = getChalk(options);
+    const defs = getDefs(chalk);
+    return highlightTokens(defs, code);
+  } else {
+    return code;
+  }
+}
+
+/***/ }),
+
 /***/ 31970:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -102272,7 +102536,7 @@ module.exports = yargsParser;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.100.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","test":"yarn test:unit","test:e2e":"ts-mocha test/**/*.ispec.ts && karma start karma.conf.js","test:unit":"ts-mocha test/**/*.spec.ts"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"2.0.0","@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/client-sts":"3.100.0","@aws-sdk/config-resolver":"3.80.0","@aws-sdk/credential-provider-node":"3.100.0","@aws-sdk/eventstream-serde-browser":"3.78.0","@aws-sdk/eventstream-serde-config-resolver":"3.78.0","@aws-sdk/eventstream-serde-node":"3.78.0","@aws-sdk/fetch-http-handler":"3.78.0","@aws-sdk/hash-blob-browser":"3.78.0","@aws-sdk/hash-node":"3.78.0","@aws-sdk/hash-stream-node":"3.78.0","@aws-sdk/invalid-dependency":"3.78.0","@aws-sdk/md5-js":"3.78.0","@aws-sdk/middleware-bucket-endpoint":"3.80.0","@aws-sdk/middleware-content-length":"3.78.0","@aws-sdk/middleware-expect-continue":"3.78.0","@aws-sdk/middleware-flexible-checksums":"3.78.0","@aws-sdk/middleware-host-header":"3.78.0","@aws-sdk/middleware-location-constraint":"3.78.0","@aws-sdk/middleware-logger":"3.78.0","@aws-sdk/middleware-retry":"3.80.0","@aws-sdk/middleware-sdk-s3":"3.86.0","@aws-sdk/middleware-serde":"3.78.0","@aws-sdk/middleware-signing":"3.78.0","@aws-sdk/middleware-ssec":"3.78.0","@aws-sdk/middleware-stack":"3.78.0","@aws-sdk/middleware-user-agent":"3.78.0","@aws-sdk/node-config-provider":"3.80.0","@aws-sdk/node-http-handler":"3.94.0","@aws-sdk/protocol-http":"3.78.0","@aws-sdk/signature-v4-multi-region":"3.88.0","@aws-sdk/smithy-client":"3.99.0","@aws-sdk/types":"3.78.0","@aws-sdk/url-parser":"3.78.0","@aws-sdk/util-base64-browser":"3.58.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.99.0","@aws-sdk/util-defaults-mode-node":"3.99.0","@aws-sdk/util-stream-browser":"3.78.0","@aws-sdk/util-stream-node":"3.78.0","@aws-sdk/util-user-agent-browser":"3.78.0","@aws-sdk/util-user-agent-node":"3.80.0","@aws-sdk/util-utf8-browser":"3.55.0","@aws-sdk/util-utf8-node":"3.55.0","@aws-sdk/util-waiter":"3.78.0","@aws-sdk/xml-builder":"3.55.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/chai":"^4.2.11","@types/mocha":"^8.0.4","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.121.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","test":"yarn test:unit","test:e2e":"ts-mocha test/**/*.ispec.ts && karma start karma.conf.js","test:unit":"ts-mocha test/**/*.spec.ts"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"2.0.0","@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/client-sts":"3.121.0","@aws-sdk/config-resolver":"3.110.0","@aws-sdk/credential-provider-node":"3.121.0","@aws-sdk/eventstream-serde-browser":"3.120.0","@aws-sdk/eventstream-serde-config-resolver":"3.110.0","@aws-sdk/eventstream-serde-node":"3.120.0","@aws-sdk/fetch-http-handler":"3.110.0","@aws-sdk/hash-blob-browser":"3.110.0","@aws-sdk/hash-node":"3.110.0","@aws-sdk/hash-stream-node":"3.110.0","@aws-sdk/invalid-dependency":"3.110.0","@aws-sdk/md5-js":"3.110.0","@aws-sdk/middleware-bucket-endpoint":"3.110.0","@aws-sdk/middleware-content-length":"3.110.0","@aws-sdk/middleware-expect-continue":"3.113.0","@aws-sdk/middleware-flexible-checksums":"3.110.0","@aws-sdk/middleware-host-header":"3.110.0","@aws-sdk/middleware-location-constraint":"3.110.0","@aws-sdk/middleware-logger":"3.110.0","@aws-sdk/middleware-recursion-detection":"3.110.0","@aws-sdk/middleware-retry":"3.118.1","@aws-sdk/middleware-sdk-s3":"3.110.0","@aws-sdk/middleware-serde":"3.110.0","@aws-sdk/middleware-signing":"3.110.0","@aws-sdk/middleware-ssec":"3.110.0","@aws-sdk/middleware-stack":"3.110.0","@aws-sdk/middleware-user-agent":"3.110.0","@aws-sdk/node-config-provider":"3.110.0","@aws-sdk/node-http-handler":"3.118.1","@aws-sdk/protocol-http":"3.110.0","@aws-sdk/signature-v4-multi-region":"3.118.0","@aws-sdk/smithy-client":"3.110.0","@aws-sdk/types":"3.110.0","@aws-sdk/url-parser":"3.110.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.110.0","@aws-sdk/util-defaults-mode-node":"3.110.0","@aws-sdk/util-stream-browser":"3.110.0","@aws-sdk/util-stream-node":"3.110.0","@aws-sdk/util-user-agent-browser":"3.110.0","@aws-sdk/util-user-agent-node":"3.118.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","@aws-sdk/util-waiter":"3.118.1","@aws-sdk/xml-builder":"3.109.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/chai":"^4.2.11","@types/mocha":"^8.0.4","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
 
 /***/ }),
 
@@ -102280,7 +102544,7 @@ module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native","version":"3.100.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.80.0","@aws-sdk/fetch-http-handler":"3.78.0","@aws-sdk/hash-node":"3.78.0","@aws-sdk/invalid-dependency":"3.78.0","@aws-sdk/middleware-content-length":"3.78.0","@aws-sdk/middleware-host-header":"3.78.0","@aws-sdk/middleware-logger":"3.78.0","@aws-sdk/middleware-retry":"3.80.0","@aws-sdk/middleware-serde":"3.78.0","@aws-sdk/middleware-stack":"3.78.0","@aws-sdk/middleware-user-agent":"3.78.0","@aws-sdk/node-config-provider":"3.80.0","@aws-sdk/node-http-handler":"3.94.0","@aws-sdk/protocol-http":"3.78.0","@aws-sdk/smithy-client":"3.99.0","@aws-sdk/types":"3.78.0","@aws-sdk/url-parser":"3.78.0","@aws-sdk/util-base64-browser":"3.58.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.99.0","@aws-sdk/util-defaults-mode-node":"3.99.0","@aws-sdk/util-user-agent-browser":"3.78.0","@aws-sdk/util-user-agent-node":"3.80.0","@aws-sdk/util-utf8-browser":"3.55.0","@aws-sdk/util-utf8-node":"3.55.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sso"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native","version":"3.121.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.110.0","@aws-sdk/fetch-http-handler":"3.110.0","@aws-sdk/hash-node":"3.110.0","@aws-sdk/invalid-dependency":"3.110.0","@aws-sdk/middleware-content-length":"3.110.0","@aws-sdk/middleware-host-header":"3.110.0","@aws-sdk/middleware-logger":"3.110.0","@aws-sdk/middleware-recursion-detection":"3.110.0","@aws-sdk/middleware-retry":"3.118.1","@aws-sdk/middleware-serde":"3.110.0","@aws-sdk/middleware-stack":"3.110.0","@aws-sdk/middleware-user-agent":"3.110.0","@aws-sdk/node-config-provider":"3.110.0","@aws-sdk/node-http-handler":"3.118.1","@aws-sdk/protocol-http":"3.110.0","@aws-sdk/smithy-client":"3.110.0","@aws-sdk/types":"3.110.0","@aws-sdk/url-parser":"3.110.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.110.0","@aws-sdk/util-defaults-mode-node":"3.110.0","@aws-sdk/util-user-agent-browser":"3.110.0","@aws-sdk/util-user-agent-node":"3.118.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sso"}}');
 
 /***/ }),
 
@@ -102288,7 +102552,7 @@ module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SD
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-sts","description":"AWS SDK for JavaScript Sts Client for Node.js, Browser and React Native","version":"3.100.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.80.0","@aws-sdk/credential-provider-node":"3.100.0","@aws-sdk/fetch-http-handler":"3.78.0","@aws-sdk/hash-node":"3.78.0","@aws-sdk/invalid-dependency":"3.78.0","@aws-sdk/middleware-content-length":"3.78.0","@aws-sdk/middleware-host-header":"3.78.0","@aws-sdk/middleware-logger":"3.78.0","@aws-sdk/middleware-retry":"3.80.0","@aws-sdk/middleware-sdk-sts":"3.78.0","@aws-sdk/middleware-serde":"3.78.0","@aws-sdk/middleware-signing":"3.78.0","@aws-sdk/middleware-stack":"3.78.0","@aws-sdk/middleware-user-agent":"3.78.0","@aws-sdk/node-config-provider":"3.80.0","@aws-sdk/node-http-handler":"3.94.0","@aws-sdk/protocol-http":"3.78.0","@aws-sdk/smithy-client":"3.99.0","@aws-sdk/types":"3.78.0","@aws-sdk/url-parser":"3.78.0","@aws-sdk/util-base64-browser":"3.58.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.99.0","@aws-sdk/util-defaults-mode-node":"3.99.0","@aws-sdk/util-user-agent-browser":"3.78.0","@aws-sdk/util-user-agent-node":"3.80.0","@aws-sdk/util-utf8-browser":"3.55.0","@aws-sdk/util-utf8-node":"3.55.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sts","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sts"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-sts","description":"AWS SDK for JavaScript Sts Client for Node.js, Browser and React Native","version":"3.121.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.110.0","@aws-sdk/credential-provider-node":"3.121.0","@aws-sdk/fetch-http-handler":"3.110.0","@aws-sdk/hash-node":"3.110.0","@aws-sdk/invalid-dependency":"3.110.0","@aws-sdk/middleware-content-length":"3.110.0","@aws-sdk/middleware-host-header":"3.110.0","@aws-sdk/middleware-logger":"3.110.0","@aws-sdk/middleware-recursion-detection":"3.110.0","@aws-sdk/middleware-retry":"3.118.1","@aws-sdk/middleware-sdk-sts":"3.110.0","@aws-sdk/middleware-serde":"3.110.0","@aws-sdk/middleware-signing":"3.110.0","@aws-sdk/middleware-stack":"3.110.0","@aws-sdk/middleware-user-agent":"3.110.0","@aws-sdk/node-config-provider":"3.110.0","@aws-sdk/node-http-handler":"3.118.1","@aws-sdk/protocol-http":"3.110.0","@aws-sdk/smithy-client":"3.110.0","@aws-sdk/types":"3.110.0","@aws-sdk/url-parser":"3.110.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.110.0","@aws-sdk/util-defaults-mode-node":"3.110.0","@aws-sdk/util-user-agent-browser":"3.110.0","@aws-sdk/util-user-agent-node":"3.118.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sts","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sts"}}');
 
 /***/ }),
 
