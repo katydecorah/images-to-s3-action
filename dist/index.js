@@ -4203,8 +4203,8 @@ class AbortMultipartUploadCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.AbortMultipartUploadRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.AbortMultipartUploadOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.AbortMultipartUploadRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.AbortMultipartUploadOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -4253,8 +4253,8 @@ class CompleteMultipartUploadCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.CompleteMultipartUploadRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.CompleteMultipartUploadOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.CompleteMultipartUploadRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.CompleteMultipartUploadOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -4303,8 +4303,8 @@ class CopyObjectCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.CopyObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.CopyObjectOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.CopyObjectRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.CopyObjectOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -4349,8 +4349,8 @@ class CreateBucketCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.CreateBucketRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.CreateBucketOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.CreateBucketRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.CreateBucketOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -4397,8 +4397,8 @@ class CreateMultipartUploadCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.CreateMultipartUploadRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.CreateMultipartUploadOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.CreateMultipartUploadRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.CreateMultipartUploadOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -4443,7 +4443,7 @@ class DeleteBucketAnalyticsConfigurationCommand extends smithy_client_1.Command 
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketAnalyticsConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketAnalyticsConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4487,7 +4487,7 @@ class DeleteBucketCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4533,7 +4533,7 @@ class DeleteBucketCorsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketCorsRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketCorsRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4579,7 +4579,7 @@ class DeleteBucketEncryptionCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketEncryptionRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketEncryptionRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4625,7 +4625,7 @@ class DeleteBucketIntelligentTieringConfigurationCommand extends smithy_client_1
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketIntelligentTieringConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketIntelligentTieringConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4671,7 +4671,7 @@ class DeleteBucketInventoryConfigurationCommand extends smithy_client_1.Command 
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketInventoryConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketInventoryConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4717,7 +4717,7 @@ class DeleteBucketLifecycleCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketLifecycleRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketLifecycleRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4763,7 +4763,7 @@ class DeleteBucketMetricsConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketMetricsConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketMetricsConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4809,7 +4809,7 @@ class DeleteBucketOwnershipControlsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketOwnershipControlsRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketOwnershipControlsRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4855,7 +4855,7 @@ class DeleteBucketPolicyCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketPolicyRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketPolicyRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4901,7 +4901,7 @@ class DeleteBucketReplicationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketReplicationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketReplicationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4947,7 +4947,7 @@ class DeleteBucketTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketTaggingRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketTaggingRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -4993,7 +4993,7 @@ class DeleteBucketWebsiteCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteBucketWebsiteRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteBucketWebsiteRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -5039,8 +5039,8 @@ class DeleteObjectCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.DeleteObjectOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteObjectRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.DeleteObjectOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5085,8 +5085,8 @@ class DeleteObjectTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteObjectTaggingRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.DeleteObjectTaggingOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteObjectTaggingRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.DeleteObjectTaggingOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5137,8 +5137,8 @@ class DeleteObjectsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeleteObjectsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.DeleteObjectsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeleteObjectsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.DeleteObjectsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5183,7 +5183,7 @@ class DeletePublicAccessBlockCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DeletePublicAccessBlockRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DeletePublicAccessBlockRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -5229,8 +5229,8 @@ class GetBucketAccelerateConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketAccelerateConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketAccelerateConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketAccelerateConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketAccelerateConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5275,8 +5275,8 @@ class GetBucketAclCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketAclRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketAclOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketAclRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketAclOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5321,8 +5321,8 @@ class GetBucketAnalyticsConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketAnalyticsConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketAnalyticsConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketAnalyticsConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketAnalyticsConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5367,8 +5367,8 @@ class GetBucketCorsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketCorsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketCorsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketCorsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketCorsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5413,8 +5413,8 @@ class GetBucketEncryptionCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketEncryptionRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketEncryptionOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketEncryptionRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketEncryptionOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5459,8 +5459,8 @@ class GetBucketIntelligentTieringConfigurationCommand extends smithy_client_1.Co
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketIntelligentTieringConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketIntelligentTieringConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketIntelligentTieringConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketIntelligentTieringConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5505,8 +5505,8 @@ class GetBucketInventoryConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketInventoryConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketInventoryConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketInventoryConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketInventoryConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5551,8 +5551,8 @@ class GetBucketLifecycleConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketLifecycleConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketLifecycleConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketLifecycleConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketLifecycleConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5597,8 +5597,8 @@ class GetBucketLocationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketLocationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketLocationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketLocationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketLocationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5643,8 +5643,8 @@ class GetBucketLoggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketLoggingRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketLoggingOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketLoggingRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketLoggingOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5689,8 +5689,8 @@ class GetBucketMetricsConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketMetricsConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketMetricsConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketMetricsConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketMetricsConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5735,8 +5735,8 @@ class GetBucketNotificationConfigurationCommand extends smithy_client_1.Command 
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketNotificationConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.NotificationConfiguration.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketNotificationConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.NotificationConfigurationFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5781,8 +5781,8 @@ class GetBucketOwnershipControlsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketOwnershipControlsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketOwnershipControlsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketOwnershipControlsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketOwnershipControlsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5827,8 +5827,8 @@ class GetBucketPolicyCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketPolicyRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketPolicyOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketPolicyRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketPolicyOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5873,8 +5873,8 @@ class GetBucketPolicyStatusCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketPolicyStatusRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketPolicyStatusOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketPolicyStatusRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketPolicyStatusOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5919,8 +5919,8 @@ class GetBucketReplicationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketReplicationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketReplicationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketReplicationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketReplicationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -5965,8 +5965,8 @@ class GetBucketRequestPaymentCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketRequestPaymentRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketRequestPaymentOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketRequestPaymentRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketRequestPaymentOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6011,8 +6011,8 @@ class GetBucketTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketTaggingRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketTaggingOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketTaggingRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketTaggingOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6057,8 +6057,8 @@ class GetBucketVersioningCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketVersioningRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketVersioningOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketVersioningRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketVersioningOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6103,8 +6103,8 @@ class GetBucketWebsiteCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetBucketWebsiteRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetBucketWebsiteOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetBucketWebsiteRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetBucketWebsiteOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6149,8 +6149,8 @@ class GetObjectAclCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectAclRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectAclOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectAclRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectAclOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6197,8 +6197,8 @@ class GetObjectAttributesCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectAttributesRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectAttributesOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectAttributesRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectAttributesOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6252,8 +6252,8 @@ class GetObjectCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6298,8 +6298,8 @@ class GetObjectLegalHoldCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectLegalHoldRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectLegalHoldOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectLegalHoldRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectLegalHoldOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6344,8 +6344,8 @@ class GetObjectLockConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectLockConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectLockConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectLockConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectLockConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6390,8 +6390,8 @@ class GetObjectRetentionCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectRetentionRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectRetentionOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectRetentionRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectRetentionOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6436,8 +6436,8 @@ class GetObjectTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectTaggingRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectTaggingOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectTaggingRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectTaggingOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6482,8 +6482,8 @@ class GetObjectTorrentCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetObjectTorrentRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetObjectTorrentOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetObjectTorrentRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetObjectTorrentOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6528,8 +6528,8 @@ class GetPublicAccessBlockCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetPublicAccessBlockRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetPublicAccessBlockOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetPublicAccessBlockRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetPublicAccessBlockOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6574,7 +6574,7 @@ class HeadBucketCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.HeadBucketRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.HeadBucketRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -6622,8 +6622,8 @@ class HeadObjectCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.HeadObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.HeadObjectOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.HeadObjectRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.HeadObjectOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6668,8 +6668,8 @@ class ListBucketAnalyticsConfigurationsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListBucketAnalyticsConfigurationsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListBucketAnalyticsConfigurationsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListBucketAnalyticsConfigurationsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListBucketAnalyticsConfigurationsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6714,8 +6714,8 @@ class ListBucketIntelligentTieringConfigurationsCommand extends smithy_client_1.
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListBucketIntelligentTieringConfigurationsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListBucketIntelligentTieringConfigurationsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListBucketIntelligentTieringConfigurationsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListBucketIntelligentTieringConfigurationsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6760,8 +6760,8 @@ class ListBucketInventoryConfigurationsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListBucketInventoryConfigurationsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListBucketInventoryConfigurationsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListBucketInventoryConfigurationsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListBucketInventoryConfigurationsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6806,8 +6806,8 @@ class ListBucketMetricsConfigurationsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListBucketMetricsConfigurationsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListBucketMetricsConfigurationsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListBucketMetricsConfigurationsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListBucketMetricsConfigurationsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6851,7 +6851,7 @@ class ListBucketsCommand extends smithy_client_1.Command {
             clientName,
             commandName,
             inputFilterSensitiveLog: (input) => input,
-            outputFilterSensitiveLog: models_0_1.ListBucketsOutput.filterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListBucketsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6896,8 +6896,8 @@ class ListMultipartUploadsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListMultipartUploadsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListMultipartUploadsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListMultipartUploadsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListMultipartUploadsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6942,8 +6942,8 @@ class ListObjectVersionsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListObjectVersionsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListObjectVersionsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListObjectVersionsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListObjectVersionsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -6988,8 +6988,8 @@ class ListObjectsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListObjectsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListObjectsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListObjectsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListObjectsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -7034,8 +7034,8 @@ class ListObjectsV2Command extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListObjectsV2Request.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListObjectsV2Output.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListObjectsV2RequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListObjectsV2OutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -7082,8 +7082,8 @@ class ListPartsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListPartsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListPartsOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListPartsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListPartsOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -7134,7 +7134,7 @@ class PutBucketAccelerateConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketAccelerateConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketAccelerateConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7186,7 +7186,7 @@ class PutBucketAclCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketAclRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketAclRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7232,7 +7232,7 @@ class PutBucketAnalyticsConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketAnalyticsConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketAnalyticsConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7284,7 +7284,7 @@ class PutBucketCorsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketCorsRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketCorsRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7336,7 +7336,7 @@ class PutBucketEncryptionCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketEncryptionRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketEncryptionRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7382,7 +7382,7 @@ class PutBucketIntelligentTieringConfigurationCommand extends smithy_client_1.Co
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketIntelligentTieringConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketIntelligentTieringConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7428,7 +7428,7 @@ class PutBucketInventoryConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketInventoryConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketInventoryConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7480,7 +7480,7 @@ class PutBucketLifecycleConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketLifecycleConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketLifecycleConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7532,7 +7532,7 @@ class PutBucketLoggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketLoggingRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketLoggingRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7578,7 +7578,7 @@ class PutBucketMetricsConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketMetricsConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketMetricsConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7624,7 +7624,7 @@ class PutBucketNotificationConfigurationCommand extends smithy_client_1.Command 
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketNotificationConfigurationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketNotificationConfigurationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7672,7 +7672,7 @@ class PutBucketOwnershipControlsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketOwnershipControlsRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketOwnershipControlsRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7724,7 +7724,7 @@ class PutBucketPolicyCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketPolicyRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketPolicyRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7776,7 +7776,7 @@ class PutBucketReplicationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketReplicationRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketReplicationRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7828,7 +7828,7 @@ class PutBucketRequestPaymentCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketRequestPaymentRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketRequestPaymentRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7880,7 +7880,7 @@ class PutBucketTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketTaggingRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketTaggingRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7932,7 +7932,7 @@ class PutBucketVersioningCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketVersioningRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketVersioningRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -7984,7 +7984,7 @@ class PutBucketWebsiteCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutBucketWebsiteRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutBucketWebsiteRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -8036,8 +8036,8 @@ class PutObjectAclCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutObjectAclRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.PutObjectAclOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutObjectAclRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.PutObjectAclOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8092,8 +8092,8 @@ class PutObjectCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.PutObjectOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutObjectRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.PutObjectOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8144,8 +8144,8 @@ class PutObjectLegalHoldCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutObjectLegalHoldRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.PutObjectLegalHoldOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutObjectLegalHoldRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.PutObjectLegalHoldOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8196,8 +8196,8 @@ class PutObjectLockConfigurationCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.PutObjectLockConfigurationRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.PutObjectLockConfigurationOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.PutObjectLockConfigurationRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.PutObjectLockConfigurationOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8248,8 +8248,8 @@ class PutObjectRetentionCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.PutObjectRetentionRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_1_1.PutObjectRetentionOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.PutObjectRetentionRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.PutObjectRetentionOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8300,8 +8300,8 @@ class PutObjectTaggingCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.PutObjectTaggingRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_1_1.PutObjectTaggingOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.PutObjectTaggingRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.PutObjectTaggingOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8352,7 +8352,7 @@ class PutPublicAccessBlockCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.PutPublicAccessBlockRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.PutPublicAccessBlockRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -8404,8 +8404,8 @@ class RestoreObjectCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.RestoreObjectRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_1_1.RestoreObjectOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.RestoreObjectRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.RestoreObjectOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8452,8 +8452,8 @@ class SelectObjectContentCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.SelectObjectContentRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_1_1.SelectObjectContentOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.SelectObjectContentRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.SelectObjectContentOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8506,8 +8506,8 @@ class UploadPartCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.UploadPartRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_1_1.UploadPartOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.UploadPartRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.UploadPartOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8556,8 +8556,8 @@ class UploadPartCopyCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.UploadPartCopyRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_1_1.UploadPartCopyOutput.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.UploadPartCopyRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_1_1.UploadPartCopyOutputFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -8602,7 +8602,7 @@ class WriteGetObjectResponseCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_1_1.WriteGetObjectResponseRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_1_1.WriteGetObjectResponseRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -9243,32 +9243,14 @@ tslib_1.__exportStar(__nccwpck_require__(6958), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeletePublicAccessBlockRequest = exports.DeleteObjectTaggingRequest = exports.DeleteObjectTaggingOutput = exports.DeleteObjectsRequest = exports.Delete = exports.ObjectIdentifier = exports.DeleteObjectsOutput = exports._Error = exports.DeletedObject = exports.DeleteObjectRequest = exports.DeleteObjectOutput = exports.DeleteBucketWebsiteRequest = exports.DeleteBucketTaggingRequest = exports.DeleteBucketReplicationRequest = exports.DeleteBucketPolicyRequest = exports.DeleteBucketOwnershipControlsRequest = exports.DeleteBucketMetricsConfigurationRequest = exports.DeleteBucketLifecycleRequest = exports.DeleteBucketInventoryConfigurationRequest = exports.DeleteBucketIntelligentTieringConfigurationRequest = exports.DeleteBucketEncryptionRequest = exports.DeleteBucketCorsRequest = exports.DeleteBucketAnalyticsConfigurationRequest = exports.DeleteBucketRequest = exports.CreateMultipartUploadRequest = exports.CreateMultipartUploadOutput = exports.CreateBucketRequest = exports.CreateBucketConfiguration = exports.CreateBucketOutput = exports.BucketAlreadyOwnedByYou = exports.BucketAlreadyExists = exports.ObjectNotInActiveTierError = exports.CopyObjectRequest = exports.ChecksumAlgorithm = exports.CopyObjectOutput = exports.CopyObjectResult = exports.CompleteMultipartUploadRequest = exports.CompletedMultipartUpload = exports.CompletedPart = exports.CompleteMultipartUploadOutput = exports.AccessControlTranslation = exports.AccessControlPolicy = exports.Owner = exports.Grant = exports.Grantee = exports.AccelerateConfiguration = exports.NoSuchUpload = exports.AbortMultipartUploadRequest = exports.AbortMultipartUploadOutput = exports.AbortIncompleteMultipartUpload = void 0;
-exports.TargetGrant = exports.GetBucketLocationRequest = exports.GetBucketLocationOutput = exports.GetBucketLifecycleConfigurationRequest = exports.GetBucketLifecycleConfigurationOutput = exports.LifecycleRule = exports.Transition = exports.NoncurrentVersionTransition = exports.NoncurrentVersionExpiration = exports.LifecycleRuleFilter = exports.LifecycleRuleAndOperator = exports.LifecycleExpiration = exports.GetBucketInventoryConfigurationRequest = exports.GetBucketInventoryConfigurationOutput = exports.InventoryConfiguration = exports.InventorySchedule = exports.InventoryFilter = exports.InventoryDestination = exports.InventoryS3BucketDestination = exports.InventoryEncryption = exports.SSES3 = exports.SSEKMS = exports.GetBucketIntelligentTieringConfigurationRequest = exports.GetBucketIntelligentTieringConfigurationOutput = exports.IntelligentTieringConfiguration = exports.Tiering = exports.IntelligentTieringFilter = exports.IntelligentTieringAndOperator = exports.GetBucketEncryptionRequest = exports.GetBucketEncryptionOutput = exports.ServerSideEncryptionConfiguration = exports.ServerSideEncryptionRule = exports.ServerSideEncryptionByDefault = exports.GetBucketCorsRequest = exports.GetBucketCorsOutput = exports.CORSRule = exports.GetBucketAnalyticsConfigurationRequest = exports.GetBucketAnalyticsConfigurationOutput = exports.AnalyticsConfiguration = exports.StorageClassAnalysis = exports.StorageClassAnalysisDataExport = exports.AnalyticsExportDestination = exports.AnalyticsS3BucketDestination = exports.AnalyticsFilter = exports.AnalyticsAndOperator = exports.Tag = exports.GetBucketAclRequest = exports.GetBucketAclOutput = exports.GetBucketAccelerateConfigurationRequest = exports.GetBucketAccelerateConfigurationOutput = void 0;
-exports.IndexDocument = exports.ErrorDocument = exports.GetBucketVersioningRequest = exports.GetBucketVersioningOutput = exports.GetBucketTaggingRequest = exports.GetBucketTaggingOutput = exports.GetBucketRequestPaymentRequest = exports.GetBucketRequestPaymentOutput = exports.GetBucketReplicationRequest = exports.GetBucketReplicationOutput = exports.ReplicationConfiguration = exports.ReplicationRule = exports.SourceSelectionCriteria = exports.SseKmsEncryptedObjects = exports.ReplicaModifications = exports.ReplicationRuleFilter = exports.ReplicationRuleAndOperator = exports.ExistingObjectReplication = exports.Destination = exports.ReplicationTime = exports.Metrics = exports.ReplicationTimeValue = exports.EncryptionConfiguration = exports.DeleteMarkerReplication = exports.GetBucketPolicyStatusRequest = exports.GetBucketPolicyStatusOutput = exports.PolicyStatus = exports.GetBucketPolicyRequest = exports.GetBucketPolicyOutput = exports.GetBucketOwnershipControlsRequest = exports.GetBucketOwnershipControlsOutput = exports.OwnershipControls = exports.OwnershipControlsRule = exports.NotificationConfiguration = exports.TopicConfiguration = exports.QueueConfiguration = exports.LambdaFunctionConfiguration = exports.NotificationConfigurationFilter = exports.S3KeyFilter = exports.FilterRule = exports.EventBridgeConfiguration = exports.GetBucketNotificationConfigurationRequest = exports.GetBucketMetricsConfigurationRequest = exports.GetBucketMetricsConfigurationOutput = exports.MetricsConfiguration = exports.MetricsFilter = exports.MetricsAndOperator = exports.GetBucketLoggingRequest = exports.GetBucketLoggingOutput = exports.LoggingEnabled = void 0;
-exports.Bucket = exports.ListBucketMetricsConfigurationsRequest = exports.ListBucketMetricsConfigurationsOutput = exports.ListBucketInventoryConfigurationsRequest = exports.ListBucketInventoryConfigurationsOutput = exports.ListBucketIntelligentTieringConfigurationsRequest = exports.ListBucketIntelligentTieringConfigurationsOutput = exports.ListBucketAnalyticsConfigurationsRequest = exports.ListBucketAnalyticsConfigurationsOutput = exports.HeadObjectRequest = exports.HeadObjectOutput = exports.NotFound = exports.HeadBucketRequest = exports.GetPublicAccessBlockRequest = exports.GetPublicAccessBlockOutput = exports.PublicAccessBlockConfiguration = exports.GetObjectTorrentRequest = exports.GetObjectTorrentOutput = exports.GetObjectTaggingRequest = exports.GetObjectTaggingOutput = exports.GetObjectRetentionRequest = exports.GetObjectRetentionOutput = exports.ObjectLockRetention = exports.GetObjectLockConfigurationRequest = exports.GetObjectLockConfigurationOutput = exports.ObjectLockConfiguration = exports.ObjectLockRule = exports.DefaultRetention = exports.GetObjectLegalHoldRequest = exports.GetObjectLegalHoldOutput = exports.ObjectLockLegalHold = exports.GetObjectAttributesRequest = exports.ObjectAttributes = exports.GetObjectAttributesOutput = exports.GetObjectAttributesParts = exports.ObjectPart = exports.Checksum = exports.GetObjectAclRequest = exports.GetObjectAclOutput = exports.NoSuchKey = exports.InvalidObjectState = exports.GetObjectRequest = exports.ChecksumMode = exports.GetObjectOutput = exports.GetBucketWebsiteRequest = exports.GetBucketWebsiteOutput = exports.RoutingRule = exports.Redirect = exports.Condition = exports.RedirectAllRequestsTo = void 0;
-exports.PutObjectLegalHoldRequest = exports.PutObjectLegalHoldOutput = exports.PutObjectAclRequest = exports.PutObjectAclOutput = exports.PutObjectRequest = exports.PutObjectOutput = exports.PutBucketWebsiteRequest = exports.WebsiteConfiguration = exports.PutBucketVersioningRequest = exports.VersioningConfiguration = exports.PutBucketTaggingRequest = exports.Tagging = exports.PutBucketRequestPaymentRequest = exports.RequestPaymentConfiguration = exports.PutBucketReplicationRequest = exports.PutBucketPolicyRequest = exports.PutBucketOwnershipControlsRequest = exports.PutBucketNotificationConfigurationRequest = exports.PutBucketMetricsConfigurationRequest = exports.PutBucketLoggingRequest = exports.BucketLoggingStatus = exports.PutBucketLifecycleConfigurationRequest = exports.BucketLifecycleConfiguration = exports.PutBucketInventoryConfigurationRequest = exports.PutBucketIntelligentTieringConfigurationRequest = exports.PutBucketEncryptionRequest = exports.PutBucketCorsRequest = exports.CORSConfiguration = exports.PutBucketAnalyticsConfigurationRequest = exports.PutBucketAclRequest = exports.PutBucketAccelerateConfigurationRequest = exports.ListPartsRequest = exports.ListPartsOutput = exports.Part = exports.ListObjectVersionsRequest = exports.ListObjectVersionsOutput = exports.ObjectVersion = exports.DeleteMarkerEntry = exports.ListObjectsV2Request = exports.ListObjectsV2Output = exports.NoSuchBucket = exports.ListObjectsRequest = exports.ListObjectsOutput = exports._Object = exports.ListMultipartUploadsRequest = exports.ListMultipartUploadsOutput = exports.MultipartUpload = exports.Initiator = exports.CommonPrefix = exports.ListBucketsOutput = void 0;
-exports.PutObjectLockConfigurationRequest = exports.PutObjectLockConfigurationOutput = void 0;
+exports.DeleteObjectOutputFilterSensitiveLog = exports.DeleteBucketWebsiteRequestFilterSensitiveLog = exports.DeleteBucketTaggingRequestFilterSensitiveLog = exports.DeleteBucketReplicationRequestFilterSensitiveLog = exports.DeleteBucketPolicyRequestFilterSensitiveLog = exports.DeleteBucketOwnershipControlsRequestFilterSensitiveLog = exports.DeleteBucketMetricsConfigurationRequestFilterSensitiveLog = exports.DeleteBucketLifecycleRequestFilterSensitiveLog = exports.DeleteBucketInventoryConfigurationRequestFilterSensitiveLog = exports.DeleteBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = exports.DeleteBucketEncryptionRequestFilterSensitiveLog = exports.DeleteBucketCorsRequestFilterSensitiveLog = exports.DeleteBucketAnalyticsConfigurationRequestFilterSensitiveLog = exports.DeleteBucketRequestFilterSensitiveLog = exports.CreateMultipartUploadRequestFilterSensitiveLog = exports.CreateMultipartUploadOutputFilterSensitiveLog = exports.CreateBucketRequestFilterSensitiveLog = exports.CreateBucketConfigurationFilterSensitiveLog = exports.CreateBucketOutputFilterSensitiveLog = exports.CopyObjectRequestFilterSensitiveLog = exports.CopyObjectOutputFilterSensitiveLog = exports.CopyObjectResultFilterSensitiveLog = exports.CompleteMultipartUploadRequestFilterSensitiveLog = exports.CompletedMultipartUploadFilterSensitiveLog = exports.CompletedPartFilterSensitiveLog = exports.CompleteMultipartUploadOutputFilterSensitiveLog = exports.AccessControlTranslationFilterSensitiveLog = exports.AccessControlPolicyFilterSensitiveLog = exports.OwnerFilterSensitiveLog = exports.GrantFilterSensitiveLog = exports.GranteeFilterSensitiveLog = exports.AccelerateConfigurationFilterSensitiveLog = exports.AbortMultipartUploadRequestFilterSensitiveLog = exports.AbortMultipartUploadOutputFilterSensitiveLog = exports.AbortIncompleteMultipartUploadFilterSensitiveLog = exports.NoSuchBucket = exports.NotFound = exports.ObjectAttributes = exports.NoSuchKey = exports.InvalidObjectState = exports.ChecksumMode = exports.ReplicationRuleFilter = exports.MetricsFilter = exports.LifecycleRuleFilter = exports.AnalyticsFilter = exports.BucketAlreadyOwnedByYou = exports.BucketAlreadyExists = exports.ObjectNotInActiveTierError = exports.ChecksumAlgorithm = exports.NoSuchUpload = void 0;
+exports.LifecycleRuleAndOperatorFilterSensitiveLog = exports.LifecycleExpirationFilterSensitiveLog = exports.GetBucketInventoryConfigurationRequestFilterSensitiveLog = exports.GetBucketInventoryConfigurationOutputFilterSensitiveLog = exports.InventoryConfigurationFilterSensitiveLog = exports.InventoryScheduleFilterSensitiveLog = exports.InventoryFilterFilterSensitiveLog = exports.InventoryDestinationFilterSensitiveLog = exports.InventoryS3BucketDestinationFilterSensitiveLog = exports.InventoryEncryptionFilterSensitiveLog = exports.SSES3FilterSensitiveLog = exports.SSEKMSFilterSensitiveLog = exports.GetBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = exports.GetBucketIntelligentTieringConfigurationOutputFilterSensitiveLog = exports.IntelligentTieringConfigurationFilterSensitiveLog = exports.TieringFilterSensitiveLog = exports.IntelligentTieringFilterFilterSensitiveLog = exports.IntelligentTieringAndOperatorFilterSensitiveLog = exports.GetBucketEncryptionRequestFilterSensitiveLog = exports.GetBucketEncryptionOutputFilterSensitiveLog = exports.ServerSideEncryptionConfigurationFilterSensitiveLog = exports.ServerSideEncryptionRuleFilterSensitiveLog = exports.ServerSideEncryptionByDefaultFilterSensitiveLog = exports.GetBucketCorsRequestFilterSensitiveLog = exports.GetBucketCorsOutputFilterSensitiveLog = exports.CORSRuleFilterSensitiveLog = exports.GetBucketAnalyticsConfigurationRequestFilterSensitiveLog = exports.GetBucketAnalyticsConfigurationOutputFilterSensitiveLog = exports.AnalyticsConfigurationFilterSensitiveLog = exports.StorageClassAnalysisFilterSensitiveLog = exports.StorageClassAnalysisDataExportFilterSensitiveLog = exports.AnalyticsExportDestinationFilterSensitiveLog = exports.AnalyticsS3BucketDestinationFilterSensitiveLog = exports.AnalyticsFilterFilterSensitiveLog = exports.AnalyticsAndOperatorFilterSensitiveLog = exports.TagFilterSensitiveLog = exports.GetBucketAclRequestFilterSensitiveLog = exports.GetBucketAclOutputFilterSensitiveLog = exports.GetBucketAccelerateConfigurationRequestFilterSensitiveLog = exports.GetBucketAccelerateConfigurationOutputFilterSensitiveLog = exports.DeletePublicAccessBlockRequestFilterSensitiveLog = exports.DeleteObjectTaggingRequestFilterSensitiveLog = exports.DeleteObjectTaggingOutputFilterSensitiveLog = exports.DeleteObjectsRequestFilterSensitiveLog = exports.DeleteFilterSensitiveLog = exports.ObjectIdentifierFilterSensitiveLog = exports.DeleteObjectsOutputFilterSensitiveLog = exports._ErrorFilterSensitiveLog = exports.DeletedObjectFilterSensitiveLog = exports.DeleteObjectRequestFilterSensitiveLog = void 0;
+exports.ReplicationConfigurationFilterSensitiveLog = exports.ReplicationRuleFilterSensitiveLog = exports.SourceSelectionCriteriaFilterSensitiveLog = exports.SseKmsEncryptedObjectsFilterSensitiveLog = exports.ReplicaModificationsFilterSensitiveLog = exports.ReplicationRuleFilterFilterSensitiveLog = exports.ReplicationRuleAndOperatorFilterSensitiveLog = exports.ExistingObjectReplicationFilterSensitiveLog = exports.DestinationFilterSensitiveLog = exports.ReplicationTimeFilterSensitiveLog = exports.MetricsFilterSensitiveLog = exports.ReplicationTimeValueFilterSensitiveLog = exports.EncryptionConfigurationFilterSensitiveLog = exports.DeleteMarkerReplicationFilterSensitiveLog = exports.GetBucketPolicyStatusRequestFilterSensitiveLog = exports.GetBucketPolicyStatusOutputFilterSensitiveLog = exports.PolicyStatusFilterSensitiveLog = exports.GetBucketPolicyRequestFilterSensitiveLog = exports.GetBucketPolicyOutputFilterSensitiveLog = exports.GetBucketOwnershipControlsRequestFilterSensitiveLog = exports.GetBucketOwnershipControlsOutputFilterSensitiveLog = exports.OwnershipControlsFilterSensitiveLog = exports.OwnershipControlsRuleFilterSensitiveLog = exports.NotificationConfigurationFilterSensitiveLog = exports.TopicConfigurationFilterSensitiveLog = exports.QueueConfigurationFilterSensitiveLog = exports.LambdaFunctionConfigurationFilterSensitiveLog = exports.NotificationConfigurationFilterFilterSensitiveLog = exports.S3KeyFilterFilterSensitiveLog = exports.FilterRuleFilterSensitiveLog = exports.EventBridgeConfigurationFilterSensitiveLog = exports.GetBucketNotificationConfigurationRequestFilterSensitiveLog = exports.GetBucketMetricsConfigurationRequestFilterSensitiveLog = exports.GetBucketMetricsConfigurationOutputFilterSensitiveLog = exports.MetricsConfigurationFilterSensitiveLog = exports.MetricsFilterFilterSensitiveLog = exports.MetricsAndOperatorFilterSensitiveLog = exports.GetBucketLoggingRequestFilterSensitiveLog = exports.GetBucketLoggingOutputFilterSensitiveLog = exports.LoggingEnabledFilterSensitiveLog = exports.TargetGrantFilterSensitiveLog = exports.GetBucketLocationRequestFilterSensitiveLog = exports.GetBucketLocationOutputFilterSensitiveLog = exports.GetBucketLifecycleConfigurationRequestFilterSensitiveLog = exports.GetBucketLifecycleConfigurationOutputFilterSensitiveLog = exports.LifecycleRuleFilterSensitiveLog = exports.TransitionFilterSensitiveLog = exports.NoncurrentVersionTransitionFilterSensitiveLog = exports.NoncurrentVersionExpirationFilterSensitiveLog = exports.LifecycleRuleFilterFilterSensitiveLog = void 0;
+exports.ListBucketIntelligentTieringConfigurationsRequestFilterSensitiveLog = exports.ListBucketIntelligentTieringConfigurationsOutputFilterSensitiveLog = exports.ListBucketAnalyticsConfigurationsRequestFilterSensitiveLog = exports.ListBucketAnalyticsConfigurationsOutputFilterSensitiveLog = exports.HeadObjectRequestFilterSensitiveLog = exports.HeadObjectOutputFilterSensitiveLog = exports.HeadBucketRequestFilterSensitiveLog = exports.GetPublicAccessBlockRequestFilterSensitiveLog = exports.GetPublicAccessBlockOutputFilterSensitiveLog = exports.PublicAccessBlockConfigurationFilterSensitiveLog = exports.GetObjectTorrentRequestFilterSensitiveLog = exports.GetObjectTorrentOutputFilterSensitiveLog = exports.GetObjectTaggingRequestFilterSensitiveLog = exports.GetObjectTaggingOutputFilterSensitiveLog = exports.GetObjectRetentionRequestFilterSensitiveLog = exports.GetObjectRetentionOutputFilterSensitiveLog = exports.ObjectLockRetentionFilterSensitiveLog = exports.GetObjectLockConfigurationRequestFilterSensitiveLog = exports.GetObjectLockConfigurationOutputFilterSensitiveLog = exports.ObjectLockConfigurationFilterSensitiveLog = exports.ObjectLockRuleFilterSensitiveLog = exports.DefaultRetentionFilterSensitiveLog = exports.GetObjectLegalHoldRequestFilterSensitiveLog = exports.GetObjectLegalHoldOutputFilterSensitiveLog = exports.ObjectLockLegalHoldFilterSensitiveLog = exports.GetObjectAttributesRequestFilterSensitiveLog = exports.GetObjectAttributesOutputFilterSensitiveLog = exports.GetObjectAttributesPartsFilterSensitiveLog = exports.ObjectPartFilterSensitiveLog = exports.ChecksumFilterSensitiveLog = exports.GetObjectAclRequestFilterSensitiveLog = exports.GetObjectAclOutputFilterSensitiveLog = exports.GetObjectRequestFilterSensitiveLog = exports.GetObjectOutputFilterSensitiveLog = exports.GetBucketWebsiteRequestFilterSensitiveLog = exports.GetBucketWebsiteOutputFilterSensitiveLog = exports.RoutingRuleFilterSensitiveLog = exports.RedirectFilterSensitiveLog = exports.ConditionFilterSensitiveLog = exports.RedirectAllRequestsToFilterSensitiveLog = exports.IndexDocumentFilterSensitiveLog = exports.ErrorDocumentFilterSensitiveLog = exports.GetBucketVersioningRequestFilterSensitiveLog = exports.GetBucketVersioningOutputFilterSensitiveLog = exports.GetBucketTaggingRequestFilterSensitiveLog = exports.GetBucketTaggingOutputFilterSensitiveLog = exports.GetBucketRequestPaymentRequestFilterSensitiveLog = exports.GetBucketRequestPaymentOutputFilterSensitiveLog = exports.GetBucketReplicationRequestFilterSensitiveLog = exports.GetBucketReplicationOutputFilterSensitiveLog = void 0;
+exports.PutObjectRequestFilterSensitiveLog = exports.PutObjectOutputFilterSensitiveLog = exports.PutBucketWebsiteRequestFilterSensitiveLog = exports.WebsiteConfigurationFilterSensitiveLog = exports.PutBucketVersioningRequestFilterSensitiveLog = exports.VersioningConfigurationFilterSensitiveLog = exports.PutBucketTaggingRequestFilterSensitiveLog = exports.TaggingFilterSensitiveLog = exports.PutBucketRequestPaymentRequestFilterSensitiveLog = exports.RequestPaymentConfigurationFilterSensitiveLog = exports.PutBucketReplicationRequestFilterSensitiveLog = exports.PutBucketPolicyRequestFilterSensitiveLog = exports.PutBucketOwnershipControlsRequestFilterSensitiveLog = exports.PutBucketNotificationConfigurationRequestFilterSensitiveLog = exports.PutBucketMetricsConfigurationRequestFilterSensitiveLog = exports.PutBucketLoggingRequestFilterSensitiveLog = exports.BucketLoggingStatusFilterSensitiveLog = exports.PutBucketLifecycleConfigurationRequestFilterSensitiveLog = exports.BucketLifecycleConfigurationFilterSensitiveLog = exports.PutBucketInventoryConfigurationRequestFilterSensitiveLog = exports.PutBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = exports.PutBucketEncryptionRequestFilterSensitiveLog = exports.PutBucketCorsRequestFilterSensitiveLog = exports.CORSConfigurationFilterSensitiveLog = exports.PutBucketAnalyticsConfigurationRequestFilterSensitiveLog = exports.PutBucketAclRequestFilterSensitiveLog = exports.PutBucketAccelerateConfigurationRequestFilterSensitiveLog = exports.ListPartsRequestFilterSensitiveLog = exports.ListPartsOutputFilterSensitiveLog = exports.PartFilterSensitiveLog = exports.ListObjectVersionsRequestFilterSensitiveLog = exports.ListObjectVersionsOutputFilterSensitiveLog = exports.ObjectVersionFilterSensitiveLog = exports.DeleteMarkerEntryFilterSensitiveLog = exports.ListObjectsV2RequestFilterSensitiveLog = exports.ListObjectsV2OutputFilterSensitiveLog = exports.ListObjectsRequestFilterSensitiveLog = exports.ListObjectsOutputFilterSensitiveLog = exports._ObjectFilterSensitiveLog = exports.ListMultipartUploadsRequestFilterSensitiveLog = exports.ListMultipartUploadsOutputFilterSensitiveLog = exports.MultipartUploadFilterSensitiveLog = exports.InitiatorFilterSensitiveLog = exports.CommonPrefixFilterSensitiveLog = exports.ListBucketsOutputFilterSensitiveLog = exports.BucketFilterSensitiveLog = exports.ListBucketMetricsConfigurationsRequestFilterSensitiveLog = exports.ListBucketMetricsConfigurationsOutputFilterSensitiveLog = exports.ListBucketInventoryConfigurationsRequestFilterSensitiveLog = exports.ListBucketInventoryConfigurationsOutputFilterSensitiveLog = void 0;
+exports.PutObjectLockConfigurationRequestFilterSensitiveLog = exports.PutObjectLockConfigurationOutputFilterSensitiveLog = exports.PutObjectLegalHoldRequestFilterSensitiveLog = exports.PutObjectLegalHoldOutputFilterSensitiveLog = exports.PutObjectAclRequestFilterSensitiveLog = exports.PutObjectAclOutputFilterSensitiveLog = void 0;
 const smithy_client_1 = __nccwpck_require__(4963);
 const S3ServiceException_1 = __nccwpck_require__(37614);
-var AbortIncompleteMultipartUpload;
-(function (AbortIncompleteMultipartUpload) {
-    AbortIncompleteMultipartUpload.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AbortIncompleteMultipartUpload = exports.AbortIncompleteMultipartUpload || (exports.AbortIncompleteMultipartUpload = {}));
-var AbortMultipartUploadOutput;
-(function (AbortMultipartUploadOutput) {
-    AbortMultipartUploadOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AbortMultipartUploadOutput = exports.AbortMultipartUploadOutput || (exports.AbortMultipartUploadOutput = {}));
-var AbortMultipartUploadRequest;
-(function (AbortMultipartUploadRequest) {
-    AbortMultipartUploadRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AbortMultipartUploadRequest = exports.AbortMultipartUploadRequest || (exports.AbortMultipartUploadRequest = {}));
 class NoSuchUpload extends S3ServiceException_1.S3ServiceException {
     constructor(opts) {
         super({
@@ -9282,82 +9264,6 @@ class NoSuchUpload extends S3ServiceException_1.S3ServiceException {
     }
 }
 exports.NoSuchUpload = NoSuchUpload;
-var AccelerateConfiguration;
-(function (AccelerateConfiguration) {
-    AccelerateConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AccelerateConfiguration = exports.AccelerateConfiguration || (exports.AccelerateConfiguration = {}));
-var Grantee;
-(function (Grantee) {
-    Grantee.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Grantee = exports.Grantee || (exports.Grantee = {}));
-var Grant;
-(function (Grant) {
-    Grant.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Grant = exports.Grant || (exports.Grant = {}));
-var Owner;
-(function (Owner) {
-    Owner.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Owner = exports.Owner || (exports.Owner = {}));
-var AccessControlPolicy;
-(function (AccessControlPolicy) {
-    AccessControlPolicy.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AccessControlPolicy = exports.AccessControlPolicy || (exports.AccessControlPolicy = {}));
-var AccessControlTranslation;
-(function (AccessControlTranslation) {
-    AccessControlTranslation.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AccessControlTranslation = exports.AccessControlTranslation || (exports.AccessControlTranslation = {}));
-var CompleteMultipartUploadOutput;
-(function (CompleteMultipartUploadOutput) {
-    CompleteMultipartUploadOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(CompleteMultipartUploadOutput = exports.CompleteMultipartUploadOutput || (exports.CompleteMultipartUploadOutput = {}));
-var CompletedPart;
-(function (CompletedPart) {
-    CompletedPart.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CompletedPart = exports.CompletedPart || (exports.CompletedPart = {}));
-var CompletedMultipartUpload;
-(function (CompletedMultipartUpload) {
-    CompletedMultipartUpload.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CompletedMultipartUpload = exports.CompletedMultipartUpload || (exports.CompletedMultipartUpload = {}));
-var CompleteMultipartUploadRequest;
-(function (CompleteMultipartUploadRequest) {
-    CompleteMultipartUploadRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(CompleteMultipartUploadRequest = exports.CompleteMultipartUploadRequest || (exports.CompleteMultipartUploadRequest = {}));
-var CopyObjectResult;
-(function (CopyObjectResult) {
-    CopyObjectResult.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CopyObjectResult = exports.CopyObjectResult || (exports.CopyObjectResult = {}));
-var CopyObjectOutput;
-(function (CopyObjectOutput) {
-    CopyObjectOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(CopyObjectOutput = exports.CopyObjectOutput || (exports.CopyObjectOutput = {}));
 var ChecksumAlgorithm;
 (function (ChecksumAlgorithm) {
     ChecksumAlgorithm["CRC32"] = "CRC32";
@@ -9365,16 +9271,6 @@ var ChecksumAlgorithm;
     ChecksumAlgorithm["SHA1"] = "SHA1";
     ChecksumAlgorithm["SHA256"] = "SHA256";
 })(ChecksumAlgorithm = exports.ChecksumAlgorithm || (exports.ChecksumAlgorithm = {}));
-var CopyObjectRequest;
-(function (CopyObjectRequest) {
-    CopyObjectRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.CopySourceSSECustomerKey && { CopySourceSSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(CopyObjectRequest = exports.CopyObjectRequest || (exports.CopyObjectRequest = {}));
 class ObjectNotInActiveTierError extends S3ServiceException_1.S3ServiceException {
     constructor(opts) {
         super({
@@ -9414,221 +9310,6 @@ class BucketAlreadyOwnedByYou extends S3ServiceException_1.S3ServiceException {
     }
 }
 exports.BucketAlreadyOwnedByYou = BucketAlreadyOwnedByYou;
-var CreateBucketOutput;
-(function (CreateBucketOutput) {
-    CreateBucketOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CreateBucketOutput = exports.CreateBucketOutput || (exports.CreateBucketOutput = {}));
-var CreateBucketConfiguration;
-(function (CreateBucketConfiguration) {
-    CreateBucketConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CreateBucketConfiguration = exports.CreateBucketConfiguration || (exports.CreateBucketConfiguration = {}));
-var CreateBucketRequest;
-(function (CreateBucketRequest) {
-    CreateBucketRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CreateBucketRequest = exports.CreateBucketRequest || (exports.CreateBucketRequest = {}));
-var CreateMultipartUploadOutput;
-(function (CreateMultipartUploadOutput) {
-    CreateMultipartUploadOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(CreateMultipartUploadOutput = exports.CreateMultipartUploadOutput || (exports.CreateMultipartUploadOutput = {}));
-var CreateMultipartUploadRequest;
-(function (CreateMultipartUploadRequest) {
-    CreateMultipartUploadRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(CreateMultipartUploadRequest = exports.CreateMultipartUploadRequest || (exports.CreateMultipartUploadRequest = {}));
-var DeleteBucketRequest;
-(function (DeleteBucketRequest) {
-    DeleteBucketRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketRequest = exports.DeleteBucketRequest || (exports.DeleteBucketRequest = {}));
-var DeleteBucketAnalyticsConfigurationRequest;
-(function (DeleteBucketAnalyticsConfigurationRequest) {
-    DeleteBucketAnalyticsConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketAnalyticsConfigurationRequest = exports.DeleteBucketAnalyticsConfigurationRequest || (exports.DeleteBucketAnalyticsConfigurationRequest = {}));
-var DeleteBucketCorsRequest;
-(function (DeleteBucketCorsRequest) {
-    DeleteBucketCorsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketCorsRequest = exports.DeleteBucketCorsRequest || (exports.DeleteBucketCorsRequest = {}));
-var DeleteBucketEncryptionRequest;
-(function (DeleteBucketEncryptionRequest) {
-    DeleteBucketEncryptionRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketEncryptionRequest = exports.DeleteBucketEncryptionRequest || (exports.DeleteBucketEncryptionRequest = {}));
-var DeleteBucketIntelligentTieringConfigurationRequest;
-(function (DeleteBucketIntelligentTieringConfigurationRequest) {
-    DeleteBucketIntelligentTieringConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketIntelligentTieringConfigurationRequest = exports.DeleteBucketIntelligentTieringConfigurationRequest || (exports.DeleteBucketIntelligentTieringConfigurationRequest = {}));
-var DeleteBucketInventoryConfigurationRequest;
-(function (DeleteBucketInventoryConfigurationRequest) {
-    DeleteBucketInventoryConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketInventoryConfigurationRequest = exports.DeleteBucketInventoryConfigurationRequest || (exports.DeleteBucketInventoryConfigurationRequest = {}));
-var DeleteBucketLifecycleRequest;
-(function (DeleteBucketLifecycleRequest) {
-    DeleteBucketLifecycleRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketLifecycleRequest = exports.DeleteBucketLifecycleRequest || (exports.DeleteBucketLifecycleRequest = {}));
-var DeleteBucketMetricsConfigurationRequest;
-(function (DeleteBucketMetricsConfigurationRequest) {
-    DeleteBucketMetricsConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketMetricsConfigurationRequest = exports.DeleteBucketMetricsConfigurationRequest || (exports.DeleteBucketMetricsConfigurationRequest = {}));
-var DeleteBucketOwnershipControlsRequest;
-(function (DeleteBucketOwnershipControlsRequest) {
-    DeleteBucketOwnershipControlsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketOwnershipControlsRequest = exports.DeleteBucketOwnershipControlsRequest || (exports.DeleteBucketOwnershipControlsRequest = {}));
-var DeleteBucketPolicyRequest;
-(function (DeleteBucketPolicyRequest) {
-    DeleteBucketPolicyRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketPolicyRequest = exports.DeleteBucketPolicyRequest || (exports.DeleteBucketPolicyRequest = {}));
-var DeleteBucketReplicationRequest;
-(function (DeleteBucketReplicationRequest) {
-    DeleteBucketReplicationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketReplicationRequest = exports.DeleteBucketReplicationRequest || (exports.DeleteBucketReplicationRequest = {}));
-var DeleteBucketTaggingRequest;
-(function (DeleteBucketTaggingRequest) {
-    DeleteBucketTaggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketTaggingRequest = exports.DeleteBucketTaggingRequest || (exports.DeleteBucketTaggingRequest = {}));
-var DeleteBucketWebsiteRequest;
-(function (DeleteBucketWebsiteRequest) {
-    DeleteBucketWebsiteRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteBucketWebsiteRequest = exports.DeleteBucketWebsiteRequest || (exports.DeleteBucketWebsiteRequest = {}));
-var DeleteObjectOutput;
-(function (DeleteObjectOutput) {
-    DeleteObjectOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteObjectOutput = exports.DeleteObjectOutput || (exports.DeleteObjectOutput = {}));
-var DeleteObjectRequest;
-(function (DeleteObjectRequest) {
-    DeleteObjectRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteObjectRequest = exports.DeleteObjectRequest || (exports.DeleteObjectRequest = {}));
-var DeletedObject;
-(function (DeletedObject) {
-    DeletedObject.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeletedObject = exports.DeletedObject || (exports.DeletedObject = {}));
-var _Error;
-(function (_Error) {
-    _Error.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(_Error = exports._Error || (exports._Error = {}));
-var DeleteObjectsOutput;
-(function (DeleteObjectsOutput) {
-    DeleteObjectsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteObjectsOutput = exports.DeleteObjectsOutput || (exports.DeleteObjectsOutput = {}));
-var ObjectIdentifier;
-(function (ObjectIdentifier) {
-    ObjectIdentifier.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectIdentifier = exports.ObjectIdentifier || (exports.ObjectIdentifier = {}));
-var Delete;
-(function (Delete) {
-    Delete.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Delete = exports.Delete || (exports.Delete = {}));
-var DeleteObjectsRequest;
-(function (DeleteObjectsRequest) {
-    DeleteObjectsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteObjectsRequest = exports.DeleteObjectsRequest || (exports.DeleteObjectsRequest = {}));
-var DeleteObjectTaggingOutput;
-(function (DeleteObjectTaggingOutput) {
-    DeleteObjectTaggingOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteObjectTaggingOutput = exports.DeleteObjectTaggingOutput || (exports.DeleteObjectTaggingOutput = {}));
-var DeleteObjectTaggingRequest;
-(function (DeleteObjectTaggingRequest) {
-    DeleteObjectTaggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteObjectTaggingRequest = exports.DeleteObjectTaggingRequest || (exports.DeleteObjectTaggingRequest = {}));
-var DeletePublicAccessBlockRequest;
-(function (DeletePublicAccessBlockRequest) {
-    DeletePublicAccessBlockRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeletePublicAccessBlockRequest = exports.DeletePublicAccessBlockRequest || (exports.DeletePublicAccessBlockRequest = {}));
-var GetBucketAccelerateConfigurationOutput;
-(function (GetBucketAccelerateConfigurationOutput) {
-    GetBucketAccelerateConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketAccelerateConfigurationOutput = exports.GetBucketAccelerateConfigurationOutput || (exports.GetBucketAccelerateConfigurationOutput = {}));
-var GetBucketAccelerateConfigurationRequest;
-(function (GetBucketAccelerateConfigurationRequest) {
-    GetBucketAccelerateConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketAccelerateConfigurationRequest = exports.GetBucketAccelerateConfigurationRequest || (exports.GetBucketAccelerateConfigurationRequest = {}));
-var GetBucketAclOutput;
-(function (GetBucketAclOutput) {
-    GetBucketAclOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketAclOutput = exports.GetBucketAclOutput || (exports.GetBucketAclOutput = {}));
-var GetBucketAclRequest;
-(function (GetBucketAclRequest) {
-    GetBucketAclRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketAclRequest = exports.GetBucketAclRequest || (exports.GetBucketAclRequest = {}));
-var Tag;
-(function (Tag) {
-    Tag.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Tag = exports.Tag || (exports.Tag = {}));
-var AnalyticsAndOperator;
-(function (AnalyticsAndOperator) {
-    AnalyticsAndOperator.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AnalyticsAndOperator = exports.AnalyticsAndOperator || (exports.AnalyticsAndOperator = {}));
 var AnalyticsFilter;
 (function (AnalyticsFilter) {
     AnalyticsFilter.visit = (value, visitor) => {
@@ -9640,237 +9321,7 @@ var AnalyticsFilter;
             return visitor.And(value.And);
         return visitor._(value.$unknown[0], value.$unknown[1]);
     };
-    AnalyticsFilter.filterSensitiveLog = (obj) => {
-        if (obj.Prefix !== undefined)
-            return { Prefix: obj.Prefix };
-        if (obj.Tag !== undefined)
-            return { Tag: Tag.filterSensitiveLog(obj.Tag) };
-        if (obj.And !== undefined)
-            return { And: AnalyticsAndOperator.filterSensitiveLog(obj.And) };
-        if (obj.$unknown !== undefined)
-            return { [obj.$unknown[0]]: "UNKNOWN" };
-    };
 })(AnalyticsFilter = exports.AnalyticsFilter || (exports.AnalyticsFilter = {}));
-var AnalyticsS3BucketDestination;
-(function (AnalyticsS3BucketDestination) {
-    AnalyticsS3BucketDestination.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AnalyticsS3BucketDestination = exports.AnalyticsS3BucketDestination || (exports.AnalyticsS3BucketDestination = {}));
-var AnalyticsExportDestination;
-(function (AnalyticsExportDestination) {
-    AnalyticsExportDestination.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AnalyticsExportDestination = exports.AnalyticsExportDestination || (exports.AnalyticsExportDestination = {}));
-var StorageClassAnalysisDataExport;
-(function (StorageClassAnalysisDataExport) {
-    StorageClassAnalysisDataExport.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(StorageClassAnalysisDataExport = exports.StorageClassAnalysisDataExport || (exports.StorageClassAnalysisDataExport = {}));
-var StorageClassAnalysis;
-(function (StorageClassAnalysis) {
-    StorageClassAnalysis.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(StorageClassAnalysis = exports.StorageClassAnalysis || (exports.StorageClassAnalysis = {}));
-var AnalyticsConfiguration;
-(function (AnalyticsConfiguration) {
-    AnalyticsConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Filter && { Filter: AnalyticsFilter.filterSensitiveLog(obj.Filter) }),
-    });
-})(AnalyticsConfiguration = exports.AnalyticsConfiguration || (exports.AnalyticsConfiguration = {}));
-var GetBucketAnalyticsConfigurationOutput;
-(function (GetBucketAnalyticsConfigurationOutput) {
-    GetBucketAnalyticsConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.AnalyticsConfiguration && {
-            AnalyticsConfiguration: AnalyticsConfiguration.filterSensitiveLog(obj.AnalyticsConfiguration),
-        }),
-    });
-})(GetBucketAnalyticsConfigurationOutput = exports.GetBucketAnalyticsConfigurationOutput || (exports.GetBucketAnalyticsConfigurationOutput = {}));
-var GetBucketAnalyticsConfigurationRequest;
-(function (GetBucketAnalyticsConfigurationRequest) {
-    GetBucketAnalyticsConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketAnalyticsConfigurationRequest = exports.GetBucketAnalyticsConfigurationRequest || (exports.GetBucketAnalyticsConfigurationRequest = {}));
-var CORSRule;
-(function (CORSRule) {
-    CORSRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CORSRule = exports.CORSRule || (exports.CORSRule = {}));
-var GetBucketCorsOutput;
-(function (GetBucketCorsOutput) {
-    GetBucketCorsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketCorsOutput = exports.GetBucketCorsOutput || (exports.GetBucketCorsOutput = {}));
-var GetBucketCorsRequest;
-(function (GetBucketCorsRequest) {
-    GetBucketCorsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketCorsRequest = exports.GetBucketCorsRequest || (exports.GetBucketCorsRequest = {}));
-var ServerSideEncryptionByDefault;
-(function (ServerSideEncryptionByDefault) {
-    ServerSideEncryptionByDefault.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.KMSMasterKeyID && { KMSMasterKeyID: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(ServerSideEncryptionByDefault = exports.ServerSideEncryptionByDefault || (exports.ServerSideEncryptionByDefault = {}));
-var ServerSideEncryptionRule;
-(function (ServerSideEncryptionRule) {
-    ServerSideEncryptionRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.ApplyServerSideEncryptionByDefault && {
-            ApplyServerSideEncryptionByDefault: ServerSideEncryptionByDefault.filterSensitiveLog(obj.ApplyServerSideEncryptionByDefault),
-        }),
-    });
-})(ServerSideEncryptionRule = exports.ServerSideEncryptionRule || (exports.ServerSideEncryptionRule = {}));
-var ServerSideEncryptionConfiguration;
-(function (ServerSideEncryptionConfiguration) {
-    ServerSideEncryptionConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Rules && { Rules: obj.Rules.map((item) => ServerSideEncryptionRule.filterSensitiveLog(item)) }),
-    });
-})(ServerSideEncryptionConfiguration = exports.ServerSideEncryptionConfiguration || (exports.ServerSideEncryptionConfiguration = {}));
-var GetBucketEncryptionOutput;
-(function (GetBucketEncryptionOutput) {
-    GetBucketEncryptionOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.ServerSideEncryptionConfiguration && {
-            ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration.filterSensitiveLog(obj.ServerSideEncryptionConfiguration),
-        }),
-    });
-})(GetBucketEncryptionOutput = exports.GetBucketEncryptionOutput || (exports.GetBucketEncryptionOutput = {}));
-var GetBucketEncryptionRequest;
-(function (GetBucketEncryptionRequest) {
-    GetBucketEncryptionRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketEncryptionRequest = exports.GetBucketEncryptionRequest || (exports.GetBucketEncryptionRequest = {}));
-var IntelligentTieringAndOperator;
-(function (IntelligentTieringAndOperator) {
-    IntelligentTieringAndOperator.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(IntelligentTieringAndOperator = exports.IntelligentTieringAndOperator || (exports.IntelligentTieringAndOperator = {}));
-var IntelligentTieringFilter;
-(function (IntelligentTieringFilter) {
-    IntelligentTieringFilter.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(IntelligentTieringFilter = exports.IntelligentTieringFilter || (exports.IntelligentTieringFilter = {}));
-var Tiering;
-(function (Tiering) {
-    Tiering.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Tiering = exports.Tiering || (exports.Tiering = {}));
-var IntelligentTieringConfiguration;
-(function (IntelligentTieringConfiguration) {
-    IntelligentTieringConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(IntelligentTieringConfiguration = exports.IntelligentTieringConfiguration || (exports.IntelligentTieringConfiguration = {}));
-var GetBucketIntelligentTieringConfigurationOutput;
-(function (GetBucketIntelligentTieringConfigurationOutput) {
-    GetBucketIntelligentTieringConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketIntelligentTieringConfigurationOutput = exports.GetBucketIntelligentTieringConfigurationOutput || (exports.GetBucketIntelligentTieringConfigurationOutput = {}));
-var GetBucketIntelligentTieringConfigurationRequest;
-(function (GetBucketIntelligentTieringConfigurationRequest) {
-    GetBucketIntelligentTieringConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketIntelligentTieringConfigurationRequest = exports.GetBucketIntelligentTieringConfigurationRequest || (exports.GetBucketIntelligentTieringConfigurationRequest = {}));
-var SSEKMS;
-(function (SSEKMS) {
-    SSEKMS.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.KeyId && { KeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(SSEKMS = exports.SSEKMS || (exports.SSEKMS = {}));
-var SSES3;
-(function (SSES3) {
-    SSES3.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(SSES3 = exports.SSES3 || (exports.SSES3 = {}));
-var InventoryEncryption;
-(function (InventoryEncryption) {
-    InventoryEncryption.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMS && { SSEKMS: SSEKMS.filterSensitiveLog(obj.SSEKMS) }),
-    });
-})(InventoryEncryption = exports.InventoryEncryption || (exports.InventoryEncryption = {}));
-var InventoryS3BucketDestination;
-(function (InventoryS3BucketDestination) {
-    InventoryS3BucketDestination.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Encryption && { Encryption: InventoryEncryption.filterSensitiveLog(obj.Encryption) }),
-    });
-})(InventoryS3BucketDestination = exports.InventoryS3BucketDestination || (exports.InventoryS3BucketDestination = {}));
-var InventoryDestination;
-(function (InventoryDestination) {
-    InventoryDestination.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.S3BucketDestination && {
-            S3BucketDestination: InventoryS3BucketDestination.filterSensitiveLog(obj.S3BucketDestination),
-        }),
-    });
-})(InventoryDestination = exports.InventoryDestination || (exports.InventoryDestination = {}));
-var InventoryFilter;
-(function (InventoryFilter) {
-    InventoryFilter.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(InventoryFilter = exports.InventoryFilter || (exports.InventoryFilter = {}));
-var InventorySchedule;
-(function (InventorySchedule) {
-    InventorySchedule.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(InventorySchedule = exports.InventorySchedule || (exports.InventorySchedule = {}));
-var InventoryConfiguration;
-(function (InventoryConfiguration) {
-    InventoryConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Destination && { Destination: InventoryDestination.filterSensitiveLog(obj.Destination) }),
-    });
-})(InventoryConfiguration = exports.InventoryConfiguration || (exports.InventoryConfiguration = {}));
-var GetBucketInventoryConfigurationOutput;
-(function (GetBucketInventoryConfigurationOutput) {
-    GetBucketInventoryConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.InventoryConfiguration && {
-            InventoryConfiguration: InventoryConfiguration.filterSensitiveLog(obj.InventoryConfiguration),
-        }),
-    });
-})(GetBucketInventoryConfigurationOutput = exports.GetBucketInventoryConfigurationOutput || (exports.GetBucketInventoryConfigurationOutput = {}));
-var GetBucketInventoryConfigurationRequest;
-(function (GetBucketInventoryConfigurationRequest) {
-    GetBucketInventoryConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketInventoryConfigurationRequest = exports.GetBucketInventoryConfigurationRequest || (exports.GetBucketInventoryConfigurationRequest = {}));
-var LifecycleExpiration;
-(function (LifecycleExpiration) {
-    LifecycleExpiration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(LifecycleExpiration = exports.LifecycleExpiration || (exports.LifecycleExpiration = {}));
-var LifecycleRuleAndOperator;
-(function (LifecycleRuleAndOperator) {
-    LifecycleRuleAndOperator.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(LifecycleRuleAndOperator = exports.LifecycleRuleAndOperator || (exports.LifecycleRuleAndOperator = {}));
 var LifecycleRuleFilter;
 (function (LifecycleRuleFilter) {
     LifecycleRuleFilter.visit = (value, visitor) => {
@@ -9886,101 +9337,7 @@ var LifecycleRuleFilter;
             return visitor.And(value.And);
         return visitor._(value.$unknown[0], value.$unknown[1]);
     };
-    LifecycleRuleFilter.filterSensitiveLog = (obj) => {
-        if (obj.Prefix !== undefined)
-            return { Prefix: obj.Prefix };
-        if (obj.Tag !== undefined)
-            return { Tag: Tag.filterSensitiveLog(obj.Tag) };
-        if (obj.ObjectSizeGreaterThan !== undefined)
-            return { ObjectSizeGreaterThan: obj.ObjectSizeGreaterThan };
-        if (obj.ObjectSizeLessThan !== undefined)
-            return { ObjectSizeLessThan: obj.ObjectSizeLessThan };
-        if (obj.And !== undefined)
-            return { And: LifecycleRuleAndOperator.filterSensitiveLog(obj.And) };
-        if (obj.$unknown !== undefined)
-            return { [obj.$unknown[0]]: "UNKNOWN" };
-    };
 })(LifecycleRuleFilter = exports.LifecycleRuleFilter || (exports.LifecycleRuleFilter = {}));
-var NoncurrentVersionExpiration;
-(function (NoncurrentVersionExpiration) {
-    NoncurrentVersionExpiration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(NoncurrentVersionExpiration = exports.NoncurrentVersionExpiration || (exports.NoncurrentVersionExpiration = {}));
-var NoncurrentVersionTransition;
-(function (NoncurrentVersionTransition) {
-    NoncurrentVersionTransition.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(NoncurrentVersionTransition = exports.NoncurrentVersionTransition || (exports.NoncurrentVersionTransition = {}));
-var Transition;
-(function (Transition) {
-    Transition.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Transition = exports.Transition || (exports.Transition = {}));
-var LifecycleRule;
-(function (LifecycleRule) {
-    LifecycleRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Filter && { Filter: LifecycleRuleFilter.filterSensitiveLog(obj.Filter) }),
-    });
-})(LifecycleRule = exports.LifecycleRule || (exports.LifecycleRule = {}));
-var GetBucketLifecycleConfigurationOutput;
-(function (GetBucketLifecycleConfigurationOutput) {
-    GetBucketLifecycleConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Rules && { Rules: obj.Rules.map((item) => LifecycleRule.filterSensitiveLog(item)) }),
-    });
-})(GetBucketLifecycleConfigurationOutput = exports.GetBucketLifecycleConfigurationOutput || (exports.GetBucketLifecycleConfigurationOutput = {}));
-var GetBucketLifecycleConfigurationRequest;
-(function (GetBucketLifecycleConfigurationRequest) {
-    GetBucketLifecycleConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketLifecycleConfigurationRequest = exports.GetBucketLifecycleConfigurationRequest || (exports.GetBucketLifecycleConfigurationRequest = {}));
-var GetBucketLocationOutput;
-(function (GetBucketLocationOutput) {
-    GetBucketLocationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketLocationOutput = exports.GetBucketLocationOutput || (exports.GetBucketLocationOutput = {}));
-var GetBucketLocationRequest;
-(function (GetBucketLocationRequest) {
-    GetBucketLocationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketLocationRequest = exports.GetBucketLocationRequest || (exports.GetBucketLocationRequest = {}));
-var TargetGrant;
-(function (TargetGrant) {
-    TargetGrant.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(TargetGrant = exports.TargetGrant || (exports.TargetGrant = {}));
-var LoggingEnabled;
-(function (LoggingEnabled) {
-    LoggingEnabled.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(LoggingEnabled = exports.LoggingEnabled || (exports.LoggingEnabled = {}));
-var GetBucketLoggingOutput;
-(function (GetBucketLoggingOutput) {
-    GetBucketLoggingOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketLoggingOutput = exports.GetBucketLoggingOutput || (exports.GetBucketLoggingOutput = {}));
-var GetBucketLoggingRequest;
-(function (GetBucketLoggingRequest) {
-    GetBucketLoggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketLoggingRequest = exports.GetBucketLoggingRequest || (exports.GetBucketLoggingRequest = {}));
-var MetricsAndOperator;
-(function (MetricsAndOperator) {
-    MetricsAndOperator.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(MetricsAndOperator = exports.MetricsAndOperator || (exports.MetricsAndOperator = {}));
 var MetricsFilter;
 (function (MetricsFilter) {
     MetricsFilter.visit = (value, visitor) => {
@@ -9994,197 +9351,7 @@ var MetricsFilter;
             return visitor.And(value.And);
         return visitor._(value.$unknown[0], value.$unknown[1]);
     };
-    MetricsFilter.filterSensitiveLog = (obj) => {
-        if (obj.Prefix !== undefined)
-            return { Prefix: obj.Prefix };
-        if (obj.Tag !== undefined)
-            return { Tag: Tag.filterSensitiveLog(obj.Tag) };
-        if (obj.AccessPointArn !== undefined)
-            return { AccessPointArn: obj.AccessPointArn };
-        if (obj.And !== undefined)
-            return { And: MetricsAndOperator.filterSensitiveLog(obj.And) };
-        if (obj.$unknown !== undefined)
-            return { [obj.$unknown[0]]: "UNKNOWN" };
-    };
 })(MetricsFilter = exports.MetricsFilter || (exports.MetricsFilter = {}));
-var MetricsConfiguration;
-(function (MetricsConfiguration) {
-    MetricsConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Filter && { Filter: MetricsFilter.filterSensitiveLog(obj.Filter) }),
-    });
-})(MetricsConfiguration = exports.MetricsConfiguration || (exports.MetricsConfiguration = {}));
-var GetBucketMetricsConfigurationOutput;
-(function (GetBucketMetricsConfigurationOutput) {
-    GetBucketMetricsConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.MetricsConfiguration && {
-            MetricsConfiguration: MetricsConfiguration.filterSensitiveLog(obj.MetricsConfiguration),
-        }),
-    });
-})(GetBucketMetricsConfigurationOutput = exports.GetBucketMetricsConfigurationOutput || (exports.GetBucketMetricsConfigurationOutput = {}));
-var GetBucketMetricsConfigurationRequest;
-(function (GetBucketMetricsConfigurationRequest) {
-    GetBucketMetricsConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketMetricsConfigurationRequest = exports.GetBucketMetricsConfigurationRequest || (exports.GetBucketMetricsConfigurationRequest = {}));
-var GetBucketNotificationConfigurationRequest;
-(function (GetBucketNotificationConfigurationRequest) {
-    GetBucketNotificationConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketNotificationConfigurationRequest = exports.GetBucketNotificationConfigurationRequest || (exports.GetBucketNotificationConfigurationRequest = {}));
-var EventBridgeConfiguration;
-(function (EventBridgeConfiguration) {
-    EventBridgeConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(EventBridgeConfiguration = exports.EventBridgeConfiguration || (exports.EventBridgeConfiguration = {}));
-var FilterRule;
-(function (FilterRule) {
-    FilterRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(FilterRule = exports.FilterRule || (exports.FilterRule = {}));
-var S3KeyFilter;
-(function (S3KeyFilter) {
-    S3KeyFilter.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(S3KeyFilter = exports.S3KeyFilter || (exports.S3KeyFilter = {}));
-var NotificationConfigurationFilter;
-(function (NotificationConfigurationFilter) {
-    NotificationConfigurationFilter.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(NotificationConfigurationFilter = exports.NotificationConfigurationFilter || (exports.NotificationConfigurationFilter = {}));
-var LambdaFunctionConfiguration;
-(function (LambdaFunctionConfiguration) {
-    LambdaFunctionConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(LambdaFunctionConfiguration = exports.LambdaFunctionConfiguration || (exports.LambdaFunctionConfiguration = {}));
-var QueueConfiguration;
-(function (QueueConfiguration) {
-    QueueConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(QueueConfiguration = exports.QueueConfiguration || (exports.QueueConfiguration = {}));
-var TopicConfiguration;
-(function (TopicConfiguration) {
-    TopicConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(TopicConfiguration = exports.TopicConfiguration || (exports.TopicConfiguration = {}));
-var NotificationConfiguration;
-(function (NotificationConfiguration) {
-    NotificationConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(NotificationConfiguration = exports.NotificationConfiguration || (exports.NotificationConfiguration = {}));
-var OwnershipControlsRule;
-(function (OwnershipControlsRule) {
-    OwnershipControlsRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(OwnershipControlsRule = exports.OwnershipControlsRule || (exports.OwnershipControlsRule = {}));
-var OwnershipControls;
-(function (OwnershipControls) {
-    OwnershipControls.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(OwnershipControls = exports.OwnershipControls || (exports.OwnershipControls = {}));
-var GetBucketOwnershipControlsOutput;
-(function (GetBucketOwnershipControlsOutput) {
-    GetBucketOwnershipControlsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketOwnershipControlsOutput = exports.GetBucketOwnershipControlsOutput || (exports.GetBucketOwnershipControlsOutput = {}));
-var GetBucketOwnershipControlsRequest;
-(function (GetBucketOwnershipControlsRequest) {
-    GetBucketOwnershipControlsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketOwnershipControlsRequest = exports.GetBucketOwnershipControlsRequest || (exports.GetBucketOwnershipControlsRequest = {}));
-var GetBucketPolicyOutput;
-(function (GetBucketPolicyOutput) {
-    GetBucketPolicyOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketPolicyOutput = exports.GetBucketPolicyOutput || (exports.GetBucketPolicyOutput = {}));
-var GetBucketPolicyRequest;
-(function (GetBucketPolicyRequest) {
-    GetBucketPolicyRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketPolicyRequest = exports.GetBucketPolicyRequest || (exports.GetBucketPolicyRequest = {}));
-var PolicyStatus;
-(function (PolicyStatus) {
-    PolicyStatus.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PolicyStatus = exports.PolicyStatus || (exports.PolicyStatus = {}));
-var GetBucketPolicyStatusOutput;
-(function (GetBucketPolicyStatusOutput) {
-    GetBucketPolicyStatusOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketPolicyStatusOutput = exports.GetBucketPolicyStatusOutput || (exports.GetBucketPolicyStatusOutput = {}));
-var GetBucketPolicyStatusRequest;
-(function (GetBucketPolicyStatusRequest) {
-    GetBucketPolicyStatusRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketPolicyStatusRequest = exports.GetBucketPolicyStatusRequest || (exports.GetBucketPolicyStatusRequest = {}));
-var DeleteMarkerReplication;
-(function (DeleteMarkerReplication) {
-    DeleteMarkerReplication.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteMarkerReplication = exports.DeleteMarkerReplication || (exports.DeleteMarkerReplication = {}));
-var EncryptionConfiguration;
-(function (EncryptionConfiguration) {
-    EncryptionConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(EncryptionConfiguration = exports.EncryptionConfiguration || (exports.EncryptionConfiguration = {}));
-var ReplicationTimeValue;
-(function (ReplicationTimeValue) {
-    ReplicationTimeValue.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ReplicationTimeValue = exports.ReplicationTimeValue || (exports.ReplicationTimeValue = {}));
-var Metrics;
-(function (Metrics) {
-    Metrics.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Metrics = exports.Metrics || (exports.Metrics = {}));
-var ReplicationTime;
-(function (ReplicationTime) {
-    ReplicationTime.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ReplicationTime = exports.ReplicationTime || (exports.ReplicationTime = {}));
-var Destination;
-(function (Destination) {
-    Destination.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Destination = exports.Destination || (exports.Destination = {}));
-var ExistingObjectReplication;
-(function (ExistingObjectReplication) {
-    ExistingObjectReplication.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ExistingObjectReplication = exports.ExistingObjectReplication || (exports.ExistingObjectReplication = {}));
-var ReplicationRuleAndOperator;
-(function (ReplicationRuleAndOperator) {
-    ReplicationRuleAndOperator.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ReplicationRuleAndOperator = exports.ReplicationRuleAndOperator || (exports.ReplicationRuleAndOperator = {}));
 var ReplicationRuleFilter;
 (function (ReplicationRuleFilter) {
     ReplicationRuleFilter.visit = (value, visitor) => {
@@ -10196,166 +9363,11 @@ var ReplicationRuleFilter;
             return visitor.And(value.And);
         return visitor._(value.$unknown[0], value.$unknown[1]);
     };
-    ReplicationRuleFilter.filterSensitiveLog = (obj) => {
-        if (obj.Prefix !== undefined)
-            return { Prefix: obj.Prefix };
-        if (obj.Tag !== undefined)
-            return { Tag: Tag.filterSensitiveLog(obj.Tag) };
-        if (obj.And !== undefined)
-            return { And: ReplicationRuleAndOperator.filterSensitiveLog(obj.And) };
-        if (obj.$unknown !== undefined)
-            return { [obj.$unknown[0]]: "UNKNOWN" };
-    };
 })(ReplicationRuleFilter = exports.ReplicationRuleFilter || (exports.ReplicationRuleFilter = {}));
-var ReplicaModifications;
-(function (ReplicaModifications) {
-    ReplicaModifications.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ReplicaModifications = exports.ReplicaModifications || (exports.ReplicaModifications = {}));
-var SseKmsEncryptedObjects;
-(function (SseKmsEncryptedObjects) {
-    SseKmsEncryptedObjects.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(SseKmsEncryptedObjects = exports.SseKmsEncryptedObjects || (exports.SseKmsEncryptedObjects = {}));
-var SourceSelectionCriteria;
-(function (SourceSelectionCriteria) {
-    SourceSelectionCriteria.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(SourceSelectionCriteria = exports.SourceSelectionCriteria || (exports.SourceSelectionCriteria = {}));
-var ReplicationRule;
-(function (ReplicationRule) {
-    ReplicationRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Filter && { Filter: ReplicationRuleFilter.filterSensitiveLog(obj.Filter) }),
-    });
-})(ReplicationRule = exports.ReplicationRule || (exports.ReplicationRule = {}));
-var ReplicationConfiguration;
-(function (ReplicationConfiguration) {
-    ReplicationConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Rules && { Rules: obj.Rules.map((item) => ReplicationRule.filterSensitiveLog(item)) }),
-    });
-})(ReplicationConfiguration = exports.ReplicationConfiguration || (exports.ReplicationConfiguration = {}));
-var GetBucketReplicationOutput;
-(function (GetBucketReplicationOutput) {
-    GetBucketReplicationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.ReplicationConfiguration && {
-            ReplicationConfiguration: ReplicationConfiguration.filterSensitiveLog(obj.ReplicationConfiguration),
-        }),
-    });
-})(GetBucketReplicationOutput = exports.GetBucketReplicationOutput || (exports.GetBucketReplicationOutput = {}));
-var GetBucketReplicationRequest;
-(function (GetBucketReplicationRequest) {
-    GetBucketReplicationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketReplicationRequest = exports.GetBucketReplicationRequest || (exports.GetBucketReplicationRequest = {}));
-var GetBucketRequestPaymentOutput;
-(function (GetBucketRequestPaymentOutput) {
-    GetBucketRequestPaymentOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketRequestPaymentOutput = exports.GetBucketRequestPaymentOutput || (exports.GetBucketRequestPaymentOutput = {}));
-var GetBucketRequestPaymentRequest;
-(function (GetBucketRequestPaymentRequest) {
-    GetBucketRequestPaymentRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketRequestPaymentRequest = exports.GetBucketRequestPaymentRequest || (exports.GetBucketRequestPaymentRequest = {}));
-var GetBucketTaggingOutput;
-(function (GetBucketTaggingOutput) {
-    GetBucketTaggingOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketTaggingOutput = exports.GetBucketTaggingOutput || (exports.GetBucketTaggingOutput = {}));
-var GetBucketTaggingRequest;
-(function (GetBucketTaggingRequest) {
-    GetBucketTaggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketTaggingRequest = exports.GetBucketTaggingRequest || (exports.GetBucketTaggingRequest = {}));
-var GetBucketVersioningOutput;
-(function (GetBucketVersioningOutput) {
-    GetBucketVersioningOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketVersioningOutput = exports.GetBucketVersioningOutput || (exports.GetBucketVersioningOutput = {}));
-var GetBucketVersioningRequest;
-(function (GetBucketVersioningRequest) {
-    GetBucketVersioningRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketVersioningRequest = exports.GetBucketVersioningRequest || (exports.GetBucketVersioningRequest = {}));
-var ErrorDocument;
-(function (ErrorDocument) {
-    ErrorDocument.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ErrorDocument = exports.ErrorDocument || (exports.ErrorDocument = {}));
-var IndexDocument;
-(function (IndexDocument) {
-    IndexDocument.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(IndexDocument = exports.IndexDocument || (exports.IndexDocument = {}));
-var RedirectAllRequestsTo;
-(function (RedirectAllRequestsTo) {
-    RedirectAllRequestsTo.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RedirectAllRequestsTo = exports.RedirectAllRequestsTo || (exports.RedirectAllRequestsTo = {}));
-var Condition;
-(function (Condition) {
-    Condition.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Condition = exports.Condition || (exports.Condition = {}));
-var Redirect;
-(function (Redirect) {
-    Redirect.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Redirect = exports.Redirect || (exports.Redirect = {}));
-var RoutingRule;
-(function (RoutingRule) {
-    RoutingRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RoutingRule = exports.RoutingRule || (exports.RoutingRule = {}));
-var GetBucketWebsiteOutput;
-(function (GetBucketWebsiteOutput) {
-    GetBucketWebsiteOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketWebsiteOutput = exports.GetBucketWebsiteOutput || (exports.GetBucketWebsiteOutput = {}));
-var GetBucketWebsiteRequest;
-(function (GetBucketWebsiteRequest) {
-    GetBucketWebsiteRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetBucketWebsiteRequest = exports.GetBucketWebsiteRequest || (exports.GetBucketWebsiteRequest = {}));
-var GetObjectOutput;
-(function (GetObjectOutput) {
-    GetObjectOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(GetObjectOutput = exports.GetObjectOutput || (exports.GetObjectOutput = {}));
 var ChecksumMode;
 (function (ChecksumMode) {
     ChecksumMode["ENABLED"] = "ENABLED";
 })(ChecksumMode = exports.ChecksumMode || (exports.ChecksumMode = {}));
-var GetObjectRequest;
-(function (GetObjectRequest) {
-    GetObjectRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(GetObjectRequest = exports.GetObjectRequest || (exports.GetObjectRequest = {}));
 class InvalidObjectState extends S3ServiceException_1.S3ServiceException {
     constructor(opts) {
         super({
@@ -10384,42 +9396,6 @@ class NoSuchKey extends S3ServiceException_1.S3ServiceException {
     }
 }
 exports.NoSuchKey = NoSuchKey;
-var GetObjectAclOutput;
-(function (GetObjectAclOutput) {
-    GetObjectAclOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectAclOutput = exports.GetObjectAclOutput || (exports.GetObjectAclOutput = {}));
-var GetObjectAclRequest;
-(function (GetObjectAclRequest) {
-    GetObjectAclRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectAclRequest = exports.GetObjectAclRequest || (exports.GetObjectAclRequest = {}));
-var Checksum;
-(function (Checksum) {
-    Checksum.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Checksum = exports.Checksum || (exports.Checksum = {}));
-var ObjectPart;
-(function (ObjectPart) {
-    ObjectPart.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectPart = exports.ObjectPart || (exports.ObjectPart = {}));
-var GetObjectAttributesParts;
-(function (GetObjectAttributesParts) {
-    GetObjectAttributesParts.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectAttributesParts = exports.GetObjectAttributesParts || (exports.GetObjectAttributesParts = {}));
-var GetObjectAttributesOutput;
-(function (GetObjectAttributesOutput) {
-    GetObjectAttributesOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectAttributesOutput = exports.GetObjectAttributesOutput || (exports.GetObjectAttributesOutput = {}));
 var ObjectAttributes;
 (function (ObjectAttributes) {
     ObjectAttributes["CHECKSUM"] = "Checksum";
@@ -10428,127 +9404,6 @@ var ObjectAttributes;
     ObjectAttributes["OBJECT_SIZE"] = "ObjectSize";
     ObjectAttributes["STORAGE_CLASS"] = "StorageClass";
 })(ObjectAttributes = exports.ObjectAttributes || (exports.ObjectAttributes = {}));
-var GetObjectAttributesRequest;
-(function (GetObjectAttributesRequest) {
-    GetObjectAttributesRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(GetObjectAttributesRequest = exports.GetObjectAttributesRequest || (exports.GetObjectAttributesRequest = {}));
-var ObjectLockLegalHold;
-(function (ObjectLockLegalHold) {
-    ObjectLockLegalHold.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectLockLegalHold = exports.ObjectLockLegalHold || (exports.ObjectLockLegalHold = {}));
-var GetObjectLegalHoldOutput;
-(function (GetObjectLegalHoldOutput) {
-    GetObjectLegalHoldOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectLegalHoldOutput = exports.GetObjectLegalHoldOutput || (exports.GetObjectLegalHoldOutput = {}));
-var GetObjectLegalHoldRequest;
-(function (GetObjectLegalHoldRequest) {
-    GetObjectLegalHoldRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectLegalHoldRequest = exports.GetObjectLegalHoldRequest || (exports.GetObjectLegalHoldRequest = {}));
-var DefaultRetention;
-(function (DefaultRetention) {
-    DefaultRetention.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DefaultRetention = exports.DefaultRetention || (exports.DefaultRetention = {}));
-var ObjectLockRule;
-(function (ObjectLockRule) {
-    ObjectLockRule.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectLockRule = exports.ObjectLockRule || (exports.ObjectLockRule = {}));
-var ObjectLockConfiguration;
-(function (ObjectLockConfiguration) {
-    ObjectLockConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectLockConfiguration = exports.ObjectLockConfiguration || (exports.ObjectLockConfiguration = {}));
-var GetObjectLockConfigurationOutput;
-(function (GetObjectLockConfigurationOutput) {
-    GetObjectLockConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectLockConfigurationOutput = exports.GetObjectLockConfigurationOutput || (exports.GetObjectLockConfigurationOutput = {}));
-var GetObjectLockConfigurationRequest;
-(function (GetObjectLockConfigurationRequest) {
-    GetObjectLockConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectLockConfigurationRequest = exports.GetObjectLockConfigurationRequest || (exports.GetObjectLockConfigurationRequest = {}));
-var ObjectLockRetention;
-(function (ObjectLockRetention) {
-    ObjectLockRetention.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectLockRetention = exports.ObjectLockRetention || (exports.ObjectLockRetention = {}));
-var GetObjectRetentionOutput;
-(function (GetObjectRetentionOutput) {
-    GetObjectRetentionOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectRetentionOutput = exports.GetObjectRetentionOutput || (exports.GetObjectRetentionOutput = {}));
-var GetObjectRetentionRequest;
-(function (GetObjectRetentionRequest) {
-    GetObjectRetentionRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectRetentionRequest = exports.GetObjectRetentionRequest || (exports.GetObjectRetentionRequest = {}));
-var GetObjectTaggingOutput;
-(function (GetObjectTaggingOutput) {
-    GetObjectTaggingOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectTaggingOutput = exports.GetObjectTaggingOutput || (exports.GetObjectTaggingOutput = {}));
-var GetObjectTaggingRequest;
-(function (GetObjectTaggingRequest) {
-    GetObjectTaggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectTaggingRequest = exports.GetObjectTaggingRequest || (exports.GetObjectTaggingRequest = {}));
-var GetObjectTorrentOutput;
-(function (GetObjectTorrentOutput) {
-    GetObjectTorrentOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectTorrentOutput = exports.GetObjectTorrentOutput || (exports.GetObjectTorrentOutput = {}));
-var GetObjectTorrentRequest;
-(function (GetObjectTorrentRequest) {
-    GetObjectTorrentRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetObjectTorrentRequest = exports.GetObjectTorrentRequest || (exports.GetObjectTorrentRequest = {}));
-var PublicAccessBlockConfiguration;
-(function (PublicAccessBlockConfiguration) {
-    PublicAccessBlockConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PublicAccessBlockConfiguration = exports.PublicAccessBlockConfiguration || (exports.PublicAccessBlockConfiguration = {}));
-var GetPublicAccessBlockOutput;
-(function (GetPublicAccessBlockOutput) {
-    GetPublicAccessBlockOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetPublicAccessBlockOutput = exports.GetPublicAccessBlockOutput || (exports.GetPublicAccessBlockOutput = {}));
-var GetPublicAccessBlockRequest;
-(function (GetPublicAccessBlockRequest) {
-    GetPublicAccessBlockRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetPublicAccessBlockRequest = exports.GetPublicAccessBlockRequest || (exports.GetPublicAccessBlockRequest = {}));
-var HeadBucketRequest;
-(function (HeadBucketRequest) {
-    HeadBucketRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(HeadBucketRequest = exports.HeadBucketRequest || (exports.HeadBucketRequest = {}));
 class NotFound extends S3ServiceException_1.S3ServiceException {
     constructor(opts) {
         super({
@@ -10562,137 +9417,6 @@ class NotFound extends S3ServiceException_1.S3ServiceException {
     }
 }
 exports.NotFound = NotFound;
-var HeadObjectOutput;
-(function (HeadObjectOutput) {
-    HeadObjectOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(HeadObjectOutput = exports.HeadObjectOutput || (exports.HeadObjectOutput = {}));
-var HeadObjectRequest;
-(function (HeadObjectRequest) {
-    HeadObjectRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(HeadObjectRequest = exports.HeadObjectRequest || (exports.HeadObjectRequest = {}));
-var ListBucketAnalyticsConfigurationsOutput;
-(function (ListBucketAnalyticsConfigurationsOutput) {
-    ListBucketAnalyticsConfigurationsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.AnalyticsConfigurationList && {
-            AnalyticsConfigurationList: obj.AnalyticsConfigurationList.map((item) => AnalyticsConfiguration.filterSensitiveLog(item)),
-        }),
-    });
-})(ListBucketAnalyticsConfigurationsOutput = exports.ListBucketAnalyticsConfigurationsOutput || (exports.ListBucketAnalyticsConfigurationsOutput = {}));
-var ListBucketAnalyticsConfigurationsRequest;
-(function (ListBucketAnalyticsConfigurationsRequest) {
-    ListBucketAnalyticsConfigurationsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListBucketAnalyticsConfigurationsRequest = exports.ListBucketAnalyticsConfigurationsRequest || (exports.ListBucketAnalyticsConfigurationsRequest = {}));
-var ListBucketIntelligentTieringConfigurationsOutput;
-(function (ListBucketIntelligentTieringConfigurationsOutput) {
-    ListBucketIntelligentTieringConfigurationsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListBucketIntelligentTieringConfigurationsOutput = exports.ListBucketIntelligentTieringConfigurationsOutput || (exports.ListBucketIntelligentTieringConfigurationsOutput = {}));
-var ListBucketIntelligentTieringConfigurationsRequest;
-(function (ListBucketIntelligentTieringConfigurationsRequest) {
-    ListBucketIntelligentTieringConfigurationsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListBucketIntelligentTieringConfigurationsRequest = exports.ListBucketIntelligentTieringConfigurationsRequest || (exports.ListBucketIntelligentTieringConfigurationsRequest = {}));
-var ListBucketInventoryConfigurationsOutput;
-(function (ListBucketInventoryConfigurationsOutput) {
-    ListBucketInventoryConfigurationsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.InventoryConfigurationList && {
-            InventoryConfigurationList: obj.InventoryConfigurationList.map((item) => InventoryConfiguration.filterSensitiveLog(item)),
-        }),
-    });
-})(ListBucketInventoryConfigurationsOutput = exports.ListBucketInventoryConfigurationsOutput || (exports.ListBucketInventoryConfigurationsOutput = {}));
-var ListBucketInventoryConfigurationsRequest;
-(function (ListBucketInventoryConfigurationsRequest) {
-    ListBucketInventoryConfigurationsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListBucketInventoryConfigurationsRequest = exports.ListBucketInventoryConfigurationsRequest || (exports.ListBucketInventoryConfigurationsRequest = {}));
-var ListBucketMetricsConfigurationsOutput;
-(function (ListBucketMetricsConfigurationsOutput) {
-    ListBucketMetricsConfigurationsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.MetricsConfigurationList && {
-            MetricsConfigurationList: obj.MetricsConfigurationList.map((item) => MetricsConfiguration.filterSensitiveLog(item)),
-        }),
-    });
-})(ListBucketMetricsConfigurationsOutput = exports.ListBucketMetricsConfigurationsOutput || (exports.ListBucketMetricsConfigurationsOutput = {}));
-var ListBucketMetricsConfigurationsRequest;
-(function (ListBucketMetricsConfigurationsRequest) {
-    ListBucketMetricsConfigurationsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListBucketMetricsConfigurationsRequest = exports.ListBucketMetricsConfigurationsRequest || (exports.ListBucketMetricsConfigurationsRequest = {}));
-var Bucket;
-(function (Bucket) {
-    Bucket.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Bucket = exports.Bucket || (exports.Bucket = {}));
-var ListBucketsOutput;
-(function (ListBucketsOutput) {
-    ListBucketsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListBucketsOutput = exports.ListBucketsOutput || (exports.ListBucketsOutput = {}));
-var CommonPrefix;
-(function (CommonPrefix) {
-    CommonPrefix.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CommonPrefix = exports.CommonPrefix || (exports.CommonPrefix = {}));
-var Initiator;
-(function (Initiator) {
-    Initiator.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Initiator = exports.Initiator || (exports.Initiator = {}));
-var MultipartUpload;
-(function (MultipartUpload) {
-    MultipartUpload.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(MultipartUpload = exports.MultipartUpload || (exports.MultipartUpload = {}));
-var ListMultipartUploadsOutput;
-(function (ListMultipartUploadsOutput) {
-    ListMultipartUploadsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListMultipartUploadsOutput = exports.ListMultipartUploadsOutput || (exports.ListMultipartUploadsOutput = {}));
-var ListMultipartUploadsRequest;
-(function (ListMultipartUploadsRequest) {
-    ListMultipartUploadsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListMultipartUploadsRequest = exports.ListMultipartUploadsRequest || (exports.ListMultipartUploadsRequest = {}));
-var _Object;
-(function (_Object) {
-    _Object.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(_Object = exports._Object || (exports._Object = {}));
-var ListObjectsOutput;
-(function (ListObjectsOutput) {
-    ListObjectsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListObjectsOutput = exports.ListObjectsOutput || (exports.ListObjectsOutput = {}));
-var ListObjectsRequest;
-(function (ListObjectsRequest) {
-    ListObjectsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListObjectsRequest = exports.ListObjectsRequest || (exports.ListObjectsRequest = {}));
 class NoSuchBucket extends S3ServiceException_1.S3ServiceException {
     constructor(opts) {
         super({
@@ -10706,283 +9430,1089 @@ class NoSuchBucket extends S3ServiceException_1.S3ServiceException {
     }
 }
 exports.NoSuchBucket = NoSuchBucket;
-var ListObjectsV2Output;
-(function (ListObjectsV2Output) {
-    ListObjectsV2Output.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListObjectsV2Output = exports.ListObjectsV2Output || (exports.ListObjectsV2Output = {}));
-var ListObjectsV2Request;
-(function (ListObjectsV2Request) {
-    ListObjectsV2Request.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListObjectsV2Request = exports.ListObjectsV2Request || (exports.ListObjectsV2Request = {}));
-var DeleteMarkerEntry;
-(function (DeleteMarkerEntry) {
-    DeleteMarkerEntry.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DeleteMarkerEntry = exports.DeleteMarkerEntry || (exports.DeleteMarkerEntry = {}));
-var ObjectVersion;
-(function (ObjectVersion) {
-    ObjectVersion.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ObjectVersion = exports.ObjectVersion || (exports.ObjectVersion = {}));
-var ListObjectVersionsOutput;
-(function (ListObjectVersionsOutput) {
-    ListObjectVersionsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListObjectVersionsOutput = exports.ListObjectVersionsOutput || (exports.ListObjectVersionsOutput = {}));
-var ListObjectVersionsRequest;
-(function (ListObjectVersionsRequest) {
-    ListObjectVersionsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListObjectVersionsRequest = exports.ListObjectVersionsRequest || (exports.ListObjectVersionsRequest = {}));
-var Part;
-(function (Part) {
-    Part.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Part = exports.Part || (exports.Part = {}));
-var ListPartsOutput;
-(function (ListPartsOutput) {
-    ListPartsOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListPartsOutput = exports.ListPartsOutput || (exports.ListPartsOutput = {}));
-var ListPartsRequest;
-(function (ListPartsRequest) {
-    ListPartsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(ListPartsRequest = exports.ListPartsRequest || (exports.ListPartsRequest = {}));
-var PutBucketAccelerateConfigurationRequest;
-(function (PutBucketAccelerateConfigurationRequest) {
-    PutBucketAccelerateConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketAccelerateConfigurationRequest = exports.PutBucketAccelerateConfigurationRequest || (exports.PutBucketAccelerateConfigurationRequest = {}));
-var PutBucketAclRequest;
-(function (PutBucketAclRequest) {
-    PutBucketAclRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketAclRequest = exports.PutBucketAclRequest || (exports.PutBucketAclRequest = {}));
-var PutBucketAnalyticsConfigurationRequest;
-(function (PutBucketAnalyticsConfigurationRequest) {
-    PutBucketAnalyticsConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.AnalyticsConfiguration && {
-            AnalyticsConfiguration: AnalyticsConfiguration.filterSensitiveLog(obj.AnalyticsConfiguration),
-        }),
-    });
-})(PutBucketAnalyticsConfigurationRequest = exports.PutBucketAnalyticsConfigurationRequest || (exports.PutBucketAnalyticsConfigurationRequest = {}));
-var CORSConfiguration;
-(function (CORSConfiguration) {
-    CORSConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CORSConfiguration = exports.CORSConfiguration || (exports.CORSConfiguration = {}));
-var PutBucketCorsRequest;
-(function (PutBucketCorsRequest) {
-    PutBucketCorsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketCorsRequest = exports.PutBucketCorsRequest || (exports.PutBucketCorsRequest = {}));
-var PutBucketEncryptionRequest;
-(function (PutBucketEncryptionRequest) {
-    PutBucketEncryptionRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.ServerSideEncryptionConfiguration && {
-            ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration.filterSensitiveLog(obj.ServerSideEncryptionConfiguration),
-        }),
-    });
-})(PutBucketEncryptionRequest = exports.PutBucketEncryptionRequest || (exports.PutBucketEncryptionRequest = {}));
-var PutBucketIntelligentTieringConfigurationRequest;
-(function (PutBucketIntelligentTieringConfigurationRequest) {
-    PutBucketIntelligentTieringConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketIntelligentTieringConfigurationRequest = exports.PutBucketIntelligentTieringConfigurationRequest || (exports.PutBucketIntelligentTieringConfigurationRequest = {}));
-var PutBucketInventoryConfigurationRequest;
-(function (PutBucketInventoryConfigurationRequest) {
-    PutBucketInventoryConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.InventoryConfiguration && {
-            InventoryConfiguration: InventoryConfiguration.filterSensitiveLog(obj.InventoryConfiguration),
-        }),
-    });
-})(PutBucketInventoryConfigurationRequest = exports.PutBucketInventoryConfigurationRequest || (exports.PutBucketInventoryConfigurationRequest = {}));
-var BucketLifecycleConfiguration;
-(function (BucketLifecycleConfiguration) {
-    BucketLifecycleConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Rules && { Rules: obj.Rules.map((item) => LifecycleRule.filterSensitiveLog(item)) }),
-    });
-})(BucketLifecycleConfiguration = exports.BucketLifecycleConfiguration || (exports.BucketLifecycleConfiguration = {}));
-var PutBucketLifecycleConfigurationRequest;
-(function (PutBucketLifecycleConfigurationRequest) {
-    PutBucketLifecycleConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.LifecycleConfiguration && {
-            LifecycleConfiguration: BucketLifecycleConfiguration.filterSensitiveLog(obj.LifecycleConfiguration),
-        }),
-    });
-})(PutBucketLifecycleConfigurationRequest = exports.PutBucketLifecycleConfigurationRequest || (exports.PutBucketLifecycleConfigurationRequest = {}));
-var BucketLoggingStatus;
-(function (BucketLoggingStatus) {
-    BucketLoggingStatus.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(BucketLoggingStatus = exports.BucketLoggingStatus || (exports.BucketLoggingStatus = {}));
-var PutBucketLoggingRequest;
-(function (PutBucketLoggingRequest) {
-    PutBucketLoggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketLoggingRequest = exports.PutBucketLoggingRequest || (exports.PutBucketLoggingRequest = {}));
-var PutBucketMetricsConfigurationRequest;
-(function (PutBucketMetricsConfigurationRequest) {
-    PutBucketMetricsConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.MetricsConfiguration && {
-            MetricsConfiguration: MetricsConfiguration.filterSensitiveLog(obj.MetricsConfiguration),
-        }),
-    });
-})(PutBucketMetricsConfigurationRequest = exports.PutBucketMetricsConfigurationRequest || (exports.PutBucketMetricsConfigurationRequest = {}));
-var PutBucketNotificationConfigurationRequest;
-(function (PutBucketNotificationConfigurationRequest) {
-    PutBucketNotificationConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketNotificationConfigurationRequest = exports.PutBucketNotificationConfigurationRequest || (exports.PutBucketNotificationConfigurationRequest = {}));
-var PutBucketOwnershipControlsRequest;
-(function (PutBucketOwnershipControlsRequest) {
-    PutBucketOwnershipControlsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketOwnershipControlsRequest = exports.PutBucketOwnershipControlsRequest || (exports.PutBucketOwnershipControlsRequest = {}));
-var PutBucketPolicyRequest;
-(function (PutBucketPolicyRequest) {
-    PutBucketPolicyRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketPolicyRequest = exports.PutBucketPolicyRequest || (exports.PutBucketPolicyRequest = {}));
-var PutBucketReplicationRequest;
-(function (PutBucketReplicationRequest) {
-    PutBucketReplicationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.ReplicationConfiguration && {
-            ReplicationConfiguration: ReplicationConfiguration.filterSensitiveLog(obj.ReplicationConfiguration),
-        }),
-    });
-})(PutBucketReplicationRequest = exports.PutBucketReplicationRequest || (exports.PutBucketReplicationRequest = {}));
-var RequestPaymentConfiguration;
-(function (RequestPaymentConfiguration) {
-    RequestPaymentConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RequestPaymentConfiguration = exports.RequestPaymentConfiguration || (exports.RequestPaymentConfiguration = {}));
-var PutBucketRequestPaymentRequest;
-(function (PutBucketRequestPaymentRequest) {
-    PutBucketRequestPaymentRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketRequestPaymentRequest = exports.PutBucketRequestPaymentRequest || (exports.PutBucketRequestPaymentRequest = {}));
-var Tagging;
-(function (Tagging) {
-    Tagging.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Tagging = exports.Tagging || (exports.Tagging = {}));
-var PutBucketTaggingRequest;
-(function (PutBucketTaggingRequest) {
-    PutBucketTaggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketTaggingRequest = exports.PutBucketTaggingRequest || (exports.PutBucketTaggingRequest = {}));
-var VersioningConfiguration;
-(function (VersioningConfiguration) {
-    VersioningConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(VersioningConfiguration = exports.VersioningConfiguration || (exports.VersioningConfiguration = {}));
-var PutBucketVersioningRequest;
-(function (PutBucketVersioningRequest) {
-    PutBucketVersioningRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketVersioningRequest = exports.PutBucketVersioningRequest || (exports.PutBucketVersioningRequest = {}));
-var WebsiteConfiguration;
-(function (WebsiteConfiguration) {
-    WebsiteConfiguration.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(WebsiteConfiguration = exports.WebsiteConfiguration || (exports.WebsiteConfiguration = {}));
-var PutBucketWebsiteRequest;
-(function (PutBucketWebsiteRequest) {
-    PutBucketWebsiteRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutBucketWebsiteRequest = exports.PutBucketWebsiteRequest || (exports.PutBucketWebsiteRequest = {}));
-var PutObjectOutput;
-(function (PutObjectOutput) {
-    PutObjectOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(PutObjectOutput = exports.PutObjectOutput || (exports.PutObjectOutput = {}));
-var PutObjectRequest;
-(function (PutObjectRequest) {
-    PutObjectRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(PutObjectRequest = exports.PutObjectRequest || (exports.PutObjectRequest = {}));
-var PutObjectAclOutput;
-(function (PutObjectAclOutput) {
-    PutObjectAclOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectAclOutput = exports.PutObjectAclOutput || (exports.PutObjectAclOutput = {}));
-var PutObjectAclRequest;
-(function (PutObjectAclRequest) {
-    PutObjectAclRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectAclRequest = exports.PutObjectAclRequest || (exports.PutObjectAclRequest = {}));
-var PutObjectLegalHoldOutput;
-(function (PutObjectLegalHoldOutput) {
-    PutObjectLegalHoldOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectLegalHoldOutput = exports.PutObjectLegalHoldOutput || (exports.PutObjectLegalHoldOutput = {}));
-var PutObjectLegalHoldRequest;
-(function (PutObjectLegalHoldRequest) {
-    PutObjectLegalHoldRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectLegalHoldRequest = exports.PutObjectLegalHoldRequest || (exports.PutObjectLegalHoldRequest = {}));
-var PutObjectLockConfigurationOutput;
-(function (PutObjectLockConfigurationOutput) {
-    PutObjectLockConfigurationOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectLockConfigurationOutput = exports.PutObjectLockConfigurationOutput || (exports.PutObjectLockConfigurationOutput = {}));
-var PutObjectLockConfigurationRequest;
-(function (PutObjectLockConfigurationRequest) {
-    PutObjectLockConfigurationRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectLockConfigurationRequest = exports.PutObjectLockConfigurationRequest || (exports.PutObjectLockConfigurationRequest = {}));
+const AbortIncompleteMultipartUploadFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AbortIncompleteMultipartUploadFilterSensitiveLog = AbortIncompleteMultipartUploadFilterSensitiveLog;
+const AbortMultipartUploadOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AbortMultipartUploadOutputFilterSensitiveLog = AbortMultipartUploadOutputFilterSensitiveLog;
+const AbortMultipartUploadRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AbortMultipartUploadRequestFilterSensitiveLog = AbortMultipartUploadRequestFilterSensitiveLog;
+const AccelerateConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AccelerateConfigurationFilterSensitiveLog = AccelerateConfigurationFilterSensitiveLog;
+const GranteeFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GranteeFilterSensitiveLog = GranteeFilterSensitiveLog;
+const GrantFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GrantFilterSensitiveLog = GrantFilterSensitiveLog;
+const OwnerFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.OwnerFilterSensitiveLog = OwnerFilterSensitiveLog;
+const AccessControlPolicyFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AccessControlPolicyFilterSensitiveLog = AccessControlPolicyFilterSensitiveLog;
+const AccessControlTranslationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AccessControlTranslationFilterSensitiveLog = AccessControlTranslationFilterSensitiveLog;
+const CompleteMultipartUploadOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.CompleteMultipartUploadOutputFilterSensitiveLog = CompleteMultipartUploadOutputFilterSensitiveLog;
+const CompletedPartFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CompletedPartFilterSensitiveLog = CompletedPartFilterSensitiveLog;
+const CompletedMultipartUploadFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CompletedMultipartUploadFilterSensitiveLog = CompletedMultipartUploadFilterSensitiveLog;
+const CompleteMultipartUploadRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.CompleteMultipartUploadRequestFilterSensitiveLog = CompleteMultipartUploadRequestFilterSensitiveLog;
+const CopyObjectResultFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CopyObjectResultFilterSensitiveLog = CopyObjectResultFilterSensitiveLog;
+const CopyObjectOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.CopyObjectOutputFilterSensitiveLog = CopyObjectOutputFilterSensitiveLog;
+const CopyObjectRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.CopySourceSSECustomerKey && { CopySourceSSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.CopyObjectRequestFilterSensitiveLog = CopyObjectRequestFilterSensitiveLog;
+const CreateBucketOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CreateBucketOutputFilterSensitiveLog = CreateBucketOutputFilterSensitiveLog;
+const CreateBucketConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CreateBucketConfigurationFilterSensitiveLog = CreateBucketConfigurationFilterSensitiveLog;
+const CreateBucketRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CreateBucketRequestFilterSensitiveLog = CreateBucketRequestFilterSensitiveLog;
+const CreateMultipartUploadOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.CreateMultipartUploadOutputFilterSensitiveLog = CreateMultipartUploadOutputFilterSensitiveLog;
+const CreateMultipartUploadRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.CreateMultipartUploadRequestFilterSensitiveLog = CreateMultipartUploadRequestFilterSensitiveLog;
+const DeleteBucketRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketRequestFilterSensitiveLog = DeleteBucketRequestFilterSensitiveLog;
+const DeleteBucketAnalyticsConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketAnalyticsConfigurationRequestFilterSensitiveLog = DeleteBucketAnalyticsConfigurationRequestFilterSensitiveLog;
+const DeleteBucketCorsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketCorsRequestFilterSensitiveLog = DeleteBucketCorsRequestFilterSensitiveLog;
+const DeleteBucketEncryptionRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketEncryptionRequestFilterSensitiveLog = DeleteBucketEncryptionRequestFilterSensitiveLog;
+const DeleteBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = DeleteBucketIntelligentTieringConfigurationRequestFilterSensitiveLog;
+const DeleteBucketInventoryConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketInventoryConfigurationRequestFilterSensitiveLog = DeleteBucketInventoryConfigurationRequestFilterSensitiveLog;
+const DeleteBucketLifecycleRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketLifecycleRequestFilterSensitiveLog = DeleteBucketLifecycleRequestFilterSensitiveLog;
+const DeleteBucketMetricsConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketMetricsConfigurationRequestFilterSensitiveLog = DeleteBucketMetricsConfigurationRequestFilterSensitiveLog;
+const DeleteBucketOwnershipControlsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketOwnershipControlsRequestFilterSensitiveLog = DeleteBucketOwnershipControlsRequestFilterSensitiveLog;
+const DeleteBucketPolicyRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketPolicyRequestFilterSensitiveLog = DeleteBucketPolicyRequestFilterSensitiveLog;
+const DeleteBucketReplicationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketReplicationRequestFilterSensitiveLog = DeleteBucketReplicationRequestFilterSensitiveLog;
+const DeleteBucketTaggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketTaggingRequestFilterSensitiveLog = DeleteBucketTaggingRequestFilterSensitiveLog;
+const DeleteBucketWebsiteRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteBucketWebsiteRequestFilterSensitiveLog = DeleteBucketWebsiteRequestFilterSensitiveLog;
+const DeleteObjectOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteObjectOutputFilterSensitiveLog = DeleteObjectOutputFilterSensitiveLog;
+const DeleteObjectRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteObjectRequestFilterSensitiveLog = DeleteObjectRequestFilterSensitiveLog;
+const DeletedObjectFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeletedObjectFilterSensitiveLog = DeletedObjectFilterSensitiveLog;
+const _ErrorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports._ErrorFilterSensitiveLog = _ErrorFilterSensitiveLog;
+const DeleteObjectsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteObjectsOutputFilterSensitiveLog = DeleteObjectsOutputFilterSensitiveLog;
+const ObjectIdentifierFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectIdentifierFilterSensitiveLog = ObjectIdentifierFilterSensitiveLog;
+const DeleteFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteFilterSensitiveLog = DeleteFilterSensitiveLog;
+const DeleteObjectsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteObjectsRequestFilterSensitiveLog = DeleteObjectsRequestFilterSensitiveLog;
+const DeleteObjectTaggingOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteObjectTaggingOutputFilterSensitiveLog = DeleteObjectTaggingOutputFilterSensitiveLog;
+const DeleteObjectTaggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteObjectTaggingRequestFilterSensitiveLog = DeleteObjectTaggingRequestFilterSensitiveLog;
+const DeletePublicAccessBlockRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeletePublicAccessBlockRequestFilterSensitiveLog = DeletePublicAccessBlockRequestFilterSensitiveLog;
+const GetBucketAccelerateConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketAccelerateConfigurationOutputFilterSensitiveLog = GetBucketAccelerateConfigurationOutputFilterSensitiveLog;
+const GetBucketAccelerateConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketAccelerateConfigurationRequestFilterSensitiveLog = GetBucketAccelerateConfigurationRequestFilterSensitiveLog;
+const GetBucketAclOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketAclOutputFilterSensitiveLog = GetBucketAclOutputFilterSensitiveLog;
+const GetBucketAclRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketAclRequestFilterSensitiveLog = GetBucketAclRequestFilterSensitiveLog;
+const TagFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TagFilterSensitiveLog = TagFilterSensitiveLog;
+const AnalyticsAndOperatorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AnalyticsAndOperatorFilterSensitiveLog = AnalyticsAndOperatorFilterSensitiveLog;
+const AnalyticsFilterFilterSensitiveLog = (obj) => {
+    if (obj.Prefix !== undefined)
+        return { Prefix: obj.Prefix };
+    if (obj.Tag !== undefined)
+        return { Tag: (0, exports.TagFilterSensitiveLog)(obj.Tag) };
+    if (obj.And !== undefined)
+        return { And: (0, exports.AnalyticsAndOperatorFilterSensitiveLog)(obj.And) };
+    if (obj.$unknown !== undefined)
+        return { [obj.$unknown[0]]: "UNKNOWN" };
+};
+exports.AnalyticsFilterFilterSensitiveLog = AnalyticsFilterFilterSensitiveLog;
+const AnalyticsS3BucketDestinationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AnalyticsS3BucketDestinationFilterSensitiveLog = AnalyticsS3BucketDestinationFilterSensitiveLog;
+const AnalyticsExportDestinationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AnalyticsExportDestinationFilterSensitiveLog = AnalyticsExportDestinationFilterSensitiveLog;
+const StorageClassAnalysisDataExportFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.StorageClassAnalysisDataExportFilterSensitiveLog = StorageClassAnalysisDataExportFilterSensitiveLog;
+const StorageClassAnalysisFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.StorageClassAnalysisFilterSensitiveLog = StorageClassAnalysisFilterSensitiveLog;
+const AnalyticsConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Filter && { Filter: (0, exports.AnalyticsFilterFilterSensitiveLog)(obj.Filter) }),
+});
+exports.AnalyticsConfigurationFilterSensitiveLog = AnalyticsConfigurationFilterSensitiveLog;
+const GetBucketAnalyticsConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.AnalyticsConfiguration && {
+        AnalyticsConfiguration: (0, exports.AnalyticsConfigurationFilterSensitiveLog)(obj.AnalyticsConfiguration),
+    }),
+});
+exports.GetBucketAnalyticsConfigurationOutputFilterSensitiveLog = GetBucketAnalyticsConfigurationOutputFilterSensitiveLog;
+const GetBucketAnalyticsConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketAnalyticsConfigurationRequestFilterSensitiveLog = GetBucketAnalyticsConfigurationRequestFilterSensitiveLog;
+const CORSRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CORSRuleFilterSensitiveLog = CORSRuleFilterSensitiveLog;
+const GetBucketCorsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketCorsOutputFilterSensitiveLog = GetBucketCorsOutputFilterSensitiveLog;
+const GetBucketCorsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketCorsRequestFilterSensitiveLog = GetBucketCorsRequestFilterSensitiveLog;
+const ServerSideEncryptionByDefaultFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.KMSMasterKeyID && { KMSMasterKeyID: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.ServerSideEncryptionByDefaultFilterSensitiveLog = ServerSideEncryptionByDefaultFilterSensitiveLog;
+const ServerSideEncryptionRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.ApplyServerSideEncryptionByDefault && {
+        ApplyServerSideEncryptionByDefault: (0, exports.ServerSideEncryptionByDefaultFilterSensitiveLog)(obj.ApplyServerSideEncryptionByDefault),
+    }),
+});
+exports.ServerSideEncryptionRuleFilterSensitiveLog = ServerSideEncryptionRuleFilterSensitiveLog;
+const ServerSideEncryptionConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Rules && { Rules: obj.Rules.map((item) => (0, exports.ServerSideEncryptionRuleFilterSensitiveLog)(item)) }),
+});
+exports.ServerSideEncryptionConfigurationFilterSensitiveLog = ServerSideEncryptionConfigurationFilterSensitiveLog;
+const GetBucketEncryptionOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.ServerSideEncryptionConfiguration && {
+        ServerSideEncryptionConfiguration: (0, exports.ServerSideEncryptionConfigurationFilterSensitiveLog)(obj.ServerSideEncryptionConfiguration),
+    }),
+});
+exports.GetBucketEncryptionOutputFilterSensitiveLog = GetBucketEncryptionOutputFilterSensitiveLog;
+const GetBucketEncryptionRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketEncryptionRequestFilterSensitiveLog = GetBucketEncryptionRequestFilterSensitiveLog;
+const IntelligentTieringAndOperatorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.IntelligentTieringAndOperatorFilterSensitiveLog = IntelligentTieringAndOperatorFilterSensitiveLog;
+const IntelligentTieringFilterFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.IntelligentTieringFilterFilterSensitiveLog = IntelligentTieringFilterFilterSensitiveLog;
+const TieringFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TieringFilterSensitiveLog = TieringFilterSensitiveLog;
+const IntelligentTieringConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.IntelligentTieringConfigurationFilterSensitiveLog = IntelligentTieringConfigurationFilterSensitiveLog;
+const GetBucketIntelligentTieringConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketIntelligentTieringConfigurationOutputFilterSensitiveLog = GetBucketIntelligentTieringConfigurationOutputFilterSensitiveLog;
+const GetBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = GetBucketIntelligentTieringConfigurationRequestFilterSensitiveLog;
+const SSEKMSFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.KeyId && { KeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.SSEKMSFilterSensitiveLog = SSEKMSFilterSensitiveLog;
+const SSES3FilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.SSES3FilterSensitiveLog = SSES3FilterSensitiveLog;
+const InventoryEncryptionFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMS && { SSEKMS: (0, exports.SSEKMSFilterSensitiveLog)(obj.SSEKMS) }),
+});
+exports.InventoryEncryptionFilterSensitiveLog = InventoryEncryptionFilterSensitiveLog;
+const InventoryS3BucketDestinationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Encryption && { Encryption: (0, exports.InventoryEncryptionFilterSensitiveLog)(obj.Encryption) }),
+});
+exports.InventoryS3BucketDestinationFilterSensitiveLog = InventoryS3BucketDestinationFilterSensitiveLog;
+const InventoryDestinationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.S3BucketDestination && {
+        S3BucketDestination: (0, exports.InventoryS3BucketDestinationFilterSensitiveLog)(obj.S3BucketDestination),
+    }),
+});
+exports.InventoryDestinationFilterSensitiveLog = InventoryDestinationFilterSensitiveLog;
+const InventoryFilterFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.InventoryFilterFilterSensitiveLog = InventoryFilterFilterSensitiveLog;
+const InventoryScheduleFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.InventoryScheduleFilterSensitiveLog = InventoryScheduleFilterSensitiveLog;
+const InventoryConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Destination && { Destination: (0, exports.InventoryDestinationFilterSensitiveLog)(obj.Destination) }),
+});
+exports.InventoryConfigurationFilterSensitiveLog = InventoryConfigurationFilterSensitiveLog;
+const GetBucketInventoryConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.InventoryConfiguration && {
+        InventoryConfiguration: (0, exports.InventoryConfigurationFilterSensitiveLog)(obj.InventoryConfiguration),
+    }),
+});
+exports.GetBucketInventoryConfigurationOutputFilterSensitiveLog = GetBucketInventoryConfigurationOutputFilterSensitiveLog;
+const GetBucketInventoryConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketInventoryConfigurationRequestFilterSensitiveLog = GetBucketInventoryConfigurationRequestFilterSensitiveLog;
+const LifecycleExpirationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.LifecycleExpirationFilterSensitiveLog = LifecycleExpirationFilterSensitiveLog;
+const LifecycleRuleAndOperatorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.LifecycleRuleAndOperatorFilterSensitiveLog = LifecycleRuleAndOperatorFilterSensitiveLog;
+const LifecycleRuleFilterFilterSensitiveLog = (obj) => {
+    if (obj.Prefix !== undefined)
+        return { Prefix: obj.Prefix };
+    if (obj.Tag !== undefined)
+        return { Tag: (0, exports.TagFilterSensitiveLog)(obj.Tag) };
+    if (obj.ObjectSizeGreaterThan !== undefined)
+        return { ObjectSizeGreaterThan: obj.ObjectSizeGreaterThan };
+    if (obj.ObjectSizeLessThan !== undefined)
+        return { ObjectSizeLessThan: obj.ObjectSizeLessThan };
+    if (obj.And !== undefined)
+        return { And: (0, exports.LifecycleRuleAndOperatorFilterSensitiveLog)(obj.And) };
+    if (obj.$unknown !== undefined)
+        return { [obj.$unknown[0]]: "UNKNOWN" };
+};
+exports.LifecycleRuleFilterFilterSensitiveLog = LifecycleRuleFilterFilterSensitiveLog;
+const NoncurrentVersionExpirationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.NoncurrentVersionExpirationFilterSensitiveLog = NoncurrentVersionExpirationFilterSensitiveLog;
+const NoncurrentVersionTransitionFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.NoncurrentVersionTransitionFilterSensitiveLog = NoncurrentVersionTransitionFilterSensitiveLog;
+const TransitionFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TransitionFilterSensitiveLog = TransitionFilterSensitiveLog;
+const LifecycleRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Filter && { Filter: (0, exports.LifecycleRuleFilterFilterSensitiveLog)(obj.Filter) }),
+});
+exports.LifecycleRuleFilterSensitiveLog = LifecycleRuleFilterSensitiveLog;
+const GetBucketLifecycleConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Rules && { Rules: obj.Rules.map((item) => (0, exports.LifecycleRuleFilterSensitiveLog)(item)) }),
+});
+exports.GetBucketLifecycleConfigurationOutputFilterSensitiveLog = GetBucketLifecycleConfigurationOutputFilterSensitiveLog;
+const GetBucketLifecycleConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketLifecycleConfigurationRequestFilterSensitiveLog = GetBucketLifecycleConfigurationRequestFilterSensitiveLog;
+const GetBucketLocationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketLocationOutputFilterSensitiveLog = GetBucketLocationOutputFilterSensitiveLog;
+const GetBucketLocationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketLocationRequestFilterSensitiveLog = GetBucketLocationRequestFilterSensitiveLog;
+const TargetGrantFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TargetGrantFilterSensitiveLog = TargetGrantFilterSensitiveLog;
+const LoggingEnabledFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.LoggingEnabledFilterSensitiveLog = LoggingEnabledFilterSensitiveLog;
+const GetBucketLoggingOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketLoggingOutputFilterSensitiveLog = GetBucketLoggingOutputFilterSensitiveLog;
+const GetBucketLoggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketLoggingRequestFilterSensitiveLog = GetBucketLoggingRequestFilterSensitiveLog;
+const MetricsAndOperatorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.MetricsAndOperatorFilterSensitiveLog = MetricsAndOperatorFilterSensitiveLog;
+const MetricsFilterFilterSensitiveLog = (obj) => {
+    if (obj.Prefix !== undefined)
+        return { Prefix: obj.Prefix };
+    if (obj.Tag !== undefined)
+        return { Tag: (0, exports.TagFilterSensitiveLog)(obj.Tag) };
+    if (obj.AccessPointArn !== undefined)
+        return { AccessPointArn: obj.AccessPointArn };
+    if (obj.And !== undefined)
+        return { And: (0, exports.MetricsAndOperatorFilterSensitiveLog)(obj.And) };
+    if (obj.$unknown !== undefined)
+        return { [obj.$unknown[0]]: "UNKNOWN" };
+};
+exports.MetricsFilterFilterSensitiveLog = MetricsFilterFilterSensitiveLog;
+const MetricsConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Filter && { Filter: (0, exports.MetricsFilterFilterSensitiveLog)(obj.Filter) }),
+});
+exports.MetricsConfigurationFilterSensitiveLog = MetricsConfigurationFilterSensitiveLog;
+const GetBucketMetricsConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.MetricsConfiguration && {
+        MetricsConfiguration: (0, exports.MetricsConfigurationFilterSensitiveLog)(obj.MetricsConfiguration),
+    }),
+});
+exports.GetBucketMetricsConfigurationOutputFilterSensitiveLog = GetBucketMetricsConfigurationOutputFilterSensitiveLog;
+const GetBucketMetricsConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketMetricsConfigurationRequestFilterSensitiveLog = GetBucketMetricsConfigurationRequestFilterSensitiveLog;
+const GetBucketNotificationConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketNotificationConfigurationRequestFilterSensitiveLog = GetBucketNotificationConfigurationRequestFilterSensitiveLog;
+const EventBridgeConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.EventBridgeConfigurationFilterSensitiveLog = EventBridgeConfigurationFilterSensitiveLog;
+const FilterRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.FilterRuleFilterSensitiveLog = FilterRuleFilterSensitiveLog;
+const S3KeyFilterFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.S3KeyFilterFilterSensitiveLog = S3KeyFilterFilterSensitiveLog;
+const NotificationConfigurationFilterFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.NotificationConfigurationFilterFilterSensitiveLog = NotificationConfigurationFilterFilterSensitiveLog;
+const LambdaFunctionConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.LambdaFunctionConfigurationFilterSensitiveLog = LambdaFunctionConfigurationFilterSensitiveLog;
+const QueueConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.QueueConfigurationFilterSensitiveLog = QueueConfigurationFilterSensitiveLog;
+const TopicConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TopicConfigurationFilterSensitiveLog = TopicConfigurationFilterSensitiveLog;
+const NotificationConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.NotificationConfigurationFilterSensitiveLog = NotificationConfigurationFilterSensitiveLog;
+const OwnershipControlsRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.OwnershipControlsRuleFilterSensitiveLog = OwnershipControlsRuleFilterSensitiveLog;
+const OwnershipControlsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.OwnershipControlsFilterSensitiveLog = OwnershipControlsFilterSensitiveLog;
+const GetBucketOwnershipControlsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketOwnershipControlsOutputFilterSensitiveLog = GetBucketOwnershipControlsOutputFilterSensitiveLog;
+const GetBucketOwnershipControlsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketOwnershipControlsRequestFilterSensitiveLog = GetBucketOwnershipControlsRequestFilterSensitiveLog;
+const GetBucketPolicyOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketPolicyOutputFilterSensitiveLog = GetBucketPolicyOutputFilterSensitiveLog;
+const GetBucketPolicyRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketPolicyRequestFilterSensitiveLog = GetBucketPolicyRequestFilterSensitiveLog;
+const PolicyStatusFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PolicyStatusFilterSensitiveLog = PolicyStatusFilterSensitiveLog;
+const GetBucketPolicyStatusOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketPolicyStatusOutputFilterSensitiveLog = GetBucketPolicyStatusOutputFilterSensitiveLog;
+const GetBucketPolicyStatusRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketPolicyStatusRequestFilterSensitiveLog = GetBucketPolicyStatusRequestFilterSensitiveLog;
+const DeleteMarkerReplicationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteMarkerReplicationFilterSensitiveLog = DeleteMarkerReplicationFilterSensitiveLog;
+const EncryptionConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.EncryptionConfigurationFilterSensitiveLog = EncryptionConfigurationFilterSensitiveLog;
+const ReplicationTimeValueFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ReplicationTimeValueFilterSensitiveLog = ReplicationTimeValueFilterSensitiveLog;
+const MetricsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.MetricsFilterSensitiveLog = MetricsFilterSensitiveLog;
+const ReplicationTimeFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ReplicationTimeFilterSensitiveLog = ReplicationTimeFilterSensitiveLog;
+const DestinationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DestinationFilterSensitiveLog = DestinationFilterSensitiveLog;
+const ExistingObjectReplicationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ExistingObjectReplicationFilterSensitiveLog = ExistingObjectReplicationFilterSensitiveLog;
+const ReplicationRuleAndOperatorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ReplicationRuleAndOperatorFilterSensitiveLog = ReplicationRuleAndOperatorFilterSensitiveLog;
+const ReplicationRuleFilterFilterSensitiveLog = (obj) => {
+    if (obj.Prefix !== undefined)
+        return { Prefix: obj.Prefix };
+    if (obj.Tag !== undefined)
+        return { Tag: (0, exports.TagFilterSensitiveLog)(obj.Tag) };
+    if (obj.And !== undefined)
+        return { And: (0, exports.ReplicationRuleAndOperatorFilterSensitiveLog)(obj.And) };
+    if (obj.$unknown !== undefined)
+        return { [obj.$unknown[0]]: "UNKNOWN" };
+};
+exports.ReplicationRuleFilterFilterSensitiveLog = ReplicationRuleFilterFilterSensitiveLog;
+const ReplicaModificationsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ReplicaModificationsFilterSensitiveLog = ReplicaModificationsFilterSensitiveLog;
+const SseKmsEncryptedObjectsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.SseKmsEncryptedObjectsFilterSensitiveLog = SseKmsEncryptedObjectsFilterSensitiveLog;
+const SourceSelectionCriteriaFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.SourceSelectionCriteriaFilterSensitiveLog = SourceSelectionCriteriaFilterSensitiveLog;
+const ReplicationRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Filter && { Filter: (0, exports.ReplicationRuleFilterFilterSensitiveLog)(obj.Filter) }),
+});
+exports.ReplicationRuleFilterSensitiveLog = ReplicationRuleFilterSensitiveLog;
+const ReplicationConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Rules && { Rules: obj.Rules.map((item) => (0, exports.ReplicationRuleFilterSensitiveLog)(item)) }),
+});
+exports.ReplicationConfigurationFilterSensitiveLog = ReplicationConfigurationFilterSensitiveLog;
+const GetBucketReplicationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.ReplicationConfiguration && {
+        ReplicationConfiguration: (0, exports.ReplicationConfigurationFilterSensitiveLog)(obj.ReplicationConfiguration),
+    }),
+});
+exports.GetBucketReplicationOutputFilterSensitiveLog = GetBucketReplicationOutputFilterSensitiveLog;
+const GetBucketReplicationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketReplicationRequestFilterSensitiveLog = GetBucketReplicationRequestFilterSensitiveLog;
+const GetBucketRequestPaymentOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketRequestPaymentOutputFilterSensitiveLog = GetBucketRequestPaymentOutputFilterSensitiveLog;
+const GetBucketRequestPaymentRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketRequestPaymentRequestFilterSensitiveLog = GetBucketRequestPaymentRequestFilterSensitiveLog;
+const GetBucketTaggingOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketTaggingOutputFilterSensitiveLog = GetBucketTaggingOutputFilterSensitiveLog;
+const GetBucketTaggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketTaggingRequestFilterSensitiveLog = GetBucketTaggingRequestFilterSensitiveLog;
+const GetBucketVersioningOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketVersioningOutputFilterSensitiveLog = GetBucketVersioningOutputFilterSensitiveLog;
+const GetBucketVersioningRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketVersioningRequestFilterSensitiveLog = GetBucketVersioningRequestFilterSensitiveLog;
+const ErrorDocumentFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ErrorDocumentFilterSensitiveLog = ErrorDocumentFilterSensitiveLog;
+const IndexDocumentFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.IndexDocumentFilterSensitiveLog = IndexDocumentFilterSensitiveLog;
+const RedirectAllRequestsToFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RedirectAllRequestsToFilterSensitiveLog = RedirectAllRequestsToFilterSensitiveLog;
+const ConditionFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ConditionFilterSensitiveLog = ConditionFilterSensitiveLog;
+const RedirectFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RedirectFilterSensitiveLog = RedirectFilterSensitiveLog;
+const RoutingRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RoutingRuleFilterSensitiveLog = RoutingRuleFilterSensitiveLog;
+const GetBucketWebsiteOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketWebsiteOutputFilterSensitiveLog = GetBucketWebsiteOutputFilterSensitiveLog;
+const GetBucketWebsiteRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetBucketWebsiteRequestFilterSensitiveLog = GetBucketWebsiteRequestFilterSensitiveLog;
+const GetObjectOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.GetObjectOutputFilterSensitiveLog = GetObjectOutputFilterSensitiveLog;
+const GetObjectRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.GetObjectRequestFilterSensitiveLog = GetObjectRequestFilterSensitiveLog;
+const GetObjectAclOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectAclOutputFilterSensitiveLog = GetObjectAclOutputFilterSensitiveLog;
+const GetObjectAclRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectAclRequestFilterSensitiveLog = GetObjectAclRequestFilterSensitiveLog;
+const ChecksumFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ChecksumFilterSensitiveLog = ChecksumFilterSensitiveLog;
+const ObjectPartFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectPartFilterSensitiveLog = ObjectPartFilterSensitiveLog;
+const GetObjectAttributesPartsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectAttributesPartsFilterSensitiveLog = GetObjectAttributesPartsFilterSensitiveLog;
+const GetObjectAttributesOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectAttributesOutputFilterSensitiveLog = GetObjectAttributesOutputFilterSensitiveLog;
+const GetObjectAttributesRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.GetObjectAttributesRequestFilterSensitiveLog = GetObjectAttributesRequestFilterSensitiveLog;
+const ObjectLockLegalHoldFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectLockLegalHoldFilterSensitiveLog = ObjectLockLegalHoldFilterSensitiveLog;
+const GetObjectLegalHoldOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectLegalHoldOutputFilterSensitiveLog = GetObjectLegalHoldOutputFilterSensitiveLog;
+const GetObjectLegalHoldRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectLegalHoldRequestFilterSensitiveLog = GetObjectLegalHoldRequestFilterSensitiveLog;
+const DefaultRetentionFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DefaultRetentionFilterSensitiveLog = DefaultRetentionFilterSensitiveLog;
+const ObjectLockRuleFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectLockRuleFilterSensitiveLog = ObjectLockRuleFilterSensitiveLog;
+const ObjectLockConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectLockConfigurationFilterSensitiveLog = ObjectLockConfigurationFilterSensitiveLog;
+const GetObjectLockConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectLockConfigurationOutputFilterSensitiveLog = GetObjectLockConfigurationOutputFilterSensitiveLog;
+const GetObjectLockConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectLockConfigurationRequestFilterSensitiveLog = GetObjectLockConfigurationRequestFilterSensitiveLog;
+const ObjectLockRetentionFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectLockRetentionFilterSensitiveLog = ObjectLockRetentionFilterSensitiveLog;
+const GetObjectRetentionOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectRetentionOutputFilterSensitiveLog = GetObjectRetentionOutputFilterSensitiveLog;
+const GetObjectRetentionRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectRetentionRequestFilterSensitiveLog = GetObjectRetentionRequestFilterSensitiveLog;
+const GetObjectTaggingOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectTaggingOutputFilterSensitiveLog = GetObjectTaggingOutputFilterSensitiveLog;
+const GetObjectTaggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectTaggingRequestFilterSensitiveLog = GetObjectTaggingRequestFilterSensitiveLog;
+const GetObjectTorrentOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectTorrentOutputFilterSensitiveLog = GetObjectTorrentOutputFilterSensitiveLog;
+const GetObjectTorrentRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetObjectTorrentRequestFilterSensitiveLog = GetObjectTorrentRequestFilterSensitiveLog;
+const PublicAccessBlockConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PublicAccessBlockConfigurationFilterSensitiveLog = PublicAccessBlockConfigurationFilterSensitiveLog;
+const GetPublicAccessBlockOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetPublicAccessBlockOutputFilterSensitiveLog = GetPublicAccessBlockOutputFilterSensitiveLog;
+const GetPublicAccessBlockRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetPublicAccessBlockRequestFilterSensitiveLog = GetPublicAccessBlockRequestFilterSensitiveLog;
+const HeadBucketRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.HeadBucketRequestFilterSensitiveLog = HeadBucketRequestFilterSensitiveLog;
+const HeadObjectOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.HeadObjectOutputFilterSensitiveLog = HeadObjectOutputFilterSensitiveLog;
+const HeadObjectRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.HeadObjectRequestFilterSensitiveLog = HeadObjectRequestFilterSensitiveLog;
+const ListBucketAnalyticsConfigurationsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.AnalyticsConfigurationList && {
+        AnalyticsConfigurationList: obj.AnalyticsConfigurationList.map((item) => (0, exports.AnalyticsConfigurationFilterSensitiveLog)(item)),
+    }),
+});
+exports.ListBucketAnalyticsConfigurationsOutputFilterSensitiveLog = ListBucketAnalyticsConfigurationsOutputFilterSensitiveLog;
+const ListBucketAnalyticsConfigurationsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListBucketAnalyticsConfigurationsRequestFilterSensitiveLog = ListBucketAnalyticsConfigurationsRequestFilterSensitiveLog;
+const ListBucketIntelligentTieringConfigurationsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListBucketIntelligentTieringConfigurationsOutputFilterSensitiveLog = ListBucketIntelligentTieringConfigurationsOutputFilterSensitiveLog;
+const ListBucketIntelligentTieringConfigurationsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListBucketIntelligentTieringConfigurationsRequestFilterSensitiveLog = ListBucketIntelligentTieringConfigurationsRequestFilterSensitiveLog;
+const ListBucketInventoryConfigurationsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.InventoryConfigurationList && {
+        InventoryConfigurationList: obj.InventoryConfigurationList.map((item) => (0, exports.InventoryConfigurationFilterSensitiveLog)(item)),
+    }),
+});
+exports.ListBucketInventoryConfigurationsOutputFilterSensitiveLog = ListBucketInventoryConfigurationsOutputFilterSensitiveLog;
+const ListBucketInventoryConfigurationsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListBucketInventoryConfigurationsRequestFilterSensitiveLog = ListBucketInventoryConfigurationsRequestFilterSensitiveLog;
+const ListBucketMetricsConfigurationsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.MetricsConfigurationList && {
+        MetricsConfigurationList: obj.MetricsConfigurationList.map((item) => (0, exports.MetricsConfigurationFilterSensitiveLog)(item)),
+    }),
+});
+exports.ListBucketMetricsConfigurationsOutputFilterSensitiveLog = ListBucketMetricsConfigurationsOutputFilterSensitiveLog;
+const ListBucketMetricsConfigurationsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListBucketMetricsConfigurationsRequestFilterSensitiveLog = ListBucketMetricsConfigurationsRequestFilterSensitiveLog;
+const BucketFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.BucketFilterSensitiveLog = BucketFilterSensitiveLog;
+const ListBucketsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListBucketsOutputFilterSensitiveLog = ListBucketsOutputFilterSensitiveLog;
+const CommonPrefixFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CommonPrefixFilterSensitiveLog = CommonPrefixFilterSensitiveLog;
+const InitiatorFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.InitiatorFilterSensitiveLog = InitiatorFilterSensitiveLog;
+const MultipartUploadFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.MultipartUploadFilterSensitiveLog = MultipartUploadFilterSensitiveLog;
+const ListMultipartUploadsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListMultipartUploadsOutputFilterSensitiveLog = ListMultipartUploadsOutputFilterSensitiveLog;
+const ListMultipartUploadsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListMultipartUploadsRequestFilterSensitiveLog = ListMultipartUploadsRequestFilterSensitiveLog;
+const _ObjectFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports._ObjectFilterSensitiveLog = _ObjectFilterSensitiveLog;
+const ListObjectsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListObjectsOutputFilterSensitiveLog = ListObjectsOutputFilterSensitiveLog;
+const ListObjectsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListObjectsRequestFilterSensitiveLog = ListObjectsRequestFilterSensitiveLog;
+const ListObjectsV2OutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListObjectsV2OutputFilterSensitiveLog = ListObjectsV2OutputFilterSensitiveLog;
+const ListObjectsV2RequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListObjectsV2RequestFilterSensitiveLog = ListObjectsV2RequestFilterSensitiveLog;
+const DeleteMarkerEntryFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DeleteMarkerEntryFilterSensitiveLog = DeleteMarkerEntryFilterSensitiveLog;
+const ObjectVersionFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ObjectVersionFilterSensitiveLog = ObjectVersionFilterSensitiveLog;
+const ListObjectVersionsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListObjectVersionsOutputFilterSensitiveLog = ListObjectVersionsOutputFilterSensitiveLog;
+const ListObjectVersionsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListObjectVersionsRequestFilterSensitiveLog = ListObjectVersionsRequestFilterSensitiveLog;
+const PartFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PartFilterSensitiveLog = PartFilterSensitiveLog;
+const ListPartsOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListPartsOutputFilterSensitiveLog = ListPartsOutputFilterSensitiveLog;
+const ListPartsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.ListPartsRequestFilterSensitiveLog = ListPartsRequestFilterSensitiveLog;
+const PutBucketAccelerateConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketAccelerateConfigurationRequestFilterSensitiveLog = PutBucketAccelerateConfigurationRequestFilterSensitiveLog;
+const PutBucketAclRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketAclRequestFilterSensitiveLog = PutBucketAclRequestFilterSensitiveLog;
+const PutBucketAnalyticsConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.AnalyticsConfiguration && {
+        AnalyticsConfiguration: (0, exports.AnalyticsConfigurationFilterSensitiveLog)(obj.AnalyticsConfiguration),
+    }),
+});
+exports.PutBucketAnalyticsConfigurationRequestFilterSensitiveLog = PutBucketAnalyticsConfigurationRequestFilterSensitiveLog;
+const CORSConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CORSConfigurationFilterSensitiveLog = CORSConfigurationFilterSensitiveLog;
+const PutBucketCorsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketCorsRequestFilterSensitiveLog = PutBucketCorsRequestFilterSensitiveLog;
+const PutBucketEncryptionRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.ServerSideEncryptionConfiguration && {
+        ServerSideEncryptionConfiguration: (0, exports.ServerSideEncryptionConfigurationFilterSensitiveLog)(obj.ServerSideEncryptionConfiguration),
+    }),
+});
+exports.PutBucketEncryptionRequestFilterSensitiveLog = PutBucketEncryptionRequestFilterSensitiveLog;
+const PutBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketIntelligentTieringConfigurationRequestFilterSensitiveLog = PutBucketIntelligentTieringConfigurationRequestFilterSensitiveLog;
+const PutBucketInventoryConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.InventoryConfiguration && {
+        InventoryConfiguration: (0, exports.InventoryConfigurationFilterSensitiveLog)(obj.InventoryConfiguration),
+    }),
+});
+exports.PutBucketInventoryConfigurationRequestFilterSensitiveLog = PutBucketInventoryConfigurationRequestFilterSensitiveLog;
+const BucketLifecycleConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Rules && { Rules: obj.Rules.map((item) => (0, exports.LifecycleRuleFilterSensitiveLog)(item)) }),
+});
+exports.BucketLifecycleConfigurationFilterSensitiveLog = BucketLifecycleConfigurationFilterSensitiveLog;
+const PutBucketLifecycleConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.LifecycleConfiguration && {
+        LifecycleConfiguration: (0, exports.BucketLifecycleConfigurationFilterSensitiveLog)(obj.LifecycleConfiguration),
+    }),
+});
+exports.PutBucketLifecycleConfigurationRequestFilterSensitiveLog = PutBucketLifecycleConfigurationRequestFilterSensitiveLog;
+const BucketLoggingStatusFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.BucketLoggingStatusFilterSensitiveLog = BucketLoggingStatusFilterSensitiveLog;
+const PutBucketLoggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketLoggingRequestFilterSensitiveLog = PutBucketLoggingRequestFilterSensitiveLog;
+const PutBucketMetricsConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.MetricsConfiguration && {
+        MetricsConfiguration: (0, exports.MetricsConfigurationFilterSensitiveLog)(obj.MetricsConfiguration),
+    }),
+});
+exports.PutBucketMetricsConfigurationRequestFilterSensitiveLog = PutBucketMetricsConfigurationRequestFilterSensitiveLog;
+const PutBucketNotificationConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketNotificationConfigurationRequestFilterSensitiveLog = PutBucketNotificationConfigurationRequestFilterSensitiveLog;
+const PutBucketOwnershipControlsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketOwnershipControlsRequestFilterSensitiveLog = PutBucketOwnershipControlsRequestFilterSensitiveLog;
+const PutBucketPolicyRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketPolicyRequestFilterSensitiveLog = PutBucketPolicyRequestFilterSensitiveLog;
+const PutBucketReplicationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.ReplicationConfiguration && {
+        ReplicationConfiguration: (0, exports.ReplicationConfigurationFilterSensitiveLog)(obj.ReplicationConfiguration),
+    }),
+});
+exports.PutBucketReplicationRequestFilterSensitiveLog = PutBucketReplicationRequestFilterSensitiveLog;
+const RequestPaymentConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RequestPaymentConfigurationFilterSensitiveLog = RequestPaymentConfigurationFilterSensitiveLog;
+const PutBucketRequestPaymentRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketRequestPaymentRequestFilterSensitiveLog = PutBucketRequestPaymentRequestFilterSensitiveLog;
+const TaggingFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TaggingFilterSensitiveLog = TaggingFilterSensitiveLog;
+const PutBucketTaggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketTaggingRequestFilterSensitiveLog = PutBucketTaggingRequestFilterSensitiveLog;
+const VersioningConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.VersioningConfigurationFilterSensitiveLog = VersioningConfigurationFilterSensitiveLog;
+const PutBucketVersioningRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketVersioningRequestFilterSensitiveLog = PutBucketVersioningRequestFilterSensitiveLog;
+const WebsiteConfigurationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.WebsiteConfigurationFilterSensitiveLog = WebsiteConfigurationFilterSensitiveLog;
+const PutBucketWebsiteRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutBucketWebsiteRequestFilterSensitiveLog = PutBucketWebsiteRequestFilterSensitiveLog;
+const PutObjectOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.PutObjectOutputFilterSensitiveLog = PutObjectOutputFilterSensitiveLog;
+const PutObjectRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.SSEKMSEncryptionContext && { SSEKMSEncryptionContext: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.PutObjectRequestFilterSensitiveLog = PutObjectRequestFilterSensitiveLog;
+const PutObjectAclOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectAclOutputFilterSensitiveLog = PutObjectAclOutputFilterSensitiveLog;
+const PutObjectAclRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectAclRequestFilterSensitiveLog = PutObjectAclRequestFilterSensitiveLog;
+const PutObjectLegalHoldOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectLegalHoldOutputFilterSensitiveLog = PutObjectLegalHoldOutputFilterSensitiveLog;
+const PutObjectLegalHoldRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectLegalHoldRequestFilterSensitiveLog = PutObjectLegalHoldRequestFilterSensitiveLog;
+const PutObjectLockConfigurationOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectLockConfigurationOutputFilterSensitiveLog = PutObjectLockConfigurationOutputFilterSensitiveLog;
+const PutObjectLockConfigurationRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectLockConfigurationRequestFilterSensitiveLog = PutObjectLockConfigurationRequestFilterSensitiveLog;
 
 
 /***/ }),
@@ -10993,39 +10523,9 @@ var PutObjectLockConfigurationRequest;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.WriteGetObjectResponseRequest = exports.UploadPartCopyRequest = exports.UploadPartCopyOutput = exports.CopyPartResult = exports.UploadPartRequest = exports.UploadPartOutput = exports.SelectObjectContentRequest = exports.ScanRange = exports.RequestProgress = exports.SelectObjectContentOutput = exports.SelectObjectContentEventStream = exports.StatsEvent = exports.Stats = exports.RecordsEvent = exports.ProgressEvent = exports.Progress = exports.EndEvent = exports.ContinuationEvent = exports.RestoreObjectRequest = exports.RestoreRequest = exports.RestoreRequestType = exports.SelectParameters = exports.OutputSerialization = exports.JSONOutput = exports.CSVOutput = exports.QuoteFields = exports.InputSerialization = exports.ParquetInput = exports.JSONInput = exports.JSONType = exports.CSVInput = exports.FileHeaderInfo = exports.OutputLocation = exports.S3Location = exports.MetadataEntry = exports.Encryption = exports.GlacierJobParameters = exports.RestoreObjectOutput = exports.ObjectAlreadyInActiveTierError = exports.PutPublicAccessBlockRequest = exports.PutObjectTaggingRequest = exports.PutObjectTaggingOutput = exports.PutObjectRetentionRequest = exports.PutObjectRetentionOutput = void 0;
+exports.WriteGetObjectResponseRequestFilterSensitiveLog = exports.UploadPartCopyRequestFilterSensitiveLog = exports.UploadPartCopyOutputFilterSensitiveLog = exports.CopyPartResultFilterSensitiveLog = exports.UploadPartRequestFilterSensitiveLog = exports.UploadPartOutputFilterSensitiveLog = exports.SelectObjectContentRequestFilterSensitiveLog = exports.ScanRangeFilterSensitiveLog = exports.RequestProgressFilterSensitiveLog = exports.SelectObjectContentOutputFilterSensitiveLog = exports.SelectObjectContentEventStreamFilterSensitiveLog = exports.StatsEventFilterSensitiveLog = exports.StatsFilterSensitiveLog = exports.RecordsEventFilterSensitiveLog = exports.ProgressEventFilterSensitiveLog = exports.ProgressFilterSensitiveLog = exports.EndEventFilterSensitiveLog = exports.ContinuationEventFilterSensitiveLog = exports.RestoreObjectRequestFilterSensitiveLog = exports.RestoreRequestFilterSensitiveLog = exports.SelectParametersFilterSensitiveLog = exports.OutputSerializationFilterSensitiveLog = exports.JSONOutputFilterSensitiveLog = exports.CSVOutputFilterSensitiveLog = exports.InputSerializationFilterSensitiveLog = exports.ParquetInputFilterSensitiveLog = exports.JSONInputFilterSensitiveLog = exports.CSVInputFilterSensitiveLog = exports.OutputLocationFilterSensitiveLog = exports.S3LocationFilterSensitiveLog = exports.MetadataEntryFilterSensitiveLog = exports.EncryptionFilterSensitiveLog = exports.GlacierJobParametersFilterSensitiveLog = exports.RestoreObjectOutputFilterSensitiveLog = exports.PutPublicAccessBlockRequestFilterSensitiveLog = exports.PutObjectTaggingRequestFilterSensitiveLog = exports.PutObjectTaggingOutputFilterSensitiveLog = exports.PutObjectRetentionRequestFilterSensitiveLog = exports.PutObjectRetentionOutputFilterSensitiveLog = exports.SelectObjectContentEventStream = exports.RestoreRequestType = exports.QuoteFields = exports.JSONType = exports.FileHeaderInfo = exports.ObjectAlreadyInActiveTierError = void 0;
 const smithy_client_1 = __nccwpck_require__(4963);
 const S3ServiceException_1 = __nccwpck_require__(37614);
-var PutObjectRetentionOutput;
-(function (PutObjectRetentionOutput) {
-    PutObjectRetentionOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectRetentionOutput = exports.PutObjectRetentionOutput || (exports.PutObjectRetentionOutput = {}));
-var PutObjectRetentionRequest;
-(function (PutObjectRetentionRequest) {
-    PutObjectRetentionRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectRetentionRequest = exports.PutObjectRetentionRequest || (exports.PutObjectRetentionRequest = {}));
-var PutObjectTaggingOutput;
-(function (PutObjectTaggingOutput) {
-    PutObjectTaggingOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectTaggingOutput = exports.PutObjectTaggingOutput || (exports.PutObjectTaggingOutput = {}));
-var PutObjectTaggingRequest;
-(function (PutObjectTaggingRequest) {
-    PutObjectTaggingRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutObjectTaggingRequest = exports.PutObjectTaggingRequest || (exports.PutObjectTaggingRequest = {}));
-var PutPublicAccessBlockRequest;
-(function (PutPublicAccessBlockRequest) {
-    PutPublicAccessBlockRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PutPublicAccessBlockRequest = exports.PutPublicAccessBlockRequest || (exports.PutPublicAccessBlockRequest = {}));
 class ObjectAlreadyInActiveTierError extends S3ServiceException_1.S3ServiceException {
     constructor(opts) {
         super({
@@ -11039,169 +10539,26 @@ class ObjectAlreadyInActiveTierError extends S3ServiceException_1.S3ServiceExcep
     }
 }
 exports.ObjectAlreadyInActiveTierError = ObjectAlreadyInActiveTierError;
-var RestoreObjectOutput;
-(function (RestoreObjectOutput) {
-    RestoreObjectOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RestoreObjectOutput = exports.RestoreObjectOutput || (exports.RestoreObjectOutput = {}));
-var GlacierJobParameters;
-(function (GlacierJobParameters) {
-    GlacierJobParameters.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GlacierJobParameters = exports.GlacierJobParameters || (exports.GlacierJobParameters = {}));
-var Encryption;
-(function (Encryption) {
-    Encryption.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.KMSKeyId && { KMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(Encryption = exports.Encryption || (exports.Encryption = {}));
-var MetadataEntry;
-(function (MetadataEntry) {
-    MetadataEntry.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(MetadataEntry = exports.MetadataEntry || (exports.MetadataEntry = {}));
-var S3Location;
-(function (S3Location) {
-    S3Location.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Encryption && { Encryption: Encryption.filterSensitiveLog(obj.Encryption) }),
-    });
-})(S3Location = exports.S3Location || (exports.S3Location = {}));
-var OutputLocation;
-(function (OutputLocation) {
-    OutputLocation.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.S3 && { S3: S3Location.filterSensitiveLog(obj.S3) }),
-    });
-})(OutputLocation = exports.OutputLocation || (exports.OutputLocation = {}));
 var FileHeaderInfo;
 (function (FileHeaderInfo) {
     FileHeaderInfo["IGNORE"] = "IGNORE";
     FileHeaderInfo["NONE"] = "NONE";
     FileHeaderInfo["USE"] = "USE";
 })(FileHeaderInfo = exports.FileHeaderInfo || (exports.FileHeaderInfo = {}));
-var CSVInput;
-(function (CSVInput) {
-    CSVInput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CSVInput = exports.CSVInput || (exports.CSVInput = {}));
 var JSONType;
 (function (JSONType) {
     JSONType["DOCUMENT"] = "DOCUMENT";
     JSONType["LINES"] = "LINES";
 })(JSONType = exports.JSONType || (exports.JSONType = {}));
-var JSONInput;
-(function (JSONInput) {
-    JSONInput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(JSONInput = exports.JSONInput || (exports.JSONInput = {}));
-var ParquetInput;
-(function (ParquetInput) {
-    ParquetInput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ParquetInput = exports.ParquetInput || (exports.ParquetInput = {}));
-var InputSerialization;
-(function (InputSerialization) {
-    InputSerialization.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(InputSerialization = exports.InputSerialization || (exports.InputSerialization = {}));
 var QuoteFields;
 (function (QuoteFields) {
     QuoteFields["ALWAYS"] = "ALWAYS";
     QuoteFields["ASNEEDED"] = "ASNEEDED";
 })(QuoteFields = exports.QuoteFields || (exports.QuoteFields = {}));
-var CSVOutput;
-(function (CSVOutput) {
-    CSVOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CSVOutput = exports.CSVOutput || (exports.CSVOutput = {}));
-var JSONOutput;
-(function (JSONOutput) {
-    JSONOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(JSONOutput = exports.JSONOutput || (exports.JSONOutput = {}));
-var OutputSerialization;
-(function (OutputSerialization) {
-    OutputSerialization.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(OutputSerialization = exports.OutputSerialization || (exports.OutputSerialization = {}));
-var SelectParameters;
-(function (SelectParameters) {
-    SelectParameters.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(SelectParameters = exports.SelectParameters || (exports.SelectParameters = {}));
 var RestoreRequestType;
 (function (RestoreRequestType) {
     RestoreRequestType["SELECT"] = "SELECT";
 })(RestoreRequestType = exports.RestoreRequestType || (exports.RestoreRequestType = {}));
-var RestoreRequest;
-(function (RestoreRequest) {
-    RestoreRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.OutputLocation && { OutputLocation: OutputLocation.filterSensitiveLog(obj.OutputLocation) }),
-    });
-})(RestoreRequest = exports.RestoreRequest || (exports.RestoreRequest = {}));
-var RestoreObjectRequest;
-(function (RestoreObjectRequest) {
-    RestoreObjectRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.RestoreRequest && { RestoreRequest: RestoreRequest.filterSensitiveLog(obj.RestoreRequest) }),
-    });
-})(RestoreObjectRequest = exports.RestoreObjectRequest || (exports.RestoreObjectRequest = {}));
-var ContinuationEvent;
-(function (ContinuationEvent) {
-    ContinuationEvent.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ContinuationEvent = exports.ContinuationEvent || (exports.ContinuationEvent = {}));
-var EndEvent;
-(function (EndEvent) {
-    EndEvent.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(EndEvent = exports.EndEvent || (exports.EndEvent = {}));
-var Progress;
-(function (Progress) {
-    Progress.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Progress = exports.Progress || (exports.Progress = {}));
-var ProgressEvent;
-(function (ProgressEvent) {
-    ProgressEvent.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ProgressEvent = exports.ProgressEvent || (exports.ProgressEvent = {}));
-var RecordsEvent;
-(function (RecordsEvent) {
-    RecordsEvent.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RecordsEvent = exports.RecordsEvent || (exports.RecordsEvent = {}));
-var Stats;
-(function (Stats) {
-    Stats.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Stats = exports.Stats || (exports.Stats = {}));
-var StatsEvent;
-(function (StatsEvent) {
-    StatsEvent.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(StatsEvent = exports.StatsEvent || (exports.StatsEvent = {}));
 var SelectObjectContentEventStream;
 (function (SelectObjectContentEventStream) {
     SelectObjectContentEventStream.visit = (value, visitor) => {
@@ -11217,89 +10574,187 @@ var SelectObjectContentEventStream;
             return visitor.End(value.End);
         return visitor._(value.$unknown[0], value.$unknown[1]);
     };
-    SelectObjectContentEventStream.filterSensitiveLog = (obj) => {
-        if (obj.Records !== undefined)
-            return { Records: RecordsEvent.filterSensitiveLog(obj.Records) };
-        if (obj.Stats !== undefined)
-            return { Stats: StatsEvent.filterSensitiveLog(obj.Stats) };
-        if (obj.Progress !== undefined)
-            return { Progress: ProgressEvent.filterSensitiveLog(obj.Progress) };
-        if (obj.Cont !== undefined)
-            return { Cont: ContinuationEvent.filterSensitiveLog(obj.Cont) };
-        if (obj.End !== undefined)
-            return { End: EndEvent.filterSensitiveLog(obj.End) };
-        if (obj.$unknown !== undefined)
-            return { [obj.$unknown[0]]: "UNKNOWN" };
-    };
 })(SelectObjectContentEventStream = exports.SelectObjectContentEventStream || (exports.SelectObjectContentEventStream = {}));
-var SelectObjectContentOutput;
-(function (SelectObjectContentOutput) {
-    SelectObjectContentOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.Payload && { Payload: "STREAMING_CONTENT" }),
-    });
-})(SelectObjectContentOutput = exports.SelectObjectContentOutput || (exports.SelectObjectContentOutput = {}));
-var RequestProgress;
-(function (RequestProgress) {
-    RequestProgress.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RequestProgress = exports.RequestProgress || (exports.RequestProgress = {}));
-var ScanRange;
-(function (ScanRange) {
-    ScanRange.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ScanRange = exports.ScanRange || (exports.ScanRange = {}));
-var SelectObjectContentRequest;
-(function (SelectObjectContentRequest) {
-    SelectObjectContentRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(SelectObjectContentRequest = exports.SelectObjectContentRequest || (exports.SelectObjectContentRequest = {}));
-var UploadPartOutput;
-(function (UploadPartOutput) {
-    UploadPartOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(UploadPartOutput = exports.UploadPartOutput || (exports.UploadPartOutput = {}));
-var UploadPartRequest;
-(function (UploadPartRequest) {
-    UploadPartRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(UploadPartRequest = exports.UploadPartRequest || (exports.UploadPartRequest = {}));
-var CopyPartResult;
-(function (CopyPartResult) {
-    CopyPartResult.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(CopyPartResult = exports.CopyPartResult || (exports.CopyPartResult = {}));
-var UploadPartCopyOutput;
-(function (UploadPartCopyOutput) {
-    UploadPartCopyOutput.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(UploadPartCopyOutput = exports.UploadPartCopyOutput || (exports.UploadPartCopyOutput = {}));
-var UploadPartCopyRequest;
-(function (UploadPartCopyRequest) {
-    UploadPartCopyRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.CopySourceSSECustomerKey && { CopySourceSSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(UploadPartCopyRequest = exports.UploadPartCopyRequest || (exports.UploadPartCopyRequest = {}));
-var WriteGetObjectResponseRequest;
-(function (WriteGetObjectResponseRequest) {
-    WriteGetObjectResponseRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(WriteGetObjectResponseRequest = exports.WriteGetObjectResponseRequest || (exports.WriteGetObjectResponseRequest = {}));
+const PutObjectRetentionOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectRetentionOutputFilterSensitiveLog = PutObjectRetentionOutputFilterSensitiveLog;
+const PutObjectRetentionRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectRetentionRequestFilterSensitiveLog = PutObjectRetentionRequestFilterSensitiveLog;
+const PutObjectTaggingOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectTaggingOutputFilterSensitiveLog = PutObjectTaggingOutputFilterSensitiveLog;
+const PutObjectTaggingRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutObjectTaggingRequestFilterSensitiveLog = PutObjectTaggingRequestFilterSensitiveLog;
+const PutPublicAccessBlockRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PutPublicAccessBlockRequestFilterSensitiveLog = PutPublicAccessBlockRequestFilterSensitiveLog;
+const RestoreObjectOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RestoreObjectOutputFilterSensitiveLog = RestoreObjectOutputFilterSensitiveLog;
+const GlacierJobParametersFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GlacierJobParametersFilterSensitiveLog = GlacierJobParametersFilterSensitiveLog;
+const EncryptionFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.KMSKeyId && { KMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.EncryptionFilterSensitiveLog = EncryptionFilterSensitiveLog;
+const MetadataEntryFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.MetadataEntryFilterSensitiveLog = MetadataEntryFilterSensitiveLog;
+const S3LocationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Encryption && { Encryption: (0, exports.EncryptionFilterSensitiveLog)(obj.Encryption) }),
+});
+exports.S3LocationFilterSensitiveLog = S3LocationFilterSensitiveLog;
+const OutputLocationFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.S3 && { S3: (0, exports.S3LocationFilterSensitiveLog)(obj.S3) }),
+});
+exports.OutputLocationFilterSensitiveLog = OutputLocationFilterSensitiveLog;
+const CSVInputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CSVInputFilterSensitiveLog = CSVInputFilterSensitiveLog;
+const JSONInputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.JSONInputFilterSensitiveLog = JSONInputFilterSensitiveLog;
+const ParquetInputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ParquetInputFilterSensitiveLog = ParquetInputFilterSensitiveLog;
+const InputSerializationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.InputSerializationFilterSensitiveLog = InputSerializationFilterSensitiveLog;
+const CSVOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CSVOutputFilterSensitiveLog = CSVOutputFilterSensitiveLog;
+const JSONOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.JSONOutputFilterSensitiveLog = JSONOutputFilterSensitiveLog;
+const OutputSerializationFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.OutputSerializationFilterSensitiveLog = OutputSerializationFilterSensitiveLog;
+const SelectParametersFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.SelectParametersFilterSensitiveLog = SelectParametersFilterSensitiveLog;
+const RestoreRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.OutputLocation && { OutputLocation: (0, exports.OutputLocationFilterSensitiveLog)(obj.OutputLocation) }),
+});
+exports.RestoreRequestFilterSensitiveLog = RestoreRequestFilterSensitiveLog;
+const RestoreObjectRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.RestoreRequest && { RestoreRequest: (0, exports.RestoreRequestFilterSensitiveLog)(obj.RestoreRequest) }),
+});
+exports.RestoreObjectRequestFilterSensitiveLog = RestoreObjectRequestFilterSensitiveLog;
+const ContinuationEventFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ContinuationEventFilterSensitiveLog = ContinuationEventFilterSensitiveLog;
+const EndEventFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.EndEventFilterSensitiveLog = EndEventFilterSensitiveLog;
+const ProgressFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ProgressFilterSensitiveLog = ProgressFilterSensitiveLog;
+const ProgressEventFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ProgressEventFilterSensitiveLog = ProgressEventFilterSensitiveLog;
+const RecordsEventFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RecordsEventFilterSensitiveLog = RecordsEventFilterSensitiveLog;
+const StatsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.StatsFilterSensitiveLog = StatsFilterSensitiveLog;
+const StatsEventFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.StatsEventFilterSensitiveLog = StatsEventFilterSensitiveLog;
+const SelectObjectContentEventStreamFilterSensitiveLog = (obj) => {
+    if (obj.Records !== undefined)
+        return { Records: (0, exports.RecordsEventFilterSensitiveLog)(obj.Records) };
+    if (obj.Stats !== undefined)
+        return { Stats: (0, exports.StatsEventFilterSensitiveLog)(obj.Stats) };
+    if (obj.Progress !== undefined)
+        return { Progress: (0, exports.ProgressEventFilterSensitiveLog)(obj.Progress) };
+    if (obj.Cont !== undefined)
+        return { Cont: (0, exports.ContinuationEventFilterSensitiveLog)(obj.Cont) };
+    if (obj.End !== undefined)
+        return { End: (0, exports.EndEventFilterSensitiveLog)(obj.End) };
+    if (obj.$unknown !== undefined)
+        return { [obj.$unknown[0]]: "UNKNOWN" };
+};
+exports.SelectObjectContentEventStreamFilterSensitiveLog = SelectObjectContentEventStreamFilterSensitiveLog;
+const SelectObjectContentOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.Payload && { Payload: "STREAMING_CONTENT" }),
+});
+exports.SelectObjectContentOutputFilterSensitiveLog = SelectObjectContentOutputFilterSensitiveLog;
+const RequestProgressFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RequestProgressFilterSensitiveLog = RequestProgressFilterSensitiveLog;
+const ScanRangeFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ScanRangeFilterSensitiveLog = ScanRangeFilterSensitiveLog;
+const SelectObjectContentRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.SelectObjectContentRequestFilterSensitiveLog = SelectObjectContentRequestFilterSensitiveLog;
+const UploadPartOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.UploadPartOutputFilterSensitiveLog = UploadPartOutputFilterSensitiveLog;
+const UploadPartRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.UploadPartRequestFilterSensitiveLog = UploadPartRequestFilterSensitiveLog;
+const CopyPartResultFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CopyPartResultFilterSensitiveLog = CopyPartResultFilterSensitiveLog;
+const UploadPartCopyOutputFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.UploadPartCopyOutputFilterSensitiveLog = UploadPartCopyOutputFilterSensitiveLog;
+const UploadPartCopyRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSECustomerKey && { SSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.CopySourceSSECustomerKey && { CopySourceSSECustomerKey: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.UploadPartCopyRequestFilterSensitiveLog = UploadPartCopyRequestFilterSensitiveLog;
+const WriteGetObjectResponseRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.SSEKMSKeyId && { SSEKMSKeyId: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.WriteGetObjectResponseRequestFilterSensitiveLog = WriteGetObjectResponseRequestFilterSensitiveLog;
 
 
 /***/ }),
@@ -19805,22 +19260,8 @@ const deserializeAws_restXmlSelectObjectContentCommand = async (output, context)
         $metadata: deserializeMetadata(output),
         Payload: undefined,
     };
-    const data = context.eventStreamMarshaller.deserialize(output.body, async (event) => {
-        const eventName = Object.keys(event)[0];
-        const eventHeaders = Object.entries(event[eventName].headers).reduce((accummulator, curr) => {
-            accummulator[curr[0]] = curr[1].value;
-            return accummulator;
-        }, {});
-        const eventMessage = {
-            headers: eventHeaders,
-            body: event[eventName].body,
-        };
-        const parsedEvent = {
-            [eventName]: eventMessage,
-        };
-        return await deserializeAws_restXmlSelectObjectContentEventStream_event(parsedEvent, context);
-    });
-    contents.Payload = data;
+    const data = output.body;
+    contents.Payload = deserializeAws_restXmlSelectObjectContentEventStream(data, context);
     return Promise.resolve(contents);
 };
 exports.deserializeAws_restXmlSelectObjectContentCommand = deserializeAws_restXmlSelectObjectContentCommand;
@@ -20011,57 +19452,6 @@ const deserializeAws_restXmlWriteGetObjectResponseCommandError = async (output, 
             throw (0, smithy_client_1.decorateServiceException)(response, parsedBody);
     }
 };
-const deserializeAws_restXmlSelectObjectContentEventStream_event = async (output, context) => {
-    if (output["Records"] !== undefined) {
-        return {
-            Records: await deserializeAws_restXmlRecordsEvent_event(output["Records"], context),
-        };
-    }
-    if (output["Stats"] !== undefined) {
-        return {
-            Stats: await deserializeAws_restXmlStatsEvent_event(output["Stats"], context),
-        };
-    }
-    if (output["Progress"] !== undefined) {
-        return {
-            Progress: await deserializeAws_restXmlProgressEvent_event(output["Progress"], context),
-        };
-    }
-    if (output["Cont"] !== undefined) {
-        return {
-            Cont: await deserializeAws_restXmlContinuationEvent_event(output["Cont"], context),
-        };
-    }
-    if (output["End"] !== undefined) {
-        return {
-            End: await deserializeAws_restXmlEndEvent_event(output["End"], context),
-        };
-    }
-    return { $unknown: output };
-};
-const deserializeAws_restXmlContinuationEvent_event = async (output, context) => {
-    const contents = {};
-    return contents;
-};
-const deserializeAws_restXmlEndEvent_event = async (output, context) => {
-    const contents = {};
-    return contents;
-};
-const deserializeAws_restXmlProgressEvent_event = async (output, context) => {
-    const contents = {};
-    contents.Details = await parseBody(output.body, context);
-    return contents;
-};
-const deserializeAws_restXmlRecordsEvent_event = async (output, context) => {
-    const contents = {};
-    contents.Payload = output.body;
-    return contents;
-};
-const deserializeAws_restXmlStatsEvent_event = async (output, context) => {
-    const contents = {};
-    contents.Details = await parseBody(output.body, context);
-    return contents;
-};
 const deserializeAws_restXmlBucketAlreadyExistsResponse = async (parsedOutput, context) => {
     const contents = {};
     const data = parsedOutput.body;
@@ -20149,9 +19539,68 @@ const deserializeAws_restXmlObjectNotInActiveTierErrorResponse = async (parsedOu
     });
     return (0, smithy_client_1.decorateServiceException)(exception, parsedOutput.body);
 };
+const deserializeAws_restXmlSelectObjectContentEventStream = (output, context) => {
+    return context.eventStreamMarshaller.deserialize(output, async (event) => {
+        if (event["Records"] != null) {
+            return {
+                Records: await deserializeAws_restXmlRecordsEvent_event(event["Records"], context),
+            };
+        }
+        if (event["Stats"] != null) {
+            return {
+                Stats: await deserializeAws_restXmlStatsEvent_event(event["Stats"], context),
+            };
+        }
+        if (event["Progress"] != null) {
+            return {
+                Progress: await deserializeAws_restXmlProgressEvent_event(event["Progress"], context),
+            };
+        }
+        if (event["Cont"] != null) {
+            return {
+                Cont: await deserializeAws_restXmlContinuationEvent_event(event["Cont"], context),
+            };
+        }
+        if (event["End"] != null) {
+            return {
+                End: await deserializeAws_restXmlEndEvent_event(event["End"], context),
+            };
+        }
+        return { $unknown: output };
+    });
+};
+const deserializeAws_restXmlContinuationEvent_event = async (output, context) => {
+    const contents = {};
+    const data = await parseBody(output.body, context);
+    Object.assign(contents, deserializeAws_restXmlContinuationEvent(data, context));
+    return contents;
+};
+const deserializeAws_restXmlEndEvent_event = async (output, context) => {
+    const contents = {};
+    const data = await parseBody(output.body, context);
+    Object.assign(contents, deserializeAws_restXmlEndEvent(data, context));
+    return contents;
+};
+const deserializeAws_restXmlProgressEvent_event = async (output, context) => {
+    const contents = {};
+    const data = await parseBody(output.body, context);
+    contents.Details = deserializeAws_restXmlProgress(data, context);
+    return contents;
+};
+const deserializeAws_restXmlRecordsEvent_event = async (output, context) => {
+    const contents = {};
+    contents.Payload = output.body;
+    return contents;
+};
+const deserializeAws_restXmlStatsEvent_event = async (output, context) => {
+    const contents = {};
+    const data = await parseBody(output.body, context);
+    contents.Details = deserializeAws_restXmlStats(data, context);
+    return contents;
+};
 const serializeAws_restXmlAbortIncompleteMultipartUpload = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AbortIncompleteMultipartUpload");
-    if (input.DaysAfterInitiation !== undefined && input.DaysAfterInitiation !== null) {
+    if (input.DaysAfterInitiation != null) {
         const node = new xml_builder_1.XmlNode("DaysAfterInitiation")
             .addChildNode(new xml_builder_1.XmlText(String(input.DaysAfterInitiation)))
             .withName("DaysAfterInitiation");
@@ -20161,7 +19610,7 @@ const serializeAws_restXmlAbortIncompleteMultipartUpload = (input, context) => {
 };
 const serializeAws_restXmlAccelerateConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AccelerateConfiguration");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("BucketAccelerateStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
@@ -20169,7 +19618,7 @@ const serializeAws_restXmlAccelerateConfiguration = (input, context) => {
 };
 const serializeAws_restXmlAccessControlPolicy = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AccessControlPolicy");
-    if (input.Grants !== undefined && input.Grants !== null) {
+    if (input.Grants != null) {
         const nodes = serializeAws_restXmlGrants(input.Grants, context);
         const containerNode = new xml_builder_1.XmlNode("AccessControlList");
         nodes.map((node) => {
@@ -20177,7 +19626,7 @@ const serializeAws_restXmlAccessControlPolicy = (input, context) => {
         });
         bodyNode.addChildNode(containerNode);
     }
-    if (input.Owner !== undefined && input.Owner !== null) {
+    if (input.Owner != null) {
         const node = serializeAws_restXmlOwner(input.Owner, context).withName("Owner");
         bodyNode.addChildNode(node);
     }
@@ -20185,7 +19634,7 @@ const serializeAws_restXmlAccessControlPolicy = (input, context) => {
 };
 const serializeAws_restXmlAccessControlTranslation = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AccessControlTranslation");
-    if (input.Owner !== undefined && input.Owner !== null) {
+    if (input.Owner != null) {
         const node = new xml_builder_1.XmlNode("OwnerOverride").addChildNode(new xml_builder_1.XmlText(input.Owner)).withName("Owner");
         bodyNode.addChildNode(node);
     }
@@ -20226,11 +19675,11 @@ const serializeAws_restXmlAllowedOrigins = (input, context) => {
 };
 const serializeAws_restXmlAnalyticsAndOperator = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AnalyticsAndOperator");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Tags !== undefined && input.Tags !== null) {
+    if (input.Tags != null) {
         const nodes = serializeAws_restXmlTagSet(input.Tags, context);
         nodes.map((node) => {
             node = node.withName("Tag");
@@ -20241,15 +19690,15 @@ const serializeAws_restXmlAnalyticsAndOperator = (input, context) => {
 };
 const serializeAws_restXmlAnalyticsConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AnalyticsConfiguration");
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("AnalyticsId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlAnalyticsFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
-    if (input.StorageClassAnalysis !== undefined && input.StorageClassAnalysis !== null) {
+    if (input.StorageClassAnalysis != null) {
         const node = serializeAws_restXmlStorageClassAnalysis(input.StorageClassAnalysis, context).withName("StorageClassAnalysis");
         bodyNode.addChildNode(node);
     }
@@ -20257,7 +19706,7 @@ const serializeAws_restXmlAnalyticsConfiguration = (input, context) => {
 };
 const serializeAws_restXmlAnalyticsExportDestination = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AnalyticsExportDestination");
-    if (input.S3BucketDestination !== undefined && input.S3BucketDestination !== null) {
+    if (input.S3BucketDestination != null) {
         const node = serializeAws_restXmlAnalyticsS3BucketDestination(input.S3BucketDestination, context).withName("S3BucketDestination");
         bodyNode.addChildNode(node);
     }
@@ -20289,23 +19738,23 @@ const serializeAws_restXmlAnalyticsFilter = (input, context) => {
 };
 const serializeAws_restXmlAnalyticsS3BucketDestination = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("AnalyticsS3BucketDestination");
-    if (input.Format !== undefined && input.Format !== null) {
+    if (input.Format != null) {
         const node = new xml_builder_1.XmlNode("AnalyticsS3ExportFileFormat")
             .addChildNode(new xml_builder_1.XmlText(input.Format))
             .withName("Format");
         bodyNode.addChildNode(node);
     }
-    if (input.BucketAccountId !== undefined && input.BucketAccountId !== null) {
+    if (input.BucketAccountId != null) {
         const node = new xml_builder_1.XmlNode("AccountId")
             .addChildNode(new xml_builder_1.XmlText(input.BucketAccountId))
             .withName("BucketAccountId");
         bodyNode.addChildNode(node);
     }
-    if (input.Bucket !== undefined && input.Bucket !== null) {
+    if (input.Bucket != null) {
         const node = new xml_builder_1.XmlNode("BucketName").addChildNode(new xml_builder_1.XmlText(input.Bucket)).withName("Bucket");
         bodyNode.addChildNode(node);
     }
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
@@ -20313,7 +19762,7 @@ const serializeAws_restXmlAnalyticsS3BucketDestination = (input, context) => {
 };
 const serializeAws_restXmlBucketLifecycleConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("BucketLifecycleConfiguration");
-    if (input.Rules !== undefined && input.Rules !== null) {
+    if (input.Rules != null) {
         const nodes = serializeAws_restXmlLifecycleRules(input.Rules, context);
         nodes.map((node) => {
             node = node.withName("Rule");
@@ -20324,7 +19773,7 @@ const serializeAws_restXmlBucketLifecycleConfiguration = (input, context) => {
 };
 const serializeAws_restXmlBucketLoggingStatus = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("BucketLoggingStatus");
-    if (input.LoggingEnabled !== undefined && input.LoggingEnabled !== null) {
+    if (input.LoggingEnabled != null) {
         const node = serializeAws_restXmlLoggingEnabled(input.LoggingEnabled, context).withName("LoggingEnabled");
         bodyNode.addChildNode(node);
     }
@@ -20332,7 +19781,7 @@ const serializeAws_restXmlBucketLoggingStatus = (input, context) => {
 };
 const serializeAws_restXmlCompletedMultipartUpload = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CompletedMultipartUpload");
-    if (input.Parts !== undefined && input.Parts !== null) {
+    if (input.Parts != null) {
         const nodes = serializeAws_restXmlCompletedPartList(input.Parts, context);
         nodes.map((node) => {
             node = node.withName("Part");
@@ -20343,33 +19792,33 @@ const serializeAws_restXmlCompletedMultipartUpload = (input, context) => {
 };
 const serializeAws_restXmlCompletedPart = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CompletedPart");
-    if (input.ETag !== undefined && input.ETag !== null) {
+    if (input.ETag != null) {
         const node = new xml_builder_1.XmlNode("ETag").addChildNode(new xml_builder_1.XmlText(input.ETag)).withName("ETag");
         bodyNode.addChildNode(node);
     }
-    if (input.ChecksumCRC32 !== undefined && input.ChecksumCRC32 !== null) {
+    if (input.ChecksumCRC32 != null) {
         const node = new xml_builder_1.XmlNode("ChecksumCRC32")
             .addChildNode(new xml_builder_1.XmlText(input.ChecksumCRC32))
             .withName("ChecksumCRC32");
         bodyNode.addChildNode(node);
     }
-    if (input.ChecksumCRC32C !== undefined && input.ChecksumCRC32C !== null) {
+    if (input.ChecksumCRC32C != null) {
         const node = new xml_builder_1.XmlNode("ChecksumCRC32C")
             .addChildNode(new xml_builder_1.XmlText(input.ChecksumCRC32C))
             .withName("ChecksumCRC32C");
         bodyNode.addChildNode(node);
     }
-    if (input.ChecksumSHA1 !== undefined && input.ChecksumSHA1 !== null) {
+    if (input.ChecksumSHA1 != null) {
         const node = new xml_builder_1.XmlNode("ChecksumSHA1").addChildNode(new xml_builder_1.XmlText(input.ChecksumSHA1)).withName("ChecksumSHA1");
         bodyNode.addChildNode(node);
     }
-    if (input.ChecksumSHA256 !== undefined && input.ChecksumSHA256 !== null) {
+    if (input.ChecksumSHA256 != null) {
         const node = new xml_builder_1.XmlNode("ChecksumSHA256")
             .addChildNode(new xml_builder_1.XmlText(input.ChecksumSHA256))
             .withName("ChecksumSHA256");
         bodyNode.addChildNode(node);
     }
-    if (input.PartNumber !== undefined && input.PartNumber !== null) {
+    if (input.PartNumber != null) {
         const node = new xml_builder_1.XmlNode("PartNumber")
             .addChildNode(new xml_builder_1.XmlText(String(input.PartNumber)))
             .withName("PartNumber");
@@ -20390,13 +19839,13 @@ const serializeAws_restXmlCompletedPartList = (input, context) => {
 };
 const serializeAws_restXmlCondition = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Condition");
-    if (input.HttpErrorCodeReturnedEquals !== undefined && input.HttpErrorCodeReturnedEquals !== null) {
+    if (input.HttpErrorCodeReturnedEquals != null) {
         const node = new xml_builder_1.XmlNode("HttpErrorCodeReturnedEquals")
             .addChildNode(new xml_builder_1.XmlText(input.HttpErrorCodeReturnedEquals))
             .withName("HttpErrorCodeReturnedEquals");
         bodyNode.addChildNode(node);
     }
-    if (input.KeyPrefixEquals !== undefined && input.KeyPrefixEquals !== null) {
+    if (input.KeyPrefixEquals != null) {
         const node = new xml_builder_1.XmlNode("KeyPrefixEquals")
             .addChildNode(new xml_builder_1.XmlText(input.KeyPrefixEquals))
             .withName("KeyPrefixEquals");
@@ -20406,7 +19855,7 @@ const serializeAws_restXmlCondition = (input, context) => {
 };
 const serializeAws_restXmlCORSConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CORSConfiguration");
-    if (input.CORSRules !== undefined && input.CORSRules !== null) {
+    if (input.CORSRules != null) {
         const nodes = serializeAws_restXmlCORSRules(input.CORSRules, context);
         nodes.map((node) => {
             node = node.withName("CORSRule");
@@ -20417,39 +19866,39 @@ const serializeAws_restXmlCORSConfiguration = (input, context) => {
 };
 const serializeAws_restXmlCORSRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CORSRule");
-    if (input.ID !== undefined && input.ID !== null) {
+    if (input.ID != null) {
         const node = new xml_builder_1.XmlNode("ID").addChildNode(new xml_builder_1.XmlText(input.ID)).withName("ID");
         bodyNode.addChildNode(node);
     }
-    if (input.AllowedHeaders !== undefined && input.AllowedHeaders !== null) {
+    if (input.AllowedHeaders != null) {
         const nodes = serializeAws_restXmlAllowedHeaders(input.AllowedHeaders, context);
         nodes.map((node) => {
             node = node.withName("AllowedHeader");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.AllowedMethods !== undefined && input.AllowedMethods !== null) {
+    if (input.AllowedMethods != null) {
         const nodes = serializeAws_restXmlAllowedMethods(input.AllowedMethods, context);
         nodes.map((node) => {
             node = node.withName("AllowedMethod");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.AllowedOrigins !== undefined && input.AllowedOrigins !== null) {
+    if (input.AllowedOrigins != null) {
         const nodes = serializeAws_restXmlAllowedOrigins(input.AllowedOrigins, context);
         nodes.map((node) => {
             node = node.withName("AllowedOrigin");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.ExposeHeaders !== undefined && input.ExposeHeaders !== null) {
+    if (input.ExposeHeaders != null) {
         const nodes = serializeAws_restXmlExposeHeaders(input.ExposeHeaders, context);
         nodes.map((node) => {
             node = node.withName("ExposeHeader");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.MaxAgeSeconds !== undefined && input.MaxAgeSeconds !== null) {
+    if (input.MaxAgeSeconds != null) {
         const node = new xml_builder_1.XmlNode("MaxAgeSeconds")
             .addChildNode(new xml_builder_1.XmlText(String(input.MaxAgeSeconds)))
             .withName("MaxAgeSeconds");
@@ -20470,7 +19919,7 @@ const serializeAws_restXmlCORSRules = (input, context) => {
 };
 const serializeAws_restXmlCreateBucketConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CreateBucketConfiguration");
-    if (input.LocationConstraint !== undefined && input.LocationConstraint !== null) {
+    if (input.LocationConstraint != null) {
         const node = new xml_builder_1.XmlNode("BucketLocationConstraint")
             .addChildNode(new xml_builder_1.XmlText(input.LocationConstraint))
             .withName("LocationConstraint");
@@ -20480,41 +19929,41 @@ const serializeAws_restXmlCreateBucketConfiguration = (input, context) => {
 };
 const serializeAws_restXmlCSVInput = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CSVInput");
-    if (input.FileHeaderInfo !== undefined && input.FileHeaderInfo !== null) {
+    if (input.FileHeaderInfo != null) {
         const node = new xml_builder_1.XmlNode("FileHeaderInfo")
             .addChildNode(new xml_builder_1.XmlText(input.FileHeaderInfo))
             .withName("FileHeaderInfo");
         bodyNode.addChildNode(node);
     }
-    if (input.Comments !== undefined && input.Comments !== null) {
+    if (input.Comments != null) {
         const node = new xml_builder_1.XmlNode("Comments").addChildNode(new xml_builder_1.XmlText(input.Comments)).withName("Comments");
         bodyNode.addChildNode(node);
     }
-    if (input.QuoteEscapeCharacter !== undefined && input.QuoteEscapeCharacter !== null) {
+    if (input.QuoteEscapeCharacter != null) {
         const node = new xml_builder_1.XmlNode("QuoteEscapeCharacter")
             .addChildNode(new xml_builder_1.XmlText(input.QuoteEscapeCharacter))
             .withName("QuoteEscapeCharacter");
         bodyNode.addChildNode(node);
     }
-    if (input.RecordDelimiter !== undefined && input.RecordDelimiter !== null) {
+    if (input.RecordDelimiter != null) {
         const node = new xml_builder_1.XmlNode("RecordDelimiter")
             .addChildNode(new xml_builder_1.XmlText(input.RecordDelimiter))
             .withName("RecordDelimiter");
         bodyNode.addChildNode(node);
     }
-    if (input.FieldDelimiter !== undefined && input.FieldDelimiter !== null) {
+    if (input.FieldDelimiter != null) {
         const node = new xml_builder_1.XmlNode("FieldDelimiter")
             .addChildNode(new xml_builder_1.XmlText(input.FieldDelimiter))
             .withName("FieldDelimiter");
         bodyNode.addChildNode(node);
     }
-    if (input.QuoteCharacter !== undefined && input.QuoteCharacter !== null) {
+    if (input.QuoteCharacter != null) {
         const node = new xml_builder_1.XmlNode("QuoteCharacter")
             .addChildNode(new xml_builder_1.XmlText(input.QuoteCharacter))
             .withName("QuoteCharacter");
         bodyNode.addChildNode(node);
     }
-    if (input.AllowQuotedRecordDelimiter !== undefined && input.AllowQuotedRecordDelimiter !== null) {
+    if (input.AllowQuotedRecordDelimiter != null) {
         const node = new xml_builder_1.XmlNode("AllowQuotedRecordDelimiter")
             .addChildNode(new xml_builder_1.XmlText(String(input.AllowQuotedRecordDelimiter)))
             .withName("AllowQuotedRecordDelimiter");
@@ -20524,29 +19973,29 @@ const serializeAws_restXmlCSVInput = (input, context) => {
 };
 const serializeAws_restXmlCSVOutput = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("CSVOutput");
-    if (input.QuoteFields !== undefined && input.QuoteFields !== null) {
+    if (input.QuoteFields != null) {
         const node = new xml_builder_1.XmlNode("QuoteFields").addChildNode(new xml_builder_1.XmlText(input.QuoteFields)).withName("QuoteFields");
         bodyNode.addChildNode(node);
     }
-    if (input.QuoteEscapeCharacter !== undefined && input.QuoteEscapeCharacter !== null) {
+    if (input.QuoteEscapeCharacter != null) {
         const node = new xml_builder_1.XmlNode("QuoteEscapeCharacter")
             .addChildNode(new xml_builder_1.XmlText(input.QuoteEscapeCharacter))
             .withName("QuoteEscapeCharacter");
         bodyNode.addChildNode(node);
     }
-    if (input.RecordDelimiter !== undefined && input.RecordDelimiter !== null) {
+    if (input.RecordDelimiter != null) {
         const node = new xml_builder_1.XmlNode("RecordDelimiter")
             .addChildNode(new xml_builder_1.XmlText(input.RecordDelimiter))
             .withName("RecordDelimiter");
         bodyNode.addChildNode(node);
     }
-    if (input.FieldDelimiter !== undefined && input.FieldDelimiter !== null) {
+    if (input.FieldDelimiter != null) {
         const node = new xml_builder_1.XmlNode("FieldDelimiter")
             .addChildNode(new xml_builder_1.XmlText(input.FieldDelimiter))
             .withName("FieldDelimiter");
         bodyNode.addChildNode(node);
     }
-    if (input.QuoteCharacter !== undefined && input.QuoteCharacter !== null) {
+    if (input.QuoteCharacter != null) {
         const node = new xml_builder_1.XmlNode("QuoteCharacter")
             .addChildNode(new xml_builder_1.XmlText(input.QuoteCharacter))
             .withName("QuoteCharacter");
@@ -20556,15 +20005,15 @@ const serializeAws_restXmlCSVOutput = (input, context) => {
 };
 const serializeAws_restXmlDefaultRetention = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("DefaultRetention");
-    if (input.Mode !== undefined && input.Mode !== null) {
+    if (input.Mode != null) {
         const node = new xml_builder_1.XmlNode("ObjectLockRetentionMode").addChildNode(new xml_builder_1.XmlText(input.Mode)).withName("Mode");
         bodyNode.addChildNode(node);
     }
-    if (input.Days !== undefined && input.Days !== null) {
+    if (input.Days != null) {
         const node = new xml_builder_1.XmlNode("Days").addChildNode(new xml_builder_1.XmlText(String(input.Days))).withName("Days");
         bodyNode.addChildNode(node);
     }
-    if (input.Years !== undefined && input.Years !== null) {
+    if (input.Years != null) {
         const node = new xml_builder_1.XmlNode("Years").addChildNode(new xml_builder_1.XmlText(String(input.Years))).withName("Years");
         bodyNode.addChildNode(node);
     }
@@ -20572,14 +20021,14 @@ const serializeAws_restXmlDefaultRetention = (input, context) => {
 };
 const serializeAws_restXmlDelete = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Delete");
-    if (input.Objects !== undefined && input.Objects !== null) {
+    if (input.Objects != null) {
         const nodes = serializeAws_restXmlObjectIdentifierList(input.Objects, context);
         nodes.map((node) => {
             node = node.withName("Object");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.Quiet !== undefined && input.Quiet !== null) {
+    if (input.Quiet != null) {
         const node = new xml_builder_1.XmlNode("Quiet").addChildNode(new xml_builder_1.XmlText(String(input.Quiet))).withName("Quiet");
         bodyNode.addChildNode(node);
     }
@@ -20587,7 +20036,7 @@ const serializeAws_restXmlDelete = (input, context) => {
 };
 const serializeAws_restXmlDeleteMarkerReplication = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("DeleteMarkerReplication");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("DeleteMarkerReplicationStatus")
             .addChildNode(new xml_builder_1.XmlText(input.Status))
             .withName("Status");
@@ -20597,31 +20046,31 @@ const serializeAws_restXmlDeleteMarkerReplication = (input, context) => {
 };
 const serializeAws_restXmlDestination = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Destination");
-    if (input.Bucket !== undefined && input.Bucket !== null) {
+    if (input.Bucket != null) {
         const node = new xml_builder_1.XmlNode("BucketName").addChildNode(new xml_builder_1.XmlText(input.Bucket)).withName("Bucket");
         bodyNode.addChildNode(node);
     }
-    if (input.Account !== undefined && input.Account !== null) {
+    if (input.Account != null) {
         const node = new xml_builder_1.XmlNode("AccountId").addChildNode(new xml_builder_1.XmlText(input.Account)).withName("Account");
         bodyNode.addChildNode(node);
     }
-    if (input.StorageClass !== undefined && input.StorageClass !== null) {
+    if (input.StorageClass != null) {
         const node = new xml_builder_1.XmlNode("StorageClass").addChildNode(new xml_builder_1.XmlText(input.StorageClass)).withName("StorageClass");
         bodyNode.addChildNode(node);
     }
-    if (input.AccessControlTranslation !== undefined && input.AccessControlTranslation !== null) {
+    if (input.AccessControlTranslation != null) {
         const node = serializeAws_restXmlAccessControlTranslation(input.AccessControlTranslation, context).withName("AccessControlTranslation");
         bodyNode.addChildNode(node);
     }
-    if (input.EncryptionConfiguration !== undefined && input.EncryptionConfiguration !== null) {
+    if (input.EncryptionConfiguration != null) {
         const node = serializeAws_restXmlEncryptionConfiguration(input.EncryptionConfiguration, context).withName("EncryptionConfiguration");
         bodyNode.addChildNode(node);
     }
-    if (input.ReplicationTime !== undefined && input.ReplicationTime !== null) {
+    if (input.ReplicationTime != null) {
         const node = serializeAws_restXmlReplicationTime(input.ReplicationTime, context).withName("ReplicationTime");
         bodyNode.addChildNode(node);
     }
-    if (input.Metrics !== undefined && input.Metrics !== null) {
+    if (input.Metrics != null) {
         const node = serializeAws_restXmlMetrics(input.Metrics, context).withName("Metrics");
         bodyNode.addChildNode(node);
     }
@@ -20629,17 +20078,17 @@ const serializeAws_restXmlDestination = (input, context) => {
 };
 const serializeAws_restXmlEncryption = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Encryption");
-    if (input.EncryptionType !== undefined && input.EncryptionType !== null) {
+    if (input.EncryptionType != null) {
         const node = new xml_builder_1.XmlNode("ServerSideEncryption")
             .addChildNode(new xml_builder_1.XmlText(input.EncryptionType))
             .withName("EncryptionType");
         bodyNode.addChildNode(node);
     }
-    if (input.KMSKeyId !== undefined && input.KMSKeyId !== null) {
+    if (input.KMSKeyId != null) {
         const node = new xml_builder_1.XmlNode("SSEKMSKeyId").addChildNode(new xml_builder_1.XmlText(input.KMSKeyId)).withName("KMSKeyId");
         bodyNode.addChildNode(node);
     }
-    if (input.KMSContext !== undefined && input.KMSContext !== null) {
+    if (input.KMSContext != null) {
         const node = new xml_builder_1.XmlNode("KMSContext").addChildNode(new xml_builder_1.XmlText(input.KMSContext)).withName("KMSContext");
         bodyNode.addChildNode(node);
     }
@@ -20647,7 +20096,7 @@ const serializeAws_restXmlEncryption = (input, context) => {
 };
 const serializeAws_restXmlEncryptionConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("EncryptionConfiguration");
-    if (input.ReplicaKmsKeyID !== undefined && input.ReplicaKmsKeyID !== null) {
+    if (input.ReplicaKmsKeyID != null) {
         const node = new xml_builder_1.XmlNode("ReplicaKmsKeyID")
             .addChildNode(new xml_builder_1.XmlText(input.ReplicaKmsKeyID))
             .withName("ReplicaKmsKeyID");
@@ -20657,7 +20106,7 @@ const serializeAws_restXmlEncryptionConfiguration = (input, context) => {
 };
 const serializeAws_restXmlErrorDocument = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ErrorDocument");
-    if (input.Key !== undefined && input.Key !== null) {
+    if (input.Key != null) {
         const node = new xml_builder_1.XmlNode("ObjectKey").addChildNode(new xml_builder_1.XmlText(input.Key)).withName("Key");
         bodyNode.addChildNode(node);
     }
@@ -20680,7 +20129,7 @@ const serializeAws_restXmlEventList = (input, context) => {
 };
 const serializeAws_restXmlExistingObjectReplication = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ExistingObjectReplication");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("ExistingObjectReplicationStatus")
             .addChildNode(new xml_builder_1.XmlText(input.Status))
             .withName("Status");
@@ -20701,11 +20150,11 @@ const serializeAws_restXmlExposeHeaders = (input, context) => {
 };
 const serializeAws_restXmlFilterRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("FilterRule");
-    if (input.Name !== undefined && input.Name !== null) {
+    if (input.Name != null) {
         const node = new xml_builder_1.XmlNode("FilterRuleName").addChildNode(new xml_builder_1.XmlText(input.Name)).withName("Name");
         bodyNode.addChildNode(node);
     }
-    if (input.Value !== undefined && input.Value !== null) {
+    if (input.Value != null) {
         const node = new xml_builder_1.XmlNode("FilterRuleValue").addChildNode(new xml_builder_1.XmlText(input.Value)).withName("Value");
         bodyNode.addChildNode(node);
     }
@@ -20724,7 +20173,7 @@ const serializeAws_restXmlFilterRuleList = (input, context) => {
 };
 const serializeAws_restXmlGlacierJobParameters = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("GlacierJobParameters");
-    if (input.Tier !== undefined && input.Tier !== null) {
+    if (input.Tier != null) {
         const node = new xml_builder_1.XmlNode("Tier").addChildNode(new xml_builder_1.XmlText(input.Tier)).withName("Tier");
         bodyNode.addChildNode(node);
     }
@@ -20732,12 +20181,12 @@ const serializeAws_restXmlGlacierJobParameters = (input, context) => {
 };
 const serializeAws_restXmlGrant = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Grant");
-    if (input.Grantee !== undefined && input.Grantee !== null) {
+    if (input.Grantee != null) {
         const node = serializeAws_restXmlGrantee(input.Grantee, context).withName("Grantee");
         node.addAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
         bodyNode.addChildNode(node);
     }
-    if (input.Permission !== undefined && input.Permission !== null) {
+    if (input.Permission != null) {
         const node = new xml_builder_1.XmlNode("Permission").addChildNode(new xml_builder_1.XmlText(input.Permission)).withName("Permission");
         bodyNode.addChildNode(node);
     }
@@ -20745,23 +20194,23 @@ const serializeAws_restXmlGrant = (input, context) => {
 };
 const serializeAws_restXmlGrantee = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Grantee");
-    if (input.DisplayName !== undefined && input.DisplayName !== null) {
+    if (input.DisplayName != null) {
         const node = new xml_builder_1.XmlNode("DisplayName").addChildNode(new xml_builder_1.XmlText(input.DisplayName)).withName("DisplayName");
         bodyNode.addChildNode(node);
     }
-    if (input.EmailAddress !== undefined && input.EmailAddress !== null) {
+    if (input.EmailAddress != null) {
         const node = new xml_builder_1.XmlNode("EmailAddress").addChildNode(new xml_builder_1.XmlText(input.EmailAddress)).withName("EmailAddress");
         bodyNode.addChildNode(node);
     }
-    if (input.ID !== undefined && input.ID !== null) {
+    if (input.ID != null) {
         const node = new xml_builder_1.XmlNode("ID").addChildNode(new xml_builder_1.XmlText(input.ID)).withName("ID");
         bodyNode.addChildNode(node);
     }
-    if (input.URI !== undefined && input.URI !== null) {
+    if (input.URI != null) {
         const node = new xml_builder_1.XmlNode("URI").addChildNode(new xml_builder_1.XmlText(input.URI)).withName("URI");
         bodyNode.addChildNode(node);
     }
-    if (input.Type !== undefined && input.Type !== null) {
+    if (input.Type != null) {
         bodyNode.addAttribute("xsi:type", input.Type);
     }
     return bodyNode;
@@ -20779,7 +20228,7 @@ const serializeAws_restXmlGrants = (input, context) => {
 };
 const serializeAws_restXmlIndexDocument = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("IndexDocument");
-    if (input.Suffix !== undefined && input.Suffix !== null) {
+    if (input.Suffix != null) {
         const node = new xml_builder_1.XmlNode("Suffix").addChildNode(new xml_builder_1.XmlText(input.Suffix)).withName("Suffix");
         bodyNode.addChildNode(node);
     }
@@ -20787,21 +20236,21 @@ const serializeAws_restXmlIndexDocument = (input, context) => {
 };
 const serializeAws_restXmlInputSerialization = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InputSerialization");
-    if (input.CSV !== undefined && input.CSV !== null) {
+    if (input.CSV != null) {
         const node = serializeAws_restXmlCSVInput(input.CSV, context).withName("CSV");
         bodyNode.addChildNode(node);
     }
-    if (input.CompressionType !== undefined && input.CompressionType !== null) {
+    if (input.CompressionType != null) {
         const node = new xml_builder_1.XmlNode("CompressionType")
             .addChildNode(new xml_builder_1.XmlText(input.CompressionType))
             .withName("CompressionType");
         bodyNode.addChildNode(node);
     }
-    if (input.JSON !== undefined && input.JSON !== null) {
+    if (input.JSON != null) {
         const node = serializeAws_restXmlJSONInput(input.JSON, context).withName("JSON");
         bodyNode.addChildNode(node);
     }
-    if (input.Parquet !== undefined && input.Parquet !== null) {
+    if (input.Parquet != null) {
         const node = serializeAws_restXmlParquetInput(input.Parquet, context).withName("Parquet");
         bodyNode.addChildNode(node);
     }
@@ -20809,11 +20258,11 @@ const serializeAws_restXmlInputSerialization = (input, context) => {
 };
 const serializeAws_restXmlIntelligentTieringAndOperator = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("IntelligentTieringAndOperator");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Tags !== undefined && input.Tags !== null) {
+    if (input.Tags != null) {
         const nodes = serializeAws_restXmlTagSet(input.Tags, context);
         nodes.map((node) => {
             node = node.withName("Tag");
@@ -20824,19 +20273,19 @@ const serializeAws_restXmlIntelligentTieringAndOperator = (input, context) => {
 };
 const serializeAws_restXmlIntelligentTieringConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("IntelligentTieringConfiguration");
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("IntelligentTieringId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlIntelligentTieringFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("IntelligentTieringStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
-    if (input.Tierings !== undefined && input.Tierings !== null) {
+    if (input.Tierings != null) {
         const nodes = serializeAws_restXmlTieringList(input.Tierings, context);
         nodes.map((node) => {
             node = node.withName("Tiering");
@@ -20847,15 +20296,15 @@ const serializeAws_restXmlIntelligentTieringConfiguration = (input, context) => 
 };
 const serializeAws_restXmlIntelligentTieringFilter = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("IntelligentTieringFilter");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Tag !== undefined && input.Tag !== null) {
+    if (input.Tag != null) {
         const node = serializeAws_restXmlTag(input.Tag, context).withName("Tag");
         bodyNode.addChildNode(node);
     }
-    if (input.And !== undefined && input.And !== null) {
+    if (input.And != null) {
         const node = serializeAws_restXmlIntelligentTieringAndOperator(input.And, context).withName("And");
         bodyNode.addChildNode(node);
     }
@@ -20863,29 +20312,29 @@ const serializeAws_restXmlIntelligentTieringFilter = (input, context) => {
 };
 const serializeAws_restXmlInventoryConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InventoryConfiguration");
-    if (input.Destination !== undefined && input.Destination !== null) {
+    if (input.Destination != null) {
         const node = serializeAws_restXmlInventoryDestination(input.Destination, context).withName("Destination");
         bodyNode.addChildNode(node);
     }
-    if (input.IsEnabled !== undefined && input.IsEnabled !== null) {
+    if (input.IsEnabled != null) {
         const node = new xml_builder_1.XmlNode("IsEnabled").addChildNode(new xml_builder_1.XmlText(String(input.IsEnabled))).withName("IsEnabled");
         bodyNode.addChildNode(node);
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlInventoryFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("InventoryId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.IncludedObjectVersions !== undefined && input.IncludedObjectVersions !== null) {
+    if (input.IncludedObjectVersions != null) {
         const node = new xml_builder_1.XmlNode("InventoryIncludedObjectVersions")
             .addChildNode(new xml_builder_1.XmlText(input.IncludedObjectVersions))
             .withName("IncludedObjectVersions");
         bodyNode.addChildNode(node);
     }
-    if (input.OptionalFields !== undefined && input.OptionalFields !== null) {
+    if (input.OptionalFields != null) {
         const nodes = serializeAws_restXmlInventoryOptionalFields(input.OptionalFields, context);
         const containerNode = new xml_builder_1.XmlNode("OptionalFields");
         nodes.map((node) => {
@@ -20893,7 +20342,7 @@ const serializeAws_restXmlInventoryConfiguration = (input, context) => {
         });
         bodyNode.addChildNode(containerNode);
     }
-    if (input.Schedule !== undefined && input.Schedule !== null) {
+    if (input.Schedule != null) {
         const node = serializeAws_restXmlInventorySchedule(input.Schedule, context).withName("Schedule");
         bodyNode.addChildNode(node);
     }
@@ -20901,7 +20350,7 @@ const serializeAws_restXmlInventoryConfiguration = (input, context) => {
 };
 const serializeAws_restXmlInventoryDestination = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InventoryDestination");
-    if (input.S3BucketDestination !== undefined && input.S3BucketDestination !== null) {
+    if (input.S3BucketDestination != null) {
         const node = serializeAws_restXmlInventoryS3BucketDestination(input.S3BucketDestination, context).withName("S3BucketDestination");
         bodyNode.addChildNode(node);
     }
@@ -20909,11 +20358,11 @@ const serializeAws_restXmlInventoryDestination = (input, context) => {
 };
 const serializeAws_restXmlInventoryEncryption = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InventoryEncryption");
-    if (input.SSES3 !== undefined && input.SSES3 !== null) {
+    if (input.SSES3 != null) {
         const node = serializeAws_restXmlSSES3(input.SSES3, context).withName("SSE-S3");
         bodyNode.addChildNode(node);
     }
-    if (input.SSEKMS !== undefined && input.SSEKMS !== null) {
+    if (input.SSEKMS != null) {
         const node = serializeAws_restXmlSSEKMS(input.SSEKMS, context).withName("SSE-KMS");
         bodyNode.addChildNode(node);
     }
@@ -20921,7 +20370,7 @@ const serializeAws_restXmlInventoryEncryption = (input, context) => {
 };
 const serializeAws_restXmlInventoryFilter = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InventoryFilter");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
@@ -20940,23 +20389,23 @@ const serializeAws_restXmlInventoryOptionalFields = (input, context) => {
 };
 const serializeAws_restXmlInventoryS3BucketDestination = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InventoryS3BucketDestination");
-    if (input.AccountId !== undefined && input.AccountId !== null) {
+    if (input.AccountId != null) {
         const node = new xml_builder_1.XmlNode("AccountId").addChildNode(new xml_builder_1.XmlText(input.AccountId)).withName("AccountId");
         bodyNode.addChildNode(node);
     }
-    if (input.Bucket !== undefined && input.Bucket !== null) {
+    if (input.Bucket != null) {
         const node = new xml_builder_1.XmlNode("BucketName").addChildNode(new xml_builder_1.XmlText(input.Bucket)).withName("Bucket");
         bodyNode.addChildNode(node);
     }
-    if (input.Format !== undefined && input.Format !== null) {
+    if (input.Format != null) {
         const node = new xml_builder_1.XmlNode("InventoryFormat").addChildNode(new xml_builder_1.XmlText(input.Format)).withName("Format");
         bodyNode.addChildNode(node);
     }
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Encryption !== undefined && input.Encryption !== null) {
+    if (input.Encryption != null) {
         const node = serializeAws_restXmlInventoryEncryption(input.Encryption, context).withName("Encryption");
         bodyNode.addChildNode(node);
     }
@@ -20964,7 +20413,7 @@ const serializeAws_restXmlInventoryS3BucketDestination = (input, context) => {
 };
 const serializeAws_restXmlInventorySchedule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("InventorySchedule");
-    if (input.Frequency !== undefined && input.Frequency !== null) {
+    if (input.Frequency != null) {
         const node = new xml_builder_1.XmlNode("InventoryFrequency").addChildNode(new xml_builder_1.XmlText(input.Frequency)).withName("Frequency");
         bodyNode.addChildNode(node);
     }
@@ -20972,7 +20421,7 @@ const serializeAws_restXmlInventorySchedule = (input, context) => {
 };
 const serializeAws_restXmlJSONInput = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("JSONInput");
-    if (input.Type !== undefined && input.Type !== null) {
+    if (input.Type != null) {
         const node = new xml_builder_1.XmlNode("JSONType").addChildNode(new xml_builder_1.XmlText(input.Type)).withName("Type");
         bodyNode.addChildNode(node);
     }
@@ -20980,7 +20429,7 @@ const serializeAws_restXmlJSONInput = (input, context) => {
 };
 const serializeAws_restXmlJSONOutput = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("JSONOutput");
-    if (input.RecordDelimiter !== undefined && input.RecordDelimiter !== null) {
+    if (input.RecordDelimiter != null) {
         const node = new xml_builder_1.XmlNode("RecordDelimiter")
             .addChildNode(new xml_builder_1.XmlText(input.RecordDelimiter))
             .withName("RecordDelimiter");
@@ -20990,24 +20439,24 @@ const serializeAws_restXmlJSONOutput = (input, context) => {
 };
 const serializeAws_restXmlLambdaFunctionConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("LambdaFunctionConfiguration");
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("NotificationId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.LambdaFunctionArn !== undefined && input.LambdaFunctionArn !== null) {
+    if (input.LambdaFunctionArn != null) {
         const node = new xml_builder_1.XmlNode("LambdaFunctionArn")
             .addChildNode(new xml_builder_1.XmlText(input.LambdaFunctionArn))
             .withName("CloudFunction");
         bodyNode.addChildNode(node);
     }
-    if (input.Events !== undefined && input.Events !== null) {
+    if (input.Events != null) {
         const nodes = serializeAws_restXmlEventList(input.Events, context);
         nodes.map((node) => {
             node = node.withName("Event");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlNotificationConfigurationFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
@@ -21026,17 +20475,17 @@ const serializeAws_restXmlLambdaFunctionConfigurationList = (input, context) => 
 };
 const serializeAws_restXmlLifecycleExpiration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("LifecycleExpiration");
-    if (input.Date !== undefined && input.Date !== null) {
+    if (input.Date != null) {
         const node = new xml_builder_1.XmlNode("Date")
             .addChildNode(new xml_builder_1.XmlText(input.Date.toISOString().split(".")[0] + "Z"))
             .withName("Date");
         bodyNode.addChildNode(node);
     }
-    if (input.Days !== undefined && input.Days !== null) {
+    if (input.Days != null) {
         const node = new xml_builder_1.XmlNode("Days").addChildNode(new xml_builder_1.XmlText(String(input.Days))).withName("Days");
         bodyNode.addChildNode(node);
     }
-    if (input.ExpiredObjectDeleteMarker !== undefined && input.ExpiredObjectDeleteMarker !== null) {
+    if (input.ExpiredObjectDeleteMarker != null) {
         const node = new xml_builder_1.XmlNode("ExpiredObjectDeleteMarker")
             .addChildNode(new xml_builder_1.XmlText(String(input.ExpiredObjectDeleteMarker)))
             .withName("ExpiredObjectDeleteMarker");
@@ -21046,45 +20495,45 @@ const serializeAws_restXmlLifecycleExpiration = (input, context) => {
 };
 const serializeAws_restXmlLifecycleRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("LifecycleRule");
-    if (input.Expiration !== undefined && input.Expiration !== null) {
+    if (input.Expiration != null) {
         const node = serializeAws_restXmlLifecycleExpiration(input.Expiration, context).withName("Expiration");
         bodyNode.addChildNode(node);
     }
-    if (input.ID !== undefined && input.ID !== null) {
+    if (input.ID != null) {
         const node = new xml_builder_1.XmlNode("ID").addChildNode(new xml_builder_1.XmlText(input.ID)).withName("ID");
         bodyNode.addChildNode(node);
     }
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlLifecycleRuleFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("ExpirationStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
-    if (input.Transitions !== undefined && input.Transitions !== null) {
+    if (input.Transitions != null) {
         const nodes = serializeAws_restXmlTransitionList(input.Transitions, context);
         nodes.map((node) => {
             node = node.withName("Transition");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.NoncurrentVersionTransitions !== undefined && input.NoncurrentVersionTransitions !== null) {
+    if (input.NoncurrentVersionTransitions != null) {
         const nodes = serializeAws_restXmlNoncurrentVersionTransitionList(input.NoncurrentVersionTransitions, context);
         nodes.map((node) => {
             node = node.withName("NoncurrentVersionTransition");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.NoncurrentVersionExpiration !== undefined && input.NoncurrentVersionExpiration !== null) {
+    if (input.NoncurrentVersionExpiration != null) {
         const node = serializeAws_restXmlNoncurrentVersionExpiration(input.NoncurrentVersionExpiration, context).withName("NoncurrentVersionExpiration");
         bodyNode.addChildNode(node);
     }
-    if (input.AbortIncompleteMultipartUpload !== undefined && input.AbortIncompleteMultipartUpload !== null) {
+    if (input.AbortIncompleteMultipartUpload != null) {
         const node = serializeAws_restXmlAbortIncompleteMultipartUpload(input.AbortIncompleteMultipartUpload, context).withName("AbortIncompleteMultipartUpload");
         bodyNode.addChildNode(node);
     }
@@ -21092,24 +20541,24 @@ const serializeAws_restXmlLifecycleRule = (input, context) => {
 };
 const serializeAws_restXmlLifecycleRuleAndOperator = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("LifecycleRuleAndOperator");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Tags !== undefined && input.Tags !== null) {
+    if (input.Tags != null) {
         const nodes = serializeAws_restXmlTagSet(input.Tags, context);
         nodes.map((node) => {
             node = node.withName("Tag");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.ObjectSizeGreaterThan !== undefined && input.ObjectSizeGreaterThan !== null) {
+    if (input.ObjectSizeGreaterThan != null) {
         const node = new xml_builder_1.XmlNode("ObjectSizeGreaterThanBytes")
             .addChildNode(new xml_builder_1.XmlText(String(input.ObjectSizeGreaterThan)))
             .withName("ObjectSizeGreaterThan");
         bodyNode.addChildNode(node);
     }
-    if (input.ObjectSizeLessThan !== undefined && input.ObjectSizeLessThan !== null) {
+    if (input.ObjectSizeLessThan != null) {
         const node = new xml_builder_1.XmlNode("ObjectSizeLessThanBytes")
             .addChildNode(new xml_builder_1.XmlText(String(input.ObjectSizeLessThan)))
             .withName("ObjectSizeLessThan");
@@ -21166,11 +20615,11 @@ const serializeAws_restXmlLifecycleRules = (input, context) => {
 };
 const serializeAws_restXmlLoggingEnabled = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("LoggingEnabled");
-    if (input.TargetBucket !== undefined && input.TargetBucket !== null) {
+    if (input.TargetBucket != null) {
         const node = new xml_builder_1.XmlNode("TargetBucket").addChildNode(new xml_builder_1.XmlText(input.TargetBucket)).withName("TargetBucket");
         bodyNode.addChildNode(node);
     }
-    if (input.TargetGrants !== undefined && input.TargetGrants !== null) {
+    if (input.TargetGrants != null) {
         const nodes = serializeAws_restXmlTargetGrants(input.TargetGrants, context);
         const containerNode = new xml_builder_1.XmlNode("TargetGrants");
         nodes.map((node) => {
@@ -21178,7 +20627,7 @@ const serializeAws_restXmlLoggingEnabled = (input, context) => {
         });
         bodyNode.addChildNode(containerNode);
     }
-    if (input.TargetPrefix !== undefined && input.TargetPrefix !== null) {
+    if (input.TargetPrefix != null) {
         const node = new xml_builder_1.XmlNode("TargetPrefix").addChildNode(new xml_builder_1.XmlText(input.TargetPrefix)).withName("TargetPrefix");
         bodyNode.addChildNode(node);
     }
@@ -21186,11 +20635,11 @@ const serializeAws_restXmlLoggingEnabled = (input, context) => {
 };
 const serializeAws_restXmlMetadataEntry = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("MetadataEntry");
-    if (input.Name !== undefined && input.Name !== null) {
+    if (input.Name != null) {
         const node = new xml_builder_1.XmlNode("MetadataKey").addChildNode(new xml_builder_1.XmlText(input.Name)).withName("Name");
         bodyNode.addChildNode(node);
     }
-    if (input.Value !== undefined && input.Value !== null) {
+    if (input.Value != null) {
         const node = new xml_builder_1.XmlNode("MetadataValue").addChildNode(new xml_builder_1.XmlText(input.Value)).withName("Value");
         bodyNode.addChildNode(node);
     }
@@ -21198,11 +20647,11 @@ const serializeAws_restXmlMetadataEntry = (input, context) => {
 };
 const serializeAws_restXmlMetrics = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Metrics");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("MetricsStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
-    if (input.EventThreshold !== undefined && input.EventThreshold !== null) {
+    if (input.EventThreshold != null) {
         const node = serializeAws_restXmlReplicationTimeValue(input.EventThreshold, context).withName("EventThreshold");
         bodyNode.addChildNode(node);
     }
@@ -21210,18 +20659,18 @@ const serializeAws_restXmlMetrics = (input, context) => {
 };
 const serializeAws_restXmlMetricsAndOperator = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("MetricsAndOperator");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Tags !== undefined && input.Tags !== null) {
+    if (input.Tags != null) {
         const nodes = serializeAws_restXmlTagSet(input.Tags, context);
         nodes.map((node) => {
             node = node.withName("Tag");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.AccessPointArn !== undefined && input.AccessPointArn !== null) {
+    if (input.AccessPointArn != null) {
         const node = new xml_builder_1.XmlNode("AccessPointArn")
             .addChildNode(new xml_builder_1.XmlText(input.AccessPointArn))
             .withName("AccessPointArn");
@@ -21231,11 +20680,11 @@ const serializeAws_restXmlMetricsAndOperator = (input, context) => {
 };
 const serializeAws_restXmlMetricsConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("MetricsConfiguration");
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("MetricsId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlMetricsFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
@@ -21271,13 +20720,13 @@ const serializeAws_restXmlMetricsFilter = (input, context) => {
 };
 const serializeAws_restXmlNoncurrentVersionExpiration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("NoncurrentVersionExpiration");
-    if (input.NoncurrentDays !== undefined && input.NoncurrentDays !== null) {
+    if (input.NoncurrentDays != null) {
         const node = new xml_builder_1.XmlNode("Days")
             .addChildNode(new xml_builder_1.XmlText(String(input.NoncurrentDays)))
             .withName("NoncurrentDays");
         bodyNode.addChildNode(node);
     }
-    if (input.NewerNoncurrentVersions !== undefined && input.NewerNoncurrentVersions !== null) {
+    if (input.NewerNoncurrentVersions != null) {
         const node = new xml_builder_1.XmlNode("VersionCount")
             .addChildNode(new xml_builder_1.XmlText(String(input.NewerNoncurrentVersions)))
             .withName("NewerNoncurrentVersions");
@@ -21287,19 +20736,19 @@ const serializeAws_restXmlNoncurrentVersionExpiration = (input, context) => {
 };
 const serializeAws_restXmlNoncurrentVersionTransition = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("NoncurrentVersionTransition");
-    if (input.NoncurrentDays !== undefined && input.NoncurrentDays !== null) {
+    if (input.NoncurrentDays != null) {
         const node = new xml_builder_1.XmlNode("Days")
             .addChildNode(new xml_builder_1.XmlText(String(input.NoncurrentDays)))
             .withName("NoncurrentDays");
         bodyNode.addChildNode(node);
     }
-    if (input.StorageClass !== undefined && input.StorageClass !== null) {
+    if (input.StorageClass != null) {
         const node = new xml_builder_1.XmlNode("TransitionStorageClass")
             .addChildNode(new xml_builder_1.XmlText(input.StorageClass))
             .withName("StorageClass");
         bodyNode.addChildNode(node);
     }
-    if (input.NewerNoncurrentVersions !== undefined && input.NewerNoncurrentVersions !== null) {
+    if (input.NewerNoncurrentVersions != null) {
         const node = new xml_builder_1.XmlNode("VersionCount")
             .addChildNode(new xml_builder_1.XmlText(String(input.NewerNoncurrentVersions)))
             .withName("NewerNoncurrentVersions");
@@ -21320,28 +20769,28 @@ const serializeAws_restXmlNoncurrentVersionTransitionList = (input, context) => 
 };
 const serializeAws_restXmlNotificationConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("NotificationConfiguration");
-    if (input.TopicConfigurations !== undefined && input.TopicConfigurations !== null) {
+    if (input.TopicConfigurations != null) {
         const nodes = serializeAws_restXmlTopicConfigurationList(input.TopicConfigurations, context);
         nodes.map((node) => {
             node = node.withName("TopicConfiguration");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.QueueConfigurations !== undefined && input.QueueConfigurations !== null) {
+    if (input.QueueConfigurations != null) {
         const nodes = serializeAws_restXmlQueueConfigurationList(input.QueueConfigurations, context);
         nodes.map((node) => {
             node = node.withName("QueueConfiguration");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.LambdaFunctionConfigurations !== undefined && input.LambdaFunctionConfigurations !== null) {
+    if (input.LambdaFunctionConfigurations != null) {
         const nodes = serializeAws_restXmlLambdaFunctionConfigurationList(input.LambdaFunctionConfigurations, context);
         nodes.map((node) => {
             node = node.withName("CloudFunctionConfiguration");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.EventBridgeConfiguration !== undefined && input.EventBridgeConfiguration !== null) {
+    if (input.EventBridgeConfiguration != null) {
         const node = serializeAws_restXmlEventBridgeConfiguration(input.EventBridgeConfiguration, context).withName("EventBridgeConfiguration");
         bodyNode.addChildNode(node);
     }
@@ -21349,7 +20798,7 @@ const serializeAws_restXmlNotificationConfiguration = (input, context) => {
 };
 const serializeAws_restXmlNotificationConfigurationFilter = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("NotificationConfigurationFilter");
-    if (input.Key !== undefined && input.Key !== null) {
+    if (input.Key != null) {
         const node = serializeAws_restXmlS3KeyFilter(input.Key, context).withName("S3Key");
         bodyNode.addChildNode(node);
     }
@@ -21357,11 +20806,11 @@ const serializeAws_restXmlNotificationConfigurationFilter = (input, context) => 
 };
 const serializeAws_restXmlObjectIdentifier = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ObjectIdentifier");
-    if (input.Key !== undefined && input.Key !== null) {
+    if (input.Key != null) {
         const node = new xml_builder_1.XmlNode("ObjectKey").addChildNode(new xml_builder_1.XmlText(input.Key)).withName("Key");
         bodyNode.addChildNode(node);
     }
-    if (input.VersionId !== undefined && input.VersionId !== null) {
+    if (input.VersionId != null) {
         const node = new xml_builder_1.XmlNode("ObjectVersionId").addChildNode(new xml_builder_1.XmlText(input.VersionId)).withName("VersionId");
         bodyNode.addChildNode(node);
     }
@@ -21380,13 +20829,13 @@ const serializeAws_restXmlObjectIdentifierList = (input, context) => {
 };
 const serializeAws_restXmlObjectLockConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ObjectLockConfiguration");
-    if (input.ObjectLockEnabled !== undefined && input.ObjectLockEnabled !== null) {
+    if (input.ObjectLockEnabled != null) {
         const node = new xml_builder_1.XmlNode("ObjectLockEnabled")
             .addChildNode(new xml_builder_1.XmlText(input.ObjectLockEnabled))
             .withName("ObjectLockEnabled");
         bodyNode.addChildNode(node);
     }
-    if (input.Rule !== undefined && input.Rule !== null) {
+    if (input.Rule != null) {
         const node = serializeAws_restXmlObjectLockRule(input.Rule, context).withName("Rule");
         bodyNode.addChildNode(node);
     }
@@ -21394,7 +20843,7 @@ const serializeAws_restXmlObjectLockConfiguration = (input, context) => {
 };
 const serializeAws_restXmlObjectLockLegalHold = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ObjectLockLegalHold");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("ObjectLockLegalHoldStatus")
             .addChildNode(new xml_builder_1.XmlText(input.Status))
             .withName("Status");
@@ -21404,11 +20853,11 @@ const serializeAws_restXmlObjectLockLegalHold = (input, context) => {
 };
 const serializeAws_restXmlObjectLockRetention = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ObjectLockRetention");
-    if (input.Mode !== undefined && input.Mode !== null) {
+    if (input.Mode != null) {
         const node = new xml_builder_1.XmlNode("ObjectLockRetentionMode").addChildNode(new xml_builder_1.XmlText(input.Mode)).withName("Mode");
         bodyNode.addChildNode(node);
     }
-    if (input.RetainUntilDate !== undefined && input.RetainUntilDate !== null) {
+    if (input.RetainUntilDate != null) {
         const node = new xml_builder_1.XmlNode("Date")
             .addChildNode(new xml_builder_1.XmlText(input.RetainUntilDate.toISOString().split(".")[0] + "Z"))
             .withName("RetainUntilDate");
@@ -21418,7 +20867,7 @@ const serializeAws_restXmlObjectLockRetention = (input, context) => {
 };
 const serializeAws_restXmlObjectLockRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ObjectLockRule");
-    if (input.DefaultRetention !== undefined && input.DefaultRetention !== null) {
+    if (input.DefaultRetention != null) {
         const node = serializeAws_restXmlDefaultRetention(input.DefaultRetention, context).withName("DefaultRetention");
         bodyNode.addChildNode(node);
     }
@@ -21426,7 +20875,7 @@ const serializeAws_restXmlObjectLockRule = (input, context) => {
 };
 const serializeAws_restXmlOutputLocation = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("OutputLocation");
-    if (input.S3 !== undefined && input.S3 !== null) {
+    if (input.S3 != null) {
         const node = serializeAws_restXmlS3Location(input.S3, context).withName("S3");
         bodyNode.addChildNode(node);
     }
@@ -21434,11 +20883,11 @@ const serializeAws_restXmlOutputLocation = (input, context) => {
 };
 const serializeAws_restXmlOutputSerialization = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("OutputSerialization");
-    if (input.CSV !== undefined && input.CSV !== null) {
+    if (input.CSV != null) {
         const node = serializeAws_restXmlCSVOutput(input.CSV, context).withName("CSV");
         bodyNode.addChildNode(node);
     }
-    if (input.JSON !== undefined && input.JSON !== null) {
+    if (input.JSON != null) {
         const node = serializeAws_restXmlJSONOutput(input.JSON, context).withName("JSON");
         bodyNode.addChildNode(node);
     }
@@ -21446,11 +20895,11 @@ const serializeAws_restXmlOutputSerialization = (input, context) => {
 };
 const serializeAws_restXmlOwner = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Owner");
-    if (input.DisplayName !== undefined && input.DisplayName !== null) {
+    if (input.DisplayName != null) {
         const node = new xml_builder_1.XmlNode("DisplayName").addChildNode(new xml_builder_1.XmlText(input.DisplayName)).withName("DisplayName");
         bodyNode.addChildNode(node);
     }
-    if (input.ID !== undefined && input.ID !== null) {
+    if (input.ID != null) {
         const node = new xml_builder_1.XmlNode("ID").addChildNode(new xml_builder_1.XmlText(input.ID)).withName("ID");
         bodyNode.addChildNode(node);
     }
@@ -21458,7 +20907,7 @@ const serializeAws_restXmlOwner = (input, context) => {
 };
 const serializeAws_restXmlOwnershipControls = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("OwnershipControls");
-    if (input.Rules !== undefined && input.Rules !== null) {
+    if (input.Rules != null) {
         const nodes = serializeAws_restXmlOwnershipControlsRules(input.Rules, context);
         nodes.map((node) => {
             node = node.withName("Rule");
@@ -21469,7 +20918,7 @@ const serializeAws_restXmlOwnershipControls = (input, context) => {
 };
 const serializeAws_restXmlOwnershipControlsRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("OwnershipControlsRule");
-    if (input.ObjectOwnership !== undefined && input.ObjectOwnership !== null) {
+    if (input.ObjectOwnership != null) {
         const node = new xml_builder_1.XmlNode("ObjectOwnership")
             .addChildNode(new xml_builder_1.XmlText(input.ObjectOwnership))
             .withName("ObjectOwnership");
@@ -21494,25 +20943,25 @@ const serializeAws_restXmlParquetInput = (input, context) => {
 };
 const serializeAws_restXmlPublicAccessBlockConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("PublicAccessBlockConfiguration");
-    if (input.BlockPublicAcls !== undefined && input.BlockPublicAcls !== null) {
+    if (input.BlockPublicAcls != null) {
         const node = new xml_builder_1.XmlNode("Setting")
             .addChildNode(new xml_builder_1.XmlText(String(input.BlockPublicAcls)))
             .withName("BlockPublicAcls");
         bodyNode.addChildNode(node);
     }
-    if (input.IgnorePublicAcls !== undefined && input.IgnorePublicAcls !== null) {
+    if (input.IgnorePublicAcls != null) {
         const node = new xml_builder_1.XmlNode("Setting")
             .addChildNode(new xml_builder_1.XmlText(String(input.IgnorePublicAcls)))
             .withName("IgnorePublicAcls");
         bodyNode.addChildNode(node);
     }
-    if (input.BlockPublicPolicy !== undefined && input.BlockPublicPolicy !== null) {
+    if (input.BlockPublicPolicy != null) {
         const node = new xml_builder_1.XmlNode("Setting")
             .addChildNode(new xml_builder_1.XmlText(String(input.BlockPublicPolicy)))
             .withName("BlockPublicPolicy");
         bodyNode.addChildNode(node);
     }
-    if (input.RestrictPublicBuckets !== undefined && input.RestrictPublicBuckets !== null) {
+    if (input.RestrictPublicBuckets != null) {
         const node = new xml_builder_1.XmlNode("Setting")
             .addChildNode(new xml_builder_1.XmlText(String(input.RestrictPublicBuckets)))
             .withName("RestrictPublicBuckets");
@@ -21522,22 +20971,22 @@ const serializeAws_restXmlPublicAccessBlockConfiguration = (input, context) => {
 };
 const serializeAws_restXmlQueueConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("QueueConfiguration");
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("NotificationId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.QueueArn !== undefined && input.QueueArn !== null) {
+    if (input.QueueArn != null) {
         const node = new xml_builder_1.XmlNode("QueueArn").addChildNode(new xml_builder_1.XmlText(input.QueueArn)).withName("Queue");
         bodyNode.addChildNode(node);
     }
-    if (input.Events !== undefined && input.Events !== null) {
+    if (input.Events != null) {
         const nodes = serializeAws_restXmlEventList(input.Events, context);
         nodes.map((node) => {
             node = node.withName("Event");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlNotificationConfigurationFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
@@ -21556,27 +21005,27 @@ const serializeAws_restXmlQueueConfigurationList = (input, context) => {
 };
 const serializeAws_restXmlRedirect = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Redirect");
-    if (input.HostName !== undefined && input.HostName !== null) {
+    if (input.HostName != null) {
         const node = new xml_builder_1.XmlNode("HostName").addChildNode(new xml_builder_1.XmlText(input.HostName)).withName("HostName");
         bodyNode.addChildNode(node);
     }
-    if (input.HttpRedirectCode !== undefined && input.HttpRedirectCode !== null) {
+    if (input.HttpRedirectCode != null) {
         const node = new xml_builder_1.XmlNode("HttpRedirectCode")
             .addChildNode(new xml_builder_1.XmlText(input.HttpRedirectCode))
             .withName("HttpRedirectCode");
         bodyNode.addChildNode(node);
     }
-    if (input.Protocol !== undefined && input.Protocol !== null) {
+    if (input.Protocol != null) {
         const node = new xml_builder_1.XmlNode("Protocol").addChildNode(new xml_builder_1.XmlText(input.Protocol)).withName("Protocol");
         bodyNode.addChildNode(node);
     }
-    if (input.ReplaceKeyPrefixWith !== undefined && input.ReplaceKeyPrefixWith !== null) {
+    if (input.ReplaceKeyPrefixWith != null) {
         const node = new xml_builder_1.XmlNode("ReplaceKeyPrefixWith")
             .addChildNode(new xml_builder_1.XmlText(input.ReplaceKeyPrefixWith))
             .withName("ReplaceKeyPrefixWith");
         bodyNode.addChildNode(node);
     }
-    if (input.ReplaceKeyWith !== undefined && input.ReplaceKeyWith !== null) {
+    if (input.ReplaceKeyWith != null) {
         const node = new xml_builder_1.XmlNode("ReplaceKeyWith")
             .addChildNode(new xml_builder_1.XmlText(input.ReplaceKeyWith))
             .withName("ReplaceKeyWith");
@@ -21586,11 +21035,11 @@ const serializeAws_restXmlRedirect = (input, context) => {
 };
 const serializeAws_restXmlRedirectAllRequestsTo = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("RedirectAllRequestsTo");
-    if (input.HostName !== undefined && input.HostName !== null) {
+    if (input.HostName != null) {
         const node = new xml_builder_1.XmlNode("HostName").addChildNode(new xml_builder_1.XmlText(input.HostName)).withName("HostName");
         bodyNode.addChildNode(node);
     }
-    if (input.Protocol !== undefined && input.Protocol !== null) {
+    if (input.Protocol != null) {
         const node = new xml_builder_1.XmlNode("Protocol").addChildNode(new xml_builder_1.XmlText(input.Protocol)).withName("Protocol");
         bodyNode.addChildNode(node);
     }
@@ -21598,7 +21047,7 @@ const serializeAws_restXmlRedirectAllRequestsTo = (input, context) => {
 };
 const serializeAws_restXmlReplicaModifications = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ReplicaModifications");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("ReplicaModificationsStatus")
             .addChildNode(new xml_builder_1.XmlText(input.Status))
             .withName("Status");
@@ -21608,11 +21057,11 @@ const serializeAws_restXmlReplicaModifications = (input, context) => {
 };
 const serializeAws_restXmlReplicationConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ReplicationConfiguration");
-    if (input.Role !== undefined && input.Role !== null) {
+    if (input.Role != null) {
         const node = new xml_builder_1.XmlNode("Role").addChildNode(new xml_builder_1.XmlText(input.Role)).withName("Role");
         bodyNode.addChildNode(node);
     }
-    if (input.Rules !== undefined && input.Rules !== null) {
+    if (input.Rules != null) {
         const nodes = serializeAws_restXmlReplicationRules(input.Rules, context);
         nodes.map((node) => {
             node = node.withName("Rule");
@@ -21623,39 +21072,39 @@ const serializeAws_restXmlReplicationConfiguration = (input, context) => {
 };
 const serializeAws_restXmlReplicationRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ReplicationRule");
-    if (input.ID !== undefined && input.ID !== null) {
+    if (input.ID != null) {
         const node = new xml_builder_1.XmlNode("ID").addChildNode(new xml_builder_1.XmlText(input.ID)).withName("ID");
         bodyNode.addChildNode(node);
     }
-    if (input.Priority !== undefined && input.Priority !== null) {
+    if (input.Priority != null) {
         const node = new xml_builder_1.XmlNode("Priority").addChildNode(new xml_builder_1.XmlText(String(input.Priority))).withName("Priority");
         bodyNode.addChildNode(node);
     }
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlReplicationRuleFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("ReplicationRuleStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
-    if (input.SourceSelectionCriteria !== undefined && input.SourceSelectionCriteria !== null) {
+    if (input.SourceSelectionCriteria != null) {
         const node = serializeAws_restXmlSourceSelectionCriteria(input.SourceSelectionCriteria, context).withName("SourceSelectionCriteria");
         bodyNode.addChildNode(node);
     }
-    if (input.ExistingObjectReplication !== undefined && input.ExistingObjectReplication !== null) {
+    if (input.ExistingObjectReplication != null) {
         const node = serializeAws_restXmlExistingObjectReplication(input.ExistingObjectReplication, context).withName("ExistingObjectReplication");
         bodyNode.addChildNode(node);
     }
-    if (input.Destination !== undefined && input.Destination !== null) {
+    if (input.Destination != null) {
         const node = serializeAws_restXmlDestination(input.Destination, context).withName("Destination");
         bodyNode.addChildNode(node);
     }
-    if (input.DeleteMarkerReplication !== undefined && input.DeleteMarkerReplication !== null) {
+    if (input.DeleteMarkerReplication != null) {
         const node = serializeAws_restXmlDeleteMarkerReplication(input.DeleteMarkerReplication, context).withName("DeleteMarkerReplication");
         bodyNode.addChildNode(node);
     }
@@ -21663,11 +21112,11 @@ const serializeAws_restXmlReplicationRule = (input, context) => {
 };
 const serializeAws_restXmlReplicationRuleAndOperator = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ReplicationRuleAndOperator");
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("Prefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Tags !== undefined && input.Tags !== null) {
+    if (input.Tags != null) {
         const nodes = serializeAws_restXmlTagSet(input.Tags, context);
         nodes.map((node) => {
             node = node.withName("Tag");
@@ -21713,11 +21162,11 @@ const serializeAws_restXmlReplicationRules = (input, context) => {
 };
 const serializeAws_restXmlReplicationTime = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ReplicationTime");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("ReplicationTimeStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
-    if (input.Time !== undefined && input.Time !== null) {
+    if (input.Time != null) {
         const node = serializeAws_restXmlReplicationTimeValue(input.Time, context).withName("Time");
         bodyNode.addChildNode(node);
     }
@@ -21725,7 +21174,7 @@ const serializeAws_restXmlReplicationTime = (input, context) => {
 };
 const serializeAws_restXmlReplicationTimeValue = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ReplicationTimeValue");
-    if (input.Minutes !== undefined && input.Minutes !== null) {
+    if (input.Minutes != null) {
         const node = new xml_builder_1.XmlNode("Minutes").addChildNode(new xml_builder_1.XmlText(String(input.Minutes))).withName("Minutes");
         bodyNode.addChildNode(node);
     }
@@ -21733,7 +21182,7 @@ const serializeAws_restXmlReplicationTimeValue = (input, context) => {
 };
 const serializeAws_restXmlRequestPaymentConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("RequestPaymentConfiguration");
-    if (input.Payer !== undefined && input.Payer !== null) {
+    if (input.Payer != null) {
         const node = new xml_builder_1.XmlNode("Payer").addChildNode(new xml_builder_1.XmlText(input.Payer)).withName("Payer");
         bodyNode.addChildNode(node);
     }
@@ -21741,7 +21190,7 @@ const serializeAws_restXmlRequestPaymentConfiguration = (input, context) => {
 };
 const serializeAws_restXmlRequestProgress = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("RequestProgress");
-    if (input.Enabled !== undefined && input.Enabled !== null) {
+    if (input.Enabled != null) {
         const node = new xml_builder_1.XmlNode("EnableRequestProgress")
             .addChildNode(new xml_builder_1.XmlText(String(input.Enabled)))
             .withName("Enabled");
@@ -21751,31 +21200,31 @@ const serializeAws_restXmlRequestProgress = (input, context) => {
 };
 const serializeAws_restXmlRestoreRequest = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("RestoreRequest");
-    if (input.Days !== undefined && input.Days !== null) {
+    if (input.Days != null) {
         const node = new xml_builder_1.XmlNode("Days").addChildNode(new xml_builder_1.XmlText(String(input.Days))).withName("Days");
         bodyNode.addChildNode(node);
     }
-    if (input.GlacierJobParameters !== undefined && input.GlacierJobParameters !== null) {
+    if (input.GlacierJobParameters != null) {
         const node = serializeAws_restXmlGlacierJobParameters(input.GlacierJobParameters, context).withName("GlacierJobParameters");
         bodyNode.addChildNode(node);
     }
-    if (input.Type !== undefined && input.Type !== null) {
+    if (input.Type != null) {
         const node = new xml_builder_1.XmlNode("RestoreRequestType").addChildNode(new xml_builder_1.XmlText(input.Type)).withName("Type");
         bodyNode.addChildNode(node);
     }
-    if (input.Tier !== undefined && input.Tier !== null) {
+    if (input.Tier != null) {
         const node = new xml_builder_1.XmlNode("Tier").addChildNode(new xml_builder_1.XmlText(input.Tier)).withName("Tier");
         bodyNode.addChildNode(node);
     }
-    if (input.Description !== undefined && input.Description !== null) {
+    if (input.Description != null) {
         const node = new xml_builder_1.XmlNode("Description").addChildNode(new xml_builder_1.XmlText(input.Description)).withName("Description");
         bodyNode.addChildNode(node);
     }
-    if (input.SelectParameters !== undefined && input.SelectParameters !== null) {
+    if (input.SelectParameters != null) {
         const node = serializeAws_restXmlSelectParameters(input.SelectParameters, context).withName("SelectParameters");
         bodyNode.addChildNode(node);
     }
-    if (input.OutputLocation !== undefined && input.OutputLocation !== null) {
+    if (input.OutputLocation != null) {
         const node = serializeAws_restXmlOutputLocation(input.OutputLocation, context).withName("OutputLocation");
         bodyNode.addChildNode(node);
     }
@@ -21783,11 +21232,11 @@ const serializeAws_restXmlRestoreRequest = (input, context) => {
 };
 const serializeAws_restXmlRoutingRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("RoutingRule");
-    if (input.Condition !== undefined && input.Condition !== null) {
+    if (input.Condition != null) {
         const node = serializeAws_restXmlCondition(input.Condition, context).withName("Condition");
         bodyNode.addChildNode(node);
     }
-    if (input.Redirect !== undefined && input.Redirect !== null) {
+    if (input.Redirect != null) {
         const node = serializeAws_restXmlRedirect(input.Redirect, context).withName("Redirect");
         bodyNode.addChildNode(node);
     }
@@ -21806,7 +21255,7 @@ const serializeAws_restXmlRoutingRules = (input, context) => {
 };
 const serializeAws_restXmlS3KeyFilter = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("S3KeyFilter");
-    if (input.FilterRules !== undefined && input.FilterRules !== null) {
+    if (input.FilterRules != null) {
         const nodes = serializeAws_restXmlFilterRuleList(input.FilterRules, context);
         nodes.map((node) => {
             node = node.withName("FilterRule");
@@ -21817,23 +21266,23 @@ const serializeAws_restXmlS3KeyFilter = (input, context) => {
 };
 const serializeAws_restXmlS3Location = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("S3Location");
-    if (input.BucketName !== undefined && input.BucketName !== null) {
+    if (input.BucketName != null) {
         const node = new xml_builder_1.XmlNode("BucketName").addChildNode(new xml_builder_1.XmlText(input.BucketName)).withName("BucketName");
         bodyNode.addChildNode(node);
     }
-    if (input.Prefix !== undefined && input.Prefix !== null) {
+    if (input.Prefix != null) {
         const node = new xml_builder_1.XmlNode("LocationPrefix").addChildNode(new xml_builder_1.XmlText(input.Prefix)).withName("Prefix");
         bodyNode.addChildNode(node);
     }
-    if (input.Encryption !== undefined && input.Encryption !== null) {
+    if (input.Encryption != null) {
         const node = serializeAws_restXmlEncryption(input.Encryption, context).withName("Encryption");
         bodyNode.addChildNode(node);
     }
-    if (input.CannedACL !== undefined && input.CannedACL !== null) {
+    if (input.CannedACL != null) {
         const node = new xml_builder_1.XmlNode("ObjectCannedACL").addChildNode(new xml_builder_1.XmlText(input.CannedACL)).withName("CannedACL");
         bodyNode.addChildNode(node);
     }
-    if (input.AccessControlList !== undefined && input.AccessControlList !== null) {
+    if (input.AccessControlList != null) {
         const nodes = serializeAws_restXmlGrants(input.AccessControlList, context);
         const containerNode = new xml_builder_1.XmlNode("AccessControlList");
         nodes.map((node) => {
@@ -21841,11 +21290,11 @@ const serializeAws_restXmlS3Location = (input, context) => {
         });
         bodyNode.addChildNode(containerNode);
     }
-    if (input.Tagging !== undefined && input.Tagging !== null) {
+    if (input.Tagging != null) {
         const node = serializeAws_restXmlTagging(input.Tagging, context).withName("Tagging");
         bodyNode.addChildNode(node);
     }
-    if (input.UserMetadata !== undefined && input.UserMetadata !== null) {
+    if (input.UserMetadata != null) {
         const nodes = serializeAws_restXmlUserMetadata(input.UserMetadata, context);
         const containerNode = new xml_builder_1.XmlNode("UserMetadata");
         nodes.map((node) => {
@@ -21853,7 +21302,7 @@ const serializeAws_restXmlS3Location = (input, context) => {
         });
         bodyNode.addChildNode(containerNode);
     }
-    if (input.StorageClass !== undefined && input.StorageClass !== null) {
+    if (input.StorageClass != null) {
         const node = new xml_builder_1.XmlNode("StorageClass").addChildNode(new xml_builder_1.XmlText(input.StorageClass)).withName("StorageClass");
         bodyNode.addChildNode(node);
     }
@@ -21861,11 +21310,11 @@ const serializeAws_restXmlS3Location = (input, context) => {
 };
 const serializeAws_restXmlScanRange = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ScanRange");
-    if (input.Start !== undefined && input.Start !== null) {
+    if (input.Start != null) {
         const node = new xml_builder_1.XmlNode("Start").addChildNode(new xml_builder_1.XmlText(String(input.Start))).withName("Start");
         bodyNode.addChildNode(node);
     }
-    if (input.End !== undefined && input.End !== null) {
+    if (input.End != null) {
         const node = new xml_builder_1.XmlNode("End").addChildNode(new xml_builder_1.XmlText(String(input.End))).withName("End");
         bodyNode.addChildNode(node);
     }
@@ -21873,21 +21322,21 @@ const serializeAws_restXmlScanRange = (input, context) => {
 };
 const serializeAws_restXmlSelectParameters = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("SelectParameters");
-    if (input.InputSerialization !== undefined && input.InputSerialization !== null) {
+    if (input.InputSerialization != null) {
         const node = serializeAws_restXmlInputSerialization(input.InputSerialization, context).withName("InputSerialization");
         bodyNode.addChildNode(node);
     }
-    if (input.ExpressionType !== undefined && input.ExpressionType !== null) {
+    if (input.ExpressionType != null) {
         const node = new xml_builder_1.XmlNode("ExpressionType")
             .addChildNode(new xml_builder_1.XmlText(input.ExpressionType))
             .withName("ExpressionType");
         bodyNode.addChildNode(node);
     }
-    if (input.Expression !== undefined && input.Expression !== null) {
+    if (input.Expression != null) {
         const node = new xml_builder_1.XmlNode("Expression").addChildNode(new xml_builder_1.XmlText(input.Expression)).withName("Expression");
         bodyNode.addChildNode(node);
     }
-    if (input.OutputSerialization !== undefined && input.OutputSerialization !== null) {
+    if (input.OutputSerialization != null) {
         const node = serializeAws_restXmlOutputSerialization(input.OutputSerialization, context).withName("OutputSerialization");
         bodyNode.addChildNode(node);
     }
@@ -21895,13 +21344,13 @@ const serializeAws_restXmlSelectParameters = (input, context) => {
 };
 const serializeAws_restXmlServerSideEncryptionByDefault = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ServerSideEncryptionByDefault");
-    if (input.SSEAlgorithm !== undefined && input.SSEAlgorithm !== null) {
+    if (input.SSEAlgorithm != null) {
         const node = new xml_builder_1.XmlNode("ServerSideEncryption")
             .addChildNode(new xml_builder_1.XmlText(input.SSEAlgorithm))
             .withName("SSEAlgorithm");
         bodyNode.addChildNode(node);
     }
-    if (input.KMSMasterKeyID !== undefined && input.KMSMasterKeyID !== null) {
+    if (input.KMSMasterKeyID != null) {
         const node = new xml_builder_1.XmlNode("SSEKMSKeyId")
             .addChildNode(new xml_builder_1.XmlText(input.KMSMasterKeyID))
             .withName("KMSMasterKeyID");
@@ -21911,7 +21360,7 @@ const serializeAws_restXmlServerSideEncryptionByDefault = (input, context) => {
 };
 const serializeAws_restXmlServerSideEncryptionConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ServerSideEncryptionConfiguration");
-    if (input.Rules !== undefined && input.Rules !== null) {
+    if (input.Rules != null) {
         const nodes = serializeAws_restXmlServerSideEncryptionRules(input.Rules, context);
         nodes.map((node) => {
             node = node.withName("Rule");
@@ -21922,11 +21371,11 @@ const serializeAws_restXmlServerSideEncryptionConfiguration = (input, context) =
 };
 const serializeAws_restXmlServerSideEncryptionRule = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("ServerSideEncryptionRule");
-    if (input.ApplyServerSideEncryptionByDefault !== undefined && input.ApplyServerSideEncryptionByDefault !== null) {
+    if (input.ApplyServerSideEncryptionByDefault != null) {
         const node = serializeAws_restXmlServerSideEncryptionByDefault(input.ApplyServerSideEncryptionByDefault, context).withName("ApplyServerSideEncryptionByDefault");
         bodyNode.addChildNode(node);
     }
-    if (input.BucketKeyEnabled !== undefined && input.BucketKeyEnabled !== null) {
+    if (input.BucketKeyEnabled != null) {
         const node = new xml_builder_1.XmlNode("BucketKeyEnabled")
             .addChildNode(new xml_builder_1.XmlText(String(input.BucketKeyEnabled)))
             .withName("BucketKeyEnabled");
@@ -21947,11 +21396,11 @@ const serializeAws_restXmlServerSideEncryptionRules = (input, context) => {
 };
 const serializeAws_restXmlSourceSelectionCriteria = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("SourceSelectionCriteria");
-    if (input.SseKmsEncryptedObjects !== undefined && input.SseKmsEncryptedObjects !== null) {
+    if (input.SseKmsEncryptedObjects != null) {
         const node = serializeAws_restXmlSseKmsEncryptedObjects(input.SseKmsEncryptedObjects, context).withName("SseKmsEncryptedObjects");
         bodyNode.addChildNode(node);
     }
-    if (input.ReplicaModifications !== undefined && input.ReplicaModifications !== null) {
+    if (input.ReplicaModifications != null) {
         const node = serializeAws_restXmlReplicaModifications(input.ReplicaModifications, context).withName("ReplicaModifications");
         bodyNode.addChildNode(node);
     }
@@ -21959,7 +21408,7 @@ const serializeAws_restXmlSourceSelectionCriteria = (input, context) => {
 };
 const serializeAws_restXmlSSEKMS = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("SSE-KMS");
-    if (input.KeyId !== undefined && input.KeyId !== null) {
+    if (input.KeyId != null) {
         const node = new xml_builder_1.XmlNode("SSEKMSKeyId").addChildNode(new xml_builder_1.XmlText(input.KeyId)).withName("KeyId");
         bodyNode.addChildNode(node);
     }
@@ -21967,7 +21416,7 @@ const serializeAws_restXmlSSEKMS = (input, context) => {
 };
 const serializeAws_restXmlSseKmsEncryptedObjects = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("SseKmsEncryptedObjects");
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("SseKmsEncryptedObjectsStatus")
             .addChildNode(new xml_builder_1.XmlText(input.Status))
             .withName("Status");
@@ -21981,7 +21430,7 @@ const serializeAws_restXmlSSES3 = (input, context) => {
 };
 const serializeAws_restXmlStorageClassAnalysis = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("StorageClassAnalysis");
-    if (input.DataExport !== undefined && input.DataExport !== null) {
+    if (input.DataExport != null) {
         const node = serializeAws_restXmlStorageClassAnalysisDataExport(input.DataExport, context).withName("DataExport");
         bodyNode.addChildNode(node);
     }
@@ -21989,13 +21438,13 @@ const serializeAws_restXmlStorageClassAnalysis = (input, context) => {
 };
 const serializeAws_restXmlStorageClassAnalysisDataExport = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("StorageClassAnalysisDataExport");
-    if (input.OutputSchemaVersion !== undefined && input.OutputSchemaVersion !== null) {
+    if (input.OutputSchemaVersion != null) {
         const node = new xml_builder_1.XmlNode("StorageClassAnalysisSchemaVersion")
             .addChildNode(new xml_builder_1.XmlText(input.OutputSchemaVersion))
             .withName("OutputSchemaVersion");
         bodyNode.addChildNode(node);
     }
-    if (input.Destination !== undefined && input.Destination !== null) {
+    if (input.Destination != null) {
         const node = serializeAws_restXmlAnalyticsExportDestination(input.Destination, context).withName("Destination");
         bodyNode.addChildNode(node);
     }
@@ -22003,11 +21452,11 @@ const serializeAws_restXmlStorageClassAnalysisDataExport = (input, context) => {
 };
 const serializeAws_restXmlTag = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Tag");
-    if (input.Key !== undefined && input.Key !== null) {
+    if (input.Key != null) {
         const node = new xml_builder_1.XmlNode("ObjectKey").addChildNode(new xml_builder_1.XmlText(input.Key)).withName("Key");
         bodyNode.addChildNode(node);
     }
-    if (input.Value !== undefined && input.Value !== null) {
+    if (input.Value != null) {
         const node = new xml_builder_1.XmlNode("Value").addChildNode(new xml_builder_1.XmlText(input.Value)).withName("Value");
         bodyNode.addChildNode(node);
     }
@@ -22015,7 +21464,7 @@ const serializeAws_restXmlTag = (input, context) => {
 };
 const serializeAws_restXmlTagging = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Tagging");
-    if (input.TagSet !== undefined && input.TagSet !== null) {
+    if (input.TagSet != null) {
         const nodes = serializeAws_restXmlTagSet(input.TagSet, context);
         const containerNode = new xml_builder_1.XmlNode("TagSet");
         nodes.map((node) => {
@@ -22038,12 +21487,12 @@ const serializeAws_restXmlTagSet = (input, context) => {
 };
 const serializeAws_restXmlTargetGrant = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("TargetGrant");
-    if (input.Grantee !== undefined && input.Grantee !== null) {
+    if (input.Grantee != null) {
         const node = serializeAws_restXmlGrantee(input.Grantee, context).withName("Grantee");
         node.addAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
         bodyNode.addChildNode(node);
     }
-    if (input.Permission !== undefined && input.Permission !== null) {
+    if (input.Permission != null) {
         const node = new xml_builder_1.XmlNode("BucketLogsPermission")
             .addChildNode(new xml_builder_1.XmlText(input.Permission))
             .withName("Permission");
@@ -22064,13 +21513,13 @@ const serializeAws_restXmlTargetGrants = (input, context) => {
 };
 const serializeAws_restXmlTiering = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Tiering");
-    if (input.Days !== undefined && input.Days !== null) {
+    if (input.Days != null) {
         const node = new xml_builder_1.XmlNode("IntelligentTieringDays")
             .addChildNode(new xml_builder_1.XmlText(String(input.Days)))
             .withName("Days");
         bodyNode.addChildNode(node);
     }
-    if (input.AccessTier !== undefined && input.AccessTier !== null) {
+    if (input.AccessTier != null) {
         const node = new xml_builder_1.XmlNode("IntelligentTieringAccessTier")
             .addChildNode(new xml_builder_1.XmlText(input.AccessTier))
             .withName("AccessTier");
@@ -22091,22 +21540,22 @@ const serializeAws_restXmlTieringList = (input, context) => {
 };
 const serializeAws_restXmlTopicConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("TopicConfiguration");
-    if (input.Id !== undefined && input.Id !== null) {
+    if (input.Id != null) {
         const node = new xml_builder_1.XmlNode("NotificationId").addChildNode(new xml_builder_1.XmlText(input.Id)).withName("Id");
         bodyNode.addChildNode(node);
     }
-    if (input.TopicArn !== undefined && input.TopicArn !== null) {
+    if (input.TopicArn != null) {
         const node = new xml_builder_1.XmlNode("TopicArn").addChildNode(new xml_builder_1.XmlText(input.TopicArn)).withName("Topic");
         bodyNode.addChildNode(node);
     }
-    if (input.Events !== undefined && input.Events !== null) {
+    if (input.Events != null) {
         const nodes = serializeAws_restXmlEventList(input.Events, context);
         nodes.map((node) => {
             node = node.withName("Event");
             bodyNode.addChildNode(node);
         });
     }
-    if (input.Filter !== undefined && input.Filter !== null) {
+    if (input.Filter != null) {
         const node = serializeAws_restXmlNotificationConfigurationFilter(input.Filter, context).withName("Filter");
         bodyNode.addChildNode(node);
     }
@@ -22125,17 +21574,17 @@ const serializeAws_restXmlTopicConfigurationList = (input, context) => {
 };
 const serializeAws_restXmlTransition = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("Transition");
-    if (input.Date !== undefined && input.Date !== null) {
+    if (input.Date != null) {
         const node = new xml_builder_1.XmlNode("Date")
             .addChildNode(new xml_builder_1.XmlText(input.Date.toISOString().split(".")[0] + "Z"))
             .withName("Date");
         bodyNode.addChildNode(node);
     }
-    if (input.Days !== undefined && input.Days !== null) {
+    if (input.Days != null) {
         const node = new xml_builder_1.XmlNode("Days").addChildNode(new xml_builder_1.XmlText(String(input.Days))).withName("Days");
         bodyNode.addChildNode(node);
     }
-    if (input.StorageClass !== undefined && input.StorageClass !== null) {
+    if (input.StorageClass != null) {
         const node = new xml_builder_1.XmlNode("TransitionStorageClass")
             .addChildNode(new xml_builder_1.XmlText(input.StorageClass))
             .withName("StorageClass");
@@ -22167,11 +21616,11 @@ const serializeAws_restXmlUserMetadata = (input, context) => {
 };
 const serializeAws_restXmlVersioningConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("VersioningConfiguration");
-    if (input.MFADelete !== undefined && input.MFADelete !== null) {
+    if (input.MFADelete != null) {
         const node = new xml_builder_1.XmlNode("MFADelete").addChildNode(new xml_builder_1.XmlText(input.MFADelete)).withName("MfaDelete");
         bodyNode.addChildNode(node);
     }
-    if (input.Status !== undefined && input.Status !== null) {
+    if (input.Status != null) {
         const node = new xml_builder_1.XmlNode("BucketVersioningStatus").addChildNode(new xml_builder_1.XmlText(input.Status)).withName("Status");
         bodyNode.addChildNode(node);
     }
@@ -22179,19 +21628,19 @@ const serializeAws_restXmlVersioningConfiguration = (input, context) => {
 };
 const serializeAws_restXmlWebsiteConfiguration = (input, context) => {
     const bodyNode = new xml_builder_1.XmlNode("WebsiteConfiguration");
-    if (input.ErrorDocument !== undefined && input.ErrorDocument !== null) {
+    if (input.ErrorDocument != null) {
         const node = serializeAws_restXmlErrorDocument(input.ErrorDocument, context).withName("ErrorDocument");
         bodyNode.addChildNode(node);
     }
-    if (input.IndexDocument !== undefined && input.IndexDocument !== null) {
+    if (input.IndexDocument != null) {
         const node = serializeAws_restXmlIndexDocument(input.IndexDocument, context).withName("IndexDocument");
         bodyNode.addChildNode(node);
     }
-    if (input.RedirectAllRequestsTo !== undefined && input.RedirectAllRequestsTo !== null) {
+    if (input.RedirectAllRequestsTo != null) {
         const node = serializeAws_restXmlRedirectAllRequestsTo(input.RedirectAllRequestsTo, context).withName("RedirectAllRequestsTo");
         bodyNode.addChildNode(node);
     }
-    if (input.RoutingRules !== undefined && input.RoutingRules !== null) {
+    if (input.RoutingRules != null) {
         const nodes = serializeAws_restXmlRoutingRules(input.RoutingRules, context);
         const containerNode = new xml_builder_1.XmlNode("RoutingRules");
         nodes.map((node) => {
@@ -23720,15 +23169,6 @@ const deserializeAws_restXmlProgress = (output, context) => {
     }
     return contents;
 };
-const deserializeAws_restXmlProgressEvent = (output, context) => {
-    const contents = {
-        Details: undefined,
-    };
-    if (output["Details"] !== undefined) {
-        contents.Details = deserializeAws_restXmlProgress(output["Details"], context);
-    }
-    return contents;
-};
 const deserializeAws_restXmlPublicAccessBlockConfiguration = (output, context) => {
     const contents = {
         BlockPublicAcls: undefined,
@@ -23783,15 +23223,6 @@ const deserializeAws_restXmlQueueConfigurationList = (output, context) => {
         }
         return deserializeAws_restXmlQueueConfiguration(entry, context);
     });
-};
-const deserializeAws_restXmlRecordsEvent = (output, context) => {
-    const contents = {
-        Payload: undefined,
-    };
-    if (output["Payload"] !== undefined) {
-        contents.Payload = context.base64Decoder(output["Payload"]);
-    }
-    return contents;
 };
 const deserializeAws_restXmlRedirect = (output, context) => {
     const contents = {
@@ -24000,34 +23431,6 @@ const deserializeAws_restXmlS3KeyFilter = (output, context) => {
     }
     return contents;
 };
-const deserializeAws_restXmlSelectObjectContentEventStream = (output, context) => {
-    if (output["Records"] !== undefined) {
-        return {
-            Records: deserializeAws_restXmlRecordsEvent(output["Records"], context),
-        };
-    }
-    if (output["Stats"] !== undefined) {
-        return {
-            Stats: deserializeAws_restXmlStatsEvent(output["Stats"], context),
-        };
-    }
-    if (output["Progress"] !== undefined) {
-        return {
-            Progress: deserializeAws_restXmlProgressEvent(output["Progress"], context),
-        };
-    }
-    if (output["Cont"] !== undefined) {
-        return {
-            Cont: deserializeAws_restXmlContinuationEvent(output["Cont"], context),
-        };
-    }
-    if (output["End"] !== undefined) {
-        return {
-            End: deserializeAws_restXmlEndEvent(output["End"], context),
-        };
-    }
-    return { $unknown: Object.entries(output)[0] };
-};
 const deserializeAws_restXmlServerSideEncryptionByDefault = (output, context) => {
     const contents = {
         SSEAlgorithm: undefined,
@@ -24125,15 +23528,6 @@ const deserializeAws_restXmlStats = (output, context) => {
     }
     if (output["BytesReturned"] !== undefined) {
         contents.BytesReturned = (0, smithy_client_1.strictParseLong)(output["BytesReturned"]);
-    }
-    return contents;
-};
-const deserializeAws_restXmlStatsEvent = (output, context) => {
-    const contents = {
-        Details: undefined,
-    };
-    if (output["Details"] !== undefined) {
-        contents.Details = deserializeAws_restXmlStats(output["Details"], context);
     }
     return contents;
 };
@@ -24753,8 +24147,8 @@ class GetRoleCredentialsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetRoleCredentialsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetRoleCredentialsResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetRoleCredentialsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetRoleCredentialsResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -24797,8 +24191,8 @@ class ListAccountRolesCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListAccountRolesRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListAccountRolesResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListAccountRolesRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListAccountRolesResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -24841,8 +24235,8 @@ class ListAccountsCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.ListAccountsRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.ListAccountsResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.ListAccountsRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.ListAccountsResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -24885,7 +24279,7 @@ class LogoutCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.LogoutRequest.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.LogoutRequestFilterSensitiveLog,
             outputFilterSensitiveLog: (output) => output,
         };
         const { requestHandler } = configuration;
@@ -24927,6 +24321,15 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.defaultRegionInfoProvider = void 0;
 const config_resolver_1 = __nccwpck_require__(56153);
 const regionHash = {
+    "ap-east-1": {
+        variants: [
+            {
+                hostname: "portal.sso.ap-east-1.amazonaws.com",
+                tags: [],
+            },
+        ],
+        signingRegion: "ap-east-1",
+    },
     "ap-northeast-1": {
         variants: [
             {
@@ -25043,6 +24446,15 @@ const regionHash = {
             },
         ],
         signingRegion: "eu-west-3",
+    },
+    "me-south-1": {
+        variants: [
+            {
+                hostname: "portal.sso.me-south-1.amazonaws.com",
+                tags: [],
+            },
+        ],
+        signingRegion: "me-south-1",
     },
     "sa-east-1": {
         variants: [
@@ -25285,37 +24697,9 @@ tslib_1.__exportStar(__nccwpck_require__(66390), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LogoutRequest = exports.ListAccountsResponse = exports.ListAccountsRequest = exports.ListAccountRolesResponse = exports.RoleInfo = exports.ListAccountRolesRequest = exports.UnauthorizedException = exports.TooManyRequestsException = exports.ResourceNotFoundException = exports.InvalidRequestException = exports.GetRoleCredentialsResponse = exports.RoleCredentials = exports.GetRoleCredentialsRequest = exports.AccountInfo = void 0;
+exports.LogoutRequestFilterSensitiveLog = exports.ListAccountsResponseFilterSensitiveLog = exports.ListAccountsRequestFilterSensitiveLog = exports.ListAccountRolesResponseFilterSensitiveLog = exports.RoleInfoFilterSensitiveLog = exports.ListAccountRolesRequestFilterSensitiveLog = exports.GetRoleCredentialsResponseFilterSensitiveLog = exports.RoleCredentialsFilterSensitiveLog = exports.GetRoleCredentialsRequestFilterSensitiveLog = exports.AccountInfoFilterSensitiveLog = exports.UnauthorizedException = exports.TooManyRequestsException = exports.ResourceNotFoundException = exports.InvalidRequestException = void 0;
 const smithy_client_1 = __nccwpck_require__(4963);
 const SSOServiceException_1 = __nccwpck_require__(81517);
-var AccountInfo;
-(function (AccountInfo) {
-    AccountInfo.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AccountInfo = exports.AccountInfo || (exports.AccountInfo = {}));
-var GetRoleCredentialsRequest;
-(function (GetRoleCredentialsRequest) {
-    GetRoleCredentialsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(GetRoleCredentialsRequest = exports.GetRoleCredentialsRequest || (exports.GetRoleCredentialsRequest = {}));
-var RoleCredentials;
-(function (RoleCredentials) {
-    RoleCredentials.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.secretAccessKey && { secretAccessKey: smithy_client_1.SENSITIVE_STRING }),
-        ...(obj.sessionToken && { sessionToken: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(RoleCredentials = exports.RoleCredentials || (exports.RoleCredentials = {}));
-var GetRoleCredentialsResponse;
-(function (GetRoleCredentialsResponse) {
-    GetRoleCredentialsResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.roleCredentials && { roleCredentials: RoleCredentials.filterSensitiveLog(obj.roleCredentials) }),
-    });
-})(GetRoleCredentialsResponse = exports.GetRoleCredentialsResponse || (exports.GetRoleCredentialsResponse = {}));
 class InvalidRequestException extends SSOServiceException_1.SSOServiceException {
     constructor(opts) {
         super({
@@ -25368,45 +24752,53 @@ class UnauthorizedException extends SSOServiceException_1.SSOServiceException {
     }
 }
 exports.UnauthorizedException = UnauthorizedException;
-var ListAccountRolesRequest;
-(function (ListAccountRolesRequest) {
-    ListAccountRolesRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(ListAccountRolesRequest = exports.ListAccountRolesRequest || (exports.ListAccountRolesRequest = {}));
-var RoleInfo;
-(function (RoleInfo) {
-    RoleInfo.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(RoleInfo = exports.RoleInfo || (exports.RoleInfo = {}));
-var ListAccountRolesResponse;
-(function (ListAccountRolesResponse) {
-    ListAccountRolesResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListAccountRolesResponse = exports.ListAccountRolesResponse || (exports.ListAccountRolesResponse = {}));
-var ListAccountsRequest;
-(function (ListAccountsRequest) {
-    ListAccountsRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(ListAccountsRequest = exports.ListAccountsRequest || (exports.ListAccountsRequest = {}));
-var ListAccountsResponse;
-(function (ListAccountsResponse) {
-    ListAccountsResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(ListAccountsResponse = exports.ListAccountsResponse || (exports.ListAccountsResponse = {}));
-var LogoutRequest;
-(function (LogoutRequest) {
-    LogoutRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-        ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
-    });
-})(LogoutRequest = exports.LogoutRequest || (exports.LogoutRequest = {}));
+const AccountInfoFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AccountInfoFilterSensitiveLog = AccountInfoFilterSensitiveLog;
+const GetRoleCredentialsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.GetRoleCredentialsRequestFilterSensitiveLog = GetRoleCredentialsRequestFilterSensitiveLog;
+const RoleCredentialsFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.secretAccessKey && { secretAccessKey: smithy_client_1.SENSITIVE_STRING }),
+    ...(obj.sessionToken && { sessionToken: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.RoleCredentialsFilterSensitiveLog = RoleCredentialsFilterSensitiveLog;
+const GetRoleCredentialsResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.roleCredentials && { roleCredentials: (0, exports.RoleCredentialsFilterSensitiveLog)(obj.roleCredentials) }),
+});
+exports.GetRoleCredentialsResponseFilterSensitiveLog = GetRoleCredentialsResponseFilterSensitiveLog;
+const ListAccountRolesRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.ListAccountRolesRequestFilterSensitiveLog = ListAccountRolesRequestFilterSensitiveLog;
+const RoleInfoFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.RoleInfoFilterSensitiveLog = RoleInfoFilterSensitiveLog;
+const ListAccountRolesResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListAccountRolesResponseFilterSensitiveLog = ListAccountRolesResponseFilterSensitiveLog;
+const ListAccountsRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.ListAccountsRequestFilterSensitiveLog = ListAccountsRequestFilterSensitiveLog;
+const ListAccountsResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.ListAccountsResponseFilterSensitiveLog = ListAccountsResponseFilterSensitiveLog;
+const LogoutRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+    ...(obj.accessToken && { accessToken: smithy_client_1.SENSITIVE_STRING }),
+});
+exports.LogoutRequestFilterSensitiveLog = LogoutRequestFilterSensitiveLog;
 
 
 /***/ }),
@@ -25933,6 +25325,9 @@ const loadRestJsonErrorCode = (output, data) => {
     const findKey = (object, key) => Object.keys(object).find((k) => k.toLowerCase() === key.toLowerCase());
     const sanitizeErrorCode = (rawValue) => {
         let cleanValue = rawValue;
+        if (typeof cleanValue === "number") {
+            cleanValue = cleanValue.toString();
+        }
         if (cleanValue.indexOf(":") >= 0) {
             cleanValue = cleanValue.split(":")[0];
         }
@@ -26245,8 +25640,8 @@ class AssumeRoleCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.AssumeRoleRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.AssumeRoleResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.AssumeRoleRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.AssumeRoleResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26289,8 +25684,8 @@ class AssumeRoleWithSAMLCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.AssumeRoleWithSAMLRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.AssumeRoleWithSAMLResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.AssumeRoleWithSAMLRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.AssumeRoleWithSAMLResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26333,8 +25728,8 @@ class AssumeRoleWithWebIdentityCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.AssumeRoleWithWebIdentityRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.AssumeRoleWithWebIdentityResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.AssumeRoleWithWebIdentityRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.AssumeRoleWithWebIdentityResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26379,8 +25774,8 @@ class DecodeAuthorizationMessageCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.DecodeAuthorizationMessageRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.DecodeAuthorizationMessageResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.DecodeAuthorizationMessageRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.DecodeAuthorizationMessageResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26425,8 +25820,8 @@ class GetAccessKeyInfoCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetAccessKeyInfoRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetAccessKeyInfoResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetAccessKeyInfoRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetAccessKeyInfoResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26471,8 +25866,8 @@ class GetCallerIdentityCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetCallerIdentityRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetCallerIdentityResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetCallerIdentityRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetCallerIdentityResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26517,8 +25912,8 @@ class GetFederationTokenCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetFederationTokenRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetFederationTokenResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetFederationTokenRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetFederationTokenResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26563,8 +25958,8 @@ class GetSessionTokenCommand extends smithy_client_1.Command {
             logger,
             clientName,
             commandName,
-            inputFilterSensitiveLog: models_0_1.GetSessionTokenRequest.filterSensitiveLog,
-            outputFilterSensitiveLog: models_0_1.GetSessionTokenResponse.filterSensitiveLog,
+            inputFilterSensitiveLog: models_0_1.GetSessionTokenRequestFilterSensitiveLog,
+            outputFilterSensitiveLog: models_0_1.GetSessionTokenResponseFilterSensitiveLog,
         };
         const { requestHandler } = configuration;
         return stack.resolve((request) => requestHandler.handle(request.request, options || {}), handlerExecutionContext);
@@ -26965,44 +26360,8 @@ tslib_1.__exportStar(__nccwpck_require__(21780), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GetSessionTokenResponse = exports.GetSessionTokenRequest = exports.GetFederationTokenResponse = exports.FederatedUser = exports.GetFederationTokenRequest = exports.GetCallerIdentityResponse = exports.GetCallerIdentityRequest = exports.GetAccessKeyInfoResponse = exports.GetAccessKeyInfoRequest = exports.InvalidAuthorizationMessageException = exports.DecodeAuthorizationMessageResponse = exports.DecodeAuthorizationMessageRequest = exports.IDPCommunicationErrorException = exports.AssumeRoleWithWebIdentityResponse = exports.AssumeRoleWithWebIdentityRequest = exports.InvalidIdentityTokenException = exports.IDPRejectedClaimException = exports.AssumeRoleWithSAMLResponse = exports.AssumeRoleWithSAMLRequest = exports.RegionDisabledException = exports.PackedPolicyTooLargeException = exports.MalformedPolicyDocumentException = exports.ExpiredTokenException = exports.AssumeRoleResponse = exports.Credentials = exports.AssumeRoleRequest = exports.Tag = exports.PolicyDescriptorType = exports.AssumedRoleUser = void 0;
+exports.GetSessionTokenResponseFilterSensitiveLog = exports.GetSessionTokenRequestFilterSensitiveLog = exports.GetFederationTokenResponseFilterSensitiveLog = exports.FederatedUserFilterSensitiveLog = exports.GetFederationTokenRequestFilterSensitiveLog = exports.GetCallerIdentityResponseFilterSensitiveLog = exports.GetCallerIdentityRequestFilterSensitiveLog = exports.GetAccessKeyInfoResponseFilterSensitiveLog = exports.GetAccessKeyInfoRequestFilterSensitiveLog = exports.DecodeAuthorizationMessageResponseFilterSensitiveLog = exports.DecodeAuthorizationMessageRequestFilterSensitiveLog = exports.AssumeRoleWithWebIdentityResponseFilterSensitiveLog = exports.AssumeRoleWithWebIdentityRequestFilterSensitiveLog = exports.AssumeRoleWithSAMLResponseFilterSensitiveLog = exports.AssumeRoleWithSAMLRequestFilterSensitiveLog = exports.AssumeRoleResponseFilterSensitiveLog = exports.CredentialsFilterSensitiveLog = exports.AssumeRoleRequestFilterSensitiveLog = exports.TagFilterSensitiveLog = exports.PolicyDescriptorTypeFilterSensitiveLog = exports.AssumedRoleUserFilterSensitiveLog = exports.InvalidAuthorizationMessageException = exports.IDPCommunicationErrorException = exports.InvalidIdentityTokenException = exports.IDPRejectedClaimException = exports.RegionDisabledException = exports.PackedPolicyTooLargeException = exports.MalformedPolicyDocumentException = exports.ExpiredTokenException = void 0;
 const STSServiceException_1 = __nccwpck_require__(26450);
-var AssumedRoleUser;
-(function (AssumedRoleUser) {
-    AssumedRoleUser.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumedRoleUser = exports.AssumedRoleUser || (exports.AssumedRoleUser = {}));
-var PolicyDescriptorType;
-(function (PolicyDescriptorType) {
-    PolicyDescriptorType.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(PolicyDescriptorType = exports.PolicyDescriptorType || (exports.PolicyDescriptorType = {}));
-var Tag;
-(function (Tag) {
-    Tag.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Tag = exports.Tag || (exports.Tag = {}));
-var AssumeRoleRequest;
-(function (AssumeRoleRequest) {
-    AssumeRoleRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumeRoleRequest = exports.AssumeRoleRequest || (exports.AssumeRoleRequest = {}));
-var Credentials;
-(function (Credentials) {
-    Credentials.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(Credentials = exports.Credentials || (exports.Credentials = {}));
-var AssumeRoleResponse;
-(function (AssumeRoleResponse) {
-    AssumeRoleResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumeRoleResponse = exports.AssumeRoleResponse || (exports.AssumeRoleResponse = {}));
 class ExpiredTokenException extends STSServiceException_1.STSServiceException {
     constructor(opts) {
         super({
@@ -27055,18 +26414,6 @@ class RegionDisabledException extends STSServiceException_1.STSServiceException 
     }
 }
 exports.RegionDisabledException = RegionDisabledException;
-var AssumeRoleWithSAMLRequest;
-(function (AssumeRoleWithSAMLRequest) {
-    AssumeRoleWithSAMLRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumeRoleWithSAMLRequest = exports.AssumeRoleWithSAMLRequest || (exports.AssumeRoleWithSAMLRequest = {}));
-var AssumeRoleWithSAMLResponse;
-(function (AssumeRoleWithSAMLResponse) {
-    AssumeRoleWithSAMLResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumeRoleWithSAMLResponse = exports.AssumeRoleWithSAMLResponse || (exports.AssumeRoleWithSAMLResponse = {}));
 class IDPRejectedClaimException extends STSServiceException_1.STSServiceException {
     constructor(opts) {
         super({
@@ -27093,18 +26440,6 @@ class InvalidIdentityTokenException extends STSServiceException_1.STSServiceExce
     }
 }
 exports.InvalidIdentityTokenException = InvalidIdentityTokenException;
-var AssumeRoleWithWebIdentityRequest;
-(function (AssumeRoleWithWebIdentityRequest) {
-    AssumeRoleWithWebIdentityRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumeRoleWithWebIdentityRequest = exports.AssumeRoleWithWebIdentityRequest || (exports.AssumeRoleWithWebIdentityRequest = {}));
-var AssumeRoleWithWebIdentityResponse;
-(function (AssumeRoleWithWebIdentityResponse) {
-    AssumeRoleWithWebIdentityResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(AssumeRoleWithWebIdentityResponse = exports.AssumeRoleWithWebIdentityResponse || (exports.AssumeRoleWithWebIdentityResponse = {}));
 class IDPCommunicationErrorException extends STSServiceException_1.STSServiceException {
     constructor(opts) {
         super({
@@ -27118,18 +26453,6 @@ class IDPCommunicationErrorException extends STSServiceException_1.STSServiceExc
     }
 }
 exports.IDPCommunicationErrorException = IDPCommunicationErrorException;
-var DecodeAuthorizationMessageRequest;
-(function (DecodeAuthorizationMessageRequest) {
-    DecodeAuthorizationMessageRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DecodeAuthorizationMessageRequest = exports.DecodeAuthorizationMessageRequest || (exports.DecodeAuthorizationMessageRequest = {}));
-var DecodeAuthorizationMessageResponse;
-(function (DecodeAuthorizationMessageResponse) {
-    DecodeAuthorizationMessageResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(DecodeAuthorizationMessageResponse = exports.DecodeAuthorizationMessageResponse || (exports.DecodeAuthorizationMessageResponse = {}));
 class InvalidAuthorizationMessageException extends STSServiceException_1.STSServiceException {
     constructor(opts) {
         super({
@@ -27143,60 +26466,90 @@ class InvalidAuthorizationMessageException extends STSServiceException_1.STSServ
     }
 }
 exports.InvalidAuthorizationMessageException = InvalidAuthorizationMessageException;
-var GetAccessKeyInfoRequest;
-(function (GetAccessKeyInfoRequest) {
-    GetAccessKeyInfoRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetAccessKeyInfoRequest = exports.GetAccessKeyInfoRequest || (exports.GetAccessKeyInfoRequest = {}));
-var GetAccessKeyInfoResponse;
-(function (GetAccessKeyInfoResponse) {
-    GetAccessKeyInfoResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetAccessKeyInfoResponse = exports.GetAccessKeyInfoResponse || (exports.GetAccessKeyInfoResponse = {}));
-var GetCallerIdentityRequest;
-(function (GetCallerIdentityRequest) {
-    GetCallerIdentityRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetCallerIdentityRequest = exports.GetCallerIdentityRequest || (exports.GetCallerIdentityRequest = {}));
-var GetCallerIdentityResponse;
-(function (GetCallerIdentityResponse) {
-    GetCallerIdentityResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetCallerIdentityResponse = exports.GetCallerIdentityResponse || (exports.GetCallerIdentityResponse = {}));
-var GetFederationTokenRequest;
-(function (GetFederationTokenRequest) {
-    GetFederationTokenRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetFederationTokenRequest = exports.GetFederationTokenRequest || (exports.GetFederationTokenRequest = {}));
-var FederatedUser;
-(function (FederatedUser) {
-    FederatedUser.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(FederatedUser = exports.FederatedUser || (exports.FederatedUser = {}));
-var GetFederationTokenResponse;
-(function (GetFederationTokenResponse) {
-    GetFederationTokenResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetFederationTokenResponse = exports.GetFederationTokenResponse || (exports.GetFederationTokenResponse = {}));
-var GetSessionTokenRequest;
-(function (GetSessionTokenRequest) {
-    GetSessionTokenRequest.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetSessionTokenRequest = exports.GetSessionTokenRequest || (exports.GetSessionTokenRequest = {}));
-var GetSessionTokenResponse;
-(function (GetSessionTokenResponse) {
-    GetSessionTokenResponse.filterSensitiveLog = (obj) => ({
-        ...obj,
-    });
-})(GetSessionTokenResponse = exports.GetSessionTokenResponse || (exports.GetSessionTokenResponse = {}));
+const AssumedRoleUserFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumedRoleUserFilterSensitiveLog = AssumedRoleUserFilterSensitiveLog;
+const PolicyDescriptorTypeFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.PolicyDescriptorTypeFilterSensitiveLog = PolicyDescriptorTypeFilterSensitiveLog;
+const TagFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.TagFilterSensitiveLog = TagFilterSensitiveLog;
+const AssumeRoleRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumeRoleRequestFilterSensitiveLog = AssumeRoleRequestFilterSensitiveLog;
+const CredentialsFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.CredentialsFilterSensitiveLog = CredentialsFilterSensitiveLog;
+const AssumeRoleResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumeRoleResponseFilterSensitiveLog = AssumeRoleResponseFilterSensitiveLog;
+const AssumeRoleWithSAMLRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumeRoleWithSAMLRequestFilterSensitiveLog = AssumeRoleWithSAMLRequestFilterSensitiveLog;
+const AssumeRoleWithSAMLResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumeRoleWithSAMLResponseFilterSensitiveLog = AssumeRoleWithSAMLResponseFilterSensitiveLog;
+const AssumeRoleWithWebIdentityRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumeRoleWithWebIdentityRequestFilterSensitiveLog = AssumeRoleWithWebIdentityRequestFilterSensitiveLog;
+const AssumeRoleWithWebIdentityResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.AssumeRoleWithWebIdentityResponseFilterSensitiveLog = AssumeRoleWithWebIdentityResponseFilterSensitiveLog;
+const DecodeAuthorizationMessageRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DecodeAuthorizationMessageRequestFilterSensitiveLog = DecodeAuthorizationMessageRequestFilterSensitiveLog;
+const DecodeAuthorizationMessageResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.DecodeAuthorizationMessageResponseFilterSensitiveLog = DecodeAuthorizationMessageResponseFilterSensitiveLog;
+const GetAccessKeyInfoRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetAccessKeyInfoRequestFilterSensitiveLog = GetAccessKeyInfoRequestFilterSensitiveLog;
+const GetAccessKeyInfoResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetAccessKeyInfoResponseFilterSensitiveLog = GetAccessKeyInfoResponseFilterSensitiveLog;
+const GetCallerIdentityRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetCallerIdentityRequestFilterSensitiveLog = GetCallerIdentityRequestFilterSensitiveLog;
+const GetCallerIdentityResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetCallerIdentityResponseFilterSensitiveLog = GetCallerIdentityResponseFilterSensitiveLog;
+const GetFederationTokenRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetFederationTokenRequestFilterSensitiveLog = GetFederationTokenRequestFilterSensitiveLog;
+const FederatedUserFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.FederatedUserFilterSensitiveLog = FederatedUserFilterSensitiveLog;
+const GetFederationTokenResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetFederationTokenResponseFilterSensitiveLog = GetFederationTokenResponseFilterSensitiveLog;
+const GetSessionTokenRequestFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetSessionTokenRequestFilterSensitiveLog = GetSessionTokenRequestFilterSensitiveLog;
+const GetSessionTokenResponseFilterSensitiveLog = (obj) => ({
+    ...obj,
+});
+exports.GetSessionTokenResponseFilterSensitiveLog = GetSessionTokenResponseFilterSensitiveLog;
 
 
 /***/ }),
@@ -35618,6 +34971,9 @@ const constants_1 = __nccwpck_require__(30342);
 const getCanonicalHeaders = ({ headers }, unsignableHeaders, signableHeaders) => {
     const canonical = {};
     for (const headerName of Object.keys(headers).sort()) {
+        if (headers[headerName] == undefined) {
+            continue;
+        }
         const canonicalHeaderName = headerName.toLowerCase();
         if (canonicalHeaderName in constants_1.ALWAYS_UNSIGNABLE_HEADERS ||
             (unsignableHeaders === null || unsignableHeaders === void 0 ? void 0 : unsignableHeaders.has(canonicalHeaderName)) ||
@@ -35960,9 +35316,9 @@ const parseRfc3339DateTime = (value) => {
     return buildDate(year, month, day, { hours, minutes, seconds, fractionalMilliseconds });
 };
 exports.parseRfc3339DateTime = parseRfc3339DateTime;
-const IMF_FIXDATE = new RegExp(/^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d{2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d{2}):(\d{2}):(\d{2})(?:\.(\d+))? GMT$/);
-const RFC_850_DATE = new RegExp(/^(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (\d{2})-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d{2}) (\d{2}):(\d{2}):(\d{2})(?:\.(\d+))? GMT$/);
-const ASC_TIME = new RegExp(/^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( [1-9]|\d{2}) (\d{2}):(\d{2}):(\d{2})(?:\.(\d+))? (\d{4})$/);
+const IMF_FIXDATE = new RegExp(/^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d{2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d{1,2}):(\d{2}):(\d{2})(?:\.(\d+))? GMT$/);
+const RFC_850_DATE = new RegExp(/^(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (\d{2})-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d{2}) (\d{1,2}):(\d{2}):(\d{2})(?:\.(\d+))? GMT$/);
+const ASC_TIME = new RegExp(/^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( [1-9]|\d{2}) (\d{1,2}):(\d{2}):(\d{2})(?:\.(\d+))? (\d{4})$/);
 const parseRfc7231DateTime = (value) => {
     if (value === null || value === undefined) {
         return undefined;
@@ -37015,6 +36371,58 @@ exports.getAwsChunkedEncodingStream = getAwsChunkedEncodingStream;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tslib_1 = __nccwpck_require__(4351);
 tslib_1.__exportStar(__nccwpck_require__(86387), exports);
+tslib_1.__exportStar(__nccwpck_require__(79459), exports);
+
+
+/***/ }),
+
+/***/ 79459:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sdkStreamMixin = void 0;
+const node_http_handler_1 = __nccwpck_require__(68805);
+const util_buffer_from_1 = __nccwpck_require__(36010);
+const stream_1 = __nccwpck_require__(12781);
+const ERR_MSG_STREAM_HAS_BEEN_TRANSFORMED = "The stream has already been transformed.";
+const sdkStreamMixin = (stream) => {
+    var _a, _b;
+    if (!(stream instanceof stream_1.Readable)) {
+        const name = ((_b = (_a = stream === null || stream === void 0 ? void 0 : stream.__proto__) === null || _a === void 0 ? void 0 : _a.constructor) === null || _b === void 0 ? void 0 : _b.name) || stream;
+        throw new Error(`Unexpected stream implementation, expect Stream.Readable instance, got ${name}`);
+    }
+    let transformed = false;
+    const transformToByteArray = async () => {
+        if (transformed) {
+            throw new Error(ERR_MSG_STREAM_HAS_BEEN_TRANSFORMED);
+        }
+        transformed = true;
+        return await (0, node_http_handler_1.streamCollector)(stream);
+    };
+    return Object.assign(stream, {
+        transformToByteArray,
+        transformToString: async (encoding) => {
+            const buf = await transformToByteArray();
+            return (0, util_buffer_from_1.fromArrayBuffer)(buf.buffer, buf.byteOffset, buf.byteLength).toString(encoding);
+        },
+        transformToWebStream: () => {
+            if (transformed) {
+                throw new Error(ERR_MSG_STREAM_HAS_BEEN_TRANSFORMED);
+            }
+            if (stream.readableFlowing !== null) {
+                throw new Error("The stream has been consumed by other callbacks.");
+            }
+            if (typeof stream_1.Readable.toWeb !== "function") {
+                throw new Error("Readable.toWeb() is not supported. Please make sure you are using Node.js >= 17.0.0, or polyfill is available.");
+            }
+            transformed = true;
+            return stream_1.Readable.toWeb(stream);
+        },
+    });
+};
+exports.sdkStreamMixin = sdkStreamMixin;
 
 
 /***/ }),
@@ -51473,7 +50881,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -86861,7 +86269,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -89719,7 +89127,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -102536,7 +101944,7 @@ module.exports = yargsParser;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.121.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","test":"yarn test:unit","test:e2e":"ts-mocha test/**/*.ispec.ts && karma start karma.conf.js","test:unit":"ts-mocha test/**/*.spec.ts"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"2.0.0","@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/client-sts":"3.121.0","@aws-sdk/config-resolver":"3.110.0","@aws-sdk/credential-provider-node":"3.121.0","@aws-sdk/eventstream-serde-browser":"3.120.0","@aws-sdk/eventstream-serde-config-resolver":"3.110.0","@aws-sdk/eventstream-serde-node":"3.120.0","@aws-sdk/fetch-http-handler":"3.110.0","@aws-sdk/hash-blob-browser":"3.110.0","@aws-sdk/hash-node":"3.110.0","@aws-sdk/hash-stream-node":"3.110.0","@aws-sdk/invalid-dependency":"3.110.0","@aws-sdk/md5-js":"3.110.0","@aws-sdk/middleware-bucket-endpoint":"3.110.0","@aws-sdk/middleware-content-length":"3.110.0","@aws-sdk/middleware-expect-continue":"3.113.0","@aws-sdk/middleware-flexible-checksums":"3.110.0","@aws-sdk/middleware-host-header":"3.110.0","@aws-sdk/middleware-location-constraint":"3.110.0","@aws-sdk/middleware-logger":"3.110.0","@aws-sdk/middleware-recursion-detection":"3.110.0","@aws-sdk/middleware-retry":"3.118.1","@aws-sdk/middleware-sdk-s3":"3.110.0","@aws-sdk/middleware-serde":"3.110.0","@aws-sdk/middleware-signing":"3.110.0","@aws-sdk/middleware-ssec":"3.110.0","@aws-sdk/middleware-stack":"3.110.0","@aws-sdk/middleware-user-agent":"3.110.0","@aws-sdk/node-config-provider":"3.110.0","@aws-sdk/node-http-handler":"3.118.1","@aws-sdk/protocol-http":"3.110.0","@aws-sdk/signature-v4-multi-region":"3.118.0","@aws-sdk/smithy-client":"3.110.0","@aws-sdk/types":"3.110.0","@aws-sdk/url-parser":"3.110.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.110.0","@aws-sdk/util-defaults-mode-node":"3.110.0","@aws-sdk/util-stream-browser":"3.110.0","@aws-sdk/util-stream-node":"3.110.0","@aws-sdk/util-user-agent-browser":"3.110.0","@aws-sdk/util-user-agent-node":"3.118.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","@aws-sdk/util-waiter":"3.118.1","@aws-sdk/xml-builder":"3.109.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/chai":"^4.2.11","@types/mocha":"^8.0.4","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native","version":"3.141.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo","test":"yarn test:unit","test:e2e":"ts-mocha test/**/*.ispec.ts && karma start karma.conf.js","test:unit":"ts-mocha test/**/*.spec.ts"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha1-browser":"2.0.0","@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/client-sts":"3.141.0","@aws-sdk/config-resolver":"3.130.0","@aws-sdk/credential-provider-node":"3.141.0","@aws-sdk/eventstream-serde-browser":"3.127.0","@aws-sdk/eventstream-serde-config-resolver":"3.127.0","@aws-sdk/eventstream-serde-node":"3.127.0","@aws-sdk/fetch-http-handler":"3.131.0","@aws-sdk/hash-blob-browser":"3.127.0","@aws-sdk/hash-node":"3.127.0","@aws-sdk/hash-stream-node":"3.127.0","@aws-sdk/invalid-dependency":"3.127.0","@aws-sdk/md5-js":"3.127.0","@aws-sdk/middleware-bucket-endpoint":"3.127.0","@aws-sdk/middleware-content-length":"3.127.0","@aws-sdk/middleware-expect-continue":"3.127.0","@aws-sdk/middleware-flexible-checksums":"3.127.0","@aws-sdk/middleware-host-header":"3.127.0","@aws-sdk/middleware-location-constraint":"3.127.0","@aws-sdk/middleware-logger":"3.127.0","@aws-sdk/middleware-recursion-detection":"3.127.0","@aws-sdk/middleware-retry":"3.127.0","@aws-sdk/middleware-sdk-s3":"3.127.0","@aws-sdk/middleware-serde":"3.127.0","@aws-sdk/middleware-signing":"3.130.0","@aws-sdk/middleware-ssec":"3.127.0","@aws-sdk/middleware-stack":"3.127.0","@aws-sdk/middleware-user-agent":"3.127.0","@aws-sdk/node-config-provider":"3.127.0","@aws-sdk/node-http-handler":"3.127.0","@aws-sdk/protocol-http":"3.127.0","@aws-sdk/signature-v4-multi-region":"3.130.0","@aws-sdk/smithy-client":"3.137.0","@aws-sdk/types":"3.127.0","@aws-sdk/url-parser":"3.127.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.137.0","@aws-sdk/util-defaults-mode-node":"3.137.0","@aws-sdk/util-stream-browser":"3.131.0","@aws-sdk/util-stream-node":"3.129.0","@aws-sdk/util-user-agent-browser":"3.127.0","@aws-sdk/util-user-agent-node":"3.127.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","@aws-sdk/util-waiter":"3.127.0","@aws-sdk/xml-builder":"3.109.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/chai":"^4.2.11","@types/mocha":"^8.0.4","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-s3","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-s3"}}');
 
 /***/ }),
 
@@ -102544,7 +101952,7 @@ module.exports = JSON.parse('{"name":"@aws-sdk/client-s3","description":"AWS SDK
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native","version":"3.121.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.110.0","@aws-sdk/fetch-http-handler":"3.110.0","@aws-sdk/hash-node":"3.110.0","@aws-sdk/invalid-dependency":"3.110.0","@aws-sdk/middleware-content-length":"3.110.0","@aws-sdk/middleware-host-header":"3.110.0","@aws-sdk/middleware-logger":"3.110.0","@aws-sdk/middleware-recursion-detection":"3.110.0","@aws-sdk/middleware-retry":"3.118.1","@aws-sdk/middleware-serde":"3.110.0","@aws-sdk/middleware-stack":"3.110.0","@aws-sdk/middleware-user-agent":"3.110.0","@aws-sdk/node-config-provider":"3.110.0","@aws-sdk/node-http-handler":"3.118.1","@aws-sdk/protocol-http":"3.110.0","@aws-sdk/smithy-client":"3.110.0","@aws-sdk/types":"3.110.0","@aws-sdk/url-parser":"3.110.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.110.0","@aws-sdk/util-defaults-mode-node":"3.110.0","@aws-sdk/util-user-agent-browser":"3.110.0","@aws-sdk/util-user-agent-node":"3.118.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sso"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native","version":"3.141.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.130.0","@aws-sdk/fetch-http-handler":"3.131.0","@aws-sdk/hash-node":"3.127.0","@aws-sdk/invalid-dependency":"3.127.0","@aws-sdk/middleware-content-length":"3.127.0","@aws-sdk/middleware-host-header":"3.127.0","@aws-sdk/middleware-logger":"3.127.0","@aws-sdk/middleware-recursion-detection":"3.127.0","@aws-sdk/middleware-retry":"3.127.0","@aws-sdk/middleware-serde":"3.127.0","@aws-sdk/middleware-stack":"3.127.0","@aws-sdk/middleware-user-agent":"3.127.0","@aws-sdk/node-config-provider":"3.127.0","@aws-sdk/node-http-handler":"3.127.0","@aws-sdk/protocol-http":"3.127.0","@aws-sdk/smithy-client":"3.137.0","@aws-sdk/types":"3.127.0","@aws-sdk/url-parser":"3.127.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.137.0","@aws-sdk/util-defaults-mode-node":"3.137.0","@aws-sdk/util-user-agent-browser":"3.127.0","@aws-sdk/util-user-agent-node":"3.127.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sso"}}');
 
 /***/ }),
 
@@ -102552,7 +101960,7 @@ module.exports = JSON.parse('{"name":"@aws-sdk/client-sso","description":"AWS SD
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@aws-sdk/client-sts","description":"AWS SDK for JavaScript Sts Client for Node.js, Browser and React Native","version":"3.121.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.110.0","@aws-sdk/credential-provider-node":"3.121.0","@aws-sdk/fetch-http-handler":"3.110.0","@aws-sdk/hash-node":"3.110.0","@aws-sdk/invalid-dependency":"3.110.0","@aws-sdk/middleware-content-length":"3.110.0","@aws-sdk/middleware-host-header":"3.110.0","@aws-sdk/middleware-logger":"3.110.0","@aws-sdk/middleware-recursion-detection":"3.110.0","@aws-sdk/middleware-retry":"3.118.1","@aws-sdk/middleware-sdk-sts":"3.110.0","@aws-sdk/middleware-serde":"3.110.0","@aws-sdk/middleware-signing":"3.110.0","@aws-sdk/middleware-stack":"3.110.0","@aws-sdk/middleware-user-agent":"3.110.0","@aws-sdk/node-config-provider":"3.110.0","@aws-sdk/node-http-handler":"3.118.1","@aws-sdk/protocol-http":"3.110.0","@aws-sdk/smithy-client":"3.110.0","@aws-sdk/types":"3.110.0","@aws-sdk/url-parser":"3.110.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.110.0","@aws-sdk/util-defaults-mode-node":"3.110.0","@aws-sdk/util-user-agent-browser":"3.110.0","@aws-sdk/util-user-agent-node":"3.118.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sts","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sts"}}');
+module.exports = JSON.parse('{"name":"@aws-sdk/client-sts","description":"AWS SDK for JavaScript Sts Client for Node.js, Browser and React Native","version":"3.141.0","scripts":{"build":"concurrently \'yarn:build:cjs\' \'yarn:build:es\' \'yarn:build:types\'","build:cjs":"tsc -p tsconfig.cjs.json","build:docs":"typedoc","build:es":"tsc -p tsconfig.es.json","build:types":"tsc -p tsconfig.types.json","build:types:downlevel":"downlevel-dts dist-types dist-types/ts3.4","clean":"rimraf ./dist-* && rimraf *.tsbuildinfo"},"main":"./dist-cjs/index.js","types":"./dist-types/index.d.ts","module":"./dist-es/index.js","sideEffects":false,"dependencies":{"@aws-crypto/sha256-browser":"2.0.0","@aws-crypto/sha256-js":"2.0.0","@aws-sdk/config-resolver":"3.130.0","@aws-sdk/credential-provider-node":"3.141.0","@aws-sdk/fetch-http-handler":"3.131.0","@aws-sdk/hash-node":"3.127.0","@aws-sdk/invalid-dependency":"3.127.0","@aws-sdk/middleware-content-length":"3.127.0","@aws-sdk/middleware-host-header":"3.127.0","@aws-sdk/middleware-logger":"3.127.0","@aws-sdk/middleware-recursion-detection":"3.127.0","@aws-sdk/middleware-retry":"3.127.0","@aws-sdk/middleware-sdk-sts":"3.130.0","@aws-sdk/middleware-serde":"3.127.0","@aws-sdk/middleware-signing":"3.130.0","@aws-sdk/middleware-stack":"3.127.0","@aws-sdk/middleware-user-agent":"3.127.0","@aws-sdk/node-config-provider":"3.127.0","@aws-sdk/node-http-handler":"3.127.0","@aws-sdk/protocol-http":"3.127.0","@aws-sdk/smithy-client":"3.137.0","@aws-sdk/types":"3.127.0","@aws-sdk/url-parser":"3.127.0","@aws-sdk/util-base64-browser":"3.109.0","@aws-sdk/util-base64-node":"3.55.0","@aws-sdk/util-body-length-browser":"3.55.0","@aws-sdk/util-body-length-node":"3.55.0","@aws-sdk/util-defaults-mode-browser":"3.137.0","@aws-sdk/util-defaults-mode-node":"3.137.0","@aws-sdk/util-user-agent-browser":"3.127.0","@aws-sdk/util-user-agent-node":"3.127.0","@aws-sdk/util-utf8-browser":"3.109.0","@aws-sdk/util-utf8-node":"3.109.0","entities":"2.2.0","fast-xml-parser":"3.19.0","tslib":"^2.3.1"},"devDependencies":{"@aws-sdk/service-client-documentation-generator":"3.58.0","@tsconfig/recommended":"1.0.1","@types/node":"^12.7.5","concurrently":"7.0.0","downlevel-dts":"0.7.0","rimraf":"3.0.2","typedoc":"0.19.2","typescript":"~4.6.2"},"engines":{"node":">=12.0.0"},"typesVersions":{"<4.0":{"dist-types/*":["dist-types/ts3.4/*"]}},"files":["dist-*"],"author":{"name":"AWS SDK for JavaScript Team","url":"https://aws.amazon.com/javascript/"},"license":"Apache-2.0","browser":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.browser"},"react-native":{"./dist-es/runtimeConfig":"./dist-es/runtimeConfig.native"},"homepage":"https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sts","repository":{"type":"git","url":"https://github.com/aws/aws-sdk-js-v3.git","directory":"clients/client-sts"}}');
 
 /***/ }),
 
