@@ -42,7 +42,6 @@ jobs:
           git push
 ```
 
-
 ## Action options
 
 - `image_path`: Required. Path to images folder with images you want to upload. Default: `./img/staging/`.
