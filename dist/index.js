@@ -51603,9 +51603,8 @@ module.exports = new BinWrapper()
 	.src(`${url}osx/cwebp`, 'darwin')
 	.src(`${url}linux/x86/cwebp`, 'linux', 'x86')
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
-	.src(`${url}win/x86/cwebp.exe`, 'win32', 'x86')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -87225,7 +87224,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -90083,7 +90082,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -104087,7 +104086,7 @@ module.exports = JSON.parse('{"repositories":"\'repositories\' (plural) Not supp
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"cwebp-bin","version":"5.1.0","description":"cwebp wrapper that makes it seamlessly available as a local dependency","license":"MIT","repository":"imagemin/cwebp-bin","author":{"name":"1000ch","email":"shogo.sensui@gmail.com","url":"github.com/1000ch"},"maintainers":[{"name":"Sindre Sorhus","email":"sindresorhus@gmail.com","url":"sindresorhus.com"},{"name":"Kevin Mårtensson","email":"kevinmartensson@gmail.com","url":"github.com/kevva"},{"name":"Shinnosuke Watanabe","url":"github.com/shinnn"}],"bin":{"cwebp":"cli.js"},"engines":{"node":">=6"},"scripts":{"postinstall":"node lib/install.js","test":"xo && ava"},"files":["cli.js","index.js","lib"],"keywords":["imagemin","compress","image","img","jpeg","jpg","minify","optimize","png","webp"],"dependencies":{"bin-build":"^3.0.0","bin-wrapper":"^4.0.1","logalot":"^2.1.0"},"devDependencies":{"ava":"*","bin-check":"^4.1.0","compare-size":"^3.0.0","execa":"^1.0.0","tempy":"^0.2.1","xo":"*"}}');
+module.exports = JSON.parse('{"name":"cwebp-bin","version":"6.1.2","description":"cwebp wrapper that makes it seamlessly available as a local dependency","license":"MIT","repository":"imagemin/cwebp-bin","funding":"https://github.com/imagemin/cwebp-bin?sponsor=1","bin":{"cwebp":"cli.js"},"engines":{"node":">=10"},"scripts":{"postinstall":"node lib/install.js","test":"xo && ava --timeout=120s"},"files":["cli.js","index.js","lib","vendor/source"],"keywords":["imagemin","compress","image","img","jpeg","jpg","minify","optimize","png","webp"],"dependencies":{"bin-build":"^3.0.0","bin-wrapper":"^4.0.1"},"devDependencies":{"ava":"^3.8.0","bin-check":"^4.1.0","compare-size":"^3.0.0","execa":"^1.0.0","tempy":"^0.5.0","xo":"^0.30.0"}}');
 
 /***/ }),
 
@@ -104103,7 +104102,7 @@ module.exports = JSON.parse('{"assert":true,"node:assert":[">= 14.18 && < 15",">
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"mozjpeg","version":"7.0.0","description":"mozjpeg wrapper that makes it seamlessly available as a local dependency","license":"MIT","repository":"imagemin/mozjpeg-bin","bin":"cli.js","engines":{"node":">=10"},"scripts":{"postinstall":"node lib/install.js","test":"xo && ava --timeout=120s","build-linux":"docker build --tag imagemin/mozjpeg docker && docker run --rm --volume $(pwd)/vendor/linux:/src/out imagemin/mozjpeg cp cjpeg /src/out"},"files":["index.js","cli.js","lib","vendor/source"],"keywords":["imagemin","jpeg","jpg","img","image","compress","minify","mozjpeg","optimize"],"dependencies":{"bin-build":"^3.0.0","bin-wrapper":"^4.0.0","logalot":"^2.1.0"},"devDependencies":{"ava":"^3.8.0","bin-check":"^4.1.0","compare-size":"^3.0.0","execa":"^4.0.0","tempy":"^0.5.0","xo":"^0.30.0"},"ava":{"serial":true}}');
+module.exports = JSON.parse('{"name":"mozjpeg","version":"7.1.1","description":"mozjpeg wrapper that makes it seamlessly available as a local dependency","license":"MIT","repository":"imagemin/mozjpeg-bin","bin":"cli.js","engines":{"node":">=10"},"scripts":{"postinstall":"node lib/install.js","test":"xo && ava --timeout=120s","build-linux":"docker build --tag imagemin/mozjpeg docker && docker run --rm --volume $(pwd)/vendor/linux:/src/out imagemin/mozjpeg cp cjpeg /src/out"},"files":["index.js","cli.js","lib","vendor/source"],"keywords":["imagemin","jpeg","jpg","img","image","compress","minify","mozjpeg","optimize"],"dependencies":{"bin-build":"^3.0.0","bin-wrapper":"^4.0.0"},"devDependencies":{"ava":"^3.8.0","bin-check":"^4.1.0","compare-size":"^3.0.0","execa":"^4.0.0","tempy":"^0.5.0","xo":"^0.30.0"},"ava":{"serial":true}}');
 
 /***/ }),
 
