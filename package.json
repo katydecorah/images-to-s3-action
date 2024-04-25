@@ -1,6 +1,6 @@
 {
   "name": "images-to-s3-action",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "GitHub action to upload images to S3",
   "main": "dist/index.js",
   "dependencies": {
