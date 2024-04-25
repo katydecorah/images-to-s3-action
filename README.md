@@ -25,9 +25,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16.x
       - name: Upload images
         uses: katydecorah/images-to-s3-action@v4.0.0
         env:
