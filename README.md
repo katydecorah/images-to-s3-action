@@ -20,7 +20,7 @@ on:
 
 jobs:
   images_to_s3:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     name: Upload images to S3
     steps:
       - name: Checkout
