@@ -93527,7 +93527,7 @@ module.exports = function (Sharp) {
 // SPDX-License-Identifier: Apache-2.0
 
 function __ncc_wildcard$0 (arg) {
-  if (arg === "darwin-x64") return __nccwpck_require__(74838);
+  if (arg === "linux-x64") return __nccwpck_require__(97460);
 }
 'use strict';
 
@@ -97957,10 +97957,10 @@ module.exports = Queue;
 
 /***/ }),
 
-/***/ 74838:
+/***/ 97460:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = require(__nccwpck_require__.ab + "build/Release/sharp-darwin-x64.node")
+module.exports = require(__nccwpck_require__.ab + "build/Release/sharp-linux-x64.node")
 
 /***/ }),
 
