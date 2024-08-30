@@ -46848,7 +46848,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x86/cwebp`, 'linux', 'x86')
 	.src(`${url}linux/x64/cwebp`, 'linux', 'x64')
 	.src(`${url}win/x64/cwebp.exe`, 'win32', 'x64')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor3")
 	.use(process.platform === 'win32' ? 'cwebp.exe' : 'cwebp');
 
 
@@ -82913,7 +82913,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor3")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -85936,7 +85936,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
@@ -94157,7 +94157,7 @@ module.exports = function (Sharp) {
 // SPDX-License-Identifier: Apache-2.0
 
 function __ncc_wildcard$0 (arg) {
-  if (arg === "darwin-x64") return __nccwpck_require__(74838);
+  if (arg === "linux-x64") return __nccwpck_require__(97460);
 }
 'use strict';
 
@@ -98595,10 +98595,10 @@ module.exports = Queue;
 
 /***/ }),
 
-/***/ 74838:
+/***/ 97460:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = require(__nccwpck_require__.ab + "build/Release/sharp-darwin-x64.node")
+module.exports = require(__nccwpck_require__.ab + "build/Release/sharp-linux-x64.node")
 
 /***/ }),
 
