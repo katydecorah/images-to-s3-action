@@ -16,7 +16,7 @@ process.env.AWS_BUCKET = "MY_BUCKET";
 describe("putToS3", () => {
   test("works", async () => {
     await putToS3("KEY", "BODY");
-    await expect(mockS3.putObject).toHaveBeenCalledWith({
+    expect(mockS3.putObject).toHaveBeenCalledWith({
       Body: "BODY",
       Bucket: "MY_BUCKET",
       ContentEncoding: "base64",
@@ -26,8 +26,8 @@ describe("putToS3", () => {
   });
 
   test("error", async () => {
-    (mockS3.putObject = jest.fn().mockRejectedValue({ message: "Error" })),
-      await putToS3("KEY", "BODY");
+    mockS3.putObject = jest.fn().mockRejectedValue({ message: "Error" });
+    await putToS3("KEY", "BODY");
     expect(setFailed).toHaveBeenCalledWith("Error");
   });
 });
