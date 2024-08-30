@@ -80402,7 +80402,12 @@ const util = __nccwpck_require__(73837);
 const braces = __nccwpck_require__(50610);
 const picomatch = __nccwpck_require__(78569);
 const utils = __nccwpck_require__(30479);
-const isEmptyString = val => val === '' || val === './';
+
+const isEmptyString = v => v === '' || v === './';
+const hasBraces = v => {
+  const index = v.indexOf('{');
+  return index > -1 && v.indexOf('}', index) > -1;
+};
 
 /**
  * Returns an array of strings that match one or more glob patterns.
@@ -80553,10 +80558,10 @@ micromatch.not = (list, patterns, options = {}) => {
     items.push(state.output);
   };
 
-  let matches = micromatch(list, patterns, { ...options, onResult });
+  let matches = new Set(micromatch(list, patterns, { ...options, onResult }));
 
   for (let item of items) {
-    if (!matches.includes(item)) {
+    if (!matches.has(item)) {
       result.add(item);
     }
   }
@@ -80806,7 +80811,7 @@ micromatch.scan = (...args) => picomatch.scan(...args);
  *
  * ```js
  * const mm = require('micromatch');
- * const state = mm(pattern[, options]);
+ * const state = mm.parse(pattern[, options]);
  * ```
  * @param {String} `glob`
  * @param {Object} `options`
@@ -80843,7 +80848,7 @@ micromatch.parse = (patterns, options) => {
 
 micromatch.braces = (pattern, options) => {
   if (typeof pattern !== 'string') throw new TypeError('Expected a string');
-  if ((options && options.nobrace === true) || !/\{.*\}/.test(pattern)) {
+  if ((options && options.nobrace === true) || !hasBraces(pattern)) {
     return [pattern];
   }
   return braces(pattern, options);
@@ -80862,6 +80867,8 @@ micromatch.braceExpand = (pattern, options) => {
  * Expose micromatch
  */
 
+// exposed for tests
+micromatch.hasBraces = hasBraces;
 module.exports = micromatch;
 
 
