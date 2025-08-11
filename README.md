@@ -24,7 +24,7 @@ jobs:
     name: Upload images to S3
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
