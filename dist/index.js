@@ -42956,7 +42956,7 @@ function expand(str, isTop) {
   var isOptions = m.body.indexOf(',') >= 0;
   if (!isSequence && !isOptions) {
     // {a},b}
-    if (m.post.match(/,.*\}/)) {
+    if (m.post.match(/,(?!,).*\}/)) {
       str = m.pre + '{' + m.body + escClose + m.post;
       return expand(str);
     }
@@ -82913,7 +82913,7 @@ module.exports = new BinWrapper()
 	.src(`${url}macos/cjpeg`, 'darwin')
 	.src(`${url}linux/cjpeg`, 'linux')
 	.src(`${url}win/cjpeg.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor1")
+	.dest(__nccwpck_require__.ab + "vendor2")
 	.use(process.platform === 'win32' ? 'cjpeg.exe' : 'cjpeg');
 
 
@@ -85936,7 +85936,7 @@ module.exports = new BinWrapper()
 	.src(`${url}linux/x64/pngquant`, 'linux', 'x64')
 	.src(`${url}freebsd/x64/pngquant`, 'freebsd', 'x64')
 	.src(`${url}win/pngquant.exe`, 'win32')
-	.dest(__nccwpck_require__.ab + "vendor2")
+	.dest(__nccwpck_require__.ab + "vendor1")
 	.use(process.platform === 'win32' ? 'pngquant.exe' : 'pngquant');
 
 
