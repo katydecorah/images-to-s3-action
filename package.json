@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@aws-sdk/client-s3": "^3.864.0",
+    "@aws-sdk/client-s3": "^3.981.0",
     "@mapbox/appropriate-images": "^6.1.0",
     "@vercel/ncc": "^0.38.3"
   },
