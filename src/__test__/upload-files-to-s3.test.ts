@@ -10,20 +10,22 @@ describe("uploadFilesToS3", () => {
   test("works", async () => {
     jest
       .spyOn(promises, "readdir")
-      .mockResolvedValue(["my-file.png", "my-other-file.jpg"]);
-    jest.spyOn(fs, "createReadStream").mockReturnValue("file-stream-body");
+      .mockResolvedValue(["my-file.png", "my-other-file.jpg"] as any);
+    jest
+      .spyOn(fs, "createReadStream")
+      .mockReturnValue("file-stream-body" as any);
 
     await uploadFilesToS3("dest/");
     expect(putToS3).toHaveBeenNthCalledWith(
       1,
       "my-file.png",
-      "file-stream-body"
+      "file-stream-body",
     );
 
     expect(putToS3).toHaveBeenNthCalledWith(
       2,
       "my-other-file.jpg",
-      "file-stream-body"
+      "file-stream-body",
     );
   });
 

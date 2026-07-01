@@ -8,7 +8,11 @@ describe("createImageConfig", () => {
   test("works", async () => {
     jest
       .spyOn(promises, "readdir")
-      .mockResolvedValue(["my-file.png", "my-other-file.jpg", "my-file.html"]);
+      .mockResolvedValue([
+        "my-file.png",
+        "my-other-file.jpg",
+        "my-file.html",
+      ] as any);
     expect(await createImageConfig("./src/")).toEqual({
       "my-file": {
         basename: "my-file.png",

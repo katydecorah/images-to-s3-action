@@ -17,6 +17,6 @@ export async function uploadFilesToS3(destination: string): Promise<void> {
       await putToS3(name, body);
     }
   } catch (error) {
-    setFailed(error.message);
+    setFailed((error as Error).message);
   }
 }

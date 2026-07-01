@@ -4,11 +4,11 @@ import { setFailed } from "@actions/core";
 import { ImageConfig } from "./index.js";
 
 export async function createImageConfig(
-  inputDirectory: string
+  inputDirectory: string,
 ): Promise<ImageConfig | undefined> {
   try {
     const files = await readdir(inputDirectory);
-    return files.reduce((obj, file) => {
+    return files.reduce<ImageConfig>((obj, file) => {
       const ext = extname(file);
       const slug = file.replace(ext, "");
       if (ext === ".png" || ext === ".jpg") {
@@ -18,8 +18,8 @@ export async function createImageConfig(
         };
       }
       return obj;
-    }, {});
+    }, {} as ImageConfig);
   } catch (error) {
-    setFailed(error.message);
+    setFailed((error as Error).message);
   }
 }

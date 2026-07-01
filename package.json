@@ -4,34 +4,44 @@
   "description": "GitHub action to upload images to S3",
   "main": "dist/index.js",
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@aws-sdk/client-s3": "^3.987.0",
+    "@actions/core": "^3.0.1",
+    "@aws-sdk/client-s3": "^3.1078.0",
     "@mapbox/appropriate-images": "^6.1.0",
-    "@vercel/ncc": "^0.38.3"
+    "@vercel/ncc": "^0.44.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-typescript": "^7.27.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.39.1",
-    "@typescript-eslint/parser": "^8.39.1",
+    "@types/node": "^26.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-jest": "^29.15.4",
     "eslint-plugin-node": "^11.1.0",
-    "jest": "^30.0.5",
-    "typescript": "^5.9.2"
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "typescript": "^6.0.3"
   },
   "scripts": {
-    "pretest": "eslint . --ext .js,.ts",
+    "pretest": "eslint .",
     "test": "jest --coverage",
     "build": "ncc build src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=22"
+  },
   "jest": {
     "clearMocks": true,
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.test.json"
+        }
+      ]
+    },
     "coverageThreshold": {
       "global": {
         "branches": 100,
@@ -41,7 +51,8 @@
       }
     },
     "moduleNameMapper": {
-      "^./put-to-s3.js$": "<rootDir>/src/put-to-s3.ts"
+      "^@actions/core$": "<rootDir>/__mocks__/actions-core.ts",
+      "^(\\.{1,2}/.*)\\.js$": "$1"
     }
   }
 }

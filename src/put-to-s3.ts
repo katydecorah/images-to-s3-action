@@ -15,6 +15,6 @@ export async function putToS3(Key: string, Body: ReadStream): Promise<void> {
     });
     info(`⬆️ Uploaded ${Key} to S3.`);
   } catch (error) {
-    setFailed(error.message);
+    setFailed((error as Error).message);
   }
 }

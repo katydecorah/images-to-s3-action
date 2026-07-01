@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "moduleResolution": "node",
-    "strictNullChecks": true
+    "target": "es2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "src",
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "types": ["node"]
   },
-  "include": ["src/*.ts"]
+  "include": ["src"],
+  "exclude": ["src/__test__"]
 }

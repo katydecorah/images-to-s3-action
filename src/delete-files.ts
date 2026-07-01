@@ -13,6 +13,6 @@ export async function deleteFiles(path: string): Promise<void> {
       }
     }
   } catch (error) {
-    setFailed(error.message);
+    setFailed((error as Error).message);
   }
 }

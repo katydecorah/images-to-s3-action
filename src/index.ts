@@ -1,7 +1,7 @@
 import { getInput, setFailed, info } from "@actions/core";
 import { generate } from "@mapbox/appropriate-images";
 import { existsSync } from "fs";
-import rimraf from "rimraf";
+import { rm } from "fs/promises";
 import { deleteFiles } from "./delete-files.js";
 import { createImageConfig } from "./create-image-config.js";
 import { copyOriginalFiles } from "./copy-original-files.js";
@@ -16,7 +16,8 @@ async function action(): Promise<void> {
     const inputDirectory = getInput("image_path");
     const outputDirectory = `${getInput("image_path")}ready/`;
 
-    rimraf(outputDirectory, () => info(`🗑 Cleared out ${outputDirectory}`));
+    await rm(outputDirectory, { recursive: true, force: true });
+    info(`🗑 Cleared out ${outputDirectory}`);
 
     if (!existsSync(inputDirectory)) {
       info(`📭 No files found in ${inputDirectory}`);
@@ -25,7 +26,7 @@ async function action(): Promise<void> {
 
     // generate images
     const myImageConfig = (await createImageConfig(
-      inputDirectory
+      inputDirectory,
     )) as ImageConfig;
     const generatedImages = await generate(myImageConfig, {
       inputDirectory,
@@ -42,7 +43,7 @@ async function action(): Promise<void> {
     // delete files in outputDirectory
     await deleteFiles(outputDirectory);
   } catch (error) {
-    setFailed(error.message);
+    setFailed((error as Error).message);
   }
 }
 
