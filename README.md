@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 20.x
+          node-version: 22.x
       - name: Upload images
         uses: katydecorah/images-to-s3-action@v5.0.0
         env:
