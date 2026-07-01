@@ -30,7 +30,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "jest": {
     "clearMocks": true,
