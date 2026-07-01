@@ -6,8 +6,7 @@
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@aws-sdk/client-s3": "^3.1078.0",
-    "@mapbox/appropriate-images": "^6.1.0",
-    "@vercel/ncc": "^0.44.1"
+    "@mapbox/appropriate-images": "^6.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
@@ -19,12 +18,13 @@
     "eslint-plugin-node": "^11.1.0",
     "jest": "^30.4.2",
     "ts-jest": "^29.4.11",
+    "tsup": "^8.5.1",
     "typescript": "^6.0.3"
   },
   "scripts": {
     "pretest": "eslint .",
     "test": "jest --coverage",
-    "build": "ncc build src/index.ts"
+    "build": "tsup"
   },
   "keywords": [],
   "author": "",
